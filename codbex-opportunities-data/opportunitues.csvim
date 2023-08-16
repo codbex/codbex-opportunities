@@ -1,0 +1,81 @@
+{
+  "files": [
+    {
+      "table": "CODBEX_LEADSTATUS",
+      "schema": "PUBLIC",
+      "file": "/codbex-opportunities-data/lead-statuses.csv",
+      "header": true,
+      "useHeaderNames": true,
+      "delimField": ",",
+      "delimEnclosing": "\"",
+      "distinguishEmptyFromNull": true,
+      "version": "1.0"
+    },
+    {
+      "table": "CODBEX_NOTETYPES",
+      "schema": "PUBLIC",
+      "file": "/codbex-opportunities-data/note-types.csv",
+      "header": true,
+      "useHeaderNames": true,
+      "delimField": ",",
+      "delimEnclosing": "\"",
+      "distinguishEmptyFromNull": true,
+      "version": "1.0"
+    },
+    {
+      "table": "CODBEX_OPPORTUNITYPRIORITIES",
+      "schema": "PUBLIC",
+      "file": "/codbex-opportunities-data/opportunity-priorities.csv",
+      "header": true,
+      "useHeaderNames": true,
+      "delimField": ",",
+      "delimEnclosing": "\"",
+      "distinguishEmptyFromNull": true,
+      "version": "1.0"
+    },
+    {
+      "table": "CODBEX_OPPORTUNITYPROBABILITIES",
+      "schema": "PUBLIC",
+      "file": "/codbex-opportunities-data/opportunity-probabilities.csv",
+      "header": true,
+      "useHeaderNames": true,
+      "delimField": ",",
+      "delimEnclosing": "\"",
+      "distinguishEmptyFromNull": true,
+      "version": "1.0"
+    },
+    {
+      "table": "CODBEX_OPPORTUNITYSTATUS",
+      "schema": "PUBLIC",
+      "file": "/codbex-opportunities-data/opportunity-statuses.csv",
+      "header": true,
+      "useHeaderNames": true,
+      "delimField": ",",
+      "delimEnclosing": "\"",
+      "distinguishEmptyFromNull": true,
+      "version": "1.0"
+    },
+    {
+      "table": "CODBEX_OPPORTUNITYTYPES",
+      "schema": "PUBLIC",
+      "file": "/codbex-opportunities-data/opportunity-types.csv",
+      "header": true,
+      "useHeaderNames": true,
+      "delimField": ",",
+      "delimEnclosing": "\"",
+      "distinguishEmptyFromNull": true,
+      "version": "1.0"
+    },
+    {
+      "table": "CODBEX_QUOTATIONSTATUS",
+      "schema": "PUBLIC",
+      "file": "/codbex-opportunities-data/quotation-statuses.csv",
+      "header": true,
+      "useHeaderNames": true,
+      "delimField": ",",
+      "delimEnclosing": "\"",
+      "distinguishEmptyFromNull": true,
+      "version": "1.0"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+    "guid": "codbex-opportunities-data",
+    "repository": {
+        "type": "git",
+        "branch": "main",
+        "url": "https://github.com/codbex/codbex-opportunities.git"
+    }
+}
