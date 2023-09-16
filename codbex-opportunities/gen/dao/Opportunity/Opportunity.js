@@ -38,6 +38,11 @@ let dao = daoApi.create({
 			type: "INTEGER",
 		},
  {
+			name: "Owner",
+			column: "OPPORTUNITY_OWNER",
+			type: "INTEGER",
+		},
+ {
 			name: "Type",
 			column: "OPPORTUNITY_TYPE",
 			type: "INTEGER",
@@ -56,16 +61,6 @@ let dao = daoApi.create({
 			name: "CurrencyCode",
 			column: "OPPORTUNITY_CURRENCYCODE",
 			type: "VARCHAR",
-		},
- {
-			name: "OpportunityStatus",
-			column: "OPPORTUNITY_OPPORTUNITYSTATUS",
-			type: "INTEGER",
-		},
- {
-			name: "Owner",
-			column: "OPPORTUNITY_OWNER",
-			type: "INTEGER",
 		}
 ]
 });
@@ -132,5 +127,5 @@ exports.customDataCount = function() {
 };
 
 function triggerEvent(operation, data) {
-	producer.queue("codbex-opportunities/Opportunity/Opportunity/" + operation).send(JSON.stringify(data));
+	producer.queue("codbex-opportunities/opportunity/Opportunity/" + operation).send(JSON.stringify(data));
 }

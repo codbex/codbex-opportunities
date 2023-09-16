@@ -29,6 +29,11 @@ let dao = daoApi.create({
 			type: "VARCHAR",
 		},
  {
+			name: "Owner",
+			column: "QUOTATION_OWNER",
+			type: "INTEGER",
+		},
+ {
 			name: "Customer",
 			column: "QUOTATION_CUSTOMER",
 			type: "INTEGER",
@@ -51,11 +56,6 @@ let dao = daoApi.create({
  {
 			name: "QuotationStatus",
 			column: "QUOTATION_QUOTATIONSTATUS",
-			type: "INTEGER",
-		},
- {
-			name: "Owsner",
-			column: "QUOTATION_EMPLOYEEID",
 			type: "INTEGER",
 		}
 ]
@@ -130,5 +130,5 @@ exports.customDataCount = function() {
 };
 
 function triggerEvent(operation, data) {
-	producer.queue("codbex-opportunities/Quotation/Quotation/" + operation).send(JSON.stringify(data));
+	producer.queue("codbex-opportunities/quotation/Quotation/" + operation).send(JSON.stringify(data));
 }
