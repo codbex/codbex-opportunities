@@ -103,20 +103,20 @@
                         </fd-combobox-input>
                     </fd-form-item>
                     <fd-form-item horizontal="false">
-                        <fd-form-label for="idCurrencyCode" dg-required="false" dg-colon="true">CurrencyCode</fd-form-label>
-                        <fd-form-input-message-group dg-inactive="{{ formErrors.CurrencyCode ? false : true }}">
-                            <fd-input id="idCurrencyCode"
-                                name="CurrencyCode"
-                                state="{{ formErrors.CurrencyCode ? 'error' : '' }}"
+                        <fd-form-label for="idCurrency" dg-required="false" dg-colon="true">Currency</fd-form-label>
+                        <fd-form-input-message-group dg-inactive="{{ formErrors.Currency ? false : true }}">
+                            <fd-input id="idCurrency"
+                                name="Currency"
+                                state="{{ formErrors.Currency ? 'error' : '' }}"
 								ng-required="false"
-                                ng-change="isValid(formFieldset['CurrencyCode'].$valid, 'CurrencyCode')"
-                                ng-model="entity.CurrencyCode"
+                                ng-change="isValid(formFieldset['Currency'].$valid, 'Currency')"
+                                ng-model="entity.Currency"
                                 ng-readonly="action === 'select'"
                                 ng-minlength="0.0 || 0"
                                 ng-maxlength="3.0 || -1"
                                 dg-input-rules="{ patterns: [''] }"
                                 type="text"
-                                placeholder="Enter CurrencyCode">
+                                placeholder="Enter Currency">
                             </fd-input>
                             <fd-form-message dg-type="error">Incorrect Input</fd-form-message>
                         </fd-form-input-message-group>

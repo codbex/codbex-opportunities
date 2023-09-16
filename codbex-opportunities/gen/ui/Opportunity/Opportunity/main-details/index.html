@@ -58,6 +58,19 @@
                         </fd-form-input-message-group>
                     </fd-form-item>
                     <fd-form-item horizontal="false">
+                        <fd-form-label for="idCustomer" dg-required="false" dg-colon="true">Customer</fd-form-label>
+                        <fd-combobox-input id="idCustomer"
+                            name="Customer"
+                            state="{{ formErrors.Customer ? 'error' : '' }}"
+                            ng-required="true"
+                            ng-change="isValid(formFieldset['Customer'].$valid, 'Customer')"
+                            ng-model="entity.Customer"
+                            dg-disabled="action === 'select'"
+                            dropdown-items="optionsCustomer"
+                            dg-placeholder="Search Customer ...">
+                        </fd-combobox-input>
+                    </fd-form-item>
+                    <fd-form-item horizontal="false">
                         <fd-form-label for="idAmount" dg-required="false" dg-colon="true">Amount</fd-form-label>
                         <fd-form-input-message-group dg-inactive="{{ formErrors.Amount ? false : true }}">
                             <fd-input id="idAmount"
@@ -77,16 +90,16 @@
                         </fd-form-input-message-group>
                     </fd-form-item>
                     <fd-form-item horizontal="false">
-                        <fd-form-label for="idCustomer" dg-required="false" dg-colon="true">Customer</fd-form-label>
-                        <fd-combobox-input id="idCustomer"
-                            name="Customer"
-                            state="{{ formErrors.Customer ? 'error' : '' }}"
+                        <fd-form-label for="idCurrency" dg-required="false" dg-colon="true">Currency</fd-form-label>
+                        <fd-combobox-input id="idCurrency"
+                            name="Currency"
+                            state="{{ formErrors.Currency ? 'error' : '' }}"
                             ng-required="true"
-                            ng-change="isValid(formFieldset['Customer'].$valid, 'Customer')"
-                            ng-model="entity.Customer"
+                            ng-change="isValid(formFieldset['Currency'].$valid, 'Currency')"
+                            ng-model="entity.Currency"
                             dg-disabled="action === 'select'"
-                            dropdown-items="optionsCustomer"
-                            dg-placeholder="Search Customer ...">
+                            dropdown-items="optionsCurrency"
+                            dg-placeholder="Search Currency ...">
                         </fd-combobox-input>
                     </fd-form-item>
                     <fd-form-item horizontal="false">
@@ -152,19 +165,6 @@
                             dg-disabled="action === 'select'"
                             dropdown-items="optionsProbability"
                             dg-placeholder="Search Probability ...">
-                        </fd-combobox-input>
-                    </fd-form-item>
-                    <fd-form-item horizontal="false">
-                        <fd-form-label for="idCurrencyCode" dg-required="false" dg-colon="true">CurrencyCode</fd-form-label>
-                        <fd-combobox-input id="idCurrencyCode"
-                            name="CurrencyCode"
-                            state="{{ formErrors.CurrencyCode ? 'error' : '' }}"
-                            ng-required="true"
-                            ng-change="isValid(formFieldset['CurrencyCode'].$valid, 'CurrencyCode')"
-                            ng-model="entity.CurrencyCode"
-                            dg-disabled="action === 'select'"
-                            dropdown-items="optionsCurrencyCode"
-                            dg-placeholder="Search CurrencyCode ...">
                         </fd-combobox-input>
                     </fd-form-item>
 

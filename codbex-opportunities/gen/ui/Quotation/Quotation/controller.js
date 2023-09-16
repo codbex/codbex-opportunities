@@ -82,7 +82,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				selectedMainEntityId: entity.Id,
 				optionsOwner: $scope.optionsOwner,
 				optionsCustomer: $scope.optionsCustomer,
-				optionsCurrencyCode: $scope.optionsCurrencyCode,
+				optionsCurrency: $scope.optionsCurrency,
 				optionsOpportunity: $scope.optionsOpportunity,
 				optionsQuotationStatus: $scope.optionsQuotationStatus,
 			});
@@ -96,7 +96,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				entity: {},
 				optionsOwner: $scope.optionsOwner,
 				optionsCustomer: $scope.optionsCustomer,
-				optionsCurrencyCode: $scope.optionsCurrencyCode,
+				optionsCurrency: $scope.optionsCurrency,
 				optionsOpportunity: $scope.optionsOpportunity,
 				optionsQuotationStatus: $scope.optionsQuotationStatus,
 			});
@@ -108,7 +108,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				entity: $scope.selectedEntity,
 				optionsOwner: $scope.optionsOwner,
 				optionsCustomer: $scope.optionsCustomer,
-				optionsCurrencyCode: $scope.optionsCurrencyCode,
+				optionsCurrency: $scope.optionsCurrency,
 				optionsOpportunity: $scope.optionsOpportunity,
 				optionsQuotationStatus: $scope.optionsQuotationStatus,
 			});
@@ -147,7 +147,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		//----------------Dropdowns-----------------//
 		$scope.optionsOwner = [];
 		$scope.optionsCustomer = [];
-		$scope.optionsCurrencyCode = [];
+		$scope.optionsCurrency = [];
 		$scope.optionsOpportunity = [];
 		$scope.optionsQuotationStatus = [];
 
@@ -170,7 +170,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		});
 
 		$http.get("/services/js/codbex-opportunities/gen/api/entities/Currency.js").then(function (response) {
-			$scope.optionsCurrencyCode = response.data.map(e => {
+			$scope.optionsCurrency = response.data.map(e => {
 				return {
 					value: e.Code,
 					text: e.Code
@@ -211,10 +211,10 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			}
 			return null;
 		};
-		$scope.optionsCurrencyCodeValue = function (optionKey) {
-			for (let i = 0; i < $scope.optionsCurrencyCode.length; i++) {
-				if ($scope.optionsCurrencyCode[i].value === optionKey) {
-					return $scope.optionsCurrencyCode[i].text;
+		$scope.optionsCurrencyValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsCurrency.length; i++) {
+				if ($scope.optionsCurrency[i].value === optionKey) {
+					return $scope.optionsCurrency[i].text;
 				}
 			}
 			return null;

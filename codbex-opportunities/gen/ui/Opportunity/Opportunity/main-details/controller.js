@@ -22,12 +22,12 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				$scope.entity = {};
 				$scope.formErrors = {};
 				$scope.optionsCustomer = [];
+				$scope.optionsCurrency = [];
 				$scope.optionsLead = [];
 				$scope.optionsOwner = [];
 				$scope.optionsType = [];
 				$scope.optionsPriority = [];
 				$scope.optionsProbability = [];
-				$scope.optionsCurrencyCode = [];
 				$scope.action = 'select';
 			});
 		});
@@ -36,12 +36,12 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			$scope.$apply(function () {
 				$scope.entity = msg.data.entity;
 				$scope.optionsCustomer = msg.data.optionsCustomer;
+				$scope.optionsCurrency = msg.data.optionsCurrency;
 				$scope.optionsLead = msg.data.optionsLead;
 				$scope.optionsOwner = msg.data.optionsOwner;
 				$scope.optionsType = msg.data.optionsType;
 				$scope.optionsPriority = msg.data.optionsPriority;
 				$scope.optionsProbability = msg.data.optionsProbability;
-				$scope.optionsCurrencyCode = msg.data.optionsCurrencyCode;
 				$scope.action = 'select';
 			});
 		});
@@ -50,12 +50,12 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			$scope.$apply(function () {
 				$scope.entity = {};
 				$scope.optionsCustomer = msg.data.optionsCustomer;
+				$scope.optionsCurrency = msg.data.optionsCurrency;
 				$scope.optionsLead = msg.data.optionsLead;
 				$scope.optionsOwner = msg.data.optionsOwner;
 				$scope.optionsType = msg.data.optionsType;
 				$scope.optionsPriority = msg.data.optionsPriority;
 				$scope.optionsProbability = msg.data.optionsProbability;
-				$scope.optionsCurrencyCode = msg.data.optionsCurrencyCode;
 				$scope.action = 'create';
 				// Set Errors for required fields only
 				$scope.formErrors = {
@@ -67,12 +67,12 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			$scope.$apply(function () {
 				$scope.entity = msg.data.entity;
 				$scope.optionsCustomer = msg.data.optionsCustomer;
+				$scope.optionsCurrency = msg.data.optionsCurrency;
 				$scope.optionsLead = msg.data.optionsLead;
 				$scope.optionsOwner = msg.data.optionsOwner;
 				$scope.optionsType = msg.data.optionsType;
 				$scope.optionsPriority = msg.data.optionsPriority;
 				$scope.optionsProbability = msg.data.optionsProbability;
-				$scope.optionsCurrencyCode = msg.data.optionsCurrencyCode;
 				$scope.action = 'update';
 			});
 		});

@@ -253,7 +253,7 @@
                     },
                     {
                         "type": "VARCHAR",
-                        "length": 1000,
+                        "length": 10000,
                         "precision": "NaN",
                         "scale": "NaN",
                         "nullable": true,
@@ -298,6 +298,14 @@
                         "name": "OPPORTUNITY_SOURCE"
                     },
                     {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "OPPORTUNITY_CUSTOMER"
+                    },
+                    {
                         "type": "DOUBLE",
                         "length": 20,
                         "precision": "NaN",
@@ -306,12 +314,12 @@
                         "name": "OPPORTUNITY_PROPERTY4"
                     },
                     {
-                        "type": "INTEGER",
-                        "length": 0,
+                        "type": "VARCHAR",
+                        "length": 3,
                         "precision": "NaN",
                         "scale": "NaN",
                         "nullable": true,
-                        "name": "OPPORTUNITY_CUSTOMER"
+                        "name": "OPPORTUNITY_CURRENCYCODE"
                     },
                     {
                         "type": "INTEGER",
@@ -352,14 +360,6 @@
                         "scale": "NaN",
                         "nullable": true,
                         "name": "OPPORTUNITY_PROBABILITY"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 3,
-                        "precision": "NaN",
-                        "scale": "NaN",
-                        "nullable": true,
-                        "name": "OPPORTUNITY_CURRENCYCODE"
                     }
                 ]
             },
@@ -555,7 +555,7 @@
                     },
                     {
                         "type": "VARCHAR",
-                        "length": 1000,
+                        "length": 10000,
                         "precision": "NaN",
                         "scale": "NaN",
                         "nullable": true,
@@ -943,6 +943,15 @@
                 "referencedColumns": "PARTNER_ID"
             },
             {
+                "name": "Opportunity_Currency",
+                "type": "foreignKey",
+                "table": "CODBEX_OPPORTUNITY",
+                "constraintName": "Opportunity_Currency",
+                "columns": "OPPORTUNITY_CURRENCYCODE",
+                "referencedTable": "CODBEX_CURRENCY",
+                "referencedColumns": "CURRENCY_CODE"
+            },
+            {
                 "name": "Opportunity_Lead",
                 "type": "foreignKey",
                 "table": "CODBEX_OPPORTUNITY",
@@ -986,15 +995,6 @@
                 "columns": "OPPORTUNITY_PROBABILITY",
                 "referencedTable": "CODBEX_OPPORTUNITYPROBABILITY",
                 "referencedColumns": "OPPORTUNITYPROBABILITY_ID"
-            },
-            {
-                "name": "Opportunity_Currency",
-                "type": "foreignKey",
-                "table": "CODBEX_OPPORTUNITY",
-                "constraintName": "Opportunity_Currency",
-                "columns": "OPPORTUNITY_CURRENCYCODE",
-                "referencedTable": "CODBEX_CURRENCY",
-                "referencedColumns": "CURRENCY_CODE"
             },
             {
                 "name": "OpportunityNote_Opportunity",

@@ -23,14 +23,19 @@ let dao = daoApi.create({
 			type: "VARCHAR",
 		},
  {
+			name: "Customer",
+			column: "OPPORTUNITY_CUSTOMER",
+			type: "INTEGER",
+		},
+ {
 			name: "Amount",
 			column: "OPPORTUNITY_PROPERTY4",
 			type: "DOUBLE",
 		},
  {
-			name: "Customer",
-			column: "OPPORTUNITY_CUSTOMER",
-			type: "INTEGER",
+			name: "Currency",
+			column: "OPPORTUNITY_CURRENCYCODE",
+			type: "VARCHAR",
 		},
  {
 			name: "Lead",
@@ -56,11 +61,6 @@ let dao = daoApi.create({
 			name: "Probability",
 			column: "OPPORTUNITY_PROBABILITY",
 			type: "INTEGER",
-		},
- {
-			name: "CurrencyCode",
-			column: "OPPORTUNITY_CURRENCYCODE",
-			type: "VARCHAR",
 		}
 ]
 });

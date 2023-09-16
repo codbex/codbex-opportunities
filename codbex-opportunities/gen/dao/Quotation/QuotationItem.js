@@ -43,7 +43,7 @@ let dao = daoApi.create({
 			type: "INTEGER",
 		},
  {
-			name: "CurrencyCode",
+			name: "Currency",
 			column: "QUOTATIONITEM_CURRENCYCODE",
 			type: "VARCHAR",
 		}

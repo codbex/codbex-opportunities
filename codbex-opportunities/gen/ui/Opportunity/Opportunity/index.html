@@ -37,14 +37,14 @@
 							item-title="{{next.Name}}">
 							<fd-list-byline dg-align="left">
 								{{next.Source}} |
-								{{next.Amount}} |
 								{{optionsCustomerValue(next.Customer)}} |
+								{{next.Amount}} |
+								{{optionsCurrencyValue(next.Currency)}} |
 								{{optionsLeadValue(next.Lead)}} |
 								{{optionsOwnerValue(next.Owner)}} |
 								{{optionsTypeValue(next.Type)}} |
 								{{optionsPriorityValue(next.Priority)}} |
-								{{optionsProbabilityValue(next.Probability)}} |
-								{{optionsCurrencyCodeValue(next.CurrencyCode)}}
+								{{optionsProbabilityValue(next.Probability)}}
 							</fd-list-byline>
 						</fd-list-content>
 					</fd-list-link>

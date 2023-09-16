@@ -23,7 +23,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				$scope.formErrors = {};
 				$scope.optionsOwner = [];
 				$scope.optionsCustomer = [];
-				$scope.optionsCurrencyCode = [];
+				$scope.optionsCurrency = [];
 				$scope.optionsOpportunity = [];
 				$scope.optionsQuotationStatus = [];
 				$scope.action = 'select';
@@ -38,7 +38,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				$scope.entity = msg.data.entity;
 				$scope.optionsOwner = msg.data.optionsOwner;
 				$scope.optionsCustomer = msg.data.optionsCustomer;
-				$scope.optionsCurrencyCode = msg.data.optionsCurrencyCode;
+				$scope.optionsCurrency = msg.data.optionsCurrency;
 				$scope.optionsOpportunity = msg.data.optionsOpportunity;
 				$scope.optionsQuotationStatus = msg.data.optionsQuotationStatus;
 				$scope.action = 'select';
@@ -50,7 +50,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				$scope.entity = {};
 				$scope.optionsOwner = msg.data.optionsOwner;
 				$scope.optionsCustomer = msg.data.optionsCustomer;
-				$scope.optionsCurrencyCode = msg.data.optionsCurrencyCode;
+				$scope.optionsCurrency = msg.data.optionsCurrency;
 				$scope.optionsOpportunity = msg.data.optionsOpportunity;
 				$scope.optionsQuotationStatus = msg.data.optionsQuotationStatus;
 				$scope.action = 'create';
@@ -68,7 +68,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				$scope.entity = msg.data.entity;
 				$scope.optionsOwner = msg.data.optionsOwner;
 				$scope.optionsCustomer = msg.data.optionsCustomer;
-				$scope.optionsCurrencyCode = msg.data.optionsCurrencyCode;
+				$scope.optionsCurrency = msg.data.optionsCurrency;
 				$scope.optionsOpportunity = msg.data.optionsOpportunity;
 				$scope.optionsQuotationStatus = msg.data.optionsQuotationStatus;
 				$scope.action = 'update';
