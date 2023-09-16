@@ -3,23 +3,23 @@ const producer = require("messaging/producer");
 const daoApi = require("db/dao");
 
 let dao = daoApi.create({
-	table: "CODBEX_ENTITY2",
+	table: "CODBEX_LEADSTATUS",
 	properties: [
 		{
 			name: "Id",
-			column: "ENTITY2_ID",
+			column: "LEADSTATUS_ID",
 			type: "INTEGER",
 			id: true,
 			autoIncrement: true,
 		},
  {
 			name: "Name",
-			column: "ENTITY2_NAME",
+			column: "LEADSTATUS_NAME",
 			type: "VARCHAR",
 		},
  {
 			name: "Description",
-			column: "ENTITY2_DESCRIPTION",
+			column: "LEADSTATUS_DESCRIPTION",
 			type: "VARCHAR",
 		}
 ]
@@ -36,10 +36,10 @@ exports.get = function(id) {
 exports.create = function(entity) {
 	let id = dao.insert(entity);
 	triggerEvent("Create", {
-		table: "CODBEX_ENTITY2",
+		table: "CODBEX_LEADSTATUS",
 		key: {
 			name: "Id",
-			column: "ENTITY2_ID",
+			column: "LEADSTATUS_ID",
 			value: id
 		}
 	});
@@ -49,10 +49,10 @@ exports.create = function(entity) {
 exports.update = function(entity) {
 	dao.update(entity);
 	triggerEvent("Update", {
-		table: "CODBEX_ENTITY2",
+		table: "CODBEX_LEADSTATUS",
 		key: {
 			name: "Id",
-			column: "ENTITY2_ID",
+			column: "LEADSTATUS_ID",
 			value: entity.Id
 		}
 	});
@@ -61,10 +61,10 @@ exports.update = function(entity) {
 exports.delete = function(id) {
 	dao.remove(id);
 	triggerEvent("Delete", {
-		table: "CODBEX_ENTITY2",
+		table: "CODBEX_LEADSTATUS",
 		key: {
 			name: "Id",
-			column: "ENTITY2_ID",
+			column: "LEADSTATUS_ID",
 			value: id
 		}
 	});
@@ -75,7 +75,7 @@ exports.count = function() {
 };
 
 exports.customDataCount = function() {
-	let resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX_ENTITY2"');
+	let resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX_LEADSTATUS"');
 	if (resultSet !== null && resultSet[0] !== null) {
 		if (resultSet[0].COUNT !== undefined && resultSet[0].COUNT !== null) {
 			return resultSet[0].COUNT;

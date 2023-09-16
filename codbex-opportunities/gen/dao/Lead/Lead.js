@@ -7,54 +7,54 @@ let dao = daoApi.create({
 	properties: [
 		{
 			name: "Id",
-			column: "ENTITY1_ENTITY1ID",
+			column: "LEAD_ID",
 			type: "INTEGER",
 			id: true,
 			autoIncrement: true,
 		},
  {
 			name: "Name",
-			column: "ENTITY1_NAME",
+			column: "LEAD_NAME",
 			type: "VARCHAR",
 		},
  {
 			name: "CompanyName",
-			column: "ENTITY1_COMPANYNAME",
+			column: "LEAD_COMPANYNAME",
 			type: "VARCHAR",
 		},
  {
 			name: "ContactName",
-			column: "ENTITY1_CONTACTNAME",
+			column: "LEAD_CONTACTNAME",
 			type: "VARCHAR",
 		},
  {
 			name: "ContactDesignation",
-			column: "ENTITY1_CONTACTDESIGNATION",
+			column: "LEAD_CONTACTDESIGNATION",
 			type: "VARCHAR",
 		},
  {
 			name: "ContactEmail",
-			column: "ENTITY1_CONTACTEMAIL",
+			column: "LEAD_CONTACTEMAIL",
 			type: "VARCHAR",
 		},
  {
 			name: "ContactPhone",
-			column: "ENTITY1_CONTACTPHONE",
+			column: "LEAD_CONTACTPHONE",
 			type: "VARCHAR",
 		},
  {
 			name: "Industry",
-			column: "ENTITY1_INDUSTRY",
+			column: "LEAD_INDUSTRY",
 			type: "INTEGER",
 		},
  {
 			name: "LeadStatus",
-			column: "ENTITY1_LEADSTATUS",
+			column: "LEAD_LEADSTATUS",
 			type: "INTEGER",
 		},
  {
 			name: "Owner",
-			column: "ENTITY1_OWNER",
+			column: "LEAD_OWNER",
 			type: "INTEGER",
 		}
 ]
@@ -74,7 +74,7 @@ exports.create = function(entity) {
 		table: "CODBEX_LEAD",
 		key: {
 			name: "Id",
-			column: "ENTITY1_ENTITY1ID",
+			column: "LEAD_ID",
 			value: id
 		}
 	});
@@ -87,7 +87,7 @@ exports.update = function(entity) {
 		table: "CODBEX_LEAD",
 		key: {
 			name: "Id",
-			column: "ENTITY1_ENTITY1ID",
+			column: "LEAD_ID",
 			value: entity.Id
 		}
 	});
@@ -99,7 +99,7 @@ exports.delete = function(id) {
 		table: "CODBEX_LEAD",
 		key: {
 			name: "Id",
-			column: "ENTITY1_ENTITY1ID",
+			column: "LEAD_ID",
 			value: id
 		}
 	});
