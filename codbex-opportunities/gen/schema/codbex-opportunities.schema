@@ -162,68 +162,6 @@
                 ]
             },
             {
-                "name": "CODBEX_EMPLOYEE",
-                "type": "TABLE",
-                "columns": [
-                    {
-                        "type": "INTEGER",
-                        "length": 0,
-                        "primaryKey": true,
-                        "identity": true,
-                        "nullable": true,
-                        "name": "EMPLOYEE_ID"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 100,
-                        "precision": "NaN",
-                        "scale": "NaN",
-                        "nullable": true,
-                        "name": "EMPLOYEE_FIRSTNAME"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 100,
-                        "precision": "NaN",
-                        "scale": "NaN",
-                        "nullable": true,
-                        "name": "EMPLOYEE_MIDDLENAME"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 100,
-                        "precision": "NaN",
-                        "scale": "NaN",
-                        "nullable": true,
-                        "name": "EMPLOYEE_LASTNAME"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 200,
-                        "precision": "NaN",
-                        "scale": "NaN",
-                        "nullable": true,
-                        "name": "EMPLOYEE_EMAIL"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 20,
-                        "precision": "NaN",
-                        "scale": "NaN",
-                        "nullable": true,
-                        "name": "EMPLOYEE_PHONE"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "length": 0,
-                        "precision": "NaN",
-                        "scale": "NaN",
-                        "nullable": true,
-                        "name": "EMPLOYEE_ORGANISATIONID"
-                    }
-                ]
-            },
-            {
                 "name": "CODBEX_LEADNOTE",
                 "type": "TABLE",
                 "columns": [
@@ -335,14 +273,6 @@
                         "precision": "NaN",
                         "scale": "NaN",
                         "nullable": true,
-                        "name": "OPPORTUNITY_OWNER"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "length": 0,
-                        "precision": "NaN",
-                        "scale": "NaN",
-                        "nullable": true,
                         "name": "OPPORTUNITY_TYPE"
                     },
                     {
@@ -360,6 +290,22 @@
                         "scale": "NaN",
                         "nullable": true,
                         "name": "OPPORTUNITY_PROBABILITY"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "OPPORTUNITY_STATUS"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "OPPORTUNITY_OWNER"
                     }
                 ]
             },
@@ -702,14 +648,6 @@
                         "precision": "NaN",
                         "scale": "NaN",
                         "nullable": true,
-                        "name": "QUOTATION_OWNER"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "length": 0,
-                        "precision": "NaN",
-                        "scale": "NaN",
-                        "nullable": true,
                         "name": "QUOTATION_CUSTOMER"
                     },
                     {
@@ -743,6 +681,14 @@
                         "scale": "NaN",
                         "nullable": true,
                         "name": "QUOTATION_QUOTATIONSTATUS"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "QUOTATION_OWNER"
                     }
                 ]
             },
@@ -767,36 +713,20 @@
                         "name": "QUOTATIONITEM_QUOTATIONID"
                     },
                     {
-                        "type": "DOUBLE",
-                        "length": 20,
-                        "precision": "NaN",
-                        "scale": "NaN",
-                        "nullable": true,
-                        "name": "QUOTATIONITEM_QUANTITY"
-                    },
-                    {
-                        "type": "DOUBLE",
-                        "length": 20,
-                        "precision": "NaN",
-                        "scale": "NaN",
-                        "nullable": true,
-                        "name": "QUOTATIONITEM_PRICE"
-                    },
-                    {
-                        "type": "DOUBLE",
-                        "length": 20,
-                        "precision": "NaN",
-                        "scale": "NaN",
-                        "nullable": true,
-                        "name": "QUOTATIONITEM_TOTAL"
-                    },
-                    {
                         "type": "INTEGER",
                         "length": 0,
                         "precision": "NaN",
                         "scale": "NaN",
                         "nullable": true,
                         "name": "QUOTATIONITEM_PRODUCTID"
+                    },
+                    {
+                        "type": "DOUBLE",
+                        "length": 20,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "QUOTATIONITEM_QUANTITY"
                     },
                     {
                         "type": "INTEGER",
@@ -807,12 +737,28 @@
                         "name": "QUOTATIONITEM_UOM"
                     },
                     {
+                        "type": "DOUBLE",
+                        "length": 20,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "QUOTATIONITEM_PRICE"
+                    },
+                    {
                         "type": "VARCHAR",
                         "length": 3,
                         "precision": "NaN",
                         "scale": "NaN",
                         "nullable": true,
                         "name": "QUOTATIONITEM_CURRENCYCODE"
+                    },
+                    {
+                        "type": "DOUBLE",
+                        "length": 20,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "QUOTATIONITEM_TOTAL"
                     }
                 ]
             },
@@ -889,6 +835,76 @@
                 ]
             },
             {
+                "name": "CODBEX_EMPLOYEE",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "EMPLOYEE_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 100,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "EMPLOYEE_FIRSTNAME"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 100,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "EMPLOYEE_MIDDLENAME"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 100,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "EMPLOYEE_LASTNAME"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 200,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "EMPLOYEE_EMAIL"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "EMPLOYEE_PHONE"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "EMPLOYEE_ORGANISATIONID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 200,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "EMPLOYEE_NAME"
+                    }
+                ]
+            },
+            {
                 "name": "Lead_Industry",
                 "type": "foreignKey",
                 "table": "CODBEX_LEAD",
@@ -961,15 +977,6 @@
                 "referencedColumns": "LEAD_ID"
             },
             {
-                "name": "Opportunity_Employee",
-                "type": "foreignKey",
-                "table": "CODBEX_OPPORTUNITY",
-                "constraintName": "Opportunity_Employee",
-                "columns": "OPPORTUNITY_OWNER",
-                "referencedTable": "CODBEX_EMPLOYEE",
-                "referencedColumns": "EMPLOYEE_ID"
-            },
-            {
                 "name": "Opportunity_OpportunityType",
                 "type": "foreignKey",
                 "table": "CODBEX_OPPORTUNITY",
@@ -997,6 +1004,24 @@
                 "referencedColumns": "OPPORTUNITYPROBABILITY_ID"
             },
             {
+                "name": "Opportunity_OpportunityStatus",
+                "type": "foreignKey",
+                "table": "CODBEX_OPPORTUNITY",
+                "constraintName": "Opportunity_OpportunityStatus",
+                "columns": "OPPORTUNITY_STATUS",
+                "referencedTable": "CODBEX_OPPORTUNITYSTATUS",
+                "referencedColumns": "OPPORTUNITYSTATUS_ID"
+            },
+            {
+                "name": "Opportunity_Employee",
+                "type": "foreignKey",
+                "table": "CODBEX_OPPORTUNITY",
+                "constraintName": "Opportunity_Employee",
+                "columns": "OPPORTUNITY_OWNER",
+                "referencedTable": "CODBEX_EMPLOYEE",
+                "referencedColumns": "EMPLOYEE_ID"
+            },
+            {
                 "name": "OpportunityNote_Opportunity",
                 "type": "foreignKey",
                 "table": "CODBEX_OPPORTUNITYNOTE",
@@ -1013,15 +1038,6 @@
                 "columns": "OPPORTUNITYNOTE_NOTETYPE",
                 "referencedTable": "CODBEX_NOTETYPE",
                 "referencedColumns": "NOTETYPE_ID"
-            },
-            {
-                "name": "Quotation_Employee",
-                "type": "foreignKey",
-                "table": "CODBEX_QUOTATION",
-                "constraintName": "Quotation_Employee",
-                "columns": "QUOTATION_OWNER",
-                "referencedTable": "CODBEX_EMPLOYEE",
-                "referencedColumns": "EMPLOYEE_ID"
             },
             {
                 "name": "Quotation_Partner",
@@ -1058,6 +1074,15 @@
                 "columns": "QUOTATION_QUOTATIONSTATUS",
                 "referencedTable": "CODBEX_QUOTATIONSTATUS",
                 "referencedColumns": "QUOTATIONSTATUS_ID"
+            },
+            {
+                "name": "Quotation_Employee",
+                "type": "foreignKey",
+                "table": "CODBEX_QUOTATION",
+                "constraintName": "Quotation_Employee",
+                "columns": "QUOTATION_OWNER",
+                "referencedTable": "CODBEX_EMPLOYEE",
+                "referencedColumns": "EMPLOYEE_ID"
             },
             {
                 "name": "QuotationItem_Quotation",

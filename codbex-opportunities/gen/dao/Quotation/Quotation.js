@@ -29,11 +29,6 @@ let dao = daoApi.create({
 			type: "VARCHAR",
 		},
  {
-			name: "Owner",
-			column: "QUOTATION_OWNER",
-			type: "INTEGER",
-		},
- {
 			name: "Customer",
 			column: "QUOTATION_CUSTOMER",
 			type: "INTEGER",
@@ -54,8 +49,13 @@ let dao = daoApi.create({
 			type: "INTEGER",
 		},
  {
-			name: "QuotationStatus",
+			name: "Status",
 			column: "QUOTATION_QUOTATIONSTATUS",
+			type: "INTEGER",
+		},
+ {
+			name: "Owner",
+			column: "QUOTATION_OWNER",
 			type: "INTEGER",
 		}
 ]

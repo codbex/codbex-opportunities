@@ -38,12 +38,12 @@
 							<fd-list-byline dg-align="left">
 								{{next.Date | date: "dd/MMM/yyyy"}} |
 								{{next.Number}} |
-								{{optionsOwnerValue(next.Owner)}} |
 								{{optionsCustomerValue(next.Customer)}} |
 								{{next.Total}} |
 								{{optionsCurrencyValue(next.Currency)}} |
 								{{optionsOpportunityValue(next.Opportunity)}} |
-								{{optionsQuotationStatusValue(next.QuotationStatus)}}
+								{{optionsStatusValue(next.Status)}} |
+								{{optionsOwnerValue(next.Owner)}}
 							</fd-list-byline>
 						</fd-list-content>
 					</fd-list-link>

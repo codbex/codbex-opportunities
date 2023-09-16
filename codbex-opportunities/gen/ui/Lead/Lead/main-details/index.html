@@ -147,16 +147,16 @@
                         </fd-combobox-input>
                     </fd-form-item>
                     <fd-form-item horizontal="false">
-                        <fd-form-label for="idLeadStatus" dg-required="false" dg-colon="true">LeadStatus</fd-form-label>
-                        <fd-combobox-input id="idLeadStatus"
-                            name="LeadStatus"
-                            state="{{ formErrors.LeadStatus ? 'error' : '' }}"
+                        <fd-form-label for="idStatus" dg-required="false" dg-colon="true">Status</fd-form-label>
+                        <fd-combobox-input id="idStatus"
+                            name="Status"
+                            state="{{ formErrors.Status ? 'error' : '' }}"
                             ng-required="true"
-                            ng-change="isValid(formFieldset['LeadStatus'].$valid, 'LeadStatus')"
-                            ng-model="entity.LeadStatus"
+                            ng-change="isValid(formFieldset['Status'].$valid, 'Status')"
+                            ng-model="entity.Status"
                             dg-disabled="action === 'select'"
-                            dropdown-items="optionsLeadStatus"
-                            dg-placeholder="Search LeadStatus ...">
+                            dropdown-items="optionsStatus"
+                            dg-placeholder="Search Status ...">
                         </fd-combobox-input>
                     </fd-form-item>
                     <fd-form-item horizontal="false">

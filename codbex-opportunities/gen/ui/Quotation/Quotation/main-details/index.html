@@ -73,19 +73,6 @@
                         </fd-form-input-message-group>
                     </fd-form-item>
                     <fd-form-item horizontal="false">
-                        <fd-form-label for="idOwner" dg-required="false" dg-colon="true">Owner</fd-form-label>
-                        <fd-combobox-input id="idOwner"
-                            name="Owner"
-                            state="{{ formErrors.Owner ? 'error' : '' }}"
-                            ng-required="true"
-                            ng-change="isValid(formFieldset['Owner'].$valid, 'Owner')"
-                            ng-model="entity.Owner"
-                            dg-disabled="action === 'select'"
-                            dropdown-items="optionsOwner"
-                            dg-placeholder="Search Owner ...">
-                        </fd-combobox-input>
-                    </fd-form-item>
-                    <fd-form-item horizontal="false">
                         <fd-form-label for="idCustomer" dg-required="false" dg-colon="true">Customer</fd-form-label>
                         <fd-combobox-input id="idCustomer"
                             name="Customer"
@@ -108,10 +95,7 @@
                                 ng-change="isValid(formFieldset['Total'].$valid, 'Total')"
                                 ng-model="entity.Total"
                                 ng-readonly="action === 'select'"
-                                ng-minlength="${property.minLength} || 0"
-                                ng-maxlength="${property.maxLength} || -1"
-                                dg-input-rules="{ patterns: [''] }"
-                                type="text"
+                                type="number"
                                 placeholder="Enter Total">
                             </fd-input>
                             <fd-form-message dg-type="error">Incorrect Input</fd-form-message>
@@ -144,16 +128,29 @@
                         </fd-combobox-input>
                     </fd-form-item>
                     <fd-form-item horizontal="false">
-                        <fd-form-label for="idQuotationStatus" dg-required="false" dg-colon="true">QuotationStatus</fd-form-label>
-                        <fd-combobox-input id="idQuotationStatus"
-                            name="QuotationStatus"
-                            state="{{ formErrors.QuotationStatus ? 'error' : '' }}"
+                        <fd-form-label for="idStatus" dg-required="false" dg-colon="true">Status</fd-form-label>
+                        <fd-combobox-input id="idStatus"
+                            name="Status"
+                            state="{{ formErrors.Status ? 'error' : '' }}"
                             ng-required="true"
-                            ng-change="isValid(formFieldset['QuotationStatus'].$valid, 'QuotationStatus')"
-                            ng-model="entity.QuotationStatus"
+                            ng-change="isValid(formFieldset['Status'].$valid, 'Status')"
+                            ng-model="entity.Status"
                             dg-disabled="action === 'select'"
-                            dropdown-items="optionsQuotationStatus"
-                            dg-placeholder="Search QuotationStatus ...">
+                            dropdown-items="optionsStatus"
+                            dg-placeholder="Search Status ...">
+                        </fd-combobox-input>
+                    </fd-form-item>
+                    <fd-form-item horizontal="false">
+                        <fd-form-label for="idOwner" dg-required="false" dg-colon="true">Owner</fd-form-label>
+                        <fd-combobox-input id="idOwner"
+                            name="Owner"
+                            state="{{ formErrors.Owner ? 'error' : '' }}"
+                            ng-required="true"
+                            ng-change="isValid(formFieldset['Owner'].$valid, 'Owner')"
+                            ng-model="entity.Owner"
+                            dg-disabled="action === 'select'"
+                            dropdown-items="optionsOwner"
+                            dg-placeholder="Search Owner ...">
                         </fd-combobox-input>
                     </fd-form-item>
 

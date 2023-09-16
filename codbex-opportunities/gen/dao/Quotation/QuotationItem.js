@@ -18,24 +18,14 @@ let dao = daoApi.create({
 			type: "INTEGER",
 		},
  {
-			name: "Quantity",
-			column: "QUOTATIONITEM_QUANTITY",
-			type: "DOUBLE",
-		},
- {
-			name: "Price",
-			column: "QUOTATIONITEM_PRICE",
-			type: "DOUBLE",
-		},
- {
-			name: "Total",
-			column: "QUOTATIONITEM_TOTAL",
-			type: "DOUBLE",
-		},
- {
 			name: "Product",
 			column: "QUOTATIONITEM_PRODUCTID",
 			type: "INTEGER",
+		},
+ {
+			name: "Quantity",
+			column: "QUOTATIONITEM_QUANTITY",
+			type: "DOUBLE",
 		},
  {
 			name: "UoM",
@@ -43,9 +33,19 @@ let dao = daoApi.create({
 			type: "INTEGER",
 		},
  {
+			name: "Price",
+			column: "QUOTATIONITEM_PRICE",
+			type: "DOUBLE",
+		},
+ {
 			name: "Currency",
 			column: "QUOTATIONITEM_CURRENCYCODE",
 			type: "VARCHAR",
+		},
+ {
+			name: "Total",
+			column: "QUOTATIONITEM_TOTAL",
+			type: "DOUBLE",
 		}
 ]
 });

@@ -22,7 +22,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				$scope.entity = {};
 				$scope.formErrors = {};
 				$scope.optionsIndustry = [];
-				$scope.optionsLeadStatus = [];
+				$scope.optionsStatus = [];
 				$scope.optionsOwner = [];
 				$scope.action = 'select';
 			});
@@ -32,7 +32,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			$scope.$apply(function () {
 				$scope.entity = msg.data.entity;
 				$scope.optionsIndustry = msg.data.optionsIndustry;
-				$scope.optionsLeadStatus = msg.data.optionsLeadStatus;
+				$scope.optionsStatus = msg.data.optionsStatus;
 				$scope.optionsOwner = msg.data.optionsOwner;
 				$scope.action = 'select';
 			});
@@ -42,7 +42,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			$scope.$apply(function () {
 				$scope.entity = {};
 				$scope.optionsIndustry = msg.data.optionsIndustry;
-				$scope.optionsLeadStatus = msg.data.optionsLeadStatus;
+				$scope.optionsStatus = msg.data.optionsStatus;
 				$scope.optionsOwner = msg.data.optionsOwner;
 				$scope.action = 'create';
 				// Set Errors for required fields only
@@ -55,7 +55,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			$scope.$apply(function () {
 				$scope.entity = msg.data.entity;
 				$scope.optionsIndustry = msg.data.optionsIndustry;
-				$scope.optionsLeadStatus = msg.data.optionsLeadStatus;
+				$scope.optionsStatus = msg.data.optionsStatus;
 				$scope.optionsOwner = msg.data.optionsOwner;
 				$scope.action = 'update';
 			});

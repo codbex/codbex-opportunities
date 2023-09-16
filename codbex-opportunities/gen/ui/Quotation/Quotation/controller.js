@@ -80,11 +80,11 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.postMessage("entitySelected", {
 				entity: entity,
 				selectedMainEntityId: entity.Id,
-				optionsOwner: $scope.optionsOwner,
 				optionsCustomer: $scope.optionsCustomer,
 				optionsCurrency: $scope.optionsCurrency,
 				optionsOpportunity: $scope.optionsOpportunity,
-				optionsQuotationStatus: $scope.optionsQuotationStatus,
+				optionsStatus: $scope.optionsStatus,
+				optionsOwner: $scope.optionsOwner,
 			});
 		};
 
@@ -94,11 +94,11 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 
 			messageHub.postMessage("createEntity", {
 				entity: {},
-				optionsOwner: $scope.optionsOwner,
 				optionsCustomer: $scope.optionsCustomer,
 				optionsCurrency: $scope.optionsCurrency,
 				optionsOpportunity: $scope.optionsOpportunity,
-				optionsQuotationStatus: $scope.optionsQuotationStatus,
+				optionsStatus: $scope.optionsStatus,
+				optionsOwner: $scope.optionsOwner,
 			});
 		};
 
@@ -106,11 +106,11 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			$scope.action = "update";
 			messageHub.postMessage("updateEntity", {
 				entity: $scope.selectedEntity,
-				optionsOwner: $scope.optionsOwner,
 				optionsCustomer: $scope.optionsCustomer,
 				optionsCurrency: $scope.optionsCurrency,
 				optionsOpportunity: $scope.optionsOpportunity,
-				optionsQuotationStatus: $scope.optionsQuotationStatus,
+				optionsStatus: $scope.optionsStatus,
+				optionsOwner: $scope.optionsOwner,
 			});
 		};
 
@@ -145,20 +145,11 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		};
 
 		//----------------Dropdowns-----------------//
-		$scope.optionsOwner = [];
 		$scope.optionsCustomer = [];
 		$scope.optionsCurrency = [];
 		$scope.optionsOpportunity = [];
-		$scope.optionsQuotationStatus = [];
-
-		$http.get("/services/js/codbex-opportunities/gen/api/entities/Employee.js").then(function (response) {
-			$scope.optionsOwner = response.data.map(e => {
-				return {
-					value: e.Id,
-					text: e.Name
-				}
-			});
-		});
+		$scope.optionsStatus = [];
+		$scope.optionsOwner = [];
 
 		$http.get("/services/js/codbex-opportunities/gen/api/entities/Partner.js").then(function (response) {
 			$scope.optionsCustomer = response.data.map(e => {
@@ -188,21 +179,22 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		});
 
 		$http.get("/services/js/codbex-opportunities/gen/api/Settings/QuotationStatus.js").then(function (response) {
-			$scope.optionsQuotationStatus = response.data.map(e => {
+			$scope.optionsStatus = response.data.map(e => {
 				return {
 					value: e.Id,
 					text: e.Name
 				}
 			});
 		});
-		$scope.optionsOwnerValue = function (optionKey) {
-			for (let i = 0; i < $scope.optionsOwner.length; i++) {
-				if ($scope.optionsOwner[i].value === optionKey) {
-					return $scope.optionsOwner[i].text;
+
+		$http.get("/services/js/codbex-opportunities/gen/api/entities/Employee.js").then(function (response) {
+			$scope.optionsOwner = response.data.map(e => {
+				return {
+					value: e.Id,
+					text: e.Name
 				}
-			}
-			return null;
-		};
+			});
+		});
 		$scope.optionsCustomerValue = function (optionKey) {
 			for (let i = 0; i < $scope.optionsCustomer.length; i++) {
 				if ($scope.optionsCustomer[i].value === optionKey) {
@@ -227,10 +219,18 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			}
 			return null;
 		};
-		$scope.optionsQuotationStatusValue = function (optionKey) {
-			for (let i = 0; i < $scope.optionsQuotationStatus.length; i++) {
-				if ($scope.optionsQuotationStatus[i].value === optionKey) {
-					return $scope.optionsQuotationStatus[i].text;
+		$scope.optionsStatusValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsStatus.length; i++) {
+				if ($scope.optionsStatus[i].value === optionKey) {
+					return $scope.optionsStatus[i].text;
+				}
+			}
+			return null;
+		};
+		$scope.optionsOwnerValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsOwner.length; i++) {
+				if ($scope.optionsOwner[i].value === optionKey) {
+					return $scope.optionsOwner[i].text;
 				}
 			}
 			return null;

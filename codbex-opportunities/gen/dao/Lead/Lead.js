@@ -48,7 +48,7 @@ let dao = daoApi.create({
 			type: "INTEGER",
 		},
  {
-			name: "LeadStatus",
+			name: "Status",
 			column: "LEAD_LEADSTATUS",
 			type: "INTEGER",
 		},

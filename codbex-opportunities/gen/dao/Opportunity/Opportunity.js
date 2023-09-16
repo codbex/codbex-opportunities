@@ -43,11 +43,6 @@ let dao = daoApi.create({
 			type: "INTEGER",
 		},
  {
-			name: "Owner",
-			column: "OPPORTUNITY_OWNER",
-			type: "INTEGER",
-		},
- {
 			name: "Type",
 			column: "OPPORTUNITY_TYPE",
 			type: "INTEGER",
@@ -60,6 +55,16 @@ let dao = daoApi.create({
  {
 			name: "Probability",
 			column: "OPPORTUNITY_PROBABILITY",
+			type: "INTEGER",
+		},
+ {
+			name: "Status",
+			column: "OPPORTUNITY_STATUS",
+			type: "INTEGER",
+		},
+ {
+			name: "Owner",
+			column: "OPPORTUNITY_OWNER",
 			type: "INTEGER",
 		}
 ]
