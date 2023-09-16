@@ -150,7 +150,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		});
 
-		$http.get("/services/js/codbex-opportunities/gen/api/entities/Product.js").then(function (response) {
+		$http.get("/services/js/codbex-opportunities/gen/api/entities/Employee.js").then(function (response) {
 			$scope.optionsProduct = response.data.map(e => {
 				return {
 					value: e.Id,

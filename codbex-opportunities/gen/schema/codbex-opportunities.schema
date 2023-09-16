@@ -2,7 +2,7 @@
     "schema": {
         "structures": [
             {
-                "name": "CODBEX_ENTITY1",
+                "name": "CODBEX_LEAD",
                 "type": "TABLE",
                 "columns": [
                     {
@@ -788,39 +788,39 @@
                         "primaryKey": true,
                         "identity": true,
                         "nullable": true,
-                        "name": "PRODUCT_ID"
+                        "name": "EMPLOYEE_ID"
                     },
                     {
                         "type": "VARCHAR",
+                        "length": 100,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "EMPLOYEE_FIRSTNAME"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "length": 100,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "EMPLOYEE_MIDDLENAME"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "length": 100,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "EMPLOYEE_LASTNAME"
+                    },
+                    {
+                        "type": "INTEGER",
                         "length": 200,
                         "precision": "NaN",
                         "scale": "NaN",
                         "nullable": true,
-                        "name": "PRODUCT_NAME"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "length": 0,
-                        "precision": "NaN",
-                        "scale": "NaN",
-                        "nullable": true,
-                        "name": "PRODUCT_PRODUCTTYPEID"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "length": 0,
-                        "precision": "NaN",
-                        "scale": "NaN",
-                        "nullable": true,
-                        "name": "PRODUCT_PRODUCTCATEGORYID"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "length": 0,
-                        "precision": "NaN",
-                        "scale": "NaN",
-                        "nullable": true,
-                        "name": "PRODUCT_UOMID"
+                        "name": "EMPLOYEE_EMAIL"
                     }
                 ]
             },
@@ -845,7 +845,7 @@
                         "name": "EMPLOYEE_FIRSTNAME"
                     },
                     {
-                        "type": "VARCHAR",
+                        "type": "INTEGER",
                         "length": 100,
                         "precision": "NaN",
                         "scale": "NaN",
@@ -853,7 +853,7 @@
                         "name": "EMPLOYEE_MIDDLENAME"
                     },
                     {
-                        "type": "VARCHAR",
+                        "type": "INTEGER",
                         "length": 100,
                         "precision": "NaN",
                         "scale": "NaN",
@@ -861,7 +861,7 @@
                         "name": "EMPLOYEE_LASTNAME"
                     },
                     {
-                        "type": "VARCHAR",
+                        "type": "INTEGER",
                         "length": 200,
                         "precision": "NaN",
                         "scale": "NaN",
@@ -897,7 +897,7 @@
             {
                 "name": "Lead_Industry",
                 "type": "foreignKey",
-                "table": "CODBEX_ENTITY1",
+                "table": "CODBEX_LEAD",
                 "constraintName": "Lead_Industry",
                 "columns": "ENTITY1_INDUSTRY",
                 "referencedTable": "CODBEX_INDUSTRY",
@@ -906,7 +906,7 @@
             {
                 "name": "Lead_LeadStatus",
                 "type": "foreignKey",
-                "table": "CODBEX_ENTITY1",
+                "table": "CODBEX_LEAD",
                 "constraintName": "Lead_LeadStatus",
                 "columns": "ENTITY1_LEADSTATUS",
                 "referencedTable": "CODBEX_ENTITY2",
@@ -915,7 +915,7 @@
             {
                 "name": "Lead_Employee",
                 "type": "foreignKey",
-                "table": "CODBEX_ENTITY1",
+                "table": "CODBEX_LEAD",
                 "constraintName": "Lead_Employee",
                 "columns": "ENTITY1_OWNER",
                 "referencedTable": "CODBEX_EMPLOYEE",
@@ -927,7 +927,7 @@
                 "table": "CODBEX_LEADNOTE",
                 "constraintName": "LeadNote_Lead",
                 "columns": "LEADNOTE_LEAD",
-                "referencedTable": "CODBEX_ENTITY1",
+                "referencedTable": "CODBEX_LEAD",
                 "referencedColumns": "ENTITY1_ENTITY1ID"
             },
             {
@@ -954,7 +954,7 @@
                 "table": "CODBEX_OPPORTUNITY",
                 "constraintName": "Opportunity_Lead",
                 "columns": "OPPORTUNITY_LEAD",
-                "referencedTable": "CODBEX_ENTITY1",
+                "referencedTable": "CODBEX_LEAD",
                 "referencedColumns": "ENTITY1_ENTITY1ID"
             },
             {
@@ -1084,13 +1084,13 @@
                 "referencedColumns": "QUOTATION_ID"
             },
             {
-                "name": "QuotationItem_Product",
+                "name": "QuotationItem_Employee",
                 "type": "foreignKey",
                 "table": "CODBEX_QUOTATIONITEM",
-                "constraintName": "QuotationItem_Product",
+                "constraintName": "QuotationItem_Employee",
                 "columns": "QUOTATIONITEM_PRODUCTID",
-                "referencedTable": "CODBEX_PRODUCT",
-                "referencedColumns": "PRODUCT_ID"
+                "referencedTable": "CODBEX_EMPLOYEE",
+                "referencedColumns": "EMPLOYEE_ID"
             },
             {
                 "name": "QuotationItem_UoM",

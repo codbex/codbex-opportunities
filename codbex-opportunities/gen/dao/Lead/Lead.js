@@ -3,7 +3,7 @@ const producer = require("messaging/producer");
 const daoApi = require("db/dao");
 
 let dao = daoApi.create({
-	table: "CODBEX_ENTITY1",
+	table: "CODBEX_LEAD",
 	properties: [
 		{
 			name: "Id",
@@ -71,7 +71,7 @@ exports.get = function(id) {
 exports.create = function(entity) {
 	let id = dao.insert(entity);
 	triggerEvent("Create", {
-		table: "CODBEX_ENTITY1",
+		table: "CODBEX_LEAD",
 		key: {
 			name: "Id",
 			column: "ENTITY1_ENTITY1ID",
@@ -84,7 +84,7 @@ exports.create = function(entity) {
 exports.update = function(entity) {
 	dao.update(entity);
 	triggerEvent("Update", {
-		table: "CODBEX_ENTITY1",
+		table: "CODBEX_LEAD",
 		key: {
 			name: "Id",
 			column: "ENTITY1_ENTITY1ID",
@@ -96,7 +96,7 @@ exports.update = function(entity) {
 exports.delete = function(id) {
 	dao.remove(id);
 	triggerEvent("Delete", {
-		table: "CODBEX_ENTITY1",
+		table: "CODBEX_LEAD",
 		key: {
 			name: "Id",
 			column: "ENTITY1_ENTITY1ID",
@@ -110,7 +110,7 @@ exports.count = function() {
 };
 
 exports.customDataCount = function() {
-	let resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX_ENTITY1"');
+	let resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX_LEAD"');
 	if (resultSet !== null && resultSet[0] !== null) {
 		if (resultSet[0].COUNT !== undefined && resultSet[0].COUNT !== null) {
 			return resultSet[0].COUNT;

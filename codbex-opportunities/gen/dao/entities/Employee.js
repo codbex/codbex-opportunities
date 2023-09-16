@@ -20,17 +20,17 @@ let dao = daoApi.create({
  {
 			name: "MiddleName",
 			column: "EMPLOYEE_MIDDLENAME",
-			type: "VARCHAR",
+			type: "INTEGER",
 		},
  {
 			name: "LastName",
 			column: "EMPLOYEE_LASTNAME",
-			type: "VARCHAR",
+			type: "INTEGER",
 		},
  {
 			name: "Email",
 			column: "EMPLOYEE_EMAIL",
-			type: "VARCHAR",
+			type: "INTEGER",
 		},
  {
 			name: "Phone",
