@@ -18,7 +18,7 @@ let dao = daoApi.create({
 			type: "INTEGER",
 		},
  {
-			name: "NoteType",
+			name: "Type",
 			column: "OPPORTUNITYNOTE_NOTETYPE",
 			type: "INTEGER",
 		},

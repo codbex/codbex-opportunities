@@ -75,12 +75,11 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				selectedMainEntityId: entity.Id,
 				optionsCustomer: $scope.optionsCustomer,
 				optionsLead: $scope.optionsLead,
+				optionsOwner: $scope.optionsOwner,
 				optionsType: $scope.optionsType,
 				optionsPriority: $scope.optionsPriority,
 				optionsProbability: $scope.optionsProbability,
 				optionsCurrencyCode: $scope.optionsCurrencyCode,
-				optionsOpportunityStatus: $scope.optionsOpportunityStatus,
-				optionsOwner: $scope.optionsOwner,
 			});
 		};
 
@@ -92,12 +91,11 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				entity: {},
 				optionsCustomer: $scope.optionsCustomer,
 				optionsLead: $scope.optionsLead,
+				optionsOwner: $scope.optionsOwner,
 				optionsType: $scope.optionsType,
 				optionsPriority: $scope.optionsPriority,
 				optionsProbability: $scope.optionsProbability,
 				optionsCurrencyCode: $scope.optionsCurrencyCode,
-				optionsOpportunityStatus: $scope.optionsOpportunityStatus,
-				optionsOwner: $scope.optionsOwner,
 			});
 		};
 
@@ -107,12 +105,11 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				entity: $scope.selectedEntity,
 				optionsCustomer: $scope.optionsCustomer,
 				optionsLead: $scope.optionsLead,
+				optionsOwner: $scope.optionsOwner,
 				optionsType: $scope.optionsType,
 				optionsPriority: $scope.optionsPriority,
 				optionsProbability: $scope.optionsProbability,
 				optionsCurrencyCode: $scope.optionsCurrencyCode,
-				optionsOpportunityStatus: $scope.optionsOpportunityStatus,
-				optionsOwner: $scope.optionsOwner,
 			});
 		};
 
@@ -149,12 +146,11 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		//----------------Dropdowns-----------------//
 		$scope.optionsCustomer = [];
 		$scope.optionsLead = [];
+		$scope.optionsOwner = [];
 		$scope.optionsType = [];
 		$scope.optionsPriority = [];
 		$scope.optionsProbability = [];
 		$scope.optionsCurrencyCode = [];
-		$scope.optionsOpportunityStatus = [];
-		$scope.optionsOwner = [];
 
 		$http.get("/services/js/codbex-opportunities/gen/api/entities/Partner.js").then(function (response) {
 			$scope.optionsCustomer = response.data.map(e => {
@@ -167,6 +163,15 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 
 		$http.get("/services/js/codbex-opportunities/gen/api/Lead/Lead.js").then(function (response) {
 			$scope.optionsLead = response.data.map(e => {
+				return {
+					value: e.Id,
+					text: e.Name
+				}
+			});
+		});
+
+		$http.get("/services/js/codbex-opportunities/gen/api/entities/Employee.js").then(function (response) {
+			$scope.optionsOwner = response.data.map(e => {
 				return {
 					value: e.Id,
 					text: e.Name
@@ -209,24 +214,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				}
 			});
 		});
-
-		$http.get("/services/js/codbex-opportunities/gen/api/Settings/OpportunityStatus.js").then(function (response) {
-			$scope.optionsOpportunityStatus = response.data.map(e => {
-				return {
-					value: e.Id,
-					text: e.Name
-				}
-			});
-		});
-
-		$http.get("/services/js/codbex-opportunities/gen/api/entities/Employee.js").then(function (response) {
-			$scope.optionsOwner = response.data.map(e => {
-				return {
-					value: e.Id,
-					text: e.Name
-				}
-			});
-		});
 		$scope.optionsCustomerValue = function (optionKey) {
 			for (let i = 0; i < $scope.optionsCustomer.length; i++) {
 				if ($scope.optionsCustomer[i].value === optionKey) {
@@ -239,6 +226,14 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			for (let i = 0; i < $scope.optionsLead.length; i++) {
 				if ($scope.optionsLead[i].value === optionKey) {
 					return $scope.optionsLead[i].text;
+				}
+			}
+			return null;
+		};
+		$scope.optionsOwnerValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsOwner.length; i++) {
+				if ($scope.optionsOwner[i].value === optionKey) {
+					return $scope.optionsOwner[i].text;
 				}
 			}
 			return null;
@@ -271,22 +266,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			for (let i = 0; i < $scope.optionsCurrencyCode.length; i++) {
 				if ($scope.optionsCurrencyCode[i].value === optionKey) {
 					return $scope.optionsCurrencyCode[i].text;
-				}
-			}
-			return null;
-		};
-		$scope.optionsOpportunityStatusValue = function (optionKey) {
-			for (let i = 0; i < $scope.optionsOpportunityStatus.length; i++) {
-				if ($scope.optionsOpportunityStatus[i].value === optionKey) {
-					return $scope.optionsOpportunityStatus[i].text;
-				}
-			}
-			return null;
-		};
-		$scope.optionsOwnerValue = function (optionKey) {
-			for (let i = 0; i < $scope.optionsOwner.length; i++) {
-				if ($scope.optionsOwner[i].value === optionKey) {
-					return $scope.optionsOwner[i].text;
 				}
 			}
 			return null;

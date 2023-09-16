@@ -95,8 +95,8 @@ exports.delete = function(id) {
 	});
 };
 
-exports.count = function () {
-	let resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX_QUOTATIONITEM" WHERE  = ?', []);
+exports.count = function (Quotation) {
+	let resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX_QUOTATIONITEM" WHERE "QUOTATIONITEM_QUOTATIONID" = ?', [Quotation]);
 	if (resultSet !== null && resultSet[0] !== null) {
 		if (resultSet[0].COUNT !== undefined && resultSet[0].COUNT !== null) {
 			return resultSet[0].COUNT;

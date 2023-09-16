@@ -4,9 +4,9 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "NoteType-details",
-    label: "NoteType",
-    link: "/services/web/codbex-opportunities/gen/ui/Settings/NoteType/dialog-window/index.html"
+    id: "QuotationItem-details",
+    label: "QuotationItem",
+    link: "/services/web/codbex-opportunities/gen/ui/Quotation/Quotation/QuotationItem/dialog-window/index.html"
 };
 
 if (typeof exports !== 'undefined') {

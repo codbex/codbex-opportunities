@@ -36,6 +36,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				$scope.selectedMainEntityKey = params.selectedMainEntityKey;
 				$scope.selectedMainEntityId = params.selectedMainEntityId;
 				$scope.optionsLead = params.optionsLead;
+				$scope.optionsType = params.optionsType;
 			}
 		}
 

@@ -84,7 +84,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				action: "select",
 				entity: entity,
 				optionsOpportunity: $scope.optionsOpportunity,
-				optionsNoteType: $scope.optionsNoteType,
+				optionsType: $scope.optionsType,
 			});
 		};
 
@@ -96,7 +96,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				selectedMainEntityKey: "Opportunity",
 				selectedMainEntityId: $scope.selectedMainEntityId,
 				optionsOpportunity: $scope.optionsOpportunity,
-				optionsNoteType: $scope.optionsNoteType,
+				optionsType: $scope.optionsType,
 			}, null, false);
 		};
 
@@ -107,7 +107,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				selectedMainEntityKey: "Opportunity",
 				selectedMainEntityId: $scope.selectedMainEntityId,
 				optionsOpportunity: $scope.optionsOpportunity,
-				optionsNoteType: $scope.optionsNoteType,
+				optionsType: $scope.optionsType,
 			}, null, false);
 		};
 
@@ -142,7 +142,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 
 		//----------------Dropdowns-----------------//
 		$scope.optionsOpportunity = [];
-		$scope.optionsNoteType = [];
+		$scope.optionsType = [];
 
 		$http.get("/services/js/codbex-opportunities/gen/api/Opportunity/Opportunity.js").then(function (response) {
 			$scope.optionsOpportunity = response.data.map(e => {
@@ -153,8 +153,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		});
 
-		$http.get("/services/js/codbex-opportunities/gen/api/Settings/NoteType.js").then(function (response) {
-			$scope.optionsNoteType = response.data.map(e => {
+		$http.get("/services/js/codbex-opportunities/gen/api/entities/NoteType.js").then(function (response) {
+			$scope.optionsType = response.data.map(e => {
 				return {
 					value: e.Id,
 					text: e.Name
@@ -169,10 +169,10 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			}
 			return null;
 		};
-		$scope.optionsNoteTypeValue = function (optionKey) {
-			for (let i = 0; i < $scope.optionsNoteType.length; i++) {
-				if ($scope.optionsNoteType[i].value === optionKey) {
-					return $scope.optionsNoteType[i].text;
+		$scope.optionsTypeValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsType.length; i++) {
+				if ($scope.optionsType[i].value === optionKey) {
+					return $scope.optionsType[i].text;
 				}
 			}
 			return null;

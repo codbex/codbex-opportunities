@@ -1,9 +1,9 @@
 angular.module('page', ["ideUI", "ideView", "entityApi"])
 	.config(["messageHubProvider", function (messageHubProvider) {
-		messageHubProvider.eventIdPrefix = 'codbex-opportunities.Settings.NoteType';
+		messageHubProvider.eventIdPrefix = 'codbex-opportunities.entities.NoteType';
 	}])
 	.config(["entityApiProvider", function (entityApiProvider) {
-		entityApiProvider.baseUrl = "/services/js/codbex-opportunities/gen/api/Settings/NoteType.js";
+		entityApiProvider.baseUrl = "/services/js/codbex-opportunities/gen/api/entities/NoteType.js";
 	}])
 	.controller('PageController', ['$scope', 'messageHub', 'entityApi', function ($scope, messageHub, entityApi) {
 

@@ -127,5 +127,5 @@ exports.customDataCount = function() {
 };
 
 function triggerEvent(operation, data) {
-	producer.queue("codbex-opportunities/opportunity/Opportunity/" + operation).send(JSON.stringify(data));
+	producer.queue("codbex-opportunities/Opportunity/Opportunity/" + operation).send(JSON.stringify(data));
 }

@@ -103,6 +103,19 @@
                         </fd-combobox-input>
                     </fd-form-item>
                     <fd-form-item horizontal="false">
+                        <fd-form-label for="idOwner" dg-required="false" dg-colon="true">Owner</fd-form-label>
+                        <fd-combobox-input id="idOwner"
+                            name="Owner"
+                            state="{{ formErrors.Owner ? 'error' : '' }}"
+                            ng-required="true"
+                            ng-change="isValid(formFieldset['Owner'].$valid, 'Owner')"
+                            ng-model="entity.Owner"
+                            dg-disabled="action === 'select'"
+                            dropdown-items="optionsOwner"
+                            dg-placeholder="Search Owner ...">
+                        </fd-combobox-input>
+                    </fd-form-item>
+                    <fd-form-item horizontal="false">
                         <fd-form-label for="idType" dg-required="false" dg-colon="true">Type</fd-form-label>
                         <fd-combobox-input id="idType"
                             name="Type"
@@ -152,32 +165,6 @@
                             dg-disabled="action === 'select'"
                             dropdown-items="optionsCurrencyCode"
                             dg-placeholder="Search CurrencyCode ...">
-                        </fd-combobox-input>
-                    </fd-form-item>
-                    <fd-form-item horizontal="false">
-                        <fd-form-label for="idOpportunityStatus" dg-required="false" dg-colon="true">OpportunityStatus</fd-form-label>
-                        <fd-combobox-input id="idOpportunityStatus"
-                            name="OpportunityStatus"
-                            state="{{ formErrors.OpportunityStatus ? 'error' : '' }}"
-                            ng-required="true"
-                            ng-change="isValid(formFieldset['OpportunityStatus'].$valid, 'OpportunityStatus')"
-                            ng-model="entity.OpportunityStatus"
-                            dg-disabled="action === 'select'"
-                            dropdown-items="optionsOpportunityStatus"
-                            dg-placeholder="Search OpportunityStatus ...">
-                        </fd-combobox-input>
-                    </fd-form-item>
-                    <fd-form-item horizontal="false">
-                        <fd-form-label for="idOwner" dg-required="false" dg-colon="true">Owner</fd-form-label>
-                        <fd-combobox-input id="idOwner"
-                            name="Owner"
-                            state="{{ formErrors.Owner ? 'error' : '' }}"
-                            ng-required="true"
-                            ng-change="isValid(formFieldset['Owner'].$valid, 'Owner')"
-                            ng-model="entity.Owner"
-                            dg-disabled="action === 'select'"
-                            dropdown-items="optionsOwner"
-                            dg-placeholder="Search Owner ...">
                         </fd-combobox-input>
                     </fd-form-item>
 

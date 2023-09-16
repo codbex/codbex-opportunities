@@ -15,13 +15,13 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		resetPagination();
 
 		//-----------------Events-------------------//
-		messageHub.onDidReceiveMessage("codbex-opportunities.Quotation.${masterEntity}.entitySelected", function (msg) {
+		messageHub.onDidReceiveMessage("codbex-opportunities.Quotation.Quotation.entitySelected", function (msg) {
 			resetPagination();
 			$scope.selectedMainEntityId = msg.data.selectedMainEntityId;
 			$scope.loadPage($scope.dataPage);
 		}, true);
 
-		messageHub.onDidReceiveMessage("codbex-opportunities.Quotation.${masterEntity}.clearDetails", function (msg) {
+		messageHub.onDidReceiveMessage("codbex-opportunities.Quotation.Quotation.clearDetails", function (msg) {
 			$scope.$apply(function () {
 				resetPagination();
 				$scope.selectedMainEntityId = null;
@@ -46,15 +46,15 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		//-----------------Events-------------------//
 
 		$scope.loadPage = function (pageNumber) {
-			let ${masterEntityId} = $scope.selectedMainEntityId;
+			let Quotation = $scope.selectedMainEntityId;
 			$scope.dataPage = pageNumber;
-			entityApi.count(${masterEntityId}).then(function (response) {
+			entityApi.count(Quotation).then(function (response) {
 				if (response.status != 200) {
 					messageHub.showAlertError("QuotationItem", `Unable to count QuotationItem: '${response.message}'`);
 					return;
 				}
 				$scope.dataCount = response.data;
-				let query = `${masterEntityId}=${${masterEntityId}}`;
+				let query = `Quotation=${Quotation}`;
 				let offset = (pageNumber - 1) * $scope.dataLimit;
 				let limit = $scope.dataLimit;
 				entityApi.filter(query, offset, limit).then(function (response) {
@@ -87,7 +87,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.showDialogWindow("QuotationItem-details", {
 				action: "create",
 				entity: {},
-				selectedMainEntityKey: "${masterEntityId}",
+				selectedMainEntityKey: "Quotation",
 				selectedMainEntityId: $scope.selectedMainEntityId,
 				optionsQuotation: $scope.optionsQuotation,
 				optionsProduct: $scope.optionsProduct,
@@ -99,7 +99,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.showDialogWindow("QuotationItem-details", {
 				action: "update",
 				entity: entity,
-				selectedMainEntityKey: "${masterEntityId}",
+				selectedMainEntityKey: "Quotation",
 				selectedMainEntityId: $scope.selectedMainEntityId,
 				optionsQuotation: $scope.optionsQuotation,
 				optionsProduct: $scope.optionsProduct,
@@ -150,7 +150,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		});
 
-		$http.get("/services/js/codbex-opportunities/gen/api/entities/Employee.js").then(function (response) {
+		$http.get("/services/js/codbex-opportunities/gen/api/entities/Product.js").then(function (response) {
 			$scope.optionsProduct = response.data.map(e => {
 				return {
 					value: e.Id,

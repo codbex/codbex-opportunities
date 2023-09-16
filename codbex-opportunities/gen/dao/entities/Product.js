@@ -7,29 +7,29 @@ let dao = daoApi.create({
 	properties: [
 		{
 			name: "Id",
-			column: "EMPLOYEE_ID",
+			column: "PRODUCT_ID",
 			type: "INTEGER",
 			id: true,
 			autoIncrement: true,
 		},
  {
-			name: "FirstName",
-			column: "EMPLOYEE_FIRSTNAME",
+			name: "Name",
+			column: "PRODUCT_NAME",
 			type: "VARCHAR",
 		},
  {
-			name: "MiddleName",
-			column: "EMPLOYEE_MIDDLENAME",
+			name: "ProductTypeId",
+			column: "PRODUCT_PRODUCTTYPEID",
 			type: "INTEGER",
 		},
  {
-			name: "LastName",
-			column: "EMPLOYEE_LASTNAME",
+			name: "ProductCategoryId",
+			column: "PRODUCT_PRODUCTCATEGORYID",
 			type: "INTEGER",
 		},
  {
-			name: "Email",
-			column: "EMPLOYEE_EMAIL",
+			name: "UoMId",
+			column: "PRODUCT_UOMID",
 			type: "INTEGER",
 		}
 ]
@@ -49,7 +49,7 @@ exports.create = function(entity) {
 		table: "CODBEX_PRODUCT",
 		key: {
 			name: "Id",
-			column: "EMPLOYEE_ID",
+			column: "PRODUCT_ID",
 			value: id
 		}
 	});
@@ -62,7 +62,7 @@ exports.update = function(entity) {
 		table: "CODBEX_PRODUCT",
 		key: {
 			name: "Id",
-			column: "EMPLOYEE_ID",
+			column: "PRODUCT_ID",
 			value: entity.Id
 		}
 	});
@@ -74,7 +74,7 @@ exports.delete = function(id) {
 		table: "CODBEX_PRODUCT",
 		key: {
 			name: "Id",
-			column: "EMPLOYEE_ID",
+			column: "PRODUCT_ID",
 			value: id
 		}
 	});

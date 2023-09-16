@@ -20,17 +20,17 @@ let dao = daoApi.create({
  {
 			name: "MiddleName",
 			column: "EMPLOYEE_MIDDLENAME",
-			type: "INTEGER",
+			type: "VARCHAR",
 		},
  {
 			name: "LastName",
 			column: "EMPLOYEE_LASTNAME",
-			type: "INTEGER",
+			type: "VARCHAR",
 		},
  {
 			name: "Email",
 			column: "EMPLOYEE_EMAIL",
-			type: "INTEGER",
+			type: "VARCHAR",
 		},
  {
 			name: "Phone",
@@ -41,11 +41,6 @@ let dao = daoApi.create({
 			name: "OrganisationId",
 			column: "EMPLOYEE_ORGANISATIONID",
 			type: "INTEGER",
-		},
- {
-			name: "Name",
-			column: "EMPLOYEE_NAME",
-			type: "VARCHAR",
 		}
 ]
 });
@@ -59,7 +54,6 @@ exports.get = function(id) {
 };
 
 exports.create = function(entity) {
-	entity["Name"] = entity['FirstName'] + ' ' + entity['LastName'];
 	let id = dao.insert(entity);
 	triggerEvent("Create", {
 		table: "CODBEX_EMPLOYEE",
@@ -73,7 +67,6 @@ exports.create = function(entity) {
 };
 
 exports.update = function(entity) {
-	entity["Name"] = entity['FirstName'] + ' ' + entity['LastName']
 	dao.update(entity);
 	triggerEvent("Update", {
 		table: "CODBEX_EMPLOYEE",

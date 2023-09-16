@@ -73,6 +73,19 @@
                         </fd-form-input-message-group>
                     </fd-form-item>
                     <fd-form-item horizontal="false">
+                        <fd-form-label for="idOwner" dg-required="false" dg-colon="true">Owner</fd-form-label>
+                        <fd-combobox-input id="idOwner"
+                            name="Owner"
+                            state="{{ formErrors.Owner ? 'error' : '' }}"
+                            ng-required="true"
+                            ng-change="isValid(formFieldset['Owner'].$valid, 'Owner')"
+                            ng-model="entity.Owner"
+                            dg-disabled="action === 'select'"
+                            dropdown-items="optionsOwner"
+                            dg-placeholder="Search Owner ...">
+                        </fd-combobox-input>
+                    </fd-form-item>
+                    <fd-form-item horizontal="false">
                         <fd-form-label for="idCustomer" dg-required="false" dg-colon="true">Customer</fd-form-label>
                         <fd-combobox-input id="idCustomer"
                             name="Customer"
@@ -141,19 +154,6 @@
                             dg-disabled="action === 'select'"
                             dropdown-items="optionsQuotationStatus"
                             dg-placeholder="Search QuotationStatus ...">
-                        </fd-combobox-input>
-                    </fd-form-item>
-                    <fd-form-item horizontal="false">
-                        <fd-form-label for="idOwsner" dg-required="false" dg-colon="true">Owsner</fd-form-label>
-                        <fd-combobox-input id="idOwsner"
-                            name="Owsner"
-                            state="{{ formErrors.Owsner ? 'error' : '' }}"
-                            ng-required="true"
-                            ng-change="isValid(formFieldset['Owsner'].$valid, 'Owsner')"
-                            ng-model="entity.Owsner"
-                            dg-disabled="action === 'select'"
-                            dropdown-items="optionsOwsner"
-                            dg-placeholder="Search Owsner ...">
                         </fd-combobox-input>
                     </fd-form-item>
 

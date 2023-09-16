@@ -4,13 +4,15 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "QuotationItem-details",
-    label: "QuotationItem",
-    link: "/services/web/codbex-opportunities/gen/ui/Quotation//QuotationItem/dialog-window/index.html"
+    id: "NoteType",
+    label: "NoteType",
+    factory: "frame",
+    region: "center",
+    link: "/services/web/codbex-opportunities/gen/ui/entities/NoteType/index.html",
 };
 
 if (typeof exports !== 'undefined') {
-    exports.getDialogWindow = function () {
+    exports.getView = function () {
         return viewData;
     }
 }

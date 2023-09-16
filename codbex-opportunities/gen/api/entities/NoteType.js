@@ -1,5 +1,5 @@
 const rs = require("http/rs");
-const dao = require("codbex-opportunities/gen/dao/Settings/NoteType");
+const dao = require("codbex-opportunities/gen/dao/entities/NoteType");
 const http = require("codbex-opportunities/gen/api/utils/http");
 
 rs.service()

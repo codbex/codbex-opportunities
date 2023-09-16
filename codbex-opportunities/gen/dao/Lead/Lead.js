@@ -3,58 +3,58 @@ const producer = require("messaging/producer");
 const daoApi = require("db/dao");
 
 let dao = daoApi.create({
-	table: "CODBEX_ENTITY1",
+	table: "CODBEX_LEAD",
 	properties: [
 		{
 			name: "Id",
-			column: "ENTITY1_ENTITY1ID",
+			column: "LEAD_ID",
 			type: "INTEGER",
 			id: true,
 			autoIncrement: true,
 		},
  {
 			name: "Name",
-			column: "ENTITY1_NAME",
+			column: "LEAD_NAME",
 			type: "VARCHAR",
 		},
  {
 			name: "CompanyName",
-			column: "ENTITY1_COMPANYNAME",
+			column: "LEAD_COMPANYNAME",
 			type: "VARCHAR",
 		},
  {
 			name: "ContactName",
-			column: "ENTITY1_CONTACTNAME",
+			column: "LEAD_CONTACTNAME",
 			type: "VARCHAR",
 		},
  {
 			name: "ContactDesignation",
-			column: "ENTITY1_CONTACTDESIGNATION",
+			column: "LEAD_CONTACTDESIGNATION",
 			type: "VARCHAR",
 		},
  {
 			name: "ContactEmail",
-			column: "ENTITY1_CONTACTEMAIL",
+			column: "LEAD_CONTACTEMAIL",
 			type: "VARCHAR",
 		},
  {
 			name: "ContactPhone",
-			column: "ENTITY1_CONTACTPHONE",
+			column: "LEAD_CONTACTPHONE",
 			type: "VARCHAR",
 		},
  {
 			name: "Industry",
-			column: "ENTITY1_INDUSTRY",
+			column: "LEAD_INDUSTRY",
 			type: "INTEGER",
 		},
  {
 			name: "LeadStatus",
-			column: "ENTITY1_LEADSTATUS",
+			column: "LEAD_LEADSTATUS",
 			type: "INTEGER",
 		},
  {
 			name: "Owner",
-			column: "ENTITY1_OWNER",
+			column: "LEAD_OWNER",
 			type: "INTEGER",
 		}
 ]
@@ -71,10 +71,10 @@ exports.get = function(id) {
 exports.create = function(entity) {
 	let id = dao.insert(entity);
 	triggerEvent("Create", {
-		table: "CODBEX_ENTITY1",
+		table: "CODBEX_LEAD",
 		key: {
 			name: "Id",
-			column: "ENTITY1_ENTITY1ID",
+			column: "LEAD_ID",
 			value: id
 		}
 	});
@@ -84,10 +84,10 @@ exports.create = function(entity) {
 exports.update = function(entity) {
 	dao.update(entity);
 	triggerEvent("Update", {
-		table: "CODBEX_ENTITY1",
+		table: "CODBEX_LEAD",
 		key: {
 			name: "Id",
-			column: "ENTITY1_ENTITY1ID",
+			column: "LEAD_ID",
 			value: entity.Id
 		}
 	});
@@ -96,10 +96,10 @@ exports.update = function(entity) {
 exports.delete = function(id) {
 	dao.remove(id);
 	triggerEvent("Delete", {
-		table: "CODBEX_ENTITY1",
+		table: "CODBEX_LEAD",
 		key: {
 			name: "Id",
-			column: "ENTITY1_ENTITY1ID",
+			column: "LEAD_ID",
 			value: id
 		}
 	});
@@ -110,7 +110,7 @@ exports.count = function() {
 };
 
 exports.customDataCount = function() {
-	let resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX_ENTITY1"');
+	let resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX_LEAD"');
 	if (resultSet !== null && resultSet[0] !== null) {
 		if (resultSet[0].COUNT !== undefined && resultSet[0].COUNT !== null) {
 			return resultSet[0].COUNT;
@@ -122,5 +122,5 @@ exports.customDataCount = function() {
 };
 
 function triggerEvent(operation, data) {
-	producer.queue("codbex-opportunities/lead/Lead/" + operation).send(JSON.stringify(data));
+	producer.queue("codbex-opportunities/Lead/Lead/" + operation).send(JSON.stringify(data));
 }

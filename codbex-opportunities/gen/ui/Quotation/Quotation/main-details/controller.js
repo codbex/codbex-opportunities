@@ -21,11 +21,11 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			$scope.$apply(function () {
 				$scope.entity = {};
 				$scope.formErrors = {};
+				$scope.optionsOwner = [];
 				$scope.optionsCustomer = [];
 				$scope.optionsCurrencyCode = [];
 				$scope.optionsOpportunity = [];
 				$scope.optionsQuotationStatus = [];
-				$scope.optionsOwsner = [];
 				$scope.action = 'select';
 			});
 		});
@@ -36,11 +36,11 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 					msg.data.entity.Date = new Date(msg.data.entity.Date);
 				}
 				$scope.entity = msg.data.entity;
+				$scope.optionsOwner = msg.data.optionsOwner;
 				$scope.optionsCustomer = msg.data.optionsCustomer;
 				$scope.optionsCurrencyCode = msg.data.optionsCurrencyCode;
 				$scope.optionsOpportunity = msg.data.optionsOpportunity;
 				$scope.optionsQuotationStatus = msg.data.optionsQuotationStatus;
-				$scope.optionsOwsner = msg.data.optionsOwsner;
 				$scope.action = 'select';
 			});
 		});
@@ -48,11 +48,11 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		messageHub.onDidReceiveMessage("createEntity", function (msg) {
 			$scope.$apply(function () {
 				$scope.entity = {};
+				$scope.optionsOwner = msg.data.optionsOwner;
 				$scope.optionsCustomer = msg.data.optionsCustomer;
 				$scope.optionsCurrencyCode = msg.data.optionsCurrencyCode;
 				$scope.optionsOpportunity = msg.data.optionsOpportunity;
 				$scope.optionsQuotationStatus = msg.data.optionsQuotationStatus;
-				$scope.optionsOwsner = msg.data.optionsOwsner;
 				$scope.action = 'create';
 				// Set Errors for required fields only
 				$scope.formErrors = {
@@ -66,11 +66,11 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 					msg.data.entity.Date = new Date(msg.data.entity.Date);
 				}
 				$scope.entity = msg.data.entity;
+				$scope.optionsOwner = msg.data.optionsOwner;
 				$scope.optionsCustomer = msg.data.optionsCustomer;
 				$scope.optionsCurrencyCode = msg.data.optionsCurrencyCode;
 				$scope.optionsOpportunity = msg.data.optionsOpportunity;
 				$scope.optionsQuotationStatus = msg.data.optionsQuotationStatus;
-				$scope.optionsOwsner = msg.data.optionsOwsner;
 				$scope.action = 'update';
 			});
 		});

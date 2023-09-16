@@ -130,5 +130,5 @@ exports.customDataCount = function() {
 };
 
 function triggerEvent(operation, data) {
-	producer.queue("codbex-opportunities/quotation/Quotation/" + operation).send(JSON.stringify(data));
+	producer.queue("codbex-opportunities/Quotation/Quotation/" + operation).send(JSON.stringify(data));
 }

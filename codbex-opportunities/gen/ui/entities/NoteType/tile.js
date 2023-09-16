@@ -5,13 +5,13 @@
  */
 exports.getTile = function () {
     return {
-        group: "Settings",
+        group: "entities",
         name: "NoteType",
         caption: "Manage entity NoteType",
         tooltip: "NoteType",
         // icon: "file-o",
-        location: "/services/web/codbex-opportunities/gen/ui/Settings/index.html",
+        location: "/services/web/codbex-opportunities/gen/ui/entities/index.html",
         order: "100",
-        groupOrder: "999"
+        groupOrder: "100"
     };
 };

@@ -7,8 +7,8 @@ exports.getTile = function () {
     return {
         group: "Settings",
         name: "LeadStatus",
-        caption: "Manage entity Lead Status",
-        tooltip: "Lead Status",
+        caption: "Manage entity Entity2",
+        tooltip: "Entity2",
         // icon: "file-o",
         location: "/services/web/codbex-opportunities/gen/ui/Settings/index.html",
         order: "100",

@@ -4,11 +4,11 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "NoteType",
-    label: "NoteType",
+    id: "QuotationItem",
+    label: "QuotationItem",
     factory: "frame",
-    region: "center",
-    link: "/services/web/codbex-opportunities/gen/ui/Settings/NoteType/index.html",
+    region: "bottom",
+    link: "/services/web/codbex-opportunities/gen/ui/Quotation/Quotation/QuotationItem/index.html",
 };
 
 if (typeof exports !== 'undefined') {
