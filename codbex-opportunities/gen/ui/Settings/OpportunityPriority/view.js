@@ -9,6 +9,7 @@ const viewData = {
     factory: "frame",
     region: "center",
     link: "/services/web/codbex-opportunities/gen/ui/Settings/OpportunityPriority/index.html",
+    perspectiveName: "Settings"
 };
 
 if (typeof exports !== 'undefined') {

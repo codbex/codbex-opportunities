@@ -47,9 +47,12 @@
                     dialogWindows: "codbex-opportunities-dialog-window"
                 })
                 .controller('ApplicationController', ["$scope", "messageHub", function ($scope, messageHub) {
+                    const httpRequest = new XMLHttpRequest();
+                    httpRequest.open("GET", "/services/js/resources-core/services/views.js?extensionPoint=codbex-opportunities-view", false);
+                    httpRequest.send();
 
                     $scope.layoutModel = {
-                        views: ['Opportunity', 'OpportunityNote', 'Opportunity-details']
+                        views: JSON.parse(httpRequest.responseText).filter(e => !e.isLaunchpad && e.perspectiveName === "Opportunity").map(e => e.id)
                     };
 
                 }]);

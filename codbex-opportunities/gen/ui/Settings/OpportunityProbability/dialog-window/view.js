@@ -6,7 +6,8 @@
 const viewData = {
     id: "OpportunityProbability-details",
     label: "OpportunityProbability",
-    link: "/services/web/codbex-opportunities/gen/ui/Settings/OpportunityProbability/dialog-window/index.html"
+    link: "/services/web/codbex-opportunities/gen/ui/Settings/OpportunityProbability/dialog-window/index.html",
+    perspectiveName: "Settings"
 };
 
 if (typeof exports !== 'undefined') {

@@ -9,6 +9,7 @@ const viewData = {
     factory: "frame",
     region: "bottom",
     link: "/services/web/codbex-opportunities/gen/ui/Quotation/Quotation/QuotationItem/index.html",
+    perspectiveName: "Quotation"
 };
 
 if (typeof exports !== 'undefined') {

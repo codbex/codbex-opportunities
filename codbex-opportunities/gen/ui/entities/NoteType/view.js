@@ -9,6 +9,7 @@ const viewData = {
     factory: "frame",
     region: "center",
     link: "/services/web/codbex-opportunities/gen/ui/entities/NoteType/index.html",
+    perspectiveName: "entities"
 };
 
 if (typeof exports !== 'undefined') {

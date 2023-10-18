@@ -4,12 +4,12 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "Opportunity",
-    label: "Opportunity",
+    id: "QuotationLink",
+    label: "QuotationLink",
     factory: "frame",
-    region: "left",
-    link: "/services/web/codbex-opportunities/gen/ui/Opportunity/Opportunity/index.html",
-    perspectiveName: "Opportunity"
+    region: "bottom",
+    link: "/services/web/codbex-opportunities/gen/ui/Quotation/SalesOrder/QuotationLink/index.html",
+    perspectiveName: "SalesOrder"
 };
 
 if (typeof exports !== 'undefined') {

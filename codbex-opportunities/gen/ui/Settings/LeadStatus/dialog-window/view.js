@@ -6,7 +6,8 @@
 const viewData = {
     id: "LeadStatus-details",
     label: "LeadStatus",
-    link: "/services/web/codbex-opportunities/gen/ui/Settings/LeadStatus/dialog-window/index.html"
+    link: "/services/web/codbex-opportunities/gen/ui/Settings/LeadStatus/dialog-window/index.html",
+    perspectiveName: "Settings"
 };
 
 if (typeof exports !== 'undefined') {

@@ -6,7 +6,8 @@
 const viewData = {
     id: "QuotationStatus-details",
     label: "QuotationStatus",
-    link: "/services/web/codbex-opportunities/gen/ui/Settings/QuotationStatus/dialog-window/index.html"
+    link: "/services/web/codbex-opportunities/gen/ui/Settings/QuotationStatus/dialog-window/index.html",
+    perspectiveName: "Settings"
 };
 
 if (typeof exports !== 'undefined') {

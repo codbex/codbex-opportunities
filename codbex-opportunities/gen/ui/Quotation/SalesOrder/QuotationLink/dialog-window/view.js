@@ -4,10 +4,10 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "OpportunityType-details",
-    label: "OpportunityType",
-    link: "/services/web/codbex-opportunities/gen/ui/Settings/OpportunityType/dialog-window/index.html",
-    perspectiveName: "Settings"
+    id: "QuotationLink-details",
+    label: "QuotationLink",
+    link: "/services/web/codbex-opportunities/gen/ui/Quotation/SalesOrder/QuotationLink/dialog-window/index.html",
+    perspectiveName: "SalesOrder"
 };
 
 if (typeof exports !== 'undefined') {

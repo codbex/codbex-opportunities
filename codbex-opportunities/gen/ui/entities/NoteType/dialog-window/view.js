@@ -6,7 +6,8 @@
 const viewData = {
     id: "NoteType-details",
     label: "NoteType",
-    link: "/services/web/codbex-opportunities/gen/ui/entities/NoteType/dialog-window/index.html"
+    link: "/services/web/codbex-opportunities/gen/ui/entities/NoteType/dialog-window/index.html",
+    perspectiveName: "entities"
 };
 
 if (typeof exports !== 'undefined') {

@@ -6,7 +6,8 @@
 const viewData = {
     id: "OpportunityNote-details",
     label: "OpportunityNote",
-    link: "/services/web/codbex-opportunities/gen/ui/Opportunity/Opportunity/OpportunityNote/dialog-window/index.html"
+    link: "/services/web/codbex-opportunities/gen/ui/Opportunity/Opportunity/OpportunityNote/dialog-window/index.html",
+    perspectiveName: "Opportunity"
 };
 
 if (typeof exports !== 'undefined') {

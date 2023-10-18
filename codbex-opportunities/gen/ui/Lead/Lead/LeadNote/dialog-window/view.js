@@ -6,7 +6,8 @@
 const viewData = {
     id: "LeadNote-details",
     label: "LeadNote",
-    link: "/services/web/codbex-opportunities/gen/ui/Lead/Lead/LeadNote/dialog-window/index.html"
+    link: "/services/web/codbex-opportunities/gen/ui/Lead/Lead/LeadNote/dialog-window/index.html",
+    perspectiveName: "Lead"
 };
 
 if (typeof exports !== 'undefined') {

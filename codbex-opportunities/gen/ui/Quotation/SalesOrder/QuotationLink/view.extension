@@ -1,0 +1,5 @@
+{
+    "module": "codbex-opportunities/gen/ui/Quotation/SalesOrder/QuotationLink/view.js",
+    "extensionPoint": "codbex-orders-view",
+    "description": "codbex-opportunities - Application View - Details"
+}

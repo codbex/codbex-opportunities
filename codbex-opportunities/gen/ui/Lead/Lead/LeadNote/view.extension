@@ -1,1 +1,5 @@
-{"module":"codbex-opportunities/gen/ui/Lead/Lead/LeadNote/view.js","extensionPoint":"codbex-opportunities-view","description":"codbex-opportunities - Application View - Details"}
+{
+    "module": "codbex-opportunities/gen/ui/Lead/Lead/LeadNote/view.js",
+    "extensionPoint": "codbex-opportunities-view",
+    "description": "codbex-opportunities - Application View - Details"
+}
