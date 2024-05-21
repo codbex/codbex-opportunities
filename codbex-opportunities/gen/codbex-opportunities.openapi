@@ -6125,7 +6125,7 @@ components:
         Description:
           type: string
           minLength: 0
-          maxLength: 20
+          maxLength: 100
     LeadStatusFilterOptions:
       type: object
       properties:
@@ -6158,13 +6158,13 @@ components:
                   oneOf:
                     - type: string
                       minLength: 0
-                      maxLength: 20
+                      maxLength: 100
                     - type: array
                       items:
                         type: string
                         format: double
                         minLength: 0
-                        maxLength: 20
+                        maxLength: 100
             notEquals:
               type: object
               properties:
@@ -6191,13 +6191,13 @@ components:
                   oneOf:
                     - type: string
                       minLength: 0
-                      maxLength: 20
+                      maxLength: 100
                     - type: array
                       items:
                         type: string
                         format: double
                         minLength: 0
-                        maxLength: 20
+                        maxLength: 100
             contains:
               type: object
               properties:
@@ -6209,7 +6209,7 @@ components:
                 Description:
                   type: string
                   minLength: 0
-                  maxLength: 20
+                  maxLength: 100
             greaterThan:
               type: object
               properties:
@@ -6223,7 +6223,7 @@ components:
                 Description:
                   type: string
                   minLength: 0
-                  maxLength: 20
+                  maxLength: 100
             greaterThanOrEqual:
               type: object
               properties:
@@ -6237,7 +6237,7 @@ components:
                 Description:
                   type: string
                   minLength: 0
-                  maxLength: 20
+                  maxLength: 100
             lessThan:
               type: object
               properties:
@@ -6251,7 +6251,7 @@ components:
                 Description:
                   type: string
                   minLength: 0
-                  maxLength: 20
+                  maxLength: 100
             lessThanOrEqual:
               type: object
               properties:
@@ -6265,7 +6265,7 @@ components:
                 Description:
                   type: string
                   minLength: 0
-                  maxLength: 20
+                  maxLength: 100
         $select:
           type: array
           example: ["Id", "Name", "Description"]
@@ -8564,7 +8564,7 @@ components:
         Description:
           type: string
           minLength: 0
-          maxLength: 20
+          maxLength: 100
     QuotationStatusFilterOptions:
       type: object
       properties:
@@ -8597,13 +8597,13 @@ components:
                   oneOf:
                     - type: string
                       minLength: 0
-                      maxLength: 20
+                      maxLength: 100
                     - type: array
                       items:
                         type: string
                         format: double
                         minLength: 0
-                        maxLength: 20
+                        maxLength: 100
             notEquals:
               type: object
               properties:
@@ -8630,13 +8630,13 @@ components:
                   oneOf:
                     - type: string
                       minLength: 0
-                      maxLength: 20
+                      maxLength: 100
                     - type: array
                       items:
                         type: string
                         format: double
                         minLength: 0
-                        maxLength: 20
+                        maxLength: 100
             contains:
               type: object
               properties:
@@ -8648,7 +8648,7 @@ components:
                 Description:
                   type: string
                   minLength: 0
-                  maxLength: 20
+                  maxLength: 100
             greaterThan:
               type: object
               properties:
@@ -8662,7 +8662,7 @@ components:
                 Description:
                   type: string
                   minLength: 0
-                  maxLength: 20
+                  maxLength: 100
             greaterThanOrEqual:
               type: object
               properties:
@@ -8676,7 +8676,7 @@ components:
                 Description:
                   type: string
                   minLength: 0
-                  maxLength: 20
+                  maxLength: 100
             lessThan:
               type: object
               properties:
@@ -8690,7 +8690,7 @@ components:
                 Description:
                   type: string
                   minLength: 0
-                  maxLength: 20
+                  maxLength: 100
             lessThanOrEqual:
               type: object
               properties:
@@ -8704,7 +8704,7 @@ components:
                 Description:
                   type: string
                   minLength: 0
-                  maxLength: 20
+                  maxLength: 100
         $select:
           type: array
           example: ["Id", "Name", "Description"]

@@ -122,8 +122,8 @@ class QuotationStatusService {
         if (entity.Name?.length > 20) {
             throw new ValidationError(`The 'Name' exceeds the maximum length of [20] characters`);
         }
-        if (entity.Description?.length > 20) {
-            throw new ValidationError(`The 'Description' exceeds the maximum length of [20] characters`);
+        if (entity.Description?.length > 100) {
+            throw new ValidationError(`The 'Description' exceeds the maximum length of [100] characters`);
         }
         for (const next of validationModules) {
             next.validate(entity);
