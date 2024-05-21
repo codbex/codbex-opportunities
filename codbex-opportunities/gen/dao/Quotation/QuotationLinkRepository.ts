@@ -74,6 +74,10 @@ interface QuotationLinkEntityEvent {
     }
 }
 
+interface QuotationLinkUpdateEntityEvent extends QuotationLinkEntityEvent {
+    readonly previousEntity: QuotationLinkEntity;
+}
+
 export class QuotationLinkRepository {
 
     private static readonly DEFINITION = {
@@ -130,11 +134,13 @@ export class QuotationLinkRepository {
     }
 
     public update(entity: QuotationLinkUpdateEntity): void {
+        const previousEntity = this.findById(entity.Id);
         this.dao.update(entity);
         this.triggerEvent({
             operation: "update",
             table: "CODBEX_QUOTATIONLINK",
             entity: entity,
+            previousEntity: previousEntity,
             key: {
                 name: "Id",
                 column: "QUOTATIONLINK_ID",
@@ -189,7 +195,7 @@ export class QuotationLinkRepository {
         return 0;
     }
 
-    private async triggerEvent(data: QuotationLinkEntityEvent) {
+    private async triggerEvent(data: QuotationLinkEntityEvent | QuotationLinkUpdateEntityEvent) {
         const triggerExtensions = await extensions.loadExtensionModules("codbex-opportunities-Quotation-QuotationLink", ["trigger"]);
         triggerExtensions.forEach(triggerExtension => {
             try {

@@ -74,6 +74,10 @@ interface QuotationStatusEntityEvent {
     }
 }
 
+interface QuotationStatusUpdateEntityEvent extends QuotationStatusEntityEvent {
+    readonly previousEntity: QuotationStatusEntity;
+}
+
 export class QuotationStatusRepository {
 
     private static readonly DEFINITION = {
@@ -130,11 +134,13 @@ export class QuotationStatusRepository {
     }
 
     public update(entity: QuotationStatusUpdateEntity): void {
+        const previousEntity = this.findById(entity.Id);
         this.dao.update(entity);
         this.triggerEvent({
             operation: "update",
             table: "CODBEX_QUOTATIONSTATUS",
             entity: entity,
+            previousEntity: previousEntity,
             key: {
                 name: "Id",
                 column: "QUOTATIONSTATUS_ID",
@@ -189,7 +195,7 @@ export class QuotationStatusRepository {
         return 0;
     }
 
-    private async triggerEvent(data: QuotationStatusEntityEvent) {
+    private async triggerEvent(data: QuotationStatusEntityEvent | QuotationStatusUpdateEntityEvent) {
         const triggerExtensions = await extensions.loadExtensionModules("codbex-opportunities-Settings-QuotationStatus", ["trigger"]);
         triggerExtensions.forEach(triggerExtension => {
             try {

@@ -14,17 +14,21 @@ class LeadNoteService {
     @Get("/")
     public getAll(_: any, ctx: any) {
         try {
-            let Lead = parseInt(ctx.queryParameters.Lead);
-            Lead = isNaN(Lead) ? ctx.queryParameters.Lead : Lead;
             const options: LeadNoteEntityOptions = {
-                $filter: {
-                    equals: {
-                        Lead: Lead
-                    }
-                },
                 $limit: ctx.queryParameters["$limit"] ? parseInt(ctx.queryParameters["$limit"]) : undefined,
                 $offset: ctx.queryParameters["$offset"] ? parseInt(ctx.queryParameters["$offset"]) : undefined
             };
+
+            let Lead = parseInt(ctx.queryParameters.Lead);
+            Lead = isNaN(Lead) ? ctx.queryParameters.Lead : Lead;
+
+            if (Lead !== undefined) {
+                options.$filter = {
+                    equals: {
+                        Lead: Lead
+                    }
+                };
+            }
 
             return this.repository.findAll(options);
         } catch (error: any) {

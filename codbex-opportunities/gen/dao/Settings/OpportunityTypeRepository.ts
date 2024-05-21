@@ -65,6 +65,10 @@ interface OpportunityTypeEntityEvent {
     }
 }
 
+interface OpportunityTypeUpdateEntityEvent extends OpportunityTypeEntityEvent {
+    readonly previousEntity: OpportunityTypeEntity;
+}
+
 export class OpportunityTypeRepository {
 
     private static readonly DEFINITION = {
@@ -116,11 +120,13 @@ export class OpportunityTypeRepository {
     }
 
     public update(entity: OpportunityTypeUpdateEntity): void {
+        const previousEntity = this.findById(entity.Id);
         this.dao.update(entity);
         this.triggerEvent({
             operation: "update",
             table: "CODBEX_OPPORTUNITYTYPE",
             entity: entity,
+            previousEntity: previousEntity,
             key: {
                 name: "Id",
                 column: "OPPORTUNITYTYPE_ID",
@@ -175,7 +181,7 @@ export class OpportunityTypeRepository {
         return 0;
     }
 
-    private async triggerEvent(data: OpportunityTypeEntityEvent) {
+    private async triggerEvent(data: OpportunityTypeEntityEvent | OpportunityTypeUpdateEntityEvent) {
         const triggerExtensions = await extensions.loadExtensionModules("codbex-opportunities-Settings-OpportunityType", ["trigger"]);
         triggerExtensions.forEach(triggerExtension => {
             try {

@@ -74,6 +74,10 @@ interface LeadStatusEntityEvent {
     }
 }
 
+interface LeadStatusUpdateEntityEvent extends LeadStatusEntityEvent {
+    readonly previousEntity: LeadStatusEntity;
+}
+
 export class LeadStatusRepository {
 
     private static readonly DEFINITION = {
@@ -130,11 +134,13 @@ export class LeadStatusRepository {
     }
 
     public update(entity: LeadStatusUpdateEntity): void {
+        const previousEntity = this.findById(entity.Id);
         this.dao.update(entity);
         this.triggerEvent({
             operation: "update",
             table: "CODBEX_LEADSTATUS",
             entity: entity,
+            previousEntity: previousEntity,
             key: {
                 name: "Id",
                 column: "LEADSTATUS_ID",
@@ -189,7 +195,7 @@ export class LeadStatusRepository {
         return 0;
     }
 
-    private async triggerEvent(data: LeadStatusEntityEvent) {
+    private async triggerEvent(data: LeadStatusEntityEvent | LeadStatusUpdateEntityEvent) {
         const triggerExtensions = await extensions.loadExtensionModules("codbex-opportunities-Settings-LeadStatus", ["trigger"]);
         triggerExtensions.forEach(triggerExtension => {
             try {

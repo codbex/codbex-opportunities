@@ -14,17 +14,21 @@ class QuotationItemService {
     @Get("/")
     public getAll(_: any, ctx: any) {
         try {
-            let Quotation = parseInt(ctx.queryParameters.Quotation);
-            Quotation = isNaN(Quotation) ? ctx.queryParameters.Quotation : Quotation;
             const options: QuotationItemEntityOptions = {
-                $filter: {
-                    equals: {
-                        Quotation: Quotation
-                    }
-                },
                 $limit: ctx.queryParameters["$limit"] ? parseInt(ctx.queryParameters["$limit"]) : undefined,
                 $offset: ctx.queryParameters["$offset"] ? parseInt(ctx.queryParameters["$offset"]) : undefined
             };
+
+            let Quotation = parseInt(ctx.queryParameters.Quotation);
+            Quotation = isNaN(Quotation) ? ctx.queryParameters.Quotation : Quotation;
+
+            if (Quotation !== undefined) {
+                options.$filter = {
+                    equals: {
+                        Quotation: Quotation
+                    }
+                };
+            }
 
             return this.repository.findAll(options);
         } catch (error: any) {

@@ -65,6 +65,10 @@ interface OpportunityPriorityEntityEvent {
     }
 }
 
+interface OpportunityPriorityUpdateEntityEvent extends OpportunityPriorityEntityEvent {
+    readonly previousEntity: OpportunityPriorityEntity;
+}
+
 export class OpportunityPriorityRepository {
 
     private static readonly DEFINITION = {
@@ -116,11 +120,13 @@ export class OpportunityPriorityRepository {
     }
 
     public update(entity: OpportunityPriorityUpdateEntity): void {
+        const previousEntity = this.findById(entity.Id);
         this.dao.update(entity);
         this.triggerEvent({
             operation: "update",
             table: "CODBEX_OPPORTUNITYPRIORITY",
             entity: entity,
+            previousEntity: previousEntity,
             key: {
                 name: "Id",
                 column: "OPPORTUNITYPRIORITY_ID",
@@ -175,7 +181,7 @@ export class OpportunityPriorityRepository {
         return 0;
     }
 
-    private async triggerEvent(data: OpportunityPriorityEntityEvent) {
+    private async triggerEvent(data: OpportunityPriorityEntityEvent | OpportunityPriorityUpdateEntityEvent) {
         const triggerExtensions = await extensions.loadExtensionModules("codbex-opportunities-Settings-OpportunityPriority", ["trigger"]);
         triggerExtensions.forEach(triggerExtension => {
             try {

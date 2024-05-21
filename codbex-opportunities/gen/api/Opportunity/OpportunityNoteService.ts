@@ -14,17 +14,21 @@ class OpportunityNoteService {
     @Get("/")
     public getAll(_: any, ctx: any) {
         try {
-            let Opportunity = parseInt(ctx.queryParameters.Opportunity);
-            Opportunity = isNaN(Opportunity) ? ctx.queryParameters.Opportunity : Opportunity;
             const options: OpportunityNoteEntityOptions = {
-                $filter: {
-                    equals: {
-                        Opportunity: Opportunity
-                    }
-                },
                 $limit: ctx.queryParameters["$limit"] ? parseInt(ctx.queryParameters["$limit"]) : undefined,
                 $offset: ctx.queryParameters["$offset"] ? parseInt(ctx.queryParameters["$offset"]) : undefined
             };
+
+            let Opportunity = parseInt(ctx.queryParameters.Opportunity);
+            Opportunity = isNaN(Opportunity) ? ctx.queryParameters.Opportunity : Opportunity;
+
+            if (Opportunity !== undefined) {
+                options.$filter = {
+                    equals: {
+                        Opportunity: Opportunity
+                    }
+                };
+            }
 
             return this.repository.findAll(options);
         } catch (error: any) {

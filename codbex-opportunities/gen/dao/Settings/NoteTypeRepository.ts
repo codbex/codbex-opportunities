@@ -65,6 +65,10 @@ interface NoteTypeEntityEvent {
     }
 }
 
+interface NoteTypeUpdateEntityEvent extends NoteTypeEntityEvent {
+    readonly previousEntity: NoteTypeEntity;
+}
+
 export class NoteTypeRepository {
 
     private static readonly DEFINITION = {
@@ -116,11 +120,13 @@ export class NoteTypeRepository {
     }
 
     public update(entity: NoteTypeUpdateEntity): void {
+        const previousEntity = this.findById(entity.Id);
         this.dao.update(entity);
         this.triggerEvent({
             operation: "update",
             table: "CODBEX_NOTETYPE",
             entity: entity,
+            previousEntity: previousEntity,
             key: {
                 name: "Id",
                 column: "NOTETYPE_ID",
@@ -175,7 +181,7 @@ export class NoteTypeRepository {
         return 0;
     }
 
-    private async triggerEvent(data: NoteTypeEntityEvent) {
+    private async triggerEvent(data: NoteTypeEntityEvent | NoteTypeUpdateEntityEvent) {
         const triggerExtensions = await extensions.loadExtensionModules("codbex-opportunities-Settings-NoteType", ["trigger"]);
         triggerExtensions.forEach(triggerExtension => {
             try {
