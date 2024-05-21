@@ -9,7 +9,7 @@ const viewData = {
     factory: "frame",
     region: "center",
     link: "/services/web/codbex-opportunities/gen/ui/Lead/Lead/main-details/index.html",
-    perspectiveName: "Lead"
+    perspectiveName: "Lead",
 };
 
 if (typeof exports !== 'undefined') {

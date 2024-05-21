@@ -12,6 +12,6 @@ exports.getTile = function () {
         // icon: "file-o",
         location: "/services/web/codbex-opportunities/gen/ui/Quotation/index.html",
         order: "100",
-        groupOrder: "300"
+        groupOrder: "300",
     };
 };

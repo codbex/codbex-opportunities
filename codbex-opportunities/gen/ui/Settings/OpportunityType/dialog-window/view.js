@@ -7,7 +7,7 @@ const viewData = {
     id: "OpportunityType-details",
     label: "OpportunityType",
     link: "/services/web/codbex-opportunities/gen/ui/Settings/OpportunityType/dialog-window/index.html",
-    perspectiveName: "Settings"
+    perspectiveName: "Settings",
 };
 
 if (typeof exports !== 'undefined') {

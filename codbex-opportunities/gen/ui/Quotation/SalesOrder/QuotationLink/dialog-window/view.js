@@ -7,7 +7,7 @@ const viewData = {
     id: "QuotationLink-details",
     label: "QuotationLink",
     link: "/services/web/codbex-opportunities/gen/ui/Quotation/SalesOrder/QuotationLink/dialog-window/index.html",
-    perspectiveName: "SalesOrder"
+    perspectiveName: "SalesOrder",
 };
 
 if (typeof exports !== 'undefined') {

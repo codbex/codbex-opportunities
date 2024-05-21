@@ -3,9 +3,37 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		messageHubProvider.eventIdPrefix = 'codbex-opportunities.Quotation.QuotationItem';
 	}])
 	.config(["entityApiProvider", function (entityApiProvider) {
-		entityApiProvider.baseUrl = "/services/js/codbex-opportunities/gen/api/Quotation/QuotationItem.js";
+		entityApiProvider.baseUrl = "/services/ts/codbex-opportunities/gen/api/Quotation/QuotationItemService.ts";
 	}])
-	.controller('PageController', ['$scope', '$http', 'messageHub', 'entityApi', function ($scope, $http, messageHub, entityApi) {
+	.controller('PageController', ['$scope', '$http', 'messageHub', 'entityApi', 'Extensions', function ($scope, $http, messageHub, entityApi, Extensions) {
+		//-----------------Custom Actions-------------------//
+		Extensions.get('dialogWindow', 'codbex-opportunities-custom-action').then(function (response) {
+			$scope.pageActions = response.filter(e => e.perspective === "Quotation" && e.view === "QuotationItem" && (e.type === "page" || e.type === undefined));
+			$scope.entityActions = response.filter(e => e.perspective === "Quotation" && e.view === "QuotationItem" && e.type === "entity");
+		});
+
+		$scope.triggerPageAction = function (action) {
+			messageHub.showDialogWindow(
+				action.id,
+				{},
+				null,
+				true,
+				action
+			);
+		};
+
+		$scope.triggerEntityAction = function (action) {
+			messageHub.showDialogWindow(
+				action.id,
+				{
+					id: $scope.entity.Id
+				},
+				null,
+				true,
+				action
+			);
+		};
+		//-----------------Custom Actions-------------------//
 
 		function resetPagination() {
 			$scope.dataPage = 1;
@@ -37,29 +65,50 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		});
 
 		messageHub.onDidReceiveMessage("entityCreated", function (msg) {
-			$scope.loadPage($scope.dataPage);
+			$scope.loadPage($scope.dataPage, $scope.filter);
 		});
 
 		messageHub.onDidReceiveMessage("entityUpdated", function (msg) {
-			$scope.loadPage($scope.dataPage);
+			$scope.loadPage($scope.dataPage, $scope.filter);
+		});
+
+		messageHub.onDidReceiveMessage("entitySearch", function (msg) {
+			resetPagination();
+			$scope.filter = msg.data.filter;
+			$scope.filterEntity = msg.data.entity;
+			$scope.loadPage($scope.dataPage, $scope.filter);
 		});
 		//-----------------Events-------------------//
 
-		$scope.loadPage = function (pageNumber) {
+		$scope.loadPage = function (pageNumber, filter) {
 			let Quotation = $scope.selectedMainEntityId;
 			$scope.dataPage = pageNumber;
-			entityApi.count(Quotation).then(function (response) {
+			if (!filter && $scope.filter) {
+				filter = $scope.filter;
+			}
+			if (!filter) {
+				filter = {};
+			}
+			if (!filter.$filter) {
+				filter.$filter = {};
+			}
+			if (!filter.$filter.equals) {
+				filter.$filter.equals = {};
+			}
+			filter.$filter.equals.Quotation = Quotation;
+			entityApi.count(filter).then(function (response) {
 				if (response.status != 200) {
 					messageHub.showAlertError("QuotationItem", `Unable to count QuotationItem: '${response.message}'`);
 					return;
 				}
-				$scope.dataCount = response.data;
-				let query = `Quotation=${Quotation}`;
-				let offset = (pageNumber - 1) * $scope.dataLimit;
-				let limit = $scope.dataLimit;
-				entityApi.filter(query, offset, limit).then(function (response) {
+				if (response.data) {
+					$scope.dataCount = response.data;
+				}
+				filter.$offset = (pageNumber - 1) * $scope.dataLimit;
+				filter.$limit = $scope.dataLimit;
+				entityApi.search(filter).then(function (response) {
 					if (response.status != 200) {
-						messageHub.showAlertError("QuotationItem", `Unable to list QuotationItem: '${response.message}'`);
+						messageHub.showAlertError("QuotationItem", `Unable to list/filter QuotationItem: '${response.message}'`);
 						return;
 					}
 					$scope.data = response.data;
@@ -76,6 +125,15 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.showDialogWindow("QuotationItem-details", {
 				action: "select",
 				entity: entity,
+				optionsQuotation: $scope.optionsQuotation,
+				optionsProduct: $scope.optionsProduct,
+				optionsUoM: $scope.optionsUoM,
+			});
+		};
+
+		$scope.openFilter = function (entity) {
+			messageHub.showDialogWindow("QuotationItem-filter", {
+				entity: $scope.filterEntity,
 				optionsQuotation: $scope.optionsQuotation,
 				optionsProduct: $scope.optionsProduct,
 				optionsUoM: $scope.optionsUoM,
@@ -129,7 +187,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 							messageHub.showAlertError("QuotationItem", `Unable to delete QuotationItem: '${response.message}'`);
 							return;
 						}
-						$scope.loadPage($scope.dataPage);
+						$scope.loadPage($scope.dataPage, $scope.filter);
 						messageHub.postMessage("clearDetails");
 					});
 				}
@@ -141,7 +199,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		$scope.optionsProduct = [];
 		$scope.optionsUoM = [];
 
-		$http.get("/services/js/codbex-opportunities/gen/api/Quotation/Quotation.js").then(function (response) {
+
+		$http.get("/services/ts/codbex-opportunities/gen/api/Quotation/QuotationService.ts").then(function (response) {
 			$scope.optionsQuotation = response.data.map(e => {
 				return {
 					value: e.Id,
@@ -150,7 +209,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		});
 
-		$http.get("/services/js/codbex-opportunities/gen/api/entities/Product.js").then(function (response) {
+		$http.get("/services/ts/codbex-products/gen/api/entities/ProductService.ts").then(function (response) {
 			$scope.optionsProduct = response.data.map(e => {
 				return {
 					value: e.Id,
@@ -159,7 +218,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		});
 
-		$http.get("/services/js/codbex-opportunities/gen/api/entities/UoM.js").then(function (response) {
+		$http.get("/services/ts/codbex-uoms/gen/api/entities/UoMService.ts").then(function (response) {
 			$scope.optionsUoM = response.data.map(e => {
 				return {
 					value: e.Id,
@@ -167,6 +226,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				}
 			});
 		});
+
 		$scope.optionsQuotationValue = function (optionKey) {
 			for (let i = 0; i < $scope.optionsQuotation.length; i++) {
 				if ($scope.optionsQuotation[i].value === optionKey) {

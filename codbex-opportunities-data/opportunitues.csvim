@@ -56,9 +56,9 @@
       "version": "1.0"
     },
     {
-      "table": "CODBEX_OPPORTUNITYTYPE",
+      "table": "CODBEX_QUOTATIONSTATUS",
       "schema": "PUBLIC",
-      "file": "/codbex-opportunities-data/opportunity-types.csv",
+      "file": "/codbex-opportunities-data/quotation-statuses.csv",
       "header": true,
       "useHeaderNames": true,
       "delimField": ",",
@@ -67,9 +67,9 @@
       "version": "1.0"
     },
     {
-      "table": "CODBEX_QUOTATIONSTATUS",
+      "table": "CODBEX_OPPORTUNITYTYPE",
       "schema": "PUBLIC",
-      "file": "/codbex-opportunities-data/quotation-statuses.csv",
+      "file": "/codbex-opportunities-data/opportunity-types.csv",
       "header": true,
       "useHeaderNames": true,
       "delimField": ",",

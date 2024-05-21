@@ -3,53 +3,34 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		messageHubProvider.eventIdPrefix = 'codbex-opportunities.Opportunity.OpportunityNote';
 	}])
 	.config(["entityApiProvider", function (entityApiProvider) {
-		entityApiProvider.baseUrl = "/services/js/codbex-opportunities/gen/api/Opportunity/OpportunityNote.js";
+		entityApiProvider.baseUrl = "/services/ts/codbex-opportunities/gen/api/Opportunity/OpportunityNoteService.ts";
 	}])
-	.controller('PageController', ['$scope', 'messageHub', 'entityApi', function ($scope, messageHub, entityApi) {
+	.controller('PageController', ['$scope', 'messageHub', 'ViewParameters', 'entityApi', function ($scope, messageHub, ViewParameters, entityApi) {
 
 		$scope.entity = {};
+		$scope.forms = {
+			details: {},
+		};
 		$scope.formHeaders = {
 			select: "OpportunityNote Details",
 			create: "Create OpportunityNote",
 			update: "Update OpportunityNote"
 		};
-		$scope.formErrors = {};
 		$scope.action = 'select';
 
-		if (window != null && window.frameElement != null && window.frameElement.hasAttribute("data-parameters")) {
-			let dataParameters = window.frameElement.getAttribute("data-parameters");
-			if (dataParameters) {
-				let params = JSON.parse(dataParameters);
-				$scope.action = params.action;
-				if ($scope.action === "create") {
-					// Set Errors for required fields only
-					$scope.formErrors = {
+		let params = ViewParameters.get();
+		if (Object.keys(params).length) {
+			$scope.action = params.action;
 
-					};
-				}
-
-				if (params.entity.Timestamp) {
-					params.entity.Timestamp = new Date(params.entity.Timestamp);
-				}
-
-				$scope.entity = params.entity;
-				$scope.selectedMainEntityKey = params.selectedMainEntityKey;
-				$scope.selectedMainEntityId = params.selectedMainEntityId;
-				$scope.optionsOpportunity = params.optionsOpportunity;
-				$scope.optionsType = params.optionsType;
+			if (params.entity.Timestamp) {
+				params.entity.Timestamp = new Date(params.entity.Timestamp);
 			}
+			$scope.entity = params.entity;
+			$scope.selectedMainEntityKey = params.selectedMainEntityKey;
+			$scope.selectedMainEntityId = params.selectedMainEntityId;
+			$scope.optionsOpportunity = params.optionsOpportunity;
+			$scope.optionsType = params.optionsType;
 		}
-
-		$scope.isValid = function (isValid, property) {
-			$scope.formErrors[property] = !isValid ? true : undefined;
-			for (let next in $scope.formErrors) {
-				if ($scope.formErrors[next] === true) {
-					$scope.isFormValid = false;
-					return;
-				}
-			}
-			$scope.isFormValid = true;
-		};
 
 		$scope.create = function () {
 			let entity = $scope.entity;

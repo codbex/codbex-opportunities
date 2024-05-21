@@ -3,9 +3,9 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		messageHubProvider.eventIdPrefix = 'codbex-opportunities.Opportunity.Opportunity';
 	}])
 	.config(["entityApiProvider", function (entityApiProvider) {
-		entityApiProvider.baseUrl = "/services/js/codbex-opportunities/gen/api/Opportunity/Opportunity.js";
+		entityApiProvider.baseUrl = "/services/ts/codbex-opportunities/gen/api/Opportunity/OpportunityService.ts";
 	}])
-	.controller('PageController', ['$scope', '$http', 'messageHub', 'entityApi', function ($scope, $http, messageHub, entityApi) {
+	.controller('PageController', ['$scope', '$http', 'messageHub', 'entityApi', 'Extensions', function ($scope, $http, messageHub, entityApi, Extensions) {
 
 		$scope.dataPage = 1;
 		$scope.dataCount = 0;
@@ -13,9 +13,32 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		$scope.dataLimit = 10;
 		$scope.action = "select";
 
+		//-----------------Custom Actions-------------------//
+		Extensions.get('dialogWindow', 'codbex-opportunities-custom-action').then(function (response) {
+			$scope.pageActions = response.filter(e => e.perspective === "Opportunity" && e.view === "Opportunity" && (e.type === "page" || e.type === undefined));
+		});
+
+		$scope.triggerPageAction = function (action) {
+			messageHub.showDialogWindow(
+				action.id,
+				{},
+				null,
+				true,
+				action
+			);
+		};
+		//-----------------Custom Actions-------------------//
+
 		function refreshData() {
 			$scope.dataReset = true;
 			$scope.dataPage--;
+		}
+
+		function resetPagination() {
+			$scope.dataReset = true;
+			$scope.dataPage = 1;
+			$scope.dataCount = 0;
+			$scope.dataLimit = 10;
 		}
 
 		//-----------------Events-------------------//
@@ -28,33 +51,49 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 
 		messageHub.onDidReceiveMessage("entityCreated", function (msg) {
 			refreshData();
-			$scope.loadPage();
+			$scope.loadPage($scope.dataPage, $scope.filter);
 		});
 
 		messageHub.onDidReceiveMessage("entityUpdated", function (msg) {
 			refreshData();
-			$scope.loadPage();
+			$scope.loadPage($scope.dataPage, $scope.filter);
+		});
+
+		messageHub.onDidReceiveMessage("entitySearch", function (msg) {
+			resetPagination();
+			$scope.filter = msg.data.filter;
+			$scope.filterEntity = msg.data.entity;
+			$scope.loadPage($scope.dataPage, $scope.filter);
 		});
 		//-----------------Events-------------------//
 
-		$scope.loadPage = function () {
+		$scope.loadPage = function (pageNumber, filter) {
+			if (!filter && $scope.filter) {
+				filter = $scope.filter;
+			}
+			if (!filter) {
+				filter = {};
+			}
 			$scope.selectedEntity = null;
-			entityApi.count().then(function (response) {
+			entityApi.count(filter).then(function (response) {
 				if (response.status != 200) {
 					messageHub.showAlertError("Opportunity", `Unable to count Opportunity: '${response.message}'`);
 					return;
 				}
-				$scope.dataCount = response.data;
-				$scope.dataPages = Math.ceil($scope.dataCount / $scope.dataLimit);
-				let offset = ($scope.dataPage - 1) * $scope.dataLimit;
-				let limit = $scope.dataLimit;
-				if ($scope.dataReset) {
-					offset = 0;
-					limit = $scope.dataPage * $scope.dataLimit;
+				if (response.data) {
+					$scope.dataCount = response.data;
 				}
-				entityApi.list(offset, limit).then(function (response) {
+				$scope.dataPages = Math.ceil($scope.dataCount / $scope.dataLimit);
+				filter.$offset = ($scope.dataPage - 1) * $scope.dataLimit;
+				filter.$limit = $scope.dataLimit;
+				if ($scope.dataReset) {
+					filter.$offset = 0;
+					filter.$limit = $scope.dataPage * $scope.dataLimit;
+				}
+
+				entityApi.search(filter).then(function (response) {
 					if (response.status != 200) {
-						messageHub.showAlertError("Opportunity", `Unable to list Opportunity: '${response.message}'`);
+						messageHub.showAlertError("Opportunity", `Unable to list/filter Opportunity: '${response.message}'`);
 						return;
 					}
 					if ($scope.data == null || $scope.dataReset) {
@@ -66,7 +105,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				});
 			});
 		};
-		$scope.loadPage($scope.dataPage);
+		$scope.loadPage($scope.dataPage, $scope.filter);
 
 		$scope.selectEntity = function (entity) {
 			$scope.selectedEntity = entity;
@@ -139,10 +178,24 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 							return;
 						}
 						refreshData();
-						$scope.loadPage($scope.dataPage);
+						$scope.loadPage($scope.dataPage, $scope.filter);
 						messageHub.postMessage("clearDetails");
 					});
 				}
+			});
+		};
+
+		$scope.openFilter = function (entity) {
+			messageHub.showDialogWindow("Opportunity-filter", {
+				entity: $scope.filterEntity,
+				optionsCustomer: $scope.optionsCustomer,
+				optionsCurrency: $scope.optionsCurrency,
+				optionsLead: $scope.optionsLead,
+				optionsType: $scope.optionsType,
+				optionsPriority: $scope.optionsPriority,
+				optionsProbability: $scope.optionsProbability,
+				optionsStatus: $scope.optionsStatus,
+				optionsOwner: $scope.optionsOwner,
 			});
 		};
 
@@ -156,7 +209,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		$scope.optionsStatus = [];
 		$scope.optionsOwner = [];
 
-		$http.get("/services/js/codbex-opportunities/gen/api/entities/Partner.js").then(function (response) {
+
+		$http.get("/services/ts/codbex-partners/gen/api/entities/PartnerService.ts").then(function (response) {
 			$scope.optionsCustomer = response.data.map(e => {
 				return {
 					value: e.Id,
@@ -165,7 +219,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		});
 
-		$http.get("/services/js/codbex-opportunities/gen/api/entities/Currency.js").then(function (response) {
+		$http.get("/services/ts/codbex-currencies/gen/api/entities/CurrencyService.ts").then(function (response) {
 			$scope.optionsCurrency = response.data.map(e => {
 				return {
 					value: e.Code,
@@ -174,7 +228,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		});
 
-		$http.get("/services/js/codbex-opportunities/gen/api/Lead/Lead.js").then(function (response) {
+		$http.get("/services/ts/codbex-opportunities/gen/api/Lead/LeadService.ts").then(function (response) {
 			$scope.optionsLead = response.data.map(e => {
 				return {
 					value: e.Id,
@@ -183,7 +237,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		});
 
-		$http.get("/services/js/codbex-opportunities/gen/api/Settings/OpportunityType.js").then(function (response) {
+		$http.get("/services/ts/codbex-opportunities/gen/api/Settings/OpportunityTypeService.ts").then(function (response) {
 			$scope.optionsType = response.data.map(e => {
 				return {
 					value: e.Id,
@@ -192,7 +246,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		});
 
-		$http.get("/services/js/codbex-opportunities/gen/api/Settings/OpportunityPriority.js").then(function (response) {
+		$http.get("/services/ts/codbex-opportunities/gen/api/Settings/OpportunityPriorityService.ts").then(function (response) {
 			$scope.optionsPriority = response.data.map(e => {
 				return {
 					value: e.Id,
@@ -201,7 +255,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		});
 
-		$http.get("/services/js/codbex-opportunities/gen/api/Settings/OpportunityProbability.js").then(function (response) {
+		$http.get("/services/ts/codbex-opportunities/gen/api/Settings/OpportunityProbabilityService.ts").then(function (response) {
 			$scope.optionsProbability = response.data.map(e => {
 				return {
 					value: e.Id,
@@ -210,7 +264,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		});
 
-		$http.get("/services/js/codbex-opportunities/gen/api/Settings/OpportunityStatus.js").then(function (response) {
+		$http.get("/services/ts/codbex-opportunities/gen/api/Settings/OpportunityStatusService.ts").then(function (response) {
 			$scope.optionsStatus = response.data.map(e => {
 				return {
 					value: e.Id,
@@ -219,7 +273,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		});
 
-		$http.get("/services/js/codbex-opportunities/gen/api/entities/Employee.js").then(function (response) {
+		$http.get("/services/ts/codbex-employees/gen/api/entities/EmployeeService.ts").then(function (response) {
 			$scope.optionsOwner = response.data.map(e => {
 				return {
 					value: e.Id,
@@ -227,6 +281,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				}
 			});
 		});
+
 		$scope.optionsCustomerValue = function (optionKey) {
 			for (let i = 0; i < $scope.optionsCustomer.length; i++) {
 				if ($scope.optionsCustomer[i].value === optionKey) {

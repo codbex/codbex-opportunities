@@ -3,24 +3,43 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		messageHubProvider.eventIdPrefix = 'codbex-opportunities.Opportunity.Opportunity';
 	}])
 	.config(["entityApiProvider", function (entityApiProvider) {
-		entityApiProvider.baseUrl = "/services/js/codbex-opportunities/gen/api/Opportunity/Opportunity.js";
+		entityApiProvider.baseUrl = "/services/ts/codbex-opportunities/gen/api/Opportunity/OpportunityService.ts";
 	}])
-	.controller('PageController', ['$scope', 'messageHub', 'entityApi', function ($scope, messageHub, entityApi) {
+	.controller('PageController', ['$scope', 'Extensions', 'messageHub', 'entityApi', function ($scope, Extensions, messageHub, entityApi) {
 
 		$scope.entity = {};
+		$scope.forms = {
+			details: {},
+		};
 		$scope.formHeaders = {
 			select: "Opportunity Details",
 			create: "Create Opportunity",
 			update: "Update Opportunity"
 		};
-		$scope.formErrors = {};
 		$scope.action = 'select';
+
+		//-----------------Custom Actions-------------------//
+		Extensions.get('dialogWindow', 'codbex-opportunities-custom-action').then(function (response) {
+			$scope.entityActions = response.filter(e => e.perspective === "Opportunity" && e.view === "Opportunity" && e.type === "entity");
+		});
+
+		$scope.triggerEntityAction = function (action) {
+			messageHub.showDialogWindow(
+				action.id,
+				{
+					id: $scope.entity.Id
+				},
+				null,
+				true,
+				action
+			);
+		};
+		//-----------------Custom Actions-------------------//
 
 		//-----------------Events-------------------//
 		messageHub.onDidReceiveMessage("clearDetails", function (msg) {
 			$scope.$apply(function () {
 				$scope.entity = {};
-				$scope.formErrors = {};
 				$scope.optionsCustomer = [];
 				$scope.optionsCurrency = [];
 				$scope.optionsLead = [];
@@ -60,9 +79,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				$scope.optionsStatus = msg.data.optionsStatus;
 				$scope.optionsOwner = msg.data.optionsOwner;
 				$scope.action = 'create';
-				// Set Errors for required fields only
-				$scope.formErrors = {
-				};
 			});
 		});
 
@@ -81,17 +97,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		});
 		//-----------------Events-------------------//
-
-		$scope.isValid = function (isValid, property) {
-			$scope.formErrors[property] = !isValid ? true : undefined;
-			for (let next in $scope.formErrors) {
-				if ($scope.formErrors[next] === true) {
-					$scope.isFormValid = false;
-					return;
-				}
-			}
-			$scope.isFormValid = true;
-		};
 
 		$scope.create = function () {
 			entityApi.create($scope.entity).then(function (response) {

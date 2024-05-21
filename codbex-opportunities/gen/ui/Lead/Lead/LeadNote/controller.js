@@ -3,9 +3,37 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		messageHubProvider.eventIdPrefix = 'codbex-opportunities.Lead.LeadNote';
 	}])
 	.config(["entityApiProvider", function (entityApiProvider) {
-		entityApiProvider.baseUrl = "/services/js/codbex-opportunities/gen/api/Lead/LeadNote.js";
+		entityApiProvider.baseUrl = "/services/ts/codbex-opportunities/gen/api/Lead/LeadNoteService.ts";
 	}])
-	.controller('PageController', ['$scope', '$http', 'messageHub', 'entityApi', function ($scope, $http, messageHub, entityApi) {
+	.controller('PageController', ['$scope', '$http', 'messageHub', 'entityApi', 'Extensions', function ($scope, $http, messageHub, entityApi, Extensions) {
+		//-----------------Custom Actions-------------------//
+		Extensions.get('dialogWindow', 'codbex-opportunities-custom-action').then(function (response) {
+			$scope.pageActions = response.filter(e => e.perspective === "Lead" && e.view === "LeadNote" && (e.type === "page" || e.type === undefined));
+			$scope.entityActions = response.filter(e => e.perspective === "Lead" && e.view === "LeadNote" && e.type === "entity");
+		});
+
+		$scope.triggerPageAction = function (action) {
+			messageHub.showDialogWindow(
+				action.id,
+				{},
+				null,
+				true,
+				action
+			);
+		};
+
+		$scope.triggerEntityAction = function (action) {
+			messageHub.showDialogWindow(
+				action.id,
+				{
+					id: $scope.entity.Id
+				},
+				null,
+				true,
+				action
+			);
+		};
+		//-----------------Custom Actions-------------------//
 
 		function resetPagination() {
 			$scope.dataPage = 1;
@@ -37,29 +65,50 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		});
 
 		messageHub.onDidReceiveMessage("entityCreated", function (msg) {
-			$scope.loadPage($scope.dataPage);
+			$scope.loadPage($scope.dataPage, $scope.filter);
 		});
 
 		messageHub.onDidReceiveMessage("entityUpdated", function (msg) {
-			$scope.loadPage($scope.dataPage);
+			$scope.loadPage($scope.dataPage, $scope.filter);
+		});
+
+		messageHub.onDidReceiveMessage("entitySearch", function (msg) {
+			resetPagination();
+			$scope.filter = msg.data.filter;
+			$scope.filterEntity = msg.data.entity;
+			$scope.loadPage($scope.dataPage, $scope.filter);
 		});
 		//-----------------Events-------------------//
 
-		$scope.loadPage = function (pageNumber) {
+		$scope.loadPage = function (pageNumber, filter) {
 			let Lead = $scope.selectedMainEntityId;
 			$scope.dataPage = pageNumber;
-			entityApi.count(Lead).then(function (response) {
+			if (!filter && $scope.filter) {
+				filter = $scope.filter;
+			}
+			if (!filter) {
+				filter = {};
+			}
+			if (!filter.$filter) {
+				filter.$filter = {};
+			}
+			if (!filter.$filter.equals) {
+				filter.$filter.equals = {};
+			}
+			filter.$filter.equals.Lead = Lead;
+			entityApi.count(filter).then(function (response) {
 				if (response.status != 200) {
 					messageHub.showAlertError("LeadNote", `Unable to count LeadNote: '${response.message}'`);
 					return;
 				}
-				$scope.dataCount = response.data;
-				let query = `Lead=${Lead}`;
-				let offset = (pageNumber - 1) * $scope.dataLimit;
-				let limit = $scope.dataLimit;
-				entityApi.filter(query, offset, limit).then(function (response) {
+				if (response.data) {
+					$scope.dataCount = response.data;
+				}
+				filter.$offset = (pageNumber - 1) * $scope.dataLimit;
+				filter.$limit = $scope.dataLimit;
+				entityApi.search(filter).then(function (response) {
 					if (response.status != 200) {
-						messageHub.showAlertError("LeadNote", `Unable to list LeadNote: '${response.message}'`);
+						messageHub.showAlertError("LeadNote", `Unable to list/filter LeadNote: '${response.message}'`);
 						return;
 					}
 
@@ -83,6 +132,14 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.showDialogWindow("LeadNote-details", {
 				action: "select",
 				entity: entity,
+				optionsLead: $scope.optionsLead,
+				optionsType: $scope.optionsType,
+			});
+		};
+
+		$scope.openFilter = function (entity) {
+			messageHub.showDialogWindow("LeadNote-filter", {
+				entity: $scope.filterEntity,
 				optionsLead: $scope.optionsLead,
 				optionsType: $scope.optionsType,
 			});
@@ -133,7 +190,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 							messageHub.showAlertError("LeadNote", `Unable to delete LeadNote: '${response.message}'`);
 							return;
 						}
-						$scope.loadPage($scope.dataPage);
+						$scope.loadPage($scope.dataPage, $scope.filter);
 						messageHub.postMessage("clearDetails");
 					});
 				}
@@ -144,7 +201,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		$scope.optionsLead = [];
 		$scope.optionsType = [];
 
-		$http.get("/services/js/codbex-opportunities/gen/api/Lead/Lead.js").then(function (response) {
+
+		$http.get("/services/ts/codbex-opportunities/gen/api/Lead/LeadService.ts").then(function (response) {
 			$scope.optionsLead = response.data.map(e => {
 				return {
 					value: e.Id,
@@ -153,7 +211,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		});
 
-		$http.get("/services/js/codbex-opportunities/gen/api/entities/NoteType.js").then(function (response) {
+		$http.get("/services/ts/codbex-opportunities/gen/api/Settings/NoteTypeService.ts").then(function (response) {
 			$scope.optionsType = response.data.map(e => {
 				return {
 					value: e.Id,
@@ -161,6 +219,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				}
 			});
 		});
+
 		$scope.optionsLeadValue = function (optionKey) {
 			for (let i = 0; i < $scope.optionsLead.length; i++) {
 				if ($scope.optionsLead[i].value === optionKey) {
