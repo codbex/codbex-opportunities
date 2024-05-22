@@ -36,8 +36,8 @@
 						<th fd-table-header-cell>Quantity</th>
 						<th fd-table-header-cell>UoM</th>
 						<th fd-table-header-cell>Price</th>
-						<th fd-table-header-cell>Currency</th>
 						<th fd-table-header-cell>Total</th>
+						<th fd-table-header-cell>Currency</th>
 						<th fd-table-header-cell></th>
 					</tr>
 				</thead>
@@ -55,8 +55,10 @@
 							{{optionsUoMValue(next.UoM)}}
 						</td>
 						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.Price}}</td>
-						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.Currency}}</td>
 						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.Total}}</td>
+						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">
+							{{optionsCurrencyValue(next.Currency)}}
+						</td>
 						<td fd-table-cell fit-content="true">
 							<fd-popover>
 								<fd-popover-control>

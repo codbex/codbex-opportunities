@@ -41,10 +41,10 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			$scope.$apply(function () {
 				$scope.entity = {};
 				$scope.optionsCustomer = [];
-				$scope.optionsCurrency = [];
 				$scope.optionsOpportunity = [];
 				$scope.optionsStatus = [];
 				$scope.optionsOwner = [];
+				$scope.optionsCurrency = [];
 				$scope.action = 'select';
 			});
 		});
@@ -56,10 +56,10 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				}
 				$scope.entity = msg.data.entity;
 				$scope.optionsCustomer = msg.data.optionsCustomer;
-				$scope.optionsCurrency = msg.data.optionsCurrency;
 				$scope.optionsOpportunity = msg.data.optionsOpportunity;
 				$scope.optionsStatus = msg.data.optionsStatus;
 				$scope.optionsOwner = msg.data.optionsOwner;
+				$scope.optionsCurrency = msg.data.optionsCurrency;
 				$scope.action = 'select';
 			});
 		});
@@ -68,10 +68,10 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			$scope.$apply(function () {
 				$scope.entity = {};
 				$scope.optionsCustomer = msg.data.optionsCustomer;
-				$scope.optionsCurrency = msg.data.optionsCurrency;
 				$scope.optionsOpportunity = msg.data.optionsOpportunity;
 				$scope.optionsStatus = msg.data.optionsStatus;
 				$scope.optionsOwner = msg.data.optionsOwner;
+				$scope.optionsCurrency = msg.data.optionsCurrency;
 				$scope.action = 'create';
 			});
 		});
@@ -83,10 +83,10 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				}
 				$scope.entity = msg.data.entity;
 				$scope.optionsCustomer = msg.data.optionsCustomer;
-				$scope.optionsCurrency = msg.data.optionsCurrency;
 				$scope.optionsOpportunity = msg.data.optionsOpportunity;
 				$scope.optionsStatus = msg.data.optionsStatus;
 				$scope.optionsOwner = msg.data.optionsOwner;
+				$scope.optionsCurrency = msg.data.optionsCurrency;
 				$scope.action = 'update';
 			});
 		});

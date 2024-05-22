@@ -130,6 +130,9 @@ class OpportunityNoteService {
     }
 
     private validateEntity(entity: any): void {
+        if (entity.Opportunity === null || entity.Opportunity === undefined) {
+            throw new ValidationError(`The 'Opportunity' property is required, provide a valid value`);
+        }
         if (entity.Note?.length > 10000) {
             throw new ValidationError(`The 'Note' exceeds the maximum length of [10000] characters`);
         }

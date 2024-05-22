@@ -9,13 +9,13 @@ export interface OpportunityEntity {
     Source?: string;
     Customer?: number;
     Amount?: number;
-    Currency?: string;
     Lead?: number;
     Type?: number;
     Priority?: number;
     Probability?: number;
     Status?: number;
     Owner?: number;
+    Currency?: string;
 }
 
 export interface OpportunityCreateEntity {
@@ -23,13 +23,13 @@ export interface OpportunityCreateEntity {
     readonly Source?: string;
     readonly Customer?: number;
     readonly Amount?: number;
-    readonly Currency?: string;
     readonly Lead?: number;
     readonly Type?: number;
     readonly Priority?: number;
     readonly Probability?: number;
     readonly Status?: number;
     readonly Owner?: number;
+    readonly Currency?: string;
 }
 
 export interface OpportunityUpdateEntity extends OpportunityCreateEntity {
@@ -44,13 +44,13 @@ export interface OpportunityEntityOptions {
             Source?: string | string[];
             Customer?: number | number[];
             Amount?: number | number[];
-            Currency?: string | string[];
             Lead?: number | number[];
             Type?: number | number[];
             Priority?: number | number[];
             Probability?: number | number[];
             Status?: number | number[];
             Owner?: number | number[];
+            Currency?: string | string[];
         };
         notEquals?: {
             Id?: number | number[];
@@ -58,13 +58,13 @@ export interface OpportunityEntityOptions {
             Source?: string | string[];
             Customer?: number | number[];
             Amount?: number | number[];
-            Currency?: string | string[];
             Lead?: number | number[];
             Type?: number | number[];
             Priority?: number | number[];
             Probability?: number | number[];
             Status?: number | number[];
             Owner?: number | number[];
+            Currency?: string | string[];
         };
         contains?: {
             Id?: number;
@@ -72,13 +72,13 @@ export interface OpportunityEntityOptions {
             Source?: string;
             Customer?: number;
             Amount?: number;
-            Currency?: string;
             Lead?: number;
             Type?: number;
             Priority?: number;
             Probability?: number;
             Status?: number;
             Owner?: number;
+            Currency?: string;
         };
         greaterThan?: {
             Id?: number;
@@ -86,13 +86,13 @@ export interface OpportunityEntityOptions {
             Source?: string;
             Customer?: number;
             Amount?: number;
-            Currency?: string;
             Lead?: number;
             Type?: number;
             Priority?: number;
             Probability?: number;
             Status?: number;
             Owner?: number;
+            Currency?: string;
         };
         greaterThanOrEqual?: {
             Id?: number;
@@ -100,13 +100,13 @@ export interface OpportunityEntityOptions {
             Source?: string;
             Customer?: number;
             Amount?: number;
-            Currency?: string;
             Lead?: number;
             Type?: number;
             Priority?: number;
             Probability?: number;
             Status?: number;
             Owner?: number;
+            Currency?: string;
         };
         lessThan?: {
             Id?: number;
@@ -114,13 +114,13 @@ export interface OpportunityEntityOptions {
             Source?: string;
             Customer?: number;
             Amount?: number;
-            Currency?: string;
             Lead?: number;
             Type?: number;
             Priority?: number;
             Probability?: number;
             Status?: number;
             Owner?: number;
+            Currency?: string;
         };
         lessThanOrEqual?: {
             Id?: number;
@@ -128,13 +128,13 @@ export interface OpportunityEntityOptions {
             Source?: string;
             Customer?: number;
             Amount?: number;
-            Currency?: string;
             Lead?: number;
             Type?: number;
             Priority?: number;
             Probability?: number;
             Status?: number;
             Owner?: number;
+            Currency?: string;
         };
     },
     $select?: (keyof OpportunityEntity)[],
@@ -189,12 +189,7 @@ export class OpportunityRepository {
             {
                 name: "Amount",
                 column: "OPPORTUNITY_PROPERTY4",
-                type: "DOUBLE",
-            },
-            {
-                name: "Currency",
-                column: "OPPORTUNITY_CURRENCYCODE",
-                type: "VARCHAR",
+                type: "DECIMAL",
             },
             {
                 name: "Lead",
@@ -225,6 +220,11 @@ export class OpportunityRepository {
                 name: "Owner",
                 column: "OPPORTUNITY_OWNER",
                 type: "INTEGER",
+            },
+            {
+                name: "Currency",
+                column: "OPPORTUNITY_CURRENCY",
+                type: "VARCHAR",
             }
         ]
     };

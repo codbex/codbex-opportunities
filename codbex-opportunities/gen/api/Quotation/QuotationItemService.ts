@@ -130,6 +130,24 @@ class QuotationItemService {
     }
 
     private validateEntity(entity: any): void {
+        if (entity.Quotation === null || entity.Quotation === undefined) {
+            throw new ValidationError(`The 'Quotation' property is required, provide a valid value`);
+        }
+        if (entity.Product === null || entity.Product === undefined) {
+            throw new ValidationError(`The 'Product' property is required, provide a valid value`);
+        }
+        if (entity.Quantity === null || entity.Quantity === undefined) {
+            throw new ValidationError(`The 'Quantity' property is required, provide a valid value`);
+        }
+        if (entity.UoM === null || entity.UoM === undefined) {
+            throw new ValidationError(`The 'UoM' property is required, provide a valid value`);
+        }
+        if (entity.Price === null || entity.Price === undefined) {
+            throw new ValidationError(`The 'Price' property is required, provide a valid value`);
+        }
+        if (entity.Total === null || entity.Total === undefined) {
+            throw new ValidationError(`The 'Total' property is required, provide a valid value`);
+        }
         if (entity.Currency?.length > 3) {
             throw new ValidationError(`The 'Currency' exceeds the maximum length of [3] characters`);
         }

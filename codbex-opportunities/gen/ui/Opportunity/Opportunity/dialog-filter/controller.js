@@ -15,13 +15,13 @@ angular.module('page', ["ideUI", "ideView"])
 			$scope.selectedMainEntityKey = params.selectedMainEntityKey;
 			$scope.selectedMainEntityId = params.selectedMainEntityId;
 			$scope.optionsCustomer = params.optionsCustomer;
-			$scope.optionsCurrency = params.optionsCurrency;
 			$scope.optionsLead = params.optionsLead;
 			$scope.optionsType = params.optionsType;
 			$scope.optionsPriority = params.optionsPriority;
 			$scope.optionsProbability = params.optionsProbability;
 			$scope.optionsStatus = params.optionsStatus;
 			$scope.optionsOwner = params.optionsOwner;
+			$scope.optionsCurrency = params.optionsCurrency;
 		}
 
 		$scope.filter = function () {
@@ -59,9 +59,6 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.Amount !== undefined) {
 				filter.$filter.equals.Amount = entity.Amount;
 			}
-			if (entity.Currency) {
-				filter.$filter.contains.Currency = entity.Currency;
-			}
 			if (entity.Lead !== undefined) {
 				filter.$filter.equals.Lead = entity.Lead;
 			}
@@ -79,6 +76,9 @@ angular.module('page', ["ideUI", "ideView"])
 			}
 			if (entity.Owner !== undefined) {
 				filter.$filter.equals.Owner = entity.Owner;
+			}
+			if (entity.Currency) {
+				filter.$filter.contains.Currency = entity.Currency;
 			}
 			messageHub.postMessage("entitySearch", {
 				entity: entity,

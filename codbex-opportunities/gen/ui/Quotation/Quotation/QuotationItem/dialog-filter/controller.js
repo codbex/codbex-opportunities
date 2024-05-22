@@ -17,6 +17,7 @@ angular.module('page', ["ideUI", "ideView"])
 			$scope.optionsQuotation = params.optionsQuotation;
 			$scope.optionsProduct = params.optionsProduct;
 			$scope.optionsUoM = params.optionsUoM;
+			$scope.optionsCurrency = params.optionsCurrency;
 		}
 
 		$scope.filter = function () {
@@ -57,11 +58,11 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.Price !== undefined) {
 				filter.$filter.equals.Price = entity.Price;
 			}
-			if (entity.Currency) {
-				filter.$filter.contains.Currency = entity.Currency;
-			}
 			if (entity.Total !== undefined) {
 				filter.$filter.equals.Total = entity.Total;
+			}
+			if (entity.Currency) {
+				filter.$filter.contains.Currency = entity.Currency;
 			}
 			messageHub.postMessage("entitySearch", {
 				entity: entity,

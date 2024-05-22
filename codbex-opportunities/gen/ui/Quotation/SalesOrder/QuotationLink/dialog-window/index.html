@@ -21,13 +21,13 @@
                 <fd-form-group dg-header="{{formHeaders[action]}}" name="entityForm" class="fd-container fd-form-layout-grid-container">
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idQuotation" dg-required="false" dg-colon="true">Quotation</fd-form-label>
+                        	<fd-form-label for="idQuotation" dg-required="true" dg-colon="true">Quotation</fd-form-label>
                         </div>
                         <div class="fd-col  fd-col-md--8 ">
 	                        <fd-combobox-input id="idQuotation"
 	                            name="Quotation"
 	                            state="{{ forms.details['Quotation'].$valid ? '' : 'error' }}"
-	                            ng-required="false"
+	                            ng-required="true"
 	                            ng-model="entity.Quotation"
 	                            dg-disabled="action === 'select'"
 	                            dropdown-items="optionsQuotation"

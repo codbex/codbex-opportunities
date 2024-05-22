@@ -119,11 +119,23 @@ class QuotationService {
     }
 
     private validateEntity(entity: any): void {
-        if (entity.Name?.length > 20) {
-            throw new ValidationError(`The 'Name' exceeds the maximum length of [20] characters`);
+        if (entity.Name?.length > 255) {
+            throw new ValidationError(`The 'Name' exceeds the maximum length of [255] characters`);
+        }
+        if (entity.Date === null || entity.Date === undefined) {
+            throw new ValidationError(`The 'Date' property is required, provide a valid value`);
         }
         if (entity.Number?.length > 50) {
             throw new ValidationError(`The 'Number' exceeds the maximum length of [50] characters`);
+        }
+        if (entity.Customer === null || entity.Customer === undefined) {
+            throw new ValidationError(`The 'Customer' property is required, provide a valid value`);
+        }
+        if (entity.Total === null || entity.Total === undefined) {
+            throw new ValidationError(`The 'Total' property is required, provide a valid value`);
+        }
+        if (entity.Opportunity === null || entity.Opportunity === undefined) {
+            throw new ValidationError(`The 'Opportunity' property is required, provide a valid value`);
         }
         if (entity.Currency?.length > 3) {
             throw new ValidationError(`The 'Currency' exceeds the maximum length of [3] characters`);

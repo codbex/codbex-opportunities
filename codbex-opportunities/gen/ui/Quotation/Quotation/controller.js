@@ -120,10 +120,10 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				entity: entity,
 				selectedMainEntityId: entity.Id,
 				optionsCustomer: $scope.optionsCustomer,
-				optionsCurrency: $scope.optionsCurrency,
 				optionsOpportunity: $scope.optionsOpportunity,
 				optionsStatus: $scope.optionsStatus,
 				optionsOwner: $scope.optionsOwner,
+				optionsCurrency: $scope.optionsCurrency,
 			});
 		};
 
@@ -134,10 +134,10 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.postMessage("createEntity", {
 				entity: {},
 				optionsCustomer: $scope.optionsCustomer,
-				optionsCurrency: $scope.optionsCurrency,
 				optionsOpportunity: $scope.optionsOpportunity,
 				optionsStatus: $scope.optionsStatus,
 				optionsOwner: $scope.optionsOwner,
+				optionsCurrency: $scope.optionsCurrency,
 			});
 		};
 
@@ -146,10 +146,10 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.postMessage("updateEntity", {
 				entity: $scope.selectedEntity,
 				optionsCustomer: $scope.optionsCustomer,
-				optionsCurrency: $scope.optionsCurrency,
 				optionsOpportunity: $scope.optionsOpportunity,
 				optionsStatus: $scope.optionsStatus,
 				optionsOwner: $scope.optionsOwner,
+				optionsCurrency: $scope.optionsCurrency,
 			});
 		};
 
@@ -187,19 +187,19 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.showDialogWindow("Quotation-filter", {
 				entity: $scope.filterEntity,
 				optionsCustomer: $scope.optionsCustomer,
-				optionsCurrency: $scope.optionsCurrency,
 				optionsOpportunity: $scope.optionsOpportunity,
 				optionsStatus: $scope.optionsStatus,
 				optionsOwner: $scope.optionsOwner,
+				optionsCurrency: $scope.optionsCurrency,
 			});
 		};
 
 		//----------------Dropdowns-----------------//
 		$scope.optionsCustomer = [];
-		$scope.optionsCurrency = [];
 		$scope.optionsOpportunity = [];
 		$scope.optionsStatus = [];
 		$scope.optionsOwner = [];
+		$scope.optionsCurrency = [];
 
 
 		$http.get("/services/ts/codbex-partners/gen/api/entities/PartnerService.ts").then(function (response) {
@@ -207,15 +207,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				return {
 					value: e.Id,
 					text: e.Name
-				}
-			});
-		});
-
-		$http.get("/services/ts/codbex-currencies/gen/api/entities/CurrencyService.ts").then(function (response) {
-			$scope.optionsCurrency = response.data.map(e => {
-				return {
-					value: e.Code,
-					text: e.Code
 				}
 			});
 		});
@@ -247,18 +238,19 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		});
 
+		$http.get("/services/ts/codbex-currencies/gen/api/entities/CurrencyService.ts").then(function (response) {
+			$scope.optionsCurrency = response.data.map(e => {
+				return {
+					value: e.Id,
+					text: e.Code
+				}
+			});
+		});
+
 		$scope.optionsCustomerValue = function (optionKey) {
 			for (let i = 0; i < $scope.optionsCustomer.length; i++) {
 				if ($scope.optionsCustomer[i].value === optionKey) {
 					return $scope.optionsCustomer[i].text;
-				}
-			}
-			return null;
-		};
-		$scope.optionsCurrencyValue = function (optionKey) {
-			for (let i = 0; i < $scope.optionsCurrency.length; i++) {
-				if ($scope.optionsCurrency[i].value === optionKey) {
-					return $scope.optionsCurrency[i].text;
 				}
 			}
 			return null;
@@ -283,6 +275,14 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			for (let i = 0; i < $scope.optionsOwner.length; i++) {
 				if ($scope.optionsOwner[i].value === optionKey) {
 					return $scope.optionsOwner[i].text;
+				}
+			}
+			return null;
+		};
+		$scope.optionsCurrencyValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsCurrency.length; i++) {
+				if ($scope.optionsCurrency[i].value === optionKey) {
+					return $scope.optionsCurrency[i].text;
 				}
 			}
 			return null;

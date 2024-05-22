@@ -10,8 +10,8 @@ export interface QuotationItemEntity {
     Quantity?: number;
     UoM?: number;
     Price?: number;
-    Currency?: string;
     Total?: number;
+    Currency?: string;
 }
 
 export interface QuotationItemCreateEntity {
@@ -20,8 +20,8 @@ export interface QuotationItemCreateEntity {
     readonly Quantity?: number;
     readonly UoM?: number;
     readonly Price?: number;
-    readonly Currency?: string;
     readonly Total?: number;
+    readonly Currency?: string;
 }
 
 export interface QuotationItemUpdateEntity extends QuotationItemCreateEntity {
@@ -37,8 +37,8 @@ export interface QuotationItemEntityOptions {
             Quantity?: number | number[];
             UoM?: number | number[];
             Price?: number | number[];
-            Currency?: string | string[];
             Total?: number | number[];
+            Currency?: string | string[];
         };
         notEquals?: {
             Id?: number | number[];
@@ -47,8 +47,8 @@ export interface QuotationItemEntityOptions {
             Quantity?: number | number[];
             UoM?: number | number[];
             Price?: number | number[];
-            Currency?: string | string[];
             Total?: number | number[];
+            Currency?: string | string[];
         };
         contains?: {
             Id?: number;
@@ -57,8 +57,8 @@ export interface QuotationItemEntityOptions {
             Quantity?: number;
             UoM?: number;
             Price?: number;
-            Currency?: string;
             Total?: number;
+            Currency?: string;
         };
         greaterThan?: {
             Id?: number;
@@ -67,8 +67,8 @@ export interface QuotationItemEntityOptions {
             Quantity?: number;
             UoM?: number;
             Price?: number;
-            Currency?: string;
             Total?: number;
+            Currency?: string;
         };
         greaterThanOrEqual?: {
             Id?: number;
@@ -77,8 +77,8 @@ export interface QuotationItemEntityOptions {
             Quantity?: number;
             UoM?: number;
             Price?: number;
-            Currency?: string;
             Total?: number;
+            Currency?: string;
         };
         lessThan?: {
             Id?: number;
@@ -87,8 +87,8 @@ export interface QuotationItemEntityOptions {
             Quantity?: number;
             UoM?: number;
             Price?: number;
-            Currency?: string;
             Total?: number;
+            Currency?: string;
         };
         lessThanOrEqual?: {
             Id?: number;
@@ -97,8 +97,8 @@ export interface QuotationItemEntityOptions {
             Quantity?: number;
             UoM?: number;
             Price?: number;
-            Currency?: string;
             Total?: number;
+            Currency?: string;
         };
     },
     $select?: (keyof QuotationItemEntity)[],
@@ -158,17 +158,17 @@ export class QuotationItemRepository {
             {
                 name: "Price",
                 column: "QUOTATIONITEM_PRICE",
-                type: "DOUBLE",
-            },
-            {
-                name: "Currency",
-                column: "QUOTATIONITEM_CURRENCYCODE",
-                type: "VARCHAR",
+                type: "DECIMAL",
             },
             {
                 name: "Total",
                 column: "QUOTATIONITEM_TOTAL",
-                type: "DOUBLE",
+                type: "DECIMAL",
+            },
+            {
+                name: "Currency",
+                column: "QUOTATIONITEM_CURRENCY",
+                type: "VARCHAR",
             }
         ]
     };

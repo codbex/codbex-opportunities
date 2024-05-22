@@ -128,6 +128,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				optionsQuotation: $scope.optionsQuotation,
 				optionsProduct: $scope.optionsProduct,
 				optionsUoM: $scope.optionsUoM,
+				optionsCurrency: $scope.optionsCurrency,
 			});
 		};
 
@@ -137,6 +138,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				optionsQuotation: $scope.optionsQuotation,
 				optionsProduct: $scope.optionsProduct,
 				optionsUoM: $scope.optionsUoM,
+				optionsCurrency: $scope.optionsCurrency,
 			});
 		};
 
@@ -150,6 +152,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				optionsQuotation: $scope.optionsQuotation,
 				optionsProduct: $scope.optionsProduct,
 				optionsUoM: $scope.optionsUoM,
+				optionsCurrency: $scope.optionsCurrency,
 			}, null, false);
 		};
 
@@ -162,6 +165,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				optionsQuotation: $scope.optionsQuotation,
 				optionsProduct: $scope.optionsProduct,
 				optionsUoM: $scope.optionsUoM,
+				optionsCurrency: $scope.optionsCurrency,
 			}, null, false);
 		};
 
@@ -198,6 +202,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		$scope.optionsQuotation = [];
 		$scope.optionsProduct = [];
 		$scope.optionsUoM = [];
+		$scope.optionsCurrency = [];
 
 
 		$http.get("/services/ts/codbex-opportunities/gen/api/Quotation/QuotationService.ts").then(function (response) {
@@ -227,6 +232,15 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		});
 
+		$http.get("/services/ts/codbex-currencies/gen/api/entities/CurrencyService.ts").then(function (response) {
+			$scope.optionsCurrency = response.data.map(e => {
+				return {
+					value: e.Id,
+					text: e.Code
+				}
+			});
+		});
+
 		$scope.optionsQuotationValue = function (optionKey) {
 			for (let i = 0; i < $scope.optionsQuotation.length; i++) {
 				if ($scope.optionsQuotation[i].value === optionKey) {
@@ -247,6 +261,14 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			for (let i = 0; i < $scope.optionsUoM.length; i++) {
 				if ($scope.optionsUoM[i].value === optionKey) {
 					return $scope.optionsUoM[i].text;
+				}
+			}
+			return null;
+		};
+		$scope.optionsCurrencyValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsCurrency.length; i++) {
+				if ($scope.optionsCurrency[i].value === optionKey) {
+					return $scope.optionsCurrency[i].text;
 				}
 			}
 			return null;

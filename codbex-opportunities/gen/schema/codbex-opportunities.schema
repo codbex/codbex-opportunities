@@ -224,20 +224,12 @@
                         "name": "OPPORTUNITY_CUSTOMER"
                     },
                     {
-                        "type": "DOUBLE",
+                        "type": "DECIMAL",
                         "length": 20,
-                        "precision": "NaN",
-                        "scale": "NaN",
+                        "precision": "16",
+                        "scale": "2",
                         "nullable": true,
                         "name": "OPPORTUNITY_PROPERTY4"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 3,
-                        "precision": "NaN",
-                        "scale": "NaN",
-                        "nullable": true,
-                        "name": "OPPORTUNITY_CURRENCYCODE"
                     },
                     {
                         "type": "INTEGER",
@@ -286,6 +278,14 @@
                         "scale": "NaN",
                         "nullable": true,
                         "name": "OPPORTUNITY_OWNER"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 3,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "OPPORTUNITY_CURRENCY"
                     }
                 ]
             },
@@ -437,7 +437,9 @@
                     },
                     {
                         "type": "VARCHAR",
-                        "length": 20,
+                        "length": 255,
+                        "precision": "NaN",
+                        "scale": "NaN",
                         "nullable": true,
                         "name": "QUOTATION_NAME"
                     },
@@ -466,20 +468,12 @@
                         "name": "QUOTATION_CUSTOMER"
                     },
                     {
-                        "type": "DOUBLE",
+                        "type": "DECIMAL",
                         "length": 20,
-                        "precision": "NaN",
-                        "scale": "NaN",
+                        "precision": "16",
+                        "scale": "2",
                         "nullable": true,
                         "name": "QUOTATION_TOTAL"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 3,
-                        "precision": "NaN",
-                        "scale": "NaN",
-                        "nullable": true,
-                        "name": "QUOTATION_CURRENCYCODE"
                     },
                     {
                         "type": "INTEGER",
@@ -504,6 +498,14 @@
                         "scale": "NaN",
                         "nullable": true,
                         "name": "QUOTATION_OWNER"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 3,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "QUOTATION_CURRENCY"
                     }
                 ]
             },
@@ -552,12 +554,20 @@
                         "name": "QUOTATIONITEM_UOM"
                     },
                     {
-                        "type": "DOUBLE",
+                        "type": "DECIMAL",
                         "length": 20,
-                        "precision": "NaN",
-                        "scale": "NaN",
+                        "precision": "16",
+                        "scale": "2",
                         "nullable": true,
                         "name": "QUOTATIONITEM_PRICE"
+                    },
+                    {
+                        "type": "DECIMAL",
+                        "length": 20,
+                        "precision": "16",
+                        "scale": "2",
+                        "nullable": true,
+                        "name": "QUOTATIONITEM_TOTAL"
                     },
                     {
                         "type": "VARCHAR",
@@ -565,15 +575,7 @@
                         "precision": "NaN",
                         "scale": "NaN",
                         "nullable": true,
-                        "name": "QUOTATIONITEM_CURRENCYCODE"
-                    },
-                    {
-                        "type": "DOUBLE",
-                        "length": 20,
-                        "precision": "NaN",
-                        "scale": "NaN",
-                        "nullable": true,
-                        "name": "QUOTATIONITEM_TOTAL"
+                        "name": "QUOTATIONITEM_CURRENCY"
                     }
                 ]
             },
@@ -620,6 +622,8 @@
                     {
                         "type": "INTEGER",
                         "length": 0,
+                        "precision": "NaN",
+                        "scale": "NaN",
                         "nullable": true,
                         "name": "QUOTATIONLINK_SALESORDER"
                     },
@@ -688,15 +692,6 @@
                 "referencedColumns": "PARTNER_ID"
             },
             {
-                "name": "Opportunity_Currency",
-                "type": "foreignKey",
-                "table": "CODBEX_OPPORTUNITY",
-                "constraintName": "Opportunity_Currency",
-                "columns": "OPPORTUNITY_CURRENCYCODE",
-                "referencedTable": "CODBEX_CURRENCY",
-                "referencedColumns": "CURRENCY_CODE"
-            },
-            {
                 "name": "Opportunity_Lead",
                 "type": "foreignKey",
                 "table": "CODBEX_OPPORTUNITY",
@@ -751,6 +746,15 @@
                 "referencedColumns": "EMPLOYEE_ID"
             },
             {
+                "name": "Opportunity_Currency",
+                "type": "foreignKey",
+                "table": "CODBEX_OPPORTUNITY",
+                "constraintName": "Opportunity_Currency",
+                "columns": "OPPORTUNITY_CURRENCY",
+                "referencedTable": "CODBEX_CURRENCY",
+                "referencedColumns": "CURRENCY_CODE"
+            },
+            {
                 "name": "OpportunityNote_Opportunity",
                 "type": "foreignKey",
                 "table": "CODBEX_OPPORTUNITYNOTE",
@@ -778,15 +782,6 @@
                 "referencedColumns": "PARTNER_ID"
             },
             {
-                "name": "Quotation_Currency",
-                "type": "foreignKey",
-                "table": "CODBEX_QUOTATION",
-                "constraintName": "Quotation_Currency",
-                "columns": "QUOTATION_CURRENCYCODE",
-                "referencedTable": "CODBEX_CURRENCY",
-                "referencedColumns": "CURRENCY_CODE"
-            },
-            {
                 "name": "Quotation_Opportunity",
                 "type": "foreignKey",
                 "table": "CODBEX_QUOTATION",
@@ -812,6 +807,15 @@
                 "columns": "QUOTATION_OWNER",
                 "referencedTable": "CODBEX_EMPLOYEE",
                 "referencedColumns": "EMPLOYEE_ID"
+            },
+            {
+                "name": "Quotation_Currency",
+                "type": "foreignKey",
+                "table": "CODBEX_QUOTATION",
+                "constraintName": "Quotation_Currency",
+                "columns": "QUOTATION_CURRENCY",
+                "referencedTable": "CODBEX_CURRENCY",
+                "referencedColumns": "CURRENCY_CODE"
             },
             {
                 "name": "QuotationItem_Quotation",
@@ -845,7 +849,7 @@
                 "type": "foreignKey",
                 "table": "CODBEX_QUOTATIONITEM",
                 "constraintName": "QuotationItem_Currency",
-                "columns": "QUOTATIONITEM_CURRENCYCODE",
+                "columns": "QUOTATIONITEM_CURRENCY",
                 "referencedTable": "CODBEX_CURRENCY",
                 "referencedColumns": "CURRENCY_CODE"
             },

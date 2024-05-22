@@ -125,6 +125,18 @@ class OpportunityService {
         if (entity.Source?.length > 255) {
             throw new ValidationError(`The 'Source' exceeds the maximum length of [255] characters`);
         }
+        if (entity.Customer === null || entity.Customer === undefined) {
+            throw new ValidationError(`The 'Customer' property is required, provide a valid value`);
+        }
+        if (entity.Amount === null || entity.Amount === undefined) {
+            throw new ValidationError(`The 'Amount' property is required, provide a valid value`);
+        }
+        if (entity.Lead === null || entity.Lead === undefined) {
+            throw new ValidationError(`The 'Lead' property is required, provide a valid value`);
+        }
+        if (entity.Status === null || entity.Status === undefined) {
+            throw new ValidationError(`The 'Status' property is required, provide a valid value`);
+        }
         if (entity.Currency?.length > 3) {
             throw new ValidationError(`The 'Currency' exceeds the maximum length of [3] characters`);
         }

@@ -32,7 +32,7 @@
 	                                ng-model="entity.Name"
 	                                ng-readonly="action === 'select'"
 	                                ng-minlength="0.0 || 0"
-	                                ng-maxlength="20.0 || -1"
+	                                ng-maxlength="255.0 || -1"
 	                                dg-input-rules="{ patterns: [''] }"
 	                                type="text"
 	                                placeholder="Enter Name">
@@ -54,7 +54,7 @@
 	                                ng-model="entity.Source"
 	                                ng-readonly="action === 'select'"
 	                                ng-minlength="0.0 || 0"
-	                                ng-maxlength="20.0 || -1"
+	                                ng-maxlength="255.0 || -1"
 	                                dg-input-rules="{ patterns: [''] }"
 	                                type="text"
 	                                placeholder="Enter Source">
@@ -65,13 +65,13 @@
                     </fd-form-item>
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idCustomer" dg-required="false" dg-colon="true">Customer</fd-form-label>
+                        	<fd-form-label for="idCustomer" dg-required="true" dg-colon="true">Customer</fd-form-label>
                         </div>
                         <div class="fd-col  fd-col-md--8 ">
 	                        <fd-combobox-input id="idCustomer"
 	                            name="Customer"
 	                            state="{{ forms.details['Customer'].$valid ? '' : 'error' }}"
-	                            ng-required="false"
+	                            ng-required="true"
 	                            ng-model="entity.Customer"
 	                            dg-disabled="action === 'select'"
 	                            dropdown-items="optionsCustomer"
@@ -81,13 +81,13 @@
                     </fd-form-item>
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idAmount" dg-required="false" dg-colon="true">Amount</fd-form-label>
+                        	<fd-form-label for="idAmount" dg-required="true" dg-colon="true">Amount</fd-form-label>
                         </div>
                         <div class="fd-col  fd-col-md--4 ">
 							<fd-step-input dg-id="idAmount"
 								name="Amount"
 								state="{{ forms.details['Amount'].$valid ? '' : 'error' }}"
-								dg-required="false"
+								dg-required="true"
 								ng-model="entity.Amount"
 								is-readonly="action === 'select'"
 								placeholder="Enter Amount"
@@ -97,29 +97,13 @@
                     </fd-form-item>
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idCurrency" dg-required="false" dg-colon="true">Currency</fd-form-label>
-                        </div>
-                        <div class="fd-col  fd-col-md--8 ">
-	                        <fd-combobox-input id="idCurrency"
-	                            name="Currency"
-	                            state="{{ forms.details['Currency'].$valid ? '' : 'error' }}"
-	                            ng-required="false"
-	                            ng-model="entity.Currency"
-	                            dg-disabled="action === 'select'"
-	                            dropdown-items="optionsCurrency"
-	                            dg-placeholder="Search Currency ...">
-	                        </fd-combobox-input>
-	                    </div>
-                    </fd-form-item>
-                    <fd-form-item class="fd-row">
-                    	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idLead" dg-required="false" dg-colon="true">Lead</fd-form-label>
+                        	<fd-form-label for="idLead" dg-required="true" dg-colon="true">Lead</fd-form-label>
                         </div>
                         <div class="fd-col  fd-col-md--8 ">
 	                        <fd-combobox-input id="idLead"
 	                            name="Lead"
 	                            state="{{ forms.details['Lead'].$valid ? '' : 'error' }}"
-	                            ng-required="false"
+	                            ng-required="true"
 	                            ng-model="entity.Lead"
 	                            dg-disabled="action === 'select'"
 	                            dropdown-items="optionsLead"
@@ -177,13 +161,13 @@
                     </fd-form-item>
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idStatus" dg-required="false" dg-colon="true">Status</fd-form-label>
+                        	<fd-form-label for="idStatus" dg-required="true" dg-colon="true">Status</fd-form-label>
                         </div>
                         <div class="fd-col  fd-col-md--8 ">
 	                        <fd-combobox-input id="idStatus"
 	                            name="Status"
 	                            state="{{ forms.details['Status'].$valid ? '' : 'error' }}"
-	                            ng-required="false"
+	                            ng-required="true"
 	                            ng-model="entity.Status"
 	                            dg-disabled="action === 'select'"
 	                            dropdown-items="optionsStatus"
@@ -204,6 +188,22 @@
 	                            dg-disabled="action === 'select'"
 	                            dropdown-items="optionsOwner"
 	                            dg-placeholder="Search Owner ...">
+	                        </fd-combobox-input>
+	                    </div>
+                    </fd-form-item>
+                    <fd-form-item class="fd-row">
+                    	<div class="fd-col fd-col-md--2">
+                        	<fd-form-label for="idCurrency" dg-required="false" dg-colon="true">Currency</fd-form-label>
+                        </div>
+                        <div class="fd-col  fd-col-md--8 ">
+	                        <fd-combobox-input id="idCurrency"
+	                            name="Currency"
+	                            state="{{ forms.details['Currency'].$valid ? '' : 'error' }}"
+	                            ng-required="false"
+	                            ng-model="entity.Currency"
+	                            dg-disabled="action === 'select'"
+	                            dropdown-items="optionsCurrency"
+	                            dg-placeholder="Search Currency ...">
 	                        </fd-combobox-input>
 	                    </div>
                     </fd-form-item>

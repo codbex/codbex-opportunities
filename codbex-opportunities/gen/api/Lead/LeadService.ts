@@ -119,11 +119,20 @@ class LeadService {
     }
 
     private validateEntity(entity: any): void {
+        if (entity.Name === null || entity.Name === undefined) {
+            throw new ValidationError(`The 'Name' property is required, provide a valid value`);
+        }
         if (entity.Name?.length > 255) {
             throw new ValidationError(`The 'Name' exceeds the maximum length of [255] characters`);
         }
+        if (entity.CompanyName === null || entity.CompanyName === undefined) {
+            throw new ValidationError(`The 'CompanyName' property is required, provide a valid value`);
+        }
         if (entity.CompanyName?.length > 255) {
             throw new ValidationError(`The 'CompanyName' exceeds the maximum length of [255] characters`);
+        }
+        if (entity.ContactName === null || entity.ContactName === undefined) {
+            throw new ValidationError(`The 'ContactName' property is required, provide a valid value`);
         }
         if (entity.ContactName?.length > 255) {
             throw new ValidationError(`The 'ContactName' exceeds the maximum length of [255] characters`);
@@ -131,8 +140,14 @@ class LeadService {
         if (entity.ContactDesignation?.length > 255) {
             throw new ValidationError(`The 'ContactDesignation' exceeds the maximum length of [255] characters`);
         }
+        if (entity.ContactEmail === null || entity.ContactEmail === undefined) {
+            throw new ValidationError(`The 'ContactEmail' property is required, provide a valid value`);
+        }
         if (entity.ContactEmail?.length > 255) {
             throw new ValidationError(`The 'ContactEmail' exceeds the maximum length of [255] characters`);
+        }
+        if (entity.ContactPhone === null || entity.ContactPhone === undefined) {
+            throw new ValidationError(`The 'ContactPhone' property is required, provide a valid value`);
         }
         if (entity.ContactPhone?.length > 255) {
             throw new ValidationError(`The 'ContactPhone' exceeds the maximum length of [255] characters`);

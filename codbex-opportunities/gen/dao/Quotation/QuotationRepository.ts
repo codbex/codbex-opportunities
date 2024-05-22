@@ -11,10 +11,10 @@ export interface QuotationEntity {
     Number?: string;
     Customer?: number;
     Total?: number;
-    Currency?: string;
     Opportunity?: number;
     Status?: number;
     Owner?: number;
+    Currency?: string;
 }
 
 export interface QuotationCreateEntity {
@@ -23,10 +23,10 @@ export interface QuotationCreateEntity {
     readonly Number?: string;
     readonly Customer?: number;
     readonly Total?: number;
-    readonly Currency?: string;
     readonly Opportunity?: number;
     readonly Status?: number;
     readonly Owner?: number;
+    readonly Currency?: string;
 }
 
 export interface QuotationUpdateEntity extends QuotationCreateEntity {
@@ -42,10 +42,10 @@ export interface QuotationEntityOptions {
             Number?: string | string[];
             Customer?: number | number[];
             Total?: number | number[];
-            Currency?: string | string[];
             Opportunity?: number | number[];
             Status?: number | number[];
             Owner?: number | number[];
+            Currency?: string | string[];
         };
         notEquals?: {
             Id?: number | number[];
@@ -54,10 +54,10 @@ export interface QuotationEntityOptions {
             Number?: string | string[];
             Customer?: number | number[];
             Total?: number | number[];
-            Currency?: string | string[];
             Opportunity?: number | number[];
             Status?: number | number[];
             Owner?: number | number[];
+            Currency?: string | string[];
         };
         contains?: {
             Id?: number;
@@ -66,10 +66,10 @@ export interface QuotationEntityOptions {
             Number?: string;
             Customer?: number;
             Total?: number;
-            Currency?: string;
             Opportunity?: number;
             Status?: number;
             Owner?: number;
+            Currency?: string;
         };
         greaterThan?: {
             Id?: number;
@@ -78,10 +78,10 @@ export interface QuotationEntityOptions {
             Number?: string;
             Customer?: number;
             Total?: number;
-            Currency?: string;
             Opportunity?: number;
             Status?: number;
             Owner?: number;
+            Currency?: string;
         };
         greaterThanOrEqual?: {
             Id?: number;
@@ -90,10 +90,10 @@ export interface QuotationEntityOptions {
             Number?: string;
             Customer?: number;
             Total?: number;
-            Currency?: string;
             Opportunity?: number;
             Status?: number;
             Owner?: number;
+            Currency?: string;
         };
         lessThan?: {
             Id?: number;
@@ -102,10 +102,10 @@ export interface QuotationEntityOptions {
             Number?: string;
             Customer?: number;
             Total?: number;
-            Currency?: string;
             Opportunity?: number;
             Status?: number;
             Owner?: number;
+            Currency?: string;
         };
         lessThanOrEqual?: {
             Id?: number;
@@ -114,10 +114,10 @@ export interface QuotationEntityOptions {
             Number?: string;
             Customer?: number;
             Total?: number;
-            Currency?: string;
             Opportunity?: number;
             Status?: number;
             Owner?: number;
+            Currency?: string;
         };
     },
     $select?: (keyof QuotationEntity)[],
@@ -177,12 +177,7 @@ export class QuotationRepository {
             {
                 name: "Total",
                 column: "QUOTATION_TOTAL",
-                type: "DOUBLE",
-            },
-            {
-                name: "Currency",
-                column: "QUOTATION_CURRENCYCODE",
-                type: "VARCHAR",
+                type: "DECIMAL",
             },
             {
                 name: "Opportunity",
@@ -198,6 +193,11 @@ export class QuotationRepository {
                 name: "Owner",
                 column: "QUOTATION_OWNER",
                 type: "INTEGER",
+            },
+            {
+                name: "Currency",
+                column: "QUOTATION_CURRENCY",
+                type: "VARCHAR",
             }
         ]
     };

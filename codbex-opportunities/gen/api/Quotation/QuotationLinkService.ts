@@ -130,6 +130,12 @@ class QuotationLinkService {
     }
 
     private validateEntity(entity: any): void {
+        if (entity.SalesOrder === null || entity.SalesOrder === undefined) {
+            throw new ValidationError(`The 'SalesOrder' property is required, provide a valid value`);
+        }
+        if (entity.Quotation === null || entity.Quotation === undefined) {
+            throw new ValidationError(`The 'Quotation' property is required, provide a valid value`);
+        }
         for (const next of validationModules) {
             next.validate(entity);
         }
