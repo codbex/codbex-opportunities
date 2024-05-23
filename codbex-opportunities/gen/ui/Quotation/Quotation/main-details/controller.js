@@ -44,6 +44,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				$scope.optionsCustomer = [];
 				$scope.optionsCurrency = [];
 				$scope.optionsOpportunity = [];
+				$scope.optionsStatus = [];
 				$scope.action = 'select';
 			});
 		});
@@ -58,6 +59,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				$scope.optionsCustomer = msg.data.optionsCustomer;
 				$scope.optionsCurrency = msg.data.optionsCurrency;
 				$scope.optionsOpportunity = msg.data.optionsOpportunity;
+				$scope.optionsStatus = msg.data.optionsStatus;
 				$scope.action = 'select';
 			});
 		});
@@ -69,6 +71,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				$scope.optionsCustomer = msg.data.optionsCustomer;
 				$scope.optionsCurrency = msg.data.optionsCurrency;
 				$scope.optionsOpportunity = msg.data.optionsOpportunity;
+				$scope.optionsStatus = msg.data.optionsStatus;
 				$scope.action = 'create';
 			});
 		});
@@ -83,6 +86,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				$scope.optionsCustomer = msg.data.optionsCustomer;
 				$scope.optionsCurrency = msg.data.optionsCurrency;
 				$scope.optionsOpportunity = msg.data.optionsOpportunity;
+				$scope.optionsStatus = msg.data.optionsStatus;
 				$scope.action = 'update';
 			});
 		});

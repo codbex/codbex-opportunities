@@ -24,6 +24,7 @@ angular.module('page', ["ideUI", "ideView"])
 			$scope.optionsCustomer = params.optionsCustomer;
 			$scope.optionsCurrency = params.optionsCurrency;
 			$scope.optionsOpportunity = params.optionsOpportunity;
+			$scope.optionsStatus = params.optionsStatus;
 		}
 
 		$scope.filter = function () {
