@@ -94,7 +94,7 @@
                         "dataType": "VARCHAR",
                         "dataUnique": "false",
                         "isCalculatedProperty": "false",
-                        "isRequiredProperty": "true",
+                        "isRequiredProperty": "",
                         "name": "ContactDesignation",
                         "widgetIsMajor": "true",
                         "widgetLength": "255",

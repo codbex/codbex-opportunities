@@ -137,9 +137,6 @@ class LeadService {
         if (entity.ContactName?.length > 255) {
             throw new ValidationError(`The 'ContactName' exceeds the maximum length of [255] characters`);
         }
-        if (entity.ContactDesignation === null || entity.ContactDesignation === undefined) {
-            throw new ValidationError(`The 'ContactDesignation' property is required, provide a valid value`);
-        }
         if (entity.ContactDesignation?.length > 255) {
             throw new ValidationError(`The 'ContactDesignation' exceeds the maximum length of [255] characters`);
         }

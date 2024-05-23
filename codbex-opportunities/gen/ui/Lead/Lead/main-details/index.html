@@ -87,14 +87,14 @@
                     </fd-form-item>
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idContactDesignation" dg-required="true" dg-colon="true">ContactDesignation</fd-form-label>
+                        	<fd-form-label for="idContactDesignation" dg-required="false" dg-colon="true">ContactDesignation</fd-form-label>
                         </div>
                         <div class="fd-col  fd-col-md--8 ">
 	                        <fd-form-input-message-group dg-inactive="{{ forms.details['ContactDesignation'].$valid }}">
 	                            <fd-input id="idContactDesignation"
 	                                name="ContactDesignation"
 	                                state="{{ forms.details['ContactDesignation'].$valid ? '' : 'error' }}"
-									ng-required="true"
+									ng-required="false"
 	                                ng-model="entity.ContactDesignation"
 	                                ng-readonly="action === 'select'"
 	                                ng-minlength="0.0 || 0"

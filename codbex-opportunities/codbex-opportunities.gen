@@ -4,12 +4,12 @@
   "brandUrl": "https://www.codbex.com/",
   "title": "Opportunities Management Module",
   "description": "Managing opportunities data",
+  "fileName": "codbex-opportunities",
+  "dataSource": "DefaultDB",
   "projectName": "codbex-opportunities",
   "workspaceName": "workspace",
   "filePath": "codbex-opportunities.model",
   "templateId": "template-application-angular/template/template.js",
-  "fileName": "codbex-opportunities",
-  "dataSource": "DefaultDB",
   "perspectives": {
     "Lead": {
       "views": [
@@ -313,7 +313,7 @@
           "dataType": "VARCHAR",
           "dataUnique": false,
           "isCalculatedProperty": false,
-          "isRequiredProperty": true,
+          "isRequiredProperty": false,
           "name": "ContactDesignation",
           "widgetIsMajor": true,
           "widgetLength": "255",
@@ -617,7 +617,7 @@
             "dataType": "VARCHAR",
             "dataUnique": false,
             "isCalculatedProperty": false,
-            "isRequiredProperty": true,
+            "isRequiredProperty": false,
             "name": "ContactDesignation",
             "widgetIsMajor": true,
             "widgetLength": "255",

@@ -5636,7 +5636,6 @@ components:
         - Name
         - CompanyName
         - ContactName
-        - ContactDesignation
         - ContactEmail
         - ContactPhone
       properties:
