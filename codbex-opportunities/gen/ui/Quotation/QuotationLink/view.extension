@@ -1,0 +1,5 @@
+{
+    "module": "codbex-opportunities/gen/ui/Quotation/${masterEntity}/QuotationLink/view.js",
+    "extensionPoint": "codbex-opportunities-view",
+    "description": "codbex-opportunities - Application View - Details"
+}
