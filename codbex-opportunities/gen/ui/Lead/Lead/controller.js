@@ -3,9 +3,9 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		messageHubProvider.eventIdPrefix = 'codbex-opportunities.Lead.Lead';
 	}])
 	.config(["entityApiProvider", function (entityApiProvider) {
-		entityApiProvider.baseUrl = "/services/js/codbex-opportunities/gen/api/Lead/Lead.js";
+		entityApiProvider.baseUrl = "/services/ts/codbex-opportunities/gen/api/Lead/LeadService.ts";
 	}])
-	.controller('PageController', ['$scope', '$http', 'messageHub', 'entityApi', function ($scope, $http, messageHub, entityApi) {
+	.controller('PageController', ['$scope', '$http', 'messageHub', 'entityApi', 'Extensions', function ($scope, $http, messageHub, entityApi, Extensions) {
 
 		$scope.dataPage = 1;
 		$scope.dataCount = 0;
@@ -13,9 +13,32 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		$scope.dataLimit = 10;
 		$scope.action = "select";
 
+		//-----------------Custom Actions-------------------//
+		Extensions.get('dialogWindow', 'codbex-opportunities-custom-action').then(function (response) {
+			$scope.pageActions = response.filter(e => e.perspective === "Lead" && e.view === "Lead" && (e.type === "page" || e.type === undefined));
+		});
+
+		$scope.triggerPageAction = function (action) {
+			messageHub.showDialogWindow(
+				action.id,
+				{},
+				null,
+				true,
+				action
+			);
+		};
+		//-----------------Custom Actions-------------------//
+
 		function refreshData() {
 			$scope.dataReset = true;
 			$scope.dataPage--;
+		}
+
+		function resetPagination() {
+			$scope.dataReset = true;
+			$scope.dataPage = 1;
+			$scope.dataCount = 0;
+			$scope.dataLimit = 10;
 		}
 
 		//-----------------Events-------------------//
@@ -28,33 +51,49 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 
 		messageHub.onDidReceiveMessage("entityCreated", function (msg) {
 			refreshData();
-			$scope.loadPage();
+			$scope.loadPage($scope.dataPage, $scope.filter);
 		});
 
 		messageHub.onDidReceiveMessage("entityUpdated", function (msg) {
 			refreshData();
-			$scope.loadPage();
+			$scope.loadPage($scope.dataPage, $scope.filter);
+		});
+
+		messageHub.onDidReceiveMessage("entitySearch", function (msg) {
+			resetPagination();
+			$scope.filter = msg.data.filter;
+			$scope.filterEntity = msg.data.entity;
+			$scope.loadPage($scope.dataPage, $scope.filter);
 		});
 		//-----------------Events-------------------//
 
-		$scope.loadPage = function () {
+		$scope.loadPage = function (pageNumber, filter) {
+			if (!filter && $scope.filter) {
+				filter = $scope.filter;
+			}
+			if (!filter) {
+				filter = {};
+			}
 			$scope.selectedEntity = null;
-			entityApi.count().then(function (response) {
+			entityApi.count(filter).then(function (response) {
 				if (response.status != 200) {
 					messageHub.showAlertError("Lead", `Unable to count Lead: '${response.message}'`);
 					return;
 				}
-				$scope.dataCount = response.data;
-				$scope.dataPages = Math.ceil($scope.dataCount / $scope.dataLimit);
-				let offset = ($scope.dataPage - 1) * $scope.dataLimit;
-				let limit = $scope.dataLimit;
-				if ($scope.dataReset) {
-					offset = 0;
-					limit = $scope.dataPage * $scope.dataLimit;
+				if (response.data) {
+					$scope.dataCount = response.data;
 				}
-				entityApi.list(offset, limit).then(function (response) {
+				$scope.dataPages = Math.ceil($scope.dataCount / $scope.dataLimit);
+				filter.$offset = ($scope.dataPage - 1) * $scope.dataLimit;
+				filter.$limit = $scope.dataLimit;
+				if ($scope.dataReset) {
+					filter.$offset = 0;
+					filter.$limit = $scope.dataPage * $scope.dataLimit;
+				}
+
+				entityApi.search(filter).then(function (response) {
 					if (response.status != 200) {
-						messageHub.showAlertError("Lead", `Unable to list Lead: '${response.message}'`);
+						messageHub.showAlertError("Lead", `Unable to list/filter Lead: '${response.message}'`);
 						return;
 					}
 					if ($scope.data == null || $scope.dataReset) {
@@ -66,7 +105,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				});
 			});
 		};
-		$scope.loadPage($scope.dataPage);
+		$scope.loadPage($scope.dataPage, $scope.filter);
 
 		$scope.selectEntity = function (entity) {
 			$scope.selectedEntity = entity;
@@ -124,10 +163,19 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 							return;
 						}
 						refreshData();
-						$scope.loadPage($scope.dataPage);
+						$scope.loadPage($scope.dataPage, $scope.filter);
 						messageHub.postMessage("clearDetails");
 					});
 				}
+			});
+		};
+
+		$scope.openFilter = function (entity) {
+			messageHub.showDialogWindow("Lead-filter", {
+				entity: $scope.filterEntity,
+				optionsIndustry: $scope.optionsIndustry,
+				optionsStatus: $scope.optionsStatus,
+				optionsOwner: $scope.optionsOwner,
 			});
 		};
 
@@ -136,7 +184,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		$scope.optionsStatus = [];
 		$scope.optionsOwner = [];
 
-		$http.get("/services/js/codbex-opportunities/gen/api/entities/Industry.js").then(function (response) {
+
+		$http.get("/services/ts/codbex-industries/gen/api/industry/IndustryService.ts").then(function (response) {
 			$scope.optionsIndustry = response.data.map(e => {
 				return {
 					value: e.Id,
@@ -145,7 +194,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		});
 
-		$http.get("/services/js/codbex-opportunities/gen/api/Settings/LeadStatus.js").then(function (response) {
+		$http.get("/services/ts/codbex-opportunities/gen/api/Settings/LeadStatusService.ts").then(function (response) {
 			$scope.optionsStatus = response.data.map(e => {
 				return {
 					value: e.Id,
@@ -154,7 +203,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		});
 
-		$http.get("/services/js/codbex-opportunities/gen/api/entities/Employee.js").then(function (response) {
+		$http.get("/services/ts/codbex-employees/gen/api/Employees/EmployeeService.ts").then(function (response) {
 			$scope.optionsOwner = response.data.map(e => {
 				return {
 					value: e.Id,
@@ -162,6 +211,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				}
 			});
 		});
+
 		$scope.optionsIndustryValue = function (optionKey) {
 			for (let i = 0; i < $scope.optionsIndustry.length; i++) {
 				if ($scope.optionsIndustry[i].value === optionKey) {

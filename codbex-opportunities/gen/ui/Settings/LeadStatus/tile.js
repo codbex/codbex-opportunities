@@ -7,11 +7,11 @@ exports.getTile = function () {
     return {
         group: "Settings",
         name: "LeadStatus",
-        caption: "Manage entity Entity2",
-        tooltip: "Entity2",
+        caption: "Manage entity LeadStatus",
+        tooltip: "LeadStatus",
         // icon: "file-o",
         location: "/services/web/codbex-opportunities/gen/ui/Settings/index.html",
         order: "100",
-        groupOrder: "999"
+        groupOrder: "999",
     };
 };

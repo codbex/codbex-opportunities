@@ -3,9 +3,9 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		messageHubProvider.eventIdPrefix = 'codbex-opportunities.Quotation.Quotation';
 	}])
 	.config(["entityApiProvider", function (entityApiProvider) {
-		entityApiProvider.baseUrl = "/services/js/codbex-opportunities/gen/api/Quotation/Quotation.js";
+		entityApiProvider.baseUrl = "/services/ts/codbex-opportunities/gen/api/Quotation/QuotationService.ts";
 	}])
-	.controller('PageController', ['$scope', '$http', 'messageHub', 'entityApi', function ($scope, $http, messageHub, entityApi) {
+	.controller('PageController', ['$scope', '$http', 'messageHub', 'entityApi', 'Extensions', function ($scope, $http, messageHub, entityApi, Extensions) {
 
 		$scope.dataPage = 1;
 		$scope.dataCount = 0;
@@ -13,9 +13,32 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		$scope.dataLimit = 10;
 		$scope.action = "select";
 
+		//-----------------Custom Actions-------------------//
+		Extensions.get('dialogWindow', 'codbex-opportunities-custom-action').then(function (response) {
+			$scope.pageActions = response.filter(e => e.perspective === "Quotation" && e.view === "Quotation" && (e.type === "page" || e.type === undefined));
+		});
+
+		$scope.triggerPageAction = function (action) {
+			messageHub.showDialogWindow(
+				action.id,
+				{},
+				null,
+				true,
+				action
+			);
+		};
+		//-----------------Custom Actions-------------------//
+
 		function refreshData() {
 			$scope.dataReset = true;
 			$scope.dataPage--;
+		}
+
+		function resetPagination() {
+			$scope.dataReset = true;
+			$scope.dataPage = 1;
+			$scope.dataCount = 0;
+			$scope.dataLimit = 10;
 		}
 
 		//-----------------Events-------------------//
@@ -28,33 +51,49 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 
 		messageHub.onDidReceiveMessage("entityCreated", function (msg) {
 			refreshData();
-			$scope.loadPage();
+			$scope.loadPage($scope.dataPage, $scope.filter);
 		});
 
 		messageHub.onDidReceiveMessage("entityUpdated", function (msg) {
 			refreshData();
-			$scope.loadPage();
+			$scope.loadPage($scope.dataPage, $scope.filter);
+		});
+
+		messageHub.onDidReceiveMessage("entitySearch", function (msg) {
+			resetPagination();
+			$scope.filter = msg.data.filter;
+			$scope.filterEntity = msg.data.entity;
+			$scope.loadPage($scope.dataPage, $scope.filter);
 		});
 		//-----------------Events-------------------//
 
-		$scope.loadPage = function () {
+		$scope.loadPage = function (pageNumber, filter) {
+			if (!filter && $scope.filter) {
+				filter = $scope.filter;
+			}
+			if (!filter) {
+				filter = {};
+			}
 			$scope.selectedEntity = null;
-			entityApi.count().then(function (response) {
+			entityApi.count(filter).then(function (response) {
 				if (response.status != 200) {
 					messageHub.showAlertError("Quotation", `Unable to count Quotation: '${response.message}'`);
 					return;
 				}
-				$scope.dataCount = response.data;
-				$scope.dataPages = Math.ceil($scope.dataCount / $scope.dataLimit);
-				let offset = ($scope.dataPage - 1) * $scope.dataLimit;
-				let limit = $scope.dataLimit;
-				if ($scope.dataReset) {
-					offset = 0;
-					limit = $scope.dataPage * $scope.dataLimit;
+				if (response.data) {
+					$scope.dataCount = response.data;
 				}
-				entityApi.list(offset, limit).then(function (response) {
+				$scope.dataPages = Math.ceil($scope.dataCount / $scope.dataLimit);
+				filter.$offset = ($scope.dataPage - 1) * $scope.dataLimit;
+				filter.$limit = $scope.dataLimit;
+				if ($scope.dataReset) {
+					filter.$offset = 0;
+					filter.$limit = $scope.dataPage * $scope.dataLimit;
+				}
+
+				entityApi.search(filter).then(function (response) {
 					if (response.status != 200) {
-						messageHub.showAlertError("Quotation", `Unable to list Quotation: '${response.message}'`);
+						messageHub.showAlertError("Quotation", `Unable to list/filter Quotation: '${response.message}'`);
 						return;
 					}
 					if ($scope.data == null || $scope.dataReset) {
@@ -73,18 +112,18 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				});
 			});
 		};
-		$scope.loadPage($scope.dataPage);
+		$scope.loadPage($scope.dataPage, $scope.filter);
 
 		$scope.selectEntity = function (entity) {
 			$scope.selectedEntity = entity;
 			messageHub.postMessage("entitySelected", {
 				entity: entity,
 				selectedMainEntityId: entity.Id,
+				optionsOwner: $scope.optionsOwner,
 				optionsCustomer: $scope.optionsCustomer,
 				optionsCurrency: $scope.optionsCurrency,
 				optionsOpportunity: $scope.optionsOpportunity,
 				optionsStatus: $scope.optionsStatus,
-				optionsOwner: $scope.optionsOwner,
 			});
 		};
 
@@ -94,11 +133,11 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 
 			messageHub.postMessage("createEntity", {
 				entity: {},
+				optionsOwner: $scope.optionsOwner,
 				optionsCustomer: $scope.optionsCustomer,
 				optionsCurrency: $scope.optionsCurrency,
 				optionsOpportunity: $scope.optionsOpportunity,
 				optionsStatus: $scope.optionsStatus,
-				optionsOwner: $scope.optionsOwner,
 			});
 		};
 
@@ -106,11 +145,11 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			$scope.action = "update";
 			messageHub.postMessage("updateEntity", {
 				entity: $scope.selectedEntity,
+				optionsOwner: $scope.optionsOwner,
 				optionsCustomer: $scope.optionsCustomer,
 				optionsCurrency: $scope.optionsCurrency,
 				optionsOpportunity: $scope.optionsOpportunity,
 				optionsStatus: $scope.optionsStatus,
-				optionsOwner: $scope.optionsOwner,
 			});
 		};
 
@@ -137,21 +176,42 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 							return;
 						}
 						refreshData();
-						$scope.loadPage($scope.dataPage);
+						$scope.loadPage($scope.dataPage, $scope.filter);
 						messageHub.postMessage("clearDetails");
 					});
 				}
 			});
 		};
 
+		$scope.openFilter = function (entity) {
+			messageHub.showDialogWindow("Quotation-filter", {
+				entity: $scope.filterEntity,
+				optionsOwner: $scope.optionsOwner,
+				optionsCustomer: $scope.optionsCustomer,
+				optionsCurrency: $scope.optionsCurrency,
+				optionsOpportunity: $scope.optionsOpportunity,
+				optionsStatus: $scope.optionsStatus,
+			});
+		};
+
 		//----------------Dropdowns-----------------//
+		$scope.optionsOwner = [];
 		$scope.optionsCustomer = [];
 		$scope.optionsCurrency = [];
 		$scope.optionsOpportunity = [];
 		$scope.optionsStatus = [];
-		$scope.optionsOwner = [];
 
-		$http.get("/services/js/codbex-opportunities/gen/api/entities/Partner.js").then(function (response) {
+
+		$http.get("/services/ts/codbex-employees/gen/api/Employees/EmployeeService.ts").then(function (response) {
+			$scope.optionsOwner = response.data.map(e => {
+				return {
+					value: e.Id,
+					text: e.Name
+				}
+			});
+		});
+
+		$http.get("/services/ts/codbex-partners/gen/api/Customers/CustomerService.ts").then(function (response) {
 			$scope.optionsCustomer = response.data.map(e => {
 				return {
 					value: e.Id,
@@ -160,16 +220,16 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		});
 
-		$http.get("/services/js/codbex-opportunities/gen/api/entities/Currency.js").then(function (response) {
+		$http.get("/services/ts/codbex-currencies/gen/api/Currencies/CurrencyService.ts").then(function (response) {
 			$scope.optionsCurrency = response.data.map(e => {
 				return {
-					value: e.Code,
+					value: e.Id,
 					text: e.Code
 				}
 			});
 		});
 
-		$http.get("/services/js/codbex-opportunities/gen/api/Opportunity/Opportunity.js").then(function (response) {
+		$http.get("/services/ts/codbex-opportunities/gen/api/Opportunity/OpportunityService.ts").then(function (response) {
 			$scope.optionsOpportunity = response.data.map(e => {
 				return {
 					value: e.Id,
@@ -178,7 +238,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		});
 
-		$http.get("/services/js/codbex-opportunities/gen/api/Settings/QuotationStatus.js").then(function (response) {
+		$http.get("/services/ts/codbex-opportunities/gen/api/Settings/QuotationStatusService.ts").then(function (response) {
 			$scope.optionsStatus = response.data.map(e => {
 				return {
 					value: e.Id,
@@ -187,14 +247,14 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		});
 
-		$http.get("/services/js/codbex-opportunities/gen/api/entities/Employee.js").then(function (response) {
-			$scope.optionsOwner = response.data.map(e => {
-				return {
-					value: e.Id,
-					text: e.Name
+		$scope.optionsOwnerValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsOwner.length; i++) {
+				if ($scope.optionsOwner[i].value === optionKey) {
+					return $scope.optionsOwner[i].text;
 				}
-			});
-		});
+			}
+			return null;
+		};
 		$scope.optionsCustomerValue = function (optionKey) {
 			for (let i = 0; i < $scope.optionsCustomer.length; i++) {
 				if ($scope.optionsCustomer[i].value === optionKey) {
@@ -223,14 +283,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			for (let i = 0; i < $scope.optionsStatus.length; i++) {
 				if ($scope.optionsStatus[i].value === optionKey) {
 					return $scope.optionsStatus[i].text;
-				}
-			}
-			return null;
-		};
-		$scope.optionsOwnerValue = function (optionKey) {
-			for (let i = 0; i < $scope.optionsOwner.length; i++) {
-				if ($scope.optionsOwner[i].value === optionKey) {
-					return $scope.optionsOwner[i].text;
 				}
 			}
 			return null;
