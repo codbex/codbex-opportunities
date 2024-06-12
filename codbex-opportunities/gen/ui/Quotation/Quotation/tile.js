@@ -5,11 +5,13 @@
  */
 exports.getTile = function () {
     return {
-        group: "Quotation",
+        group: "codbex-opportunities",
         name: "Quotation",
         caption: "Manage entity Quotation",
         tooltip: "Quotation",
-        // icon: "file-o",
+        type: "PRIMARY",
+        report: "false",
+        icon: "/services/web/resources/unicons/file.svg",
         location: "/services/web/codbex-opportunities/gen/ui/Quotation/index.html",
         order: "100",
         groupOrder: "300",

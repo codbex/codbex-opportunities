@@ -47,8 +47,8 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.Id !== undefined) {
 				filter.$filter.equals.Id = entity.Id;
 			}
-			if (entity.Name) {
-				filter.$filter.contains.Name = entity.Name;
+			if (entity.Number) {
+				filter.$filter.contains.Number = entity.Number;
 			}
 			if (entity.Source) {
 				filter.$filter.contains.Source = entity.Source;

@@ -15,7 +15,7 @@
                     },
                     {
                         "type": "VARCHAR",
-                        "length": 255,
+                        "length": 20,
                         "precision": "NaN",
                         "scale": "NaN",
                         "nullable": true,
@@ -191,7 +191,7 @@
                     },
                     {
                         "type": "VARCHAR",
-                        "length": 255,
+                        "length": 20,
                         "precision": "NaN",
                         "scale": "NaN",
                         "nullable": true,
@@ -387,7 +387,7 @@
                     },
                     {
                         "type": "VARCHAR",
-                        "length": 255,
+                        "length": 20,
                         "precision": "NaN",
                         "scale": "NaN",
                         "nullable": true,
@@ -400,14 +400,6 @@
                         "scale": "NaN",
                         "nullable": true,
                         "name": "QUOTATION_DATE"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 50,
-                        "precision": "NaN",
-                        "scale": "NaN",
-                        "nullable": true,
-                        "name": "QUOTATION_NUMBER"
                     },
                     {
                         "type": "INTEGER",

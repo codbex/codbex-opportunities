@@ -5,11 +5,13 @@
  */
 exports.getTile = function () {
     return {
-        group: "Opportunity",
+        group: "codbex-opportunities",
         name: "Opportunity",
         caption: "Manage entity Opportunity",
         tooltip: "Opportunity",
-        // icon: "file-o",
+        type: "PRIMARY",
+        report: "false",
+        icon: "/services/web/resources/unicons/file.svg",
         location: "/services/web/codbex-opportunities/gen/ui/Opportunity/index.html",
         order: "100",
         groupOrder: "200",

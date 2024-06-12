@@ -5,11 +5,13 @@
  */
 exports.getTile = function () {
     return {
-        group: "Lead",
+        group: "codbex-opportunities",
         name: "Lead",
         caption: "Manage entity Lead",
         tooltip: "Lead",
-        // icon: "file-o",
+        type: "PRIMARY",
+        report: "false",
+        icon: "/services/web/resources/unicons/file.svg",
         location: "/services/web/codbex-opportunities/gen/ui/Lead/index.html",
         order: "100",
         groupOrder: "100",

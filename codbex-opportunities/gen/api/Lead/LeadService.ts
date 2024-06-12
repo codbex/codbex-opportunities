@@ -3,6 +3,8 @@ import { Extensions } from "sdk/extensions"
 import { LeadRepository, LeadEntityOptions } from "../../dao/Lead/LeadRepository";
 import { ValidationError } from "../utils/ValidationError";
 import { HttpUtils } from "../utils/HttpUtils";
+// custom imports
+import { NumberGeneratorService } from "/codbex-number-generator/service/generator";
 
 const validationModules = await Extensions.loadExtensionModules("codbex-opportunities-Lead-Lead", ["validate"]);
 
@@ -119,11 +121,8 @@ class LeadService {
     }
 
     private validateEntity(entity: any): void {
-        if (entity.Name === null || entity.Name === undefined) {
-            throw new ValidationError(`The 'Name' property is required, provide a valid value`);
-        }
-        if (entity.Name?.length > 255) {
-            throw new ValidationError(`The 'Name' exceeds the maximum length of [255] characters`);
+        if (entity.Number?.length > 20) {
+            throw new ValidationError(`The 'Number' exceeds the maximum length of [20] characters`);
         }
         if (entity.CompanyName === null || entity.CompanyName === undefined) {
             throw new ValidationError(`The 'CompanyName' property is required, provide a valid value`);
@@ -151,6 +150,9 @@ class LeadService {
         }
         if (entity.ContactPhone?.length > 255) {
             throw new ValidationError(`The 'ContactPhone' exceeds the maximum length of [255] characters`);
+        }
+        if (entity.Owner === null || entity.Owner === undefined) {
+            throw new ValidationError(`The 'Owner' property is required, provide a valid value`);
         }
         for (const next of validationModules) {
             next.validate(entity);

@@ -2,10 +2,12 @@ import { query } from "sdk/db";
 import { producer } from "sdk/messaging";
 import { extensions } from "sdk/extensions";
 import { dao as daoApi } from "sdk/db";
+// custom imports
+import { NumberGeneratorService } from "/codbex-number-generator/service/generator";
 
 export interface LeadEntity {
     readonly Id: number;
-    Name?: string;
+    Number?: string;
     CompanyName?: string;
     ContactName?: string;
     ContactDesignation?: string;
@@ -17,7 +19,6 @@ export interface LeadEntity {
 }
 
 export interface LeadCreateEntity {
-    readonly Name?: string;
     readonly CompanyName?: string;
     readonly ContactName?: string;
     readonly ContactDesignation?: string;
@@ -36,7 +37,7 @@ export interface LeadEntityOptions {
     $filter?: {
         equals?: {
             Id?: number | number[];
-            Name?: string | string[];
+            Number?: string | string[];
             CompanyName?: string | string[];
             ContactName?: string | string[];
             ContactDesignation?: string | string[];
@@ -48,7 +49,7 @@ export interface LeadEntityOptions {
         };
         notEquals?: {
             Id?: number | number[];
-            Name?: string | string[];
+            Number?: string | string[];
             CompanyName?: string | string[];
             ContactName?: string | string[];
             ContactDesignation?: string | string[];
@@ -60,7 +61,7 @@ export interface LeadEntityOptions {
         };
         contains?: {
             Id?: number;
-            Name?: string;
+            Number?: string;
             CompanyName?: string;
             ContactName?: string;
             ContactDesignation?: string;
@@ -72,7 +73,7 @@ export interface LeadEntityOptions {
         };
         greaterThan?: {
             Id?: number;
-            Name?: string;
+            Number?: string;
             CompanyName?: string;
             ContactName?: string;
             ContactDesignation?: string;
@@ -84,7 +85,7 @@ export interface LeadEntityOptions {
         };
         greaterThanOrEqual?: {
             Id?: number;
-            Name?: string;
+            Number?: string;
             CompanyName?: string;
             ContactName?: string;
             ContactDesignation?: string;
@@ -96,7 +97,7 @@ export interface LeadEntityOptions {
         };
         lessThan?: {
             Id?: number;
-            Name?: string;
+            Number?: string;
             CompanyName?: string;
             ContactName?: string;
             ContactDesignation?: string;
@@ -108,7 +109,7 @@ export interface LeadEntityOptions {
         };
         lessThanOrEqual?: {
             Id?: number;
-            Name?: string;
+            Number?: string;
             CompanyName?: string;
             ContactName?: string;
             ContactDesignation?: string;
@@ -154,7 +155,7 @@ export class LeadRepository {
                 autoIncrement: true,
             },
             {
-                name: "Name",
+                name: "Number",
                 column: "LEAD_NAME",
                 type: "VARCHAR",
             },
@@ -217,6 +218,8 @@ export class LeadRepository {
     }
 
     public create(entity: LeadCreateEntity): number {
+        // @ts-ignore
+        (entity as LeadEntity).Number = new NumberGeneratorService().generate(1);
         const id = this.dao.insert(entity);
         this.triggerEvent({
             operation: "create",
