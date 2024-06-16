@@ -50,17 +50,14 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.Id !== undefined) {
 				filter.$filter.equals.Id = entity.Id;
 			}
-			if (entity.Name) {
-				filter.$filter.contains.Name = entity.Name;
+			if (entity.Number) {
+				filter.$filter.contains.Number = entity.Number;
 			}
 			if (entity.DateFrom) {
 				filter.$filter.greaterThanOrEqual.Date = entity.DateFrom;
 			}
 			if (entity.DateTo) {
 				filter.$filter.lessThanOrEqual.Date = entity.DateTo;
-			}
-			if (entity.Number) {
-				filter.$filter.contains.Number = entity.Number;
 			}
 			if (entity.Owner !== undefined) {
 				filter.$filter.equals.Owner = entity.Owner;

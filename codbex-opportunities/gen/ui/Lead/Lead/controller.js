@@ -207,7 +207,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			$scope.optionsOwner = response.data.map(e => {
 				return {
 					value: e.Id,
-					text: e.Name
+					text: e.FirstName
 				}
 			});
 		});

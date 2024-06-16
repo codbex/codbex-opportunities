@@ -269,7 +269,7 @@ paths:
                     notEquals:
                       Id: 33
                     contains:
-                      Name: "abcd"
+                      Number: "abcd"
                       CompanyName: "abcd"
                       ContactName: "abcd"
                       ContactDesignation: "abcd"
@@ -296,7 +296,7 @@ paths:
                 value:
                   $filter:
                     contains:
-                      Name: "abcd"
+                      Number: "abcd"
                       CompanyName: "abcd"
                       ContactName: "abcd"
                       ContactDesignation: "abcd"
@@ -365,7 +365,7 @@ paths:
                     notEquals:
                       Id: 33
                     contains:
-                      Name: "abcd"
+                      Number: "abcd"
                       CompanyName: "abcd"
                       ContactName: "abcd"
                       ContactDesignation: "abcd"
@@ -392,7 +392,7 @@ paths:
                 value:
                   $filter:
                     contains:
-                      Name: "abcd"
+                      Number: "abcd"
                       CompanyName: "abcd"
                       ContactName: "abcd"
                       ContactDesignation: "abcd"
@@ -1889,7 +1889,7 @@ paths:
                     notEquals:
                       Id: 33
                     contains:
-                      Name: "abcd"
+                      Number: "abcd"
                       Source: "abcd"
                     greaterThan:
                       Id: 0
@@ -1912,7 +1912,7 @@ paths:
                 value:
                   $filter:
                     contains:
-                      Name: "abcd"
+                      Number: "abcd"
                       Source: "abcd"
               countWithGreaterThan:
                 summary: Count with Greater Than
@@ -1977,7 +1977,7 @@ paths:
                     notEquals:
                       Id: 33
                     contains:
-                      Name: "abcd"
+                      Number: "abcd"
                       Source: "abcd"
                     greaterThan:
                       Id: 0
@@ -2000,7 +2000,7 @@ paths:
                 value:
                   $filter:
                     contains:
-                      Name: "abcd"
+                      Number: "abcd"
                       Source: "abcd"
               searchWithGreaterThan:
                 summary: Search with Greater Than
@@ -3897,7 +3897,6 @@ paths:
                     notEquals:
                       Id: 33
                     contains:
-                      Name: "abcd"
                       Number: "abcd"
                     greaterThan:
                       Id: 0
@@ -3920,7 +3919,6 @@ paths:
                 value:
                   $filter:
                     contains:
-                      Name: "abcd"
                       Number: "abcd"
               countWithGreaterThan:
                 summary: Count with Greater Than
@@ -3985,7 +3983,6 @@ paths:
                     notEquals:
                       Id: 33
                     contains:
-                      Name: "abcd"
                       Number: "abcd"
                     greaterThan:
                       Id: 0
@@ -4008,7 +4005,6 @@ paths:
                 value:
                   $filter:
                     contains:
-                      Name: "abcd"
                       Number: "abcd"
               searchWithGreaterThan:
                 summary: Search with Greater Than
@@ -5633,19 +5629,20 @@ components:
     Lead:
       type: object
       required:
-        - Name
         - CompanyName
         - ContactName
         - ContactEmail
         - ContactPhone
+        - Owner
       properties:
         Id:
           type: integer
           format: int32
-        Name:
+        Number:
           type: string
           minLength: 0
-          maxLength: 255
+          maxLength: 20
+          readOnly: true
         CompanyName:
           type: string
           minLength: 0
@@ -5692,17 +5689,17 @@ components:
                       items:
                         type: integer
                         format: int32
-                Name:
+                Number:
                   oneOf:
                     - type: string
                       minLength: 0
-                      maxLength: 255
+                      maxLength: 20
                     - type: array
                       items:
                         type: string
                         format: double
                         minLength: 0
-                        maxLength: 255
+                        maxLength: 20
                 CompanyName:
                   oneOf:
                     - type: string
@@ -5793,17 +5790,17 @@ components:
                       items:
                         type: integer
                         format: int32
-                Name:
+                Number:
                   oneOf:
                     - type: string
                       minLength: 0
-                      maxLength: 255
+                      maxLength: 20
                     - type: array
                       items:
                         type: string
                         format: double
                         minLength: 0
-                        maxLength: 255
+                        maxLength: 20
                 CompanyName:
                   oneOf:
                     - type: string
@@ -5887,10 +5884,10 @@ components:
               type: object
               properties:
                 Id:
-                Name:
+                Number:
                   type: string
                   minLength: 0
-                  maxLength: 255
+                  maxLength: 20
                 CompanyName:
                   type: string
                   minLength: 0
@@ -5920,10 +5917,10 @@ components:
                 Id:
                   type: integer
                   format: int32
-                Name:
+                Number:
                   type: string
                   minLength: 0
-                  maxLength: 255
+                  maxLength: 20
                 CompanyName:
                   type: string
                   minLength: 0
@@ -5959,10 +5956,10 @@ components:
                 Id:
                   type: integer
                   format: int32
-                Name:
+                Number:
                   type: string
                   minLength: 0
-                  maxLength: 255
+                  maxLength: 20
                 CompanyName:
                   type: string
                   minLength: 0
@@ -5998,10 +5995,10 @@ components:
                 Id:
                   type: integer
                   format: int32
-                Name:
+                Number:
                   type: string
                   minLength: 0
-                  maxLength: 255
+                  maxLength: 20
                 CompanyName:
                   type: string
                   minLength: 0
@@ -6037,10 +6034,10 @@ components:
                 Id:
                   type: integer
                   format: int32
-                Name:
+                Number:
                   type: string
                   minLength: 0
-                  maxLength: 255
+                  maxLength: 20
                 CompanyName:
                   type: string
                   minLength: 0
@@ -6072,12 +6069,12 @@ components:
                   format: int32
         $select:
           type: array
-          example: ["Id", "Name", "CompanyName", "ContactName", "ContactDesignation", "ContactEmail", "ContactPhone", "Industry", "Status", "Owner"]
+          example: ["Id", "Number", "CompanyName", "ContactName", "ContactDesignation", "ContactEmail", "ContactPhone", "Industry", "Status", "Owner"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,Name,CompanyName,ContactName,ContactDesignation,ContactEmail,ContactPhone,Industry,Status,Owner"
+            example: "Id,Number,CompanyName,ContactName,ContactDesignation,ContactEmail,ContactPhone,Industry,Status,Owner"
         $order:
           type: string
           enum: ["asc", "desc"]
@@ -6548,18 +6545,19 @@ components:
     Opportunity:
       type: object
       required:
-        - Name
         - Customer
         - Amount
+        - Owner
         - Currency
       properties:
         Id:
           type: integer
           format: int32
-        Name:
+        Number:
           type: string
           minLength: 0
-          maxLength: 255
+          maxLength: 20
+          readOnly: true
         Source:
           type: string
           minLength: 0
@@ -6608,17 +6606,17 @@ components:
                       items:
                         type: integer
                         format: int32
-                Name:
+                Number:
                   oneOf:
                     - type: string
                       minLength: 0
-                      maxLength: 255
+                      maxLength: 20
                     - type: array
                       items:
                         type: string
                         format: double
                         minLength: 0
-                        maxLength: 255
+                        maxLength: 20
                 Source:
                   oneOf:
                     - type: string
@@ -6713,17 +6711,17 @@ components:
                       items:
                         type: integer
                         format: int32
-                Name:
+                Number:
                   oneOf:
                     - type: string
                       minLength: 0
-                      maxLength: 255
+                      maxLength: 20
                     - type: array
                       items:
                         type: string
                         format: double
                         minLength: 0
-                        maxLength: 255
+                        maxLength: 20
                 Source:
                   oneOf:
                     - type: string
@@ -6811,10 +6809,10 @@ components:
               type: object
               properties:
                 Id:
-                Name:
+                Number:
                   type: string
                   minLength: 0
-                  maxLength: 255
+                  maxLength: 20
                 Source:
                   type: string
                   minLength: 0
@@ -6834,10 +6832,10 @@ components:
                 Id:
                   type: integer
                   format: int32
-                Name:
+                Number:
                   type: string
                   minLength: 0
-                  maxLength: 255
+                  maxLength: 20
                 Source:
                   type: string
                   minLength: 0
@@ -6875,10 +6873,10 @@ components:
                 Id:
                   type: integer
                   format: int32
-                Name:
+                Number:
                   type: string
                   minLength: 0
-                  maxLength: 255
+                  maxLength: 20
                 Source:
                   type: string
                   minLength: 0
@@ -6916,10 +6914,10 @@ components:
                 Id:
                   type: integer
                   format: int32
-                Name:
+                Number:
                   type: string
                   minLength: 0
-                  maxLength: 255
+                  maxLength: 20
                 Source:
                   type: string
                   minLength: 0
@@ -6957,10 +6955,10 @@ components:
                 Id:
                   type: integer
                   format: int32
-                Name:
+                Number:
                   type: string
                   minLength: 0
-                  maxLength: 255
+                  maxLength: 20
                 Source:
                   type: string
                   minLength: 0
@@ -6994,12 +6992,12 @@ components:
                   format: int32
         $select:
           type: array
-          example: ["Id", "Name", "Source", "Customer", "Amount", "Lead", "Owner", "Type", "Priority", "Probability", "Status", "Currency"]
+          example: ["Id", "Number", "Source", "Customer", "Amount", "Lead", "Owner", "Type", "Priority", "Probability", "Status", "Currency"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,Name,Source,Customer,Amount,Lead,Owner,Type,Priority,Probability,Status,Currency"
+            example: "Id,Number,Source,Customer,Amount,Lead,Owner,Type,Priority,Probability,Status,Currency"
         $order:
           type: string
           enum: ["asc", "desc"]
@@ -7567,7 +7565,6 @@ components:
     Quotation:
       type: object
       required:
-        - Name
         - Owner
         - Customer
         - Total
@@ -7576,15 +7573,12 @@ components:
         Id:
           type: integer
           format: int32
-        Name:
-          type: string
-          minLength: 0
-          maxLength: 255
-        Date:
         Number:
           type: string
           minLength: 0
-          maxLength: 50
+          maxLength: 20
+          readOnly: true
+        Date:
         Owner:
           type: integer
           format: int32
@@ -7620,30 +7614,19 @@ components:
                       items:
                         type: integer
                         format: int32
-                Name:
-                  oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 255
-                    - type: array
-                      items:
-                        type: string
-                        format: double
-                        minLength: 0
-                        maxLength: 255
-                Date:
-                  oneOf:
                 Number:
                   oneOf:
                     - type: string
                       minLength: 0
-                      maxLength: 50
+                      maxLength: 20
                     - type: array
                       items:
                         type: string
                         format: double
                         minLength: 0
-                        maxLength: 50
+                        maxLength: 20
+                Date:
+                  oneOf:
                 Owner:
                   oneOf:
                     - type: integer
@@ -7703,30 +7686,19 @@ components:
                       items:
                         type: integer
                         format: int32
-                Name:
-                  oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 255
-                    - type: array
-                      items:
-                        type: string
-                        format: double
-                        minLength: 0
-                        maxLength: 255
-                Date:
-                  oneOf:
                 Number:
                   oneOf:
                     - type: string
                       minLength: 0
-                      maxLength: 50
+                      maxLength: 20
                     - type: array
                       items:
                         type: string
                         format: double
                         minLength: 0
-                        maxLength: 50
+                        maxLength: 20
+                Date:
+                  oneOf:
                 Owner:
                   oneOf:
                     - type: integer
@@ -7779,15 +7751,11 @@ components:
               type: object
               properties:
                 Id:
-                Name:
-                  type: string
-                  minLength: 0
-                  maxLength: 255
-                Date:
                 Number:
                   type: string
                   minLength: 0
-                  maxLength: 50
+                  maxLength: 20
+                Date:
                 Owner:
                 Customer:
                 Total:
@@ -7800,15 +7768,11 @@ components:
                 Id:
                   type: integer
                   format: int32
-                Name:
-                  type: string
-                  minLength: 0
-                  maxLength: 255
-                Date:
                 Number:
                   type: string
                   minLength: 0
-                  maxLength: 50
+                  maxLength: 20
+                Date:
                 Owner:
                   type: integer
                   format: int32
@@ -7833,15 +7797,11 @@ components:
                 Id:
                   type: integer
                   format: int32
-                Name:
-                  type: string
-                  minLength: 0
-                  maxLength: 255
-                Date:
                 Number:
                   type: string
                   minLength: 0
-                  maxLength: 50
+                  maxLength: 20
+                Date:
                 Owner:
                   type: integer
                   format: int32
@@ -7866,15 +7826,11 @@ components:
                 Id:
                   type: integer
                   format: int32
-                Name:
-                  type: string
-                  minLength: 0
-                  maxLength: 255
-                Date:
                 Number:
                   type: string
                   minLength: 0
-                  maxLength: 50
+                  maxLength: 20
+                Date:
                 Owner:
                   type: integer
                   format: int32
@@ -7899,15 +7855,11 @@ components:
                 Id:
                   type: integer
                   format: int32
-                Name:
-                  type: string
-                  minLength: 0
-                  maxLength: 255
-                Date:
                 Number:
                   type: string
                   minLength: 0
-                  maxLength: 50
+                  maxLength: 20
+                Date:
                 Owner:
                   type: integer
                   format: int32
@@ -7928,12 +7880,12 @@ components:
                   format: int32
         $select:
           type: array
-          example: ["Id", "Name", "Date", "Number", "Owner", "Customer", "Total", "Currency", "Opportunity", "Status"]
+          example: ["Id", "Number", "Date", "Owner", "Customer", "Total", "Currency", "Opportunity", "Status"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,Name,Date,Number,Owner,Customer,Total,Currency,Opportunity,Status"
+            example: "Id,Number,Date,Owner,Customer,Total,Currency,Opportunity,Status"
         $order:
           type: string
           enum: ["asc", "desc"]

@@ -3,12 +3,13 @@ import { producer } from "sdk/messaging";
 import { extensions } from "sdk/extensions";
 import { dao as daoApi } from "sdk/db";
 import { EntityUtils } from "../utils/EntityUtils";
+// custom imports
+import { NumberGeneratorService } from "/codbex-number-generator/service/generator";
 
 export interface QuotationEntity {
     readonly Id: number;
-    Name?: string;
-    Date?: Date;
     Number?: string;
+    Date?: Date;
     Owner?: number;
     Customer?: number;
     Total?: number;
@@ -18,9 +19,7 @@ export interface QuotationEntity {
 }
 
 export interface QuotationCreateEntity {
-    readonly Name?: string;
     readonly Date?: Date;
-    readonly Number?: string;
     readonly Owner?: number;
     readonly Customer?: number;
     readonly Total?: number;
@@ -37,9 +36,8 @@ export interface QuotationEntityOptions {
     $filter?: {
         equals?: {
             Id?: number | number[];
-            Name?: string | string[];
-            Date?: Date | Date[];
             Number?: string | string[];
+            Date?: Date | Date[];
             Owner?: number | number[];
             Customer?: number | number[];
             Total?: number | number[];
@@ -49,9 +47,8 @@ export interface QuotationEntityOptions {
         };
         notEquals?: {
             Id?: number | number[];
-            Name?: string | string[];
-            Date?: Date | Date[];
             Number?: string | string[];
+            Date?: Date | Date[];
             Owner?: number | number[];
             Customer?: number | number[];
             Total?: number | number[];
@@ -61,9 +58,8 @@ export interface QuotationEntityOptions {
         };
         contains?: {
             Id?: number;
-            Name?: string;
-            Date?: Date;
             Number?: string;
+            Date?: Date;
             Owner?: number;
             Customer?: number;
             Total?: number;
@@ -73,9 +69,8 @@ export interface QuotationEntityOptions {
         };
         greaterThan?: {
             Id?: number;
-            Name?: string;
-            Date?: Date;
             Number?: string;
+            Date?: Date;
             Owner?: number;
             Customer?: number;
             Total?: number;
@@ -85,9 +80,8 @@ export interface QuotationEntityOptions {
         };
         greaterThanOrEqual?: {
             Id?: number;
-            Name?: string;
-            Date?: Date;
             Number?: string;
+            Date?: Date;
             Owner?: number;
             Customer?: number;
             Total?: number;
@@ -97,9 +91,8 @@ export interface QuotationEntityOptions {
         };
         lessThan?: {
             Id?: number;
-            Name?: string;
-            Date?: Date;
             Number?: string;
+            Date?: Date;
             Owner?: number;
             Customer?: number;
             Total?: number;
@@ -109,9 +102,8 @@ export interface QuotationEntityOptions {
         };
         lessThanOrEqual?: {
             Id?: number;
-            Name?: string;
-            Date?: Date;
             Number?: string;
+            Date?: Date;
             Owner?: number;
             Customer?: number;
             Total?: number;
@@ -155,7 +147,7 @@ export class QuotationRepository {
                 autoIncrement: true,
             },
             {
-                name: "Name",
+                name: "Number",
                 column: "QUOTATION_NAME",
                 type: "VARCHAR",
             },
@@ -163,11 +155,6 @@ export class QuotationRepository {
                 name: "Date",
                 column: "QUOTATION_DATE",
                 type: "DATE",
-            },
-            {
-                name: "Number",
-                column: "QUOTATION_NUMBER",
-                type: "VARCHAR",
             },
             {
                 name: "Owner",
@@ -223,6 +210,8 @@ export class QuotationRepository {
 
     public create(entity: QuotationCreateEntity): number {
         EntityUtils.setLocalDate(entity, "Date");
+        // @ts-ignore
+        (entity as QuotationEntity).Number = new NumberGeneratorService().generate(3);
         const id = this.dao.insert(entity);
         this.triggerEvent({
             operation: "create",

@@ -3,6 +3,8 @@ import { Extensions } from "sdk/extensions"
 import { OpportunityRepository, OpportunityEntityOptions } from "../../dao/Opportunity/OpportunityRepository";
 import { ValidationError } from "../utils/ValidationError";
 import { HttpUtils } from "../utils/HttpUtils";
+// custom imports
+import { NumberGeneratorService } from "/codbex-number-generator/service/generator";
 
 const validationModules = await Extensions.loadExtensionModules("codbex-opportunities-Opportunity-Opportunity", ["validate"]);
 
@@ -119,11 +121,8 @@ class OpportunityService {
     }
 
     private validateEntity(entity: any): void {
-        if (entity.Name === null || entity.Name === undefined) {
-            throw new ValidationError(`The 'Name' property is required, provide a valid value`);
-        }
-        if (entity.Name?.length > 255) {
-            throw new ValidationError(`The 'Name' exceeds the maximum length of [255] characters`);
+        if (entity.Number?.length > 20) {
+            throw new ValidationError(`The 'Number' exceeds the maximum length of [20] characters`);
         }
         if (entity.Source?.length > 255) {
             throw new ValidationError(`The 'Source' exceeds the maximum length of [255] characters`);
@@ -133,6 +132,9 @@ class OpportunityService {
         }
         if (entity.Amount === null || entity.Amount === undefined) {
             throw new ValidationError(`The 'Amount' property is required, provide a valid value`);
+        }
+        if (entity.Owner === null || entity.Owner === undefined) {
+            throw new ValidationError(`The 'Owner' property is required, provide a valid value`);
         }
         if (entity.Currency === null || entity.Currency === undefined) {
             throw new ValidationError(`The 'Currency' property is required, provide a valid value`);

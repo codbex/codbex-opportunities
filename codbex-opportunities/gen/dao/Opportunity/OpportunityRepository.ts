@@ -2,10 +2,12 @@ import { query } from "sdk/db";
 import { producer } from "sdk/messaging";
 import { extensions } from "sdk/extensions";
 import { dao as daoApi } from "sdk/db";
+// custom imports
+import { NumberGeneratorService } from "/codbex-number-generator/service/generator";
 
 export interface OpportunityEntity {
     readonly Id: number;
-    Name?: string;
+    Number?: string;
     Source?: string;
     Customer?: number;
     Amount?: number;
@@ -19,7 +21,6 @@ export interface OpportunityEntity {
 }
 
 export interface OpportunityCreateEntity {
-    readonly Name?: string;
     readonly Source?: string;
     readonly Customer?: number;
     readonly Amount?: number;
@@ -40,7 +41,7 @@ export interface OpportunityEntityOptions {
     $filter?: {
         equals?: {
             Id?: number | number[];
-            Name?: string | string[];
+            Number?: string | string[];
             Source?: string | string[];
             Customer?: number | number[];
             Amount?: number | number[];
@@ -54,7 +55,7 @@ export interface OpportunityEntityOptions {
         };
         notEquals?: {
             Id?: number | number[];
-            Name?: string | string[];
+            Number?: string | string[];
             Source?: string | string[];
             Customer?: number | number[];
             Amount?: number | number[];
@@ -68,7 +69,7 @@ export interface OpportunityEntityOptions {
         };
         contains?: {
             Id?: number;
-            Name?: string;
+            Number?: string;
             Source?: string;
             Customer?: number;
             Amount?: number;
@@ -82,7 +83,7 @@ export interface OpportunityEntityOptions {
         };
         greaterThan?: {
             Id?: number;
-            Name?: string;
+            Number?: string;
             Source?: string;
             Customer?: number;
             Amount?: number;
@@ -96,7 +97,7 @@ export interface OpportunityEntityOptions {
         };
         greaterThanOrEqual?: {
             Id?: number;
-            Name?: string;
+            Number?: string;
             Source?: string;
             Customer?: number;
             Amount?: number;
@@ -110,7 +111,7 @@ export interface OpportunityEntityOptions {
         };
         lessThan?: {
             Id?: number;
-            Name?: string;
+            Number?: string;
             Source?: string;
             Customer?: number;
             Amount?: number;
@@ -124,7 +125,7 @@ export interface OpportunityEntityOptions {
         };
         lessThanOrEqual?: {
             Id?: number;
-            Name?: string;
+            Number?: string;
             Source?: string;
             Customer?: number;
             Amount?: number;
@@ -172,7 +173,7 @@ export class OpportunityRepository {
                 autoIncrement: true,
             },
             {
-                name: "Name",
+                name: "Number",
                 column: "OPPORTUNITY_NAME",
                 type: "VARCHAR",
             },
@@ -245,6 +246,8 @@ export class OpportunityRepository {
     }
 
     public create(entity: OpportunityCreateEntity): number {
+        // @ts-ignore
+        (entity as OpportunityEntity).Number = new NumberGeneratorService().generate(2);
         const id = this.dao.insert(entity);
         this.triggerEvent({
             operation: "create",
