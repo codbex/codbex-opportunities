@@ -1,0 +1,5 @@
+{
+    "module": "codbex-opportunities/gen/codbex-opportunities/ui/launchpad/menu-help.js",
+    "extensionPoint": "codbex-opportunities-menu",
+    "description": "codbex-opportunities - Application Menu"
+}

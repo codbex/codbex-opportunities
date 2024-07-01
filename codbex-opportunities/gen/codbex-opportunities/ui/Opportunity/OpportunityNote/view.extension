@@ -1,0 +1,5 @@
+{
+    "module": "codbex-opportunities/gen/codbex-opportunities/ui/Opportunity/${masterEntity}/OpportunityNote/view.js",
+    "extensionPoint": "codbex-opportunities-view",
+    "description": "codbex-opportunities - Application View - Details"
+}
