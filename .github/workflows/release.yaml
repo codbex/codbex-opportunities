@@ -1,4 +1,4 @@
-name: Release - Application
+name: Release - Module
 
 on:
   workflow_dispatch:
@@ -12,24 +12,24 @@ run-name: 'version set to ${{ inputs.release-version }} for release'
 
 jobs:
   main:
-    uses: codbex/codbex-infra/.github/workflows/application-release.yaml@main
+    uses: codbex/codbex-infra/.github/workflows/module-release.yaml@main
     with:
-      application-name: codbex-opportunities
+      packages: codbex-opportunities,codbex-opportunities-data
+      packages-build: codbex-opportunities
       release-version: ${{ inputs.release-version }}
       release-content: |
         ## codbex-opportunities - ${{ inputs.release-version }}
   
-        Opportunities Management Applications
+        Opportunities Management Module
   
-        ## Deployment
+        ## Installation
   
         ```
-        docker run --name codbex-opportunities \
-        --rm -p 8080:8080 -p 8081:8081 \
-        ghcr.io/codbex/codbex-opportunities:${{ inputs.release-version }}
+        npm install @codbex/codbex-opportunities@${{ inputs.release-version }}
+        npm install @codbex/codbex-opportunities-data@${{ inputs.release-version }}
         ```
   
         ## Access points:
   
-        - [/services/web/codbex-opportunities/gen/](http://localhost:8080/services/web/codbex-opportunities/gen/) - Admin Panel
+        - [/services/web/codbex-opportunities/gen/](http://localhost:80/services/web/codbex-opportunities/gen/) - Admin Panel
     secrets: inherit
