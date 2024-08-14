@@ -14,7 +14,7 @@
         "@codbex/codbex-partners": "0.1.0",
         "@codbex/codbex-employees": "0.1.0",
         "@codbex/codbex-currencies": "0.2.0",
-        "@codbex/codbex-currencies-data": "0.1.0",
+        "@codbex/codbex-currencies-data": "0.2.0",
         "@codbex/codbex-uoms": "0.1.0",
         "@codbex/codbex-orders": "0.1.0",
         "@codbex/codbex-orders-data": "0.1.0",
