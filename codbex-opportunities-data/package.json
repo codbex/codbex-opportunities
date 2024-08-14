@@ -1,6 +1,6 @@
 {
     "name": "@codbex/codbex-opportunities-data",
-    "version": "0.0.1",
+    "version": "0.1.0",
     "repository": {
         "url": "https://github.com/codbex/codbex-opportunities.git",
         "type": "git"
