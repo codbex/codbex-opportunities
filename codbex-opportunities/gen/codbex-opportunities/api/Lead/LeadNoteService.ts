@@ -130,9 +130,6 @@ class LeadNoteService {
     }
 
     private validateEntity(entity: any): void {
-        if (entity.Lead === null || entity.Lead === undefined) {
-            throw new ValidationError(`The 'Lead' property is required, provide a valid value`);
-        }
         if (entity.Note === null || entity.Note === undefined) {
             throw new ValidationError(`The 'Note' property is required, provide a valid value`);
         }

@@ -7,7 +7,6 @@
                 "columns": [
                     {
                         "type": "INTEGER",
-                        "length": 0,
                         "primaryKey": true,
                         "identity": true,
                         "nullable": true,
@@ -51,19 +50,16 @@
                     },
                     {
                         "type": "INTEGER",
-                        "length": 0,
                         "nullable": true,
                         "name": "LEAD_INDUSTRY"
                     },
                     {
                         "type": "INTEGER",
-                        "length": 0,
                         "nullable": true,
                         "name": "LEAD_STATUS"
                     },
                     {
                         "type": "INTEGER",
-                        "length": 0,
                         "nullable": true,
                         "name": "LEAD_OWNER"
                     }
@@ -75,7 +71,6 @@
                 "columns": [
                     {
                         "type": "INTEGER",
-                        "length": 0,
                         "primaryKey": true,
                         "identity": true,
                         "nullable": true,
@@ -95,7 +90,6 @@
                 "columns": [
                     {
                         "type": "INTEGER",
-                        "length": 0,
                         "primaryKey": true,
                         "identity": true,
                         "nullable": true,
@@ -103,13 +97,6 @@
                     },
                     {
                         "type": "INTEGER",
-                        "length": 0,
-                        "nullable": true,
-                        "name": "LEADNOTE_LEAD"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "length": 0,
                         "nullable": true,
                         "name": "LEADNOTE_TYPE"
                     },
@@ -121,7 +108,6 @@
                     },
                     {
                         "type": "TIMESTAMP",
-                        "length": 20,
                         "nullable": true,
                         "name": "LEADNOTE_TIMESTAMP"
                     }
@@ -139,7 +125,6 @@
                     },
                     {
                         "type": "INTEGER",
-                        "length": 0,
                         "primaryKey": true,
                         "identity": true,
                         "nullable": true,
@@ -153,7 +138,6 @@
                 "columns": [
                     {
                         "type": "INTEGER",
-                        "length": 0,
                         "primaryKey": true,
                         "identity": true,
                         "nullable": true,
@@ -173,13 +157,12 @@
                     },
                     {
                         "type": "INTEGER",
-                        "length": 0,
                         "nullable": true,
                         "name": "OPPORTUNITY_CUSTOMER"
                     },
                     {
                         "type": "DECIMAL",
-                        "length": 20,
+                        "length": 18,
                         "precision": "16",
                         "scale": "2",
                         "nullable": true,
@@ -187,43 +170,36 @@
                     },
                     {
                         "type": "INTEGER",
-                        "length": 0,
                         "nullable": true,
                         "name": "OPPORTUNITY_LEAD"
                     },
                     {
                         "type": "INTEGER",
-                        "length": 0,
                         "nullable": true,
                         "name": "OPPORTUNITY_OWNER"
                     },
                     {
                         "type": "INTEGER",
-                        "length": 0,
                         "nullable": true,
                         "name": "OPPORTUNITY_TYPE"
                     },
                     {
                         "type": "INTEGER",
-                        "length": 0,
                         "nullable": true,
                         "name": "OPPORTUNITY_PRIORITY"
                     },
                     {
                         "type": "INTEGER",
-                        "length": 0,
                         "nullable": true,
                         "name": "OPPORTUNITY_PROBABILITY"
                     },
                     {
                         "type": "INTEGER",
-                        "length": 0,
                         "nullable": true,
                         "name": "OPPORTUNITY_STATUS"
                     },
                     {
                         "type": "INTEGER",
-                        "length": 0,
                         "nullable": true,
                         "name": "OPPORTUNITY_CURRENCY"
                     }
@@ -235,7 +211,6 @@
                 "columns": [
                     {
                         "type": "INTEGER",
-                        "length": 0,
                         "primaryKey": true,
                         "identity": true,
                         "nullable": true,
@@ -255,7 +230,6 @@
                 "columns": [
                     {
                         "type": "INTEGER",
-                        "length": 0,
                         "primaryKey": true,
                         "identity": true,
                         "nullable": true,
@@ -275,7 +249,6 @@
                 "columns": [
                     {
                         "type": "INTEGER",
-                        "length": 0,
                         "primaryKey": true,
                         "identity": true,
                         "nullable": true,
@@ -301,7 +274,6 @@
                 "columns": [
                     {
                         "type": "INTEGER",
-                        "length": 0,
                         "primaryKey": true,
                         "identity": true,
                         "nullable": true,
@@ -321,7 +293,6 @@
                 "columns": [
                     {
                         "type": "INTEGER",
-                        "length": 0,
                         "primaryKey": true,
                         "identity": true,
                         "nullable": true,
@@ -335,25 +306,22 @@
                     },
                     {
                         "type": "DATE",
-                        "length": 20,
                         "nullable": true,
                         "name": "QUOTATION_DATE"
                     },
                     {
                         "type": "INTEGER",
-                        "length": 0,
                         "nullable": true,
                         "name": "QUOTATION_OWNER"
                     },
                     {
                         "type": "INTEGER",
-                        "length": 0,
                         "nullable": true,
                         "name": "QUOTATION_CUSTOMER"
                     },
                     {
                         "type": "DECIMAL",
-                        "length": 20,
+                        "length": 18,
                         "precision": "16",
                         "scale": "2",
                         "nullable": true,
@@ -361,19 +329,16 @@
                     },
                     {
                         "type": "INTEGER",
-                        "length": 0,
                         "nullable": true,
                         "name": "QUOTATION_CURRENCY"
                     },
                     {
                         "type": "INTEGER",
-                        "length": 0,
                         "nullable": true,
                         "name": "QUOTATION_OPPORTUNITY"
                     },
                     {
                         "type": "INTEGER",
-                        "length": 0,
                         "nullable": true,
                         "name": "QUOTATION_QUOTATIONSTATUS"
                     }
@@ -385,7 +350,6 @@
                 "columns": [
                     {
                         "type": "INTEGER",
-                        "length": 0,
                         "primaryKey": true,
                         "identity": true,
                         "nullable": true,
@@ -393,13 +357,6 @@
                     },
                     {
                         "type": "INTEGER",
-                        "length": 0,
-                        "nullable": true,
-                        "name": "OPPORTUNITYNOTE_OPPORTUNITY"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "length": 0,
                         "nullable": true,
                         "name": "OPPORTUNITYNOTE_NOTETYPE"
                     },
@@ -411,7 +368,6 @@
                     },
                     {
                         "type": "TIMESTAMP",
-                        "length": 20,
                         "nullable": true,
                         "name": "OPPORTUNITYNOTE_TIMESTAMP"
                     }
@@ -423,7 +379,6 @@
                 "columns": [
                     {
                         "type": "INTEGER",
-                        "length": 0,
                         "primaryKey": true,
                         "identity": true,
                         "nullable": true,
@@ -431,31 +386,27 @@
                     },
                     {
                         "type": "INTEGER",
-                        "length": 0,
                         "nullable": true,
                         "name": "ENTITY71921_QUOTATION"
                     },
                     {
                         "type": "INTEGER",
-                        "length": 0,
                         "nullable": true,
                         "name": "ENTITY71921_PRODUCT"
                     },
                     {
                         "type": "DOUBLE",
-                        "length": 20,
                         "nullable": true,
                         "name": "ENTITY71921_QUANTITY"
                     },
                     {
                         "type": "INTEGER",
-                        "length": 20,
                         "nullable": true,
                         "name": "ENTITY71921_UOM"
                     },
                     {
                         "type": "DECIMAL",
-                        "length": 20,
+                        "length": 18,
                         "precision": "16",
                         "scale": "2",
                         "nullable": true,
@@ -463,6 +414,7 @@
                     },
                     {
                         "type": "DECIMAL",
+                        "length": 18,
                         "precision": "16",
                         "scale": "2",
                         "nullable": true,
@@ -470,7 +422,6 @@
                     },
                     {
                         "type": "INTEGER",
-                        "length": 0,
                         "nullable": true,
                         "name": "ENTITY71921_CURRENCY"
                     }
@@ -482,7 +433,6 @@
                 "columns": [
                     {
                         "type": "INTEGER",
-                        "length": 0,
                         "primaryKey": true,
                         "identity": true,
                         "nullable": true,
@@ -508,7 +458,6 @@
                 "columns": [
                     {
                         "type": "INTEGER",
-                        "length": 0,
                         "primaryKey": true,
                         "identity": true,
                         "nullable": true,
@@ -516,15 +465,280 @@
                     },
                     {
                         "type": "INTEGER",
-                        "length": 0,
                         "nullable": true,
                         "name": "QUOTATIONLINK_QUOTATION"
                     },
                     {
                         "type": "INTEGER",
-                        "length": 0,
                         "nullable": true,
                         "name": "QUOTATIONLINK_SALESORDER"
+                    }
+                ]
+            },
+            {
+                "name": "CODBEX_LEADQUALIFICATION",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "LEADQUALIFICATION_ID"
+                    },
+                    {
+                        "type": "DECIMAL",
+                        "length": 18,
+                        "precision": "16",
+                        "scale": "2",
+                        "nullable": true,
+                        "name": "LEADQUALIFICATION_BUDGET"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "LEADQUALIFICATION_AUTHORITY"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "LEADQUALIFICATION_NEED"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "LEADQUALIFICATION_TIMELINE"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "LEADQUALIFICATION_LEAD"
+                    }
+                ]
+            },
+            {
+                "name": "CODBEX_LEADQUALIFICATIONAUTHORITY",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "LEADQUALIFICATIONAUTHORITY_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "LEADQUALIFICATIONAUTHORITY_NAME"
+                    }
+                ]
+            },
+            {
+                "name": "CODBEX_LEADQUALIFICATIONNEED",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "LEADQUALIFICATIONNEED_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "LEADQUALIFICATIONNEED_NAME"
+                    }
+                ]
+            },
+            {
+                "name": "CODBEX_LEADQUALIFICATIONTIMELINE",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "LEADQUALIFICATIONTIMELINE_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "LEADQUALIFICATIONTIMELINE_NAME"
+                    }
+                ]
+            },
+            {
+                "name": "CODBEX_LEADACTIONS",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "LEADACTIONS_ID"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "LEADACTIONS_LEADACTIONSTYPE"
+                    },
+                    {
+                        "type": "DATE",
+                        "nullable": true,
+                        "name": "LEADACTIONS_DATE"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 100,
+                        "nullable": true,
+                        "name": "LEADACTIONS_SUBJECT"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "LEADACTIONS_LEAD"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "LEADACTIONS_NOTE"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "LEADACTIONS_STATUS"
+                    }
+                ]
+            },
+            {
+                "name": "CODBEX_LEADACTIONSTYPE",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "LEADACTIONSTYPE_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "LEADACTIONSTYPE_NAME"
+                    }
+                ]
+            },
+            {
+                "name": "CODBEX_LEADACTIONSSTATUS",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "LEADACTIONSSTATUS_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "LEADACTIONSSTATUS_NAME"
+                    }
+                ]
+            },
+            {
+                "name": "CODBEX_OPPORTUNITYACTION",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "OPPORTUNITYACTION_ID"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "OPPORTUNITYACTION_TYPE"
+                    },
+                    {
+                        "type": "DATE",
+                        "nullable": true,
+                        "name": "OPPORTUNITYACTION_DATE"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 100,
+                        "nullable": true,
+                        "name": "OPPORTUNITYACTION_SUBJECT"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "OPPORTUNITYACTION_OPPORTUNITY"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "OPPORTUNITYACTION_EMPLOYEE"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "OPPORTUNITYACTION_STATUS"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "OPPORTUNITYACTION_OPPORTUNITYNOTE"
+                    }
+                ]
+            },
+            {
+                "name": "CODBEX_OPPORTUNITYACTIONSTYPE",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "OPPORTUNITYACTIONSTYPE_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "OPPORTUNITYACTIONSTYPE_NAME"
+                    }
+                ]
+            },
+            {
+                "name": "CODBEX_OPPORTUNITYACTIONSTATUS",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "OPPORTUNITYACTIONSTATUS_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "OPPORTUNITYACTIONSTATUS_NAME"
                     }
                 ]
             },
@@ -554,15 +768,6 @@
                 "columns": "LEAD_OWNER",
                 "referencedTable": "CODBEX_EMPLOYEE",
                 "referencedColumns": "EMPLOYEE_ID"
-            },
-            {
-                "name": "LeadNote_Lead",
-                "type": "foreignKey",
-                "table": "CODBEX_LEADNOTE",
-                "constraintName": "LeadNote_Lead",
-                "columns": "LEADNOTE_LEAD",
-                "referencedTable": "CODBEX_LEAD",
-                "referencedColumns": "LEAD_ID"
             },
             {
                 "name": "LeadNote_NoteType",
@@ -691,15 +896,6 @@
                 "referencedColumns": "QUOTATIONSTATUS_ID"
             },
             {
-                "name": "OpportunityNote_Opportunity",
-                "type": "foreignKey",
-                "table": "CODBEX_OPPORTUNITYNOTE",
-                "constraintName": "OpportunityNote_Opportunity",
-                "columns": "OPPORTUNITYNOTE_OPPORTUNITY",
-                "referencedTable": "CODBEX_OPPORTUNITY",
-                "referencedColumns": "OPPORTUNITY_ID"
-            },
-            {
                 "name": "OpportunityNote_NoteType",
                 "type": "foreignKey",
                 "table": "CODBEX_OPPORTUNITYNOTE",
@@ -761,6 +957,123 @@
                 "columns": "QUOTATIONLINK_SALESORDER",
                 "referencedTable": "CODBEX_SALESORDER",
                 "referencedColumns": "SALESORDER_ID"
+            },
+            {
+                "name": "LeadQualification_LeadQualificationAuthority",
+                "type": "foreignKey",
+                "table": "CODBEX_LEADQUALIFICATION",
+                "constraintName": "LeadQualification_LeadQualificationAuthority",
+                "columns": "LEADQUALIFICATION_AUTHORITY",
+                "referencedTable": "CODBEX_LEADQUALIFICATIONAUTHORITY",
+                "referencedColumns": "LEADQUALIFICATIONAUTHORITY_ID"
+            },
+            {
+                "name": "LeadQualification_LeadQualificationNeed",
+                "type": "foreignKey",
+                "table": "CODBEX_LEADQUALIFICATION",
+                "constraintName": "LeadQualification_LeadQualificationNeed",
+                "columns": "LEADQUALIFICATION_NEED",
+                "referencedTable": "CODBEX_LEADQUALIFICATIONNEED",
+                "referencedColumns": "LEADQUALIFICATIONNEED_ID"
+            },
+            {
+                "name": "LeadQualification_LeadQualificationTimeline",
+                "type": "foreignKey",
+                "table": "CODBEX_LEADQUALIFICATION",
+                "constraintName": "LeadQualification_LeadQualificationTimeline",
+                "columns": "LEADQUALIFICATION_TIMELINE",
+                "referencedTable": "CODBEX_LEADQUALIFICATIONTIMELINE",
+                "referencedColumns": "LEADQUALIFICATIONTIMELINE_ID"
+            },
+            {
+                "name": "LeadQualification_Lead",
+                "type": "foreignKey",
+                "table": "CODBEX_LEADQUALIFICATION",
+                "constraintName": "LeadQualification_Lead",
+                "columns": "LEADQUALIFICATION_LEAD",
+                "referencedTable": "CODBEX_LEAD",
+                "referencedColumns": "LEAD_ID"
+            },
+            {
+                "name": "LeadAction_LeadActionType",
+                "type": "foreignKey",
+                "table": "CODBEX_LEADACTIONS",
+                "constraintName": "LeadAction_LeadActionType",
+                "columns": "LEADACTIONS_LEADACTIONSTYPE",
+                "referencedTable": "CODBEX_LEADACTIONSTYPE",
+                "referencedColumns": "LEADACTIONSTYPE_ID"
+            },
+            {
+                "name": "LeadAction_Lead",
+                "type": "foreignKey",
+                "table": "CODBEX_LEADACTIONS",
+                "constraintName": "LeadAction_Lead",
+                "columns": "LEADACTIONS_LEAD",
+                "referencedTable": "CODBEX_LEAD",
+                "referencedColumns": "LEAD_ID"
+            },
+            {
+                "name": "LeadAction_LeadNote",
+                "type": "foreignKey",
+                "table": "CODBEX_LEADACTIONS",
+                "constraintName": "LeadAction_LeadNote",
+                "columns": "LEADACTIONS_NOTE",
+                "referencedTable": "CODBEX_LEADNOTE",
+                "referencedColumns": "LEADNOTE_ID"
+            },
+            {
+                "name": "LeadAction_LeadActionStatus",
+                "type": "foreignKey",
+                "table": "CODBEX_LEADACTIONS",
+                "constraintName": "LeadAction_LeadActionStatus",
+                "columns": "LEADACTIONS_STATUS",
+                "referencedTable": "CODBEX_LEADACTIONSSTATUS",
+                "referencedColumns": "LEADACTIONSSTATUS_ID"
+            },
+            {
+                "name": "OpportunityAction_OpportunityActionsType",
+                "type": "foreignKey",
+                "table": "CODBEX_OPPORTUNITYACTION",
+                "constraintName": "OpportunityAction_OpportunityActionsType",
+                "columns": "OPPORTUNITYACTION_TYPE",
+                "referencedTable": "CODBEX_OPPORTUNITYACTIONSTYPE",
+                "referencedColumns": "OPPORTUNITYACTIONSTYPE_ID"
+            },
+            {
+                "name": "OpportunityAction_Opportunity",
+                "type": "foreignKey",
+                "table": "CODBEX_OPPORTUNITYACTION",
+                "constraintName": "OpportunityAction_Opportunity",
+                "columns": "OPPORTUNITYACTION_OPPORTUNITY",
+                "referencedTable": "CODBEX_OPPORTUNITY",
+                "referencedColumns": "OPPORTUNITY_ID"
+            },
+            {
+                "name": "OpportunityAction_Employee",
+                "type": "foreignKey",
+                "table": "CODBEX_OPPORTUNITYACTION",
+                "constraintName": "OpportunityAction_Employee",
+                "columns": "OPPORTUNITYACTION_EMPLOYEE",
+                "referencedTable": "CODBEX_EMPLOYEE",
+                "referencedColumns": "EMPLOYEE_ID"
+            },
+            {
+                "name": "OpportunityAction_OpportunityActionStatus",
+                "type": "foreignKey",
+                "table": "CODBEX_OPPORTUNITYACTION",
+                "constraintName": "OpportunityAction_OpportunityActionStatus",
+                "columns": "OPPORTUNITYACTION_STATUS",
+                "referencedTable": "CODBEX_OPPORTUNITYACTIONSTATUS",
+                "referencedColumns": "OPPORTUNITYACTIONSTATUS_ID"
+            },
+            {
+                "name": "OpportunityAction_OpportunityNote",
+                "type": "foreignKey",
+                "table": "CODBEX_OPPORTUNITYACTION",
+                "constraintName": "OpportunityAction_OpportunityNote",
+                "columns": "OPPORTUNITYACTION_OPPORTUNITYNOTE",
+                "referencedTable": "CODBEX_OPPORTUNITYNOTE",
+                "referencedColumns": "OPPORTUNITYNOTE_ID"
             }
         ]
     },

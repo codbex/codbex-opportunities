@@ -5,7 +5,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 	.config(["entityApiProvider", function (entityApiProvider) {
 		entityApiProvider.baseUrl = "/services/ts/codbex-opportunities/gen/codbex-opportunities/api/Opportunity/OpportunityNoteService.ts";
 	}])
-	.controller('PageController', ['$scope', '$http', 'messageHub', 'entityApi', 'Extensions', function ($scope, $http, messageHub, entityApi, Extensions) {
+	.controller('PageController', ['$scope', 'messageHub', 'entityApi', 'Extensions', function ($scope, messageHub, entityApi, Extensions) {
 		//-----------------Custom Actions-------------------//
 		Extensions.get('dialogWindow', 'codbex-opportunities-custom-action').then(function (response) {
 			$scope.pageActions = response.filter(e => e.perspective === "Opportunity" && e.view === "OpportunityNote" && (e.type === "page" || e.type === undefined));
@@ -132,14 +132,12 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.showDialogWindow("OpportunityNote-details", {
 				action: "select",
 				entity: entity,
-				optionsOpportunity: $scope.optionsOpportunity,
 			});
 		};
 
 		$scope.openFilter = function (entity) {
 			messageHub.showDialogWindow("OpportunityNote-filter", {
 				entity: $scope.filterEntity,
-				optionsOpportunity: $scope.optionsOpportunity,
 			});
 		};
 
@@ -150,7 +148,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				entity: {},
 				selectedMainEntityKey: "${masterEntityId}",
 				selectedMainEntityId: $scope.selectedMainEntityId,
-				optionsOpportunity: $scope.optionsOpportunity,
 			}, null, false);
 		};
 
@@ -160,7 +157,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				entity: entity,
 				selectedMainEntityKey: "${masterEntityId}",
 				selectedMainEntityId: $scope.selectedMainEntityId,
-				optionsOpportunity: $scope.optionsOpportunity,
 			}, null, false);
 		};
 
@@ -192,28 +188,5 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				}
 			});
 		};
-
-		//----------------Dropdowns-----------------//
-		$scope.optionsOpportunity = [];
-
-
-		$http.get("/services/ts/codbex-opportunities/gen/codbex-opportunities/api/Opportunity/OpportunityService.ts").then(function (response) {
-			$scope.optionsOpportunity = response.data.map(e => {
-				return {
-					value: e.Id,
-					text: e.Name
-				}
-			});
-		});
-
-		$scope.optionsOpportunityValue = function (optionKey) {
-			for (let i = 0; i < $scope.optionsOpportunity.length; i++) {
-				if ($scope.optionsOpportunity[i].value === optionKey) {
-					return $scope.optionsOpportunity[i].text;
-				}
-			}
-			return null;
-		};
-		//----------------Dropdowns-----------------//
 
 	}]);

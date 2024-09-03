@@ -5,14 +5,12 @@ import { dao as daoApi } from "sdk/db";
 
 export interface LeadNoteEntity {
     readonly Id: number;
-    Lead?: number;
     Type?: number;
     Note?: string;
     Timestamp?: Date;
 }
 
 export interface LeadNoteCreateEntity {
-    readonly Lead?: number;
     readonly Type?: number;
     readonly Note?: string;
     readonly Timestamp?: Date;
@@ -26,49 +24,42 @@ export interface LeadNoteEntityOptions {
     $filter?: {
         equals?: {
             Id?: number | number[];
-            Lead?: number | number[];
             Type?: number | number[];
             Note?: string | string[];
             Timestamp?: Date | Date[];
         };
         notEquals?: {
             Id?: number | number[];
-            Lead?: number | number[];
             Type?: number | number[];
             Note?: string | string[];
             Timestamp?: Date | Date[];
         };
         contains?: {
             Id?: number;
-            Lead?: number;
             Type?: number;
             Note?: string;
             Timestamp?: Date;
         };
         greaterThan?: {
             Id?: number;
-            Lead?: number;
             Type?: number;
             Note?: string;
             Timestamp?: Date;
         };
         greaterThanOrEqual?: {
             Id?: number;
-            Lead?: number;
             Type?: number;
             Note?: string;
             Timestamp?: Date;
         };
         lessThan?: {
             Id?: number;
-            Lead?: number;
             Type?: number;
             Note?: string;
             Timestamp?: Date;
         };
         lessThanOrEqual?: {
             Id?: number;
-            Lead?: number;
             Type?: number;
             Note?: string;
             Timestamp?: Date;
@@ -107,11 +98,6 @@ export class LeadNoteRepository {
                 type: "INTEGER",
                 id: true,
                 autoIncrement: true,
-            },
-            {
-                name: "Lead",
-                column: "LEADNOTE_LEAD",
-                type: "INTEGER",
             },
             {
                 name: "Type",

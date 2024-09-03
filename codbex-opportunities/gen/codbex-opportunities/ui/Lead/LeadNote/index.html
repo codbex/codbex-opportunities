@@ -32,7 +32,6 @@
 			<table fd-table display-mode="compact" inner-borders="top" outer-borders="none">
 				<thead fd-table-header sticky="true">
 					<tr fd-table-row>
-						<th fd-table-header-cell>Lead</th>
 						<th fd-table-header-cell>Type</th>
 						<th fd-table-header-cell>Note</th>
 						<th fd-table-header-cell>Timestamp</th>
@@ -45,9 +44,6 @@
 					</tr>
 					<tr fd-table-row hoverable="true" ng-repeat="next in data"
 						dg-selected="next.Id === selectedEntity.Id" ng-click="selectEntity(next)">
-						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">
-							{{optionsLeadValue(next.Lead)}}
-						</td>
 						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.Type}}</td>
 						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.Note}}</td>
 						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">
