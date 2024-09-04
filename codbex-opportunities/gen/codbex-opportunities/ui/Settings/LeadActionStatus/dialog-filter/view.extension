@@ -1,5 +1,0 @@
-{
-    "module": "codbex-opportunities/gen/codbex-opportunities/ui/Settings/LeadActionStatus/dialog-filter/view.js",
-    "extensionPoint": "codbex-opportunities-dialog-window",
-    "description": "codbex-opportunities - Application Dialog Window"
-}

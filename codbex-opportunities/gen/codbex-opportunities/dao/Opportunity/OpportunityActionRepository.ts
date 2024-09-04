@@ -6,23 +6,23 @@ import { EntityUtils } from "../utils/EntityUtils";
 
 export interface OpportunityActionEntity {
     readonly Id: number;
-    Type?: number;
     Date?: Date;
     Subject?: string;
     Opportunity?: number;
     Initiator?: number;
-    Status?: number;
-    OpportunityNote?: number;
+    Note?: number;
+    ActionType?: number;
+    ActionStatus?: number;
 }
 
 export interface OpportunityActionCreateEntity {
-    readonly Type?: number;
     readonly Date?: Date;
     readonly Subject?: string;
     readonly Opportunity?: number;
     readonly Initiator?: number;
-    readonly Status?: number;
-    readonly OpportunityNote?: number;
+    readonly Note?: number;
+    readonly ActionType?: number;
+    readonly ActionStatus?: number;
 }
 
 export interface OpportunityActionUpdateEntity extends OpportunityActionCreateEntity {
@@ -33,73 +33,73 @@ export interface OpportunityActionEntityOptions {
     $filter?: {
         equals?: {
             Id?: number | number[];
-            Type?: number | number[];
             Date?: Date | Date[];
             Subject?: string | string[];
             Opportunity?: number | number[];
             Initiator?: number | number[];
-            Status?: number | number[];
-            OpportunityNote?: number | number[];
+            Note?: number | number[];
+            ActionType?: number | number[];
+            ActionStatus?: number | number[];
         };
         notEquals?: {
             Id?: number | number[];
-            Type?: number | number[];
             Date?: Date | Date[];
             Subject?: string | string[];
             Opportunity?: number | number[];
             Initiator?: number | number[];
-            Status?: number | number[];
-            OpportunityNote?: number | number[];
+            Note?: number | number[];
+            ActionType?: number | number[];
+            ActionStatus?: number | number[];
         };
         contains?: {
             Id?: number;
-            Type?: number;
             Date?: Date;
             Subject?: string;
             Opportunity?: number;
             Initiator?: number;
-            Status?: number;
-            OpportunityNote?: number;
+            Note?: number;
+            ActionType?: number;
+            ActionStatus?: number;
         };
         greaterThan?: {
             Id?: number;
-            Type?: number;
             Date?: Date;
             Subject?: string;
             Opportunity?: number;
             Initiator?: number;
-            Status?: number;
-            OpportunityNote?: number;
+            Note?: number;
+            ActionType?: number;
+            ActionStatus?: number;
         };
         greaterThanOrEqual?: {
             Id?: number;
-            Type?: number;
             Date?: Date;
             Subject?: string;
             Opportunity?: number;
             Initiator?: number;
-            Status?: number;
-            OpportunityNote?: number;
+            Note?: number;
+            ActionType?: number;
+            ActionStatus?: number;
         };
         lessThan?: {
             Id?: number;
-            Type?: number;
             Date?: Date;
             Subject?: string;
             Opportunity?: number;
             Initiator?: number;
-            Status?: number;
-            OpportunityNote?: number;
+            Note?: number;
+            ActionType?: number;
+            ActionStatus?: number;
         };
         lessThanOrEqual?: {
             Id?: number;
-            Type?: number;
             Date?: Date;
             Subject?: string;
             Opportunity?: number;
             Initiator?: number;
-            Status?: number;
-            OpportunityNote?: number;
+            Note?: number;
+            ActionType?: number;
+            ActionStatus?: number;
         };
     },
     $select?: (keyof OpportunityActionEntity)[],
@@ -137,11 +137,6 @@ export class OpportunityActionRepository {
                 autoIncrement: true,
             },
             {
-                name: "Type",
-                column: "OPPORTUNITYACTION_TYPE",
-                type: "INTEGER",
-            },
-            {
                 name: "Date",
                 column: "OPPORTUNITYACTION_DATE",
                 type: "DATE",
@@ -162,13 +157,18 @@ export class OpportunityActionRepository {
                 type: "INTEGER",
             },
             {
-                name: "Status",
-                column: "OPPORTUNITYACTION_STATUS",
+                name: "Note",
+                column: "OPPORTUNITYACTION_OPPORTUNITYNOTE",
                 type: "INTEGER",
             },
             {
-                name: "OpportunityNote",
-                column: "OPPORTUNITYACTION_OPPORTUNITYNOTE",
+                name: "ActionType",
+                column: "OPPORTUNITYACTION_ACTIONTYPE",
+                type: "INTEGER",
+            },
+            {
+                name: "ActionStatus",
+                column: "OPPORTUNITYACTION_ACTIONSTATUS",
                 type: "INTEGER",
             }
         ]

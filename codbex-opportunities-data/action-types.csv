@@ -1,0 +1,11 @@
+ACTIONTYPE_ID,ACTIONTYPE_NAME
+1,Email
+2,Call
+3,Meeting
+4,Demo
+5,Content Delivery
+6,Webinar Invitation
+7,Social Media Message
+8,Task
+9,Survey
+10,Text Message
