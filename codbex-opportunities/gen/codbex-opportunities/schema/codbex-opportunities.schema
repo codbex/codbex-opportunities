@@ -585,11 +585,6 @@
                         "name": "LEADACTIONS_ID"
                     },
                     {
-                        "type": "INTEGER",
-                        "nullable": true,
-                        "name": "LEADACTIONS_LEADACTIONSTYPE"
-                    },
-                    {
                         "type": "DATE",
                         "nullable": true,
                         "name": "LEADACTIONS_DATE"
@@ -613,45 +608,12 @@
                     {
                         "type": "INTEGER",
                         "nullable": true,
-                        "name": "LEADACTIONS_STATUS"
-                    }
-                ]
-            },
-            {
-                "name": "CODBEX_LEADACTIONSTYPE",
-                "type": "TABLE",
-                "columns": [
-                    {
-                        "type": "INTEGER",
-                        "primaryKey": true,
-                        "identity": true,
-                        "nullable": true,
-                        "name": "LEADACTIONSTYPE_ID"
+                        "name": "LEADACTIONS_NOTETYPE"
                     },
                     {
-                        "type": "VARCHAR",
-                        "length": 20,
-                        "nullable": true,
-                        "name": "LEADACTIONSTYPE_NAME"
-                    }
-                ]
-            },
-            {
-                "name": "CODBEX_LEADACTIONSSTATUS",
-                "type": "TABLE",
-                "columns": [
-                    {
                         "type": "INTEGER",
-                        "primaryKey": true,
-                        "identity": true,
                         "nullable": true,
-                        "name": "LEADACTIONSSTATUS_ID"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 20,
-                        "nullable": true,
-                        "name": "LEADACTIONSSTATUS_NAME"
+                        "name": "LEADACTIONS_ACTIONTYPE"
                     }
                 ]
             },
@@ -701,6 +663,44 @@
                         "type": "INTEGER",
                         "nullable": true,
                         "name": "OPPORTUNITYACTION_ACTIONSTATUS"
+                    }
+                ]
+            },
+            {
+                "name": "CODBEX_ACTIONTYPE",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "ACTIONTYPE_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "ACTIONTYPE_NAME"
+                    }
+                ]
+            },
+            {
+                "name": "CODBEX_ACTIONSTATUS",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "ACTIONSTATUS_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "ACTIONSTATUS_NAME"
                     }
                 ]
             },
@@ -957,15 +957,6 @@
                 "referencedColumns": "LEAD_ID"
             },
             {
-                "name": "LeadAction_ActionType",
-                "type": "foreignKey",
-                "table": "CODBEX_LEADACTIONS",
-                "constraintName": "LeadAction_ActionType",
-                "columns": "LEADACTIONS_LEADACTIONSTYPE",
-                "referencedTable": "CODBEX_LEADACTIONSTYPE",
-                "referencedColumns": "LEADACTIONSTYPE_ID"
-            },
-            {
                 "name": "LeadAction_Lead",
                 "type": "foreignKey",
                 "table": "CODBEX_LEADACTIONS",
@@ -984,13 +975,22 @@
                 "referencedColumns": "LEADNOTE_ID"
             },
             {
-                "name": "LeadAction_ActionStatus",
+                "name": "LeadAction_NoteType",
                 "type": "foreignKey",
                 "table": "CODBEX_LEADACTIONS",
-                "constraintName": "LeadAction_ActionStatus",
-                "columns": "LEADACTIONS_STATUS",
-                "referencedTable": "CODBEX_LEADACTIONSSTATUS",
-                "referencedColumns": "LEADACTIONSSTATUS_ID"
+                "constraintName": "LeadAction_NoteType",
+                "columns": "LEADACTIONS_NOTETYPE",
+                "referencedTable": "CODBEX_NOTETYPE",
+                "referencedColumns": "NOTETYPE_ID"
+            },
+            {
+                "name": "LeadAction_ActionType",
+                "type": "foreignKey",
+                "table": "CODBEX_LEADACTIONS",
+                "constraintName": "LeadAction_ActionType",
+                "columns": "LEADACTIONS_ACTIONTYPE",
+                "referencedTable": "CODBEX_ACTIONTYPE",
+                "referencedColumns": "ACTIONTYPE_ID"
             },
             {
                 "name": "OpportunityAction_Opportunity",
@@ -1025,8 +1025,8 @@
                 "table": "CODBEX_OPPORTUNITYACTION",
                 "constraintName": "OpportunityAction_ActionType",
                 "columns": "OPPORTUNITYACTION_ACTIONTYPE",
-                "referencedTable": "CODBEX_LEADACTIONSTYPE",
-                "referencedColumns": "LEADACTIONSTYPE_ID"
+                "referencedTable": "CODBEX_ACTIONTYPE",
+                "referencedColumns": "ACTIONTYPE_ID"
             },
             {
                 "name": "OpportunityAction_ActionStatus",
@@ -1034,8 +1034,8 @@
                 "table": "CODBEX_OPPORTUNITYACTION",
                 "constraintName": "OpportunityAction_ActionStatus",
                 "columns": "OPPORTUNITYACTION_ACTIONSTATUS",
-                "referencedTable": "CODBEX_LEADACTIONSSTATUS",
-                "referencedColumns": "LEADACTIONSSTATUS_ID"
+                "referencedTable": "CODBEX_ACTIONSTATUS",
+                "referencedColumns": "ACTIONSTATUS_ID"
             }
         ]
     },

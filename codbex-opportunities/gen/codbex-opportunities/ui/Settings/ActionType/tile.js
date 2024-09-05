@@ -7,8 +7,8 @@ exports.getTile = function () {
     return {
         group: "codbex-opportunities",
         name: "ActionType",
-        caption: "Manage entity LeadActionsType",
-        tooltip: "LeadActionsType",
+        caption: "Manage entity ActionType",
+        tooltip: "ActionType",
         type: "PRIMARY",
         report: "false",
         icon: "/services/web/resources/unicons/file.svg",

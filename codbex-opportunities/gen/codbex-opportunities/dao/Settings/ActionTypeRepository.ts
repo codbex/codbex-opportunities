@@ -72,18 +72,18 @@ interface ActionTypeUpdateEntityEvent extends ActionTypeEntityEvent {
 export class ActionTypeRepository {
 
     private static readonly DEFINITION = {
-        table: "CODBEX_LEADACTIONSTYPE",
+        table: "CODBEX_ACTIONTYPE",
         properties: [
             {
                 name: "Id",
-                column: "LEADACTIONSTYPE_ID",
+                column: "ACTIONTYPE_ID",
                 type: "INTEGER",
                 id: true,
                 autoIncrement: true,
             },
             {
                 name: "Name",
-                column: "LEADACTIONSTYPE_NAME",
+                column: "ACTIONTYPE_NAME",
                 type: "VARCHAR",
             }
         ]
@@ -108,11 +108,11 @@ export class ActionTypeRepository {
         const id = this.dao.insert(entity);
         this.triggerEvent({
             operation: "create",
-            table: "CODBEX_LEADACTIONSTYPE",
+            table: "CODBEX_ACTIONTYPE",
             entity: entity,
             key: {
                 name: "Id",
-                column: "LEADACTIONSTYPE_ID",
+                column: "ACTIONTYPE_ID",
                 value: id
             }
         });
@@ -124,12 +124,12 @@ export class ActionTypeRepository {
         this.dao.update(entity);
         this.triggerEvent({
             operation: "update",
-            table: "CODBEX_LEADACTIONSTYPE",
+            table: "CODBEX_ACTIONTYPE",
             entity: entity,
             previousEntity: previousEntity,
             key: {
                 name: "Id",
-                column: "LEADACTIONSTYPE_ID",
+                column: "ACTIONTYPE_ID",
                 value: entity.Id
             }
         });
@@ -155,11 +155,11 @@ export class ActionTypeRepository {
         this.dao.remove(id);
         this.triggerEvent({
             operation: "delete",
-            table: "CODBEX_LEADACTIONSTYPE",
+            table: "CODBEX_ACTIONTYPE",
             entity: entity,
             key: {
                 name: "Id",
-                column: "LEADACTIONSTYPE_ID",
+                column: "ACTIONTYPE_ID",
                 value: id
             }
         });
@@ -170,7 +170,7 @@ export class ActionTypeRepository {
     }
 
     public customDataCount(): number {
-        const resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX_LEADACTIONSTYPE"');
+        const resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX_ACTIONTYPE"');
         if (resultSet !== null && resultSet[0] !== null) {
             if (resultSet[0].COUNT !== undefined && resultSet[0].COUNT !== null) {
                 return resultSet[0].COUNT;

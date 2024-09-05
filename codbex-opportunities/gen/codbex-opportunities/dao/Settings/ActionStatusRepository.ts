@@ -72,18 +72,18 @@ interface ActionStatusUpdateEntityEvent extends ActionStatusEntityEvent {
 export class ActionStatusRepository {
 
     private static readonly DEFINITION = {
-        table: "CODBEX_LEADACTIONSSTATUS",
+        table: "CODBEX_ACTIONSTATUS",
         properties: [
             {
                 name: "Id",
-                column: "LEADACTIONSSTATUS_ID",
+                column: "ACTIONSTATUS_ID",
                 type: "INTEGER",
                 id: true,
                 autoIncrement: true,
             },
             {
                 name: "Name",
-                column: "LEADACTIONSSTATUS_NAME",
+                column: "ACTIONSTATUS_NAME",
                 type: "VARCHAR",
             }
         ]
@@ -108,11 +108,11 @@ export class ActionStatusRepository {
         const id = this.dao.insert(entity);
         this.triggerEvent({
             operation: "create",
-            table: "CODBEX_LEADACTIONSSTATUS",
+            table: "CODBEX_ACTIONSTATUS",
             entity: entity,
             key: {
                 name: "Id",
-                column: "LEADACTIONSSTATUS_ID",
+                column: "ACTIONSTATUS_ID",
                 value: id
             }
         });
@@ -124,12 +124,12 @@ export class ActionStatusRepository {
         this.dao.update(entity);
         this.triggerEvent({
             operation: "update",
-            table: "CODBEX_LEADACTIONSSTATUS",
+            table: "CODBEX_ACTIONSTATUS",
             entity: entity,
             previousEntity: previousEntity,
             key: {
                 name: "Id",
-                column: "LEADACTIONSSTATUS_ID",
+                column: "ACTIONSTATUS_ID",
                 value: entity.Id
             }
         });
@@ -155,11 +155,11 @@ export class ActionStatusRepository {
         this.dao.remove(id);
         this.triggerEvent({
             operation: "delete",
-            table: "CODBEX_LEADACTIONSSTATUS",
+            table: "CODBEX_ACTIONSTATUS",
             entity: entity,
             key: {
                 name: "Id",
-                column: "LEADACTIONSSTATUS_ID",
+                column: "ACTIONSTATUS_ID",
                 value: id
             }
         });
@@ -170,7 +170,7 @@ export class ActionStatusRepository {
     }
 
     public customDataCount(): number {
-        const resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX_LEADACTIONSSTATUS"');
+        const resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX_ACTIONSTATUS"');
         if (resultSet !== null && resultSet[0] !== null) {
             if (resultSet[0].COUNT !== undefined && resultSet[0].COUNT !== null) {
                 return resultSet[0].COUNT;
