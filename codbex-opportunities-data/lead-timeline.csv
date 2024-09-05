@@ -1,6 +1,6 @@
 LEADQUALIFICATIONTIMELINE_ID,LEADQUALIFICATIONTIMELINE_NAME
-1,Immediate (Within 1 month)
-2,Short-Term (1-3 months)
-3,Medium-Term (3-6 months)
-4,Long-Term (6-12 months or more)
+1,Immediate Within 1 month
+2,Short-Term 1-3 months
+3,Medium-Term 3-6 months
+4,Long-Term 6-12 months or more
 5,No Defined Timeline
