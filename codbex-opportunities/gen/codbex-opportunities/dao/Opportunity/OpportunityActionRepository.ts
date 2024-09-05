@@ -11,8 +11,8 @@ export interface OpportunityActionEntity {
     Opportunity?: number;
     Initiator?: number;
     Note?: number;
-    ActionType?: number;
-    ActionStatus?: number;
+    Type?: number;
+    Status?: number;
 }
 
 export interface OpportunityActionCreateEntity {
@@ -21,8 +21,8 @@ export interface OpportunityActionCreateEntity {
     readonly Opportunity?: number;
     readonly Initiator?: number;
     readonly Note?: number;
-    readonly ActionType?: number;
-    readonly ActionStatus?: number;
+    readonly Type?: number;
+    readonly Status?: number;
 }
 
 export interface OpportunityActionUpdateEntity extends OpportunityActionCreateEntity {
@@ -38,8 +38,8 @@ export interface OpportunityActionEntityOptions {
             Opportunity?: number | number[];
             Initiator?: number | number[];
             Note?: number | number[];
-            ActionType?: number | number[];
-            ActionStatus?: number | number[];
+            Type?: number | number[];
+            Status?: number | number[];
         };
         notEquals?: {
             Id?: number | number[];
@@ -48,8 +48,8 @@ export interface OpportunityActionEntityOptions {
             Opportunity?: number | number[];
             Initiator?: number | number[];
             Note?: number | number[];
-            ActionType?: number | number[];
-            ActionStatus?: number | number[];
+            Type?: number | number[];
+            Status?: number | number[];
         };
         contains?: {
             Id?: number;
@@ -58,8 +58,8 @@ export interface OpportunityActionEntityOptions {
             Opportunity?: number;
             Initiator?: number;
             Note?: number;
-            ActionType?: number;
-            ActionStatus?: number;
+            Type?: number;
+            Status?: number;
         };
         greaterThan?: {
             Id?: number;
@@ -68,8 +68,8 @@ export interface OpportunityActionEntityOptions {
             Opportunity?: number;
             Initiator?: number;
             Note?: number;
-            ActionType?: number;
-            ActionStatus?: number;
+            Type?: number;
+            Status?: number;
         };
         greaterThanOrEqual?: {
             Id?: number;
@@ -78,8 +78,8 @@ export interface OpportunityActionEntityOptions {
             Opportunity?: number;
             Initiator?: number;
             Note?: number;
-            ActionType?: number;
-            ActionStatus?: number;
+            Type?: number;
+            Status?: number;
         };
         lessThan?: {
             Id?: number;
@@ -88,8 +88,8 @@ export interface OpportunityActionEntityOptions {
             Opportunity?: number;
             Initiator?: number;
             Note?: number;
-            ActionType?: number;
-            ActionStatus?: number;
+            Type?: number;
+            Status?: number;
         };
         lessThanOrEqual?: {
             Id?: number;
@@ -98,8 +98,8 @@ export interface OpportunityActionEntityOptions {
             Opportunity?: number;
             Initiator?: number;
             Note?: number;
-            ActionType?: number;
-            ActionStatus?: number;
+            Type?: number;
+            Status?: number;
         };
     },
     $select?: (keyof OpportunityActionEntity)[],
@@ -162,12 +162,12 @@ export class OpportunityActionRepository {
                 type: "INTEGER",
             },
             {
-                name: "ActionType",
+                name: "Type",
                 column: "OPPORTUNITYACTION_ACTIONTYPE",
                 type: "INTEGER",
             },
             {
-                name: "ActionStatus",
+                name: "Status",
                 column: "OPPORTUNITYACTION_ACTIONSTATUS",
                 type: "INTEGER",
             }

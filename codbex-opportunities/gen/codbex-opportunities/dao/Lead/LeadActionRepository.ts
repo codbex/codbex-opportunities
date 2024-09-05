@@ -10,8 +10,8 @@ export interface LeadActionEntity {
     Subject?: string;
     Lead?: number;
     Note?: number;
-    NoteType?: number;
-    ActionType?: number;
+    Type?: number;
+    Status?: number;
 }
 
 export interface LeadActionCreateEntity {
@@ -19,8 +19,8 @@ export interface LeadActionCreateEntity {
     readonly Subject?: string;
     readonly Lead?: number;
     readonly Note?: number;
-    readonly NoteType?: number;
-    readonly ActionType?: number;
+    readonly Type?: number;
+    readonly Status?: number;
 }
 
 export interface LeadActionUpdateEntity extends LeadActionCreateEntity {
@@ -35,8 +35,8 @@ export interface LeadActionEntityOptions {
             Subject?: string | string[];
             Lead?: number | number[];
             Note?: number | number[];
-            NoteType?: number | number[];
-            ActionType?: number | number[];
+            Type?: number | number[];
+            Status?: number | number[];
         };
         notEquals?: {
             Id?: number | number[];
@@ -44,8 +44,8 @@ export interface LeadActionEntityOptions {
             Subject?: string | string[];
             Lead?: number | number[];
             Note?: number | number[];
-            NoteType?: number | number[];
-            ActionType?: number | number[];
+            Type?: number | number[];
+            Status?: number | number[];
         };
         contains?: {
             Id?: number;
@@ -53,8 +53,8 @@ export interface LeadActionEntityOptions {
             Subject?: string;
             Lead?: number;
             Note?: number;
-            NoteType?: number;
-            ActionType?: number;
+            Type?: number;
+            Status?: number;
         };
         greaterThan?: {
             Id?: number;
@@ -62,8 +62,8 @@ export interface LeadActionEntityOptions {
             Subject?: string;
             Lead?: number;
             Note?: number;
-            NoteType?: number;
-            ActionType?: number;
+            Type?: number;
+            Status?: number;
         };
         greaterThanOrEqual?: {
             Id?: number;
@@ -71,8 +71,8 @@ export interface LeadActionEntityOptions {
             Subject?: string;
             Lead?: number;
             Note?: number;
-            NoteType?: number;
-            ActionType?: number;
+            Type?: number;
+            Status?: number;
         };
         lessThan?: {
             Id?: number;
@@ -80,8 +80,8 @@ export interface LeadActionEntityOptions {
             Subject?: string;
             Lead?: number;
             Note?: number;
-            NoteType?: number;
-            ActionType?: number;
+            Type?: number;
+            Status?: number;
         };
         lessThanOrEqual?: {
             Id?: number;
@@ -89,8 +89,8 @@ export interface LeadActionEntityOptions {
             Subject?: string;
             Lead?: number;
             Note?: number;
-            NoteType?: number;
-            ActionType?: number;
+            Type?: number;
+            Status?: number;
         };
     },
     $select?: (keyof LeadActionEntity)[],
@@ -148,13 +148,13 @@ export class LeadActionRepository {
                 type: "INTEGER",
             },
             {
-                name: "NoteType",
-                column: "LEADACTIONS_NOTETYPE",
+                name: "Type",
+                column: "LEADACTIONS_ACTIONTYPE",
                 type: "INTEGER",
             },
             {
-                name: "ActionType",
-                column: "LEADACTIONS_ACTIONTYPE",
+                name: "Status",
+                column: "LEADACTIONS_STATUS",
                 type: "INTEGER",
             }
         ]

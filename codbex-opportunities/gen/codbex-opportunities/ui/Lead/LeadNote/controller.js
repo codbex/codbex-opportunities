@@ -5,7 +5,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 	.config(["entityApiProvider", function (entityApiProvider) {
 		entityApiProvider.baseUrl = "/services/ts/codbex-opportunities/gen/codbex-opportunities/api/Lead/LeadNoteService.ts";
 	}])
-	.controller('PageController', ['$scope', 'messageHub', 'entityApi', 'Extensions', function ($scope, messageHub, entityApi, Extensions) {
+	.controller('PageController', ['$scope', '$http', 'messageHub', 'entityApi', 'Extensions', function ($scope, $http, messageHub, entityApi, Extensions) {
 		//-----------------Custom Actions-------------------//
 		Extensions.get('dialogWindow', 'codbex-opportunities-custom-action').then(function (response) {
 			$scope.pageActions = response.filter(e => e.perspective === "Lead" && e.view === "LeadNote" && (e.type === "page" || e.type === undefined));
@@ -132,12 +132,14 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.showDialogWindow("LeadNote-details", {
 				action: "select",
 				entity: entity,
+				optionsType: $scope.optionsType,
 			});
 		};
 
 		$scope.openFilter = function (entity) {
 			messageHub.showDialogWindow("LeadNote-filter", {
 				entity: $scope.filterEntity,
+				optionsType: $scope.optionsType,
 			});
 		};
 
@@ -148,6 +150,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				entity: {},
 				selectedMainEntityKey: "${masterEntityId}",
 				selectedMainEntityId: $scope.selectedMainEntityId,
+				optionsType: $scope.optionsType,
 			}, null, false);
 		};
 
@@ -157,6 +160,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				entity: entity,
 				selectedMainEntityKey: "${masterEntityId}",
 				selectedMainEntityId: $scope.selectedMainEntityId,
+				optionsType: $scope.optionsType,
 			}, null, false);
 		};
 
@@ -188,5 +192,28 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				}
 			});
 		};
+
+		//----------------Dropdowns-----------------//
+		$scope.optionsType = [];
+
+
+		$http.get("/services/ts/codbex-opportunities/gen/codbex-opportunities/api/Settings/NoteTypeService.ts").then(function (response) {
+			$scope.optionsType = response.data.map(e => {
+				return {
+					value: e.Id,
+					text: e.Name
+				}
+			});
+		});
+
+		$scope.optionsTypeValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsType.length; i++) {
+				if ($scope.optionsType[i].value === optionKey) {
+					return $scope.optionsType[i].text;
+				}
+			}
+			return null;
+		};
+		//----------------Dropdowns-----------------//
 
 	}]);

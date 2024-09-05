@@ -17,6 +17,7 @@ angular.module('page', ["ideUI", "ideView"])
 			$scope.optionsIndustry = params.optionsIndustry;
 			$scope.optionsStatus = params.optionsStatus;
 			$scope.optionsOwner = params.optionsOwner;
+			$scope.optionsQualification = params.optionsQualification;
 		}
 
 		$scope.filter = function () {
@@ -68,6 +69,9 @@ angular.module('page', ["ideUI", "ideView"])
 			}
 			if (entity.Owner !== undefined) {
 				filter.$filter.equals.Owner = entity.Owner;
+			}
+			if (entity.Qualification !== undefined) {
+				filter.$filter.equals.Qualification = entity.Qualification;
 			}
 			messageHub.postMessage("entitySearch", {
 				entity: entity,

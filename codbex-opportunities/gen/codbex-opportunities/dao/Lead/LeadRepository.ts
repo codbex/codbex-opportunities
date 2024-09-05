@@ -16,6 +16,7 @@ export interface LeadEntity {
     Industry?: number;
     Status?: number;
     Owner?: number;
+    Qualification?: number;
 }
 
 export interface LeadCreateEntity {
@@ -27,6 +28,7 @@ export interface LeadCreateEntity {
     readonly Industry?: number;
     readonly Status?: number;
     readonly Owner?: number;
+    readonly Qualification?: number;
 }
 
 export interface LeadUpdateEntity extends LeadCreateEntity {
@@ -46,6 +48,7 @@ export interface LeadEntityOptions {
             Industry?: number | number[];
             Status?: number | number[];
             Owner?: number | number[];
+            Qualification?: number | number[];
         };
         notEquals?: {
             Id?: number | number[];
@@ -58,6 +61,7 @@ export interface LeadEntityOptions {
             Industry?: number | number[];
             Status?: number | number[];
             Owner?: number | number[];
+            Qualification?: number | number[];
         };
         contains?: {
             Id?: number;
@@ -70,6 +74,7 @@ export interface LeadEntityOptions {
             Industry?: number;
             Status?: number;
             Owner?: number;
+            Qualification?: number;
         };
         greaterThan?: {
             Id?: number;
@@ -82,6 +87,7 @@ export interface LeadEntityOptions {
             Industry?: number;
             Status?: number;
             Owner?: number;
+            Qualification?: number;
         };
         greaterThanOrEqual?: {
             Id?: number;
@@ -94,6 +100,7 @@ export interface LeadEntityOptions {
             Industry?: number;
             Status?: number;
             Owner?: number;
+            Qualification?: number;
         };
         lessThan?: {
             Id?: number;
@@ -106,6 +113,7 @@ export interface LeadEntityOptions {
             Industry?: number;
             Status?: number;
             Owner?: number;
+            Qualification?: number;
         };
         lessThanOrEqual?: {
             Id?: number;
@@ -118,6 +126,7 @@ export interface LeadEntityOptions {
             Industry?: number;
             Status?: number;
             Owner?: number;
+            Qualification?: number;
         };
     },
     $select?: (keyof LeadEntity)[],
@@ -197,6 +206,11 @@ export class LeadRepository {
             {
                 name: "Owner",
                 column: "LEAD_OWNER",
+                type: "INTEGER",
+            },
+            {
+                name: "Qualification",
+                column: "LEAD_QUALIFICATION",
                 type: "INTEGER",
             }
         ]

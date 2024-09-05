@@ -62,6 +62,11 @@
                         "type": "INTEGER",
                         "nullable": true,
                         "name": "LEAD_OWNER"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "LEAD_QUALIFICATION"
                     }
                 ]
             },
@@ -508,11 +513,6 @@
                         "type": "INTEGER",
                         "nullable": true,
                         "name": "LEADQUALIFICATION_TIMELINE"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "nullable": true,
-                        "name": "LEADQUALIFICATION_LEAD"
                     }
                 ]
             },
@@ -608,12 +608,12 @@
                     {
                         "type": "INTEGER",
                         "nullable": true,
-                        "name": "LEADACTIONS_NOTETYPE"
+                        "name": "LEADACTIONS_ACTIONTYPE"
                     },
                     {
                         "type": "INTEGER",
                         "nullable": true,
-                        "name": "LEADACTIONS_ACTIONTYPE"
+                        "name": "LEADACTIONS_STATUS"
                     }
                 ]
             },
@@ -730,6 +730,15 @@
                 "columns": "LEAD_OWNER",
                 "referencedTable": "CODBEX_EMPLOYEE",
                 "referencedColumns": "EMPLOYEE_ID"
+            },
+            {
+                "name": "Lead_LeadQualification",
+                "type": "foreignKey",
+                "table": "CODBEX_LEAD",
+                "constraintName": "Lead_LeadQualification",
+                "columns": "LEAD_QUALIFICATION",
+                "referencedTable": "CODBEX_LEADQUALIFICATION",
+                "referencedColumns": "LEADQUALIFICATION_ID"
             },
             {
                 "name": "LeadNote_NoteType",
@@ -948,15 +957,6 @@
                 "referencedColumns": "LEADQUALIFICATIONTIMELINE_ID"
             },
             {
-                "name": "LeadQualification_Lead",
-                "type": "foreignKey",
-                "table": "CODBEX_LEADQUALIFICATION",
-                "constraintName": "LeadQualification_Lead",
-                "columns": "LEADQUALIFICATION_LEAD",
-                "referencedTable": "CODBEX_LEAD",
-                "referencedColumns": "LEAD_ID"
-            },
-            {
                 "name": "LeadAction_Lead",
                 "type": "foreignKey",
                 "table": "CODBEX_LEADACTIONS",
@@ -975,15 +975,6 @@
                 "referencedColumns": "LEADNOTE_ID"
             },
             {
-                "name": "LeadAction_NoteType",
-                "type": "foreignKey",
-                "table": "CODBEX_LEADACTIONS",
-                "constraintName": "LeadAction_NoteType",
-                "columns": "LEADACTIONS_NOTETYPE",
-                "referencedTable": "CODBEX_NOTETYPE",
-                "referencedColumns": "NOTETYPE_ID"
-            },
-            {
                 "name": "LeadAction_ActionType",
                 "type": "foreignKey",
                 "table": "CODBEX_LEADACTIONS",
@@ -991,6 +982,15 @@
                 "columns": "LEADACTIONS_ACTIONTYPE",
                 "referencedTable": "CODBEX_ACTIONTYPE",
                 "referencedColumns": "ACTIONTYPE_ID"
+            },
+            {
+                "name": "LeadAction_ActionStatus",
+                "type": "foreignKey",
+                "table": "CODBEX_LEADACTIONS",
+                "constraintName": "LeadAction_ActionStatus",
+                "columns": "LEADACTIONS_STATUS",
+                "referencedTable": "CODBEX_ACTIONSTATUS",
+                "referencedColumns": "ACTIONSTATUS_ID"
             },
             {
                 "name": "OpportunityAction_Opportunity",
