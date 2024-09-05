@@ -1,9 +1,9 @@
-"LEADQUALIFICATIONAUTHORITY_ID"," LEADQUALIFICATIONAUTHORITY"
-"1","Decision Maker"
-"2","Influencer"
-"3","Evaluator"
-"4","Recommender"
-"5","Gatekeeper"
-"6","End User"
-"7","Budget Holder"
-"8","No Authority"
+LEADQUALIFICATIONAUTHORITY_ID,LEADQUALIFICATIONAUTHORITY_NAME
+1,Decision Maker
+2,Influencer
+3,Evaluator
+4,Recommender
+5,Gatekeeper
+6,End User
+7,Budget Holder
+8,No Authority

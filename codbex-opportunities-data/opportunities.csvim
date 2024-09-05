@@ -76,6 +76,61 @@
       "delimEnclosing": "\"",
       "distinguishEmptyFromNull": true,
       "version": "1.0"
+    },
+    {
+      "table": "CODBEX_ACTIONSTATUS",
+      "schema": "PUBLIC",
+      "file": "/codbex-opportunities-data/action-statuses.csv",
+      "header": true,
+      "useHeaderNames": true,
+      "delimField": ",",
+      "delimEnclosing": "\"",
+      "distinguishEmptyFromNull": true,
+      "version": "1.0"
+    },
+    {
+      "table": "CODBEX_ACTIONTYPE",
+      "schema": "PUBLIC",
+      "file": "/codbex-opportunities-data/action-types.csv",
+      "header": true,
+      "useHeaderNames": true,
+      "delimField": ",",
+      "delimEnclosing": "\"",
+      "distinguishEmptyFromNull": true,
+      "version": "1.0"
+    },
+    {
+      "table": "CODBEX_LEADQUALIFICATIONAUTHORITY",
+      "schema": "PUBLIC",
+      "file": "/codbex-opportunities-data/lead-authorities.csv",
+      "header": true,
+      "useHeaderNames": true,
+      "delimField": ",",
+      "delimEnclosing": "\"",
+      "distinguishEmptyFromNull": true,
+      "version": "1.0"
+    },
+    {
+      "table": "CODBEX_LEADQUALIFICATIONNEED",
+      "schema": "PUBLIC",
+      "file": "/codbex-opportunities-data/lead-needs.csv",
+      "header": true,
+      "useHeaderNames": true,
+      "delimField": ",",
+      "delimEnclosing": "\"",
+      "distinguishEmptyFromNull": true,
+      "version": "1.0"
+    },
+    {
+      "table": "CODBEX_LEADQUALIFICATIONTIMELINE",
+      "schema": "PUBLIC",
+      "file": "/codbex-opportunities-data/lead-timeline.csv",
+      "header": true,
+      "useHeaderNames": true,
+      "delimField": ",",
+      "delimEnclosing": "\"",
+      "distinguishEmptyFromNull": true,
+      "version": "1.0"
     }
   ]
 }
