@@ -17,7 +17,7 @@
         "@codbex/codbex-currencies-data": "0.2.0",
         "@codbex/codbex-uoms": "0.2.0",
         "@codbex/codbex-orders": "0.2.0",
-        "@codbex/codbex-orders-data": "0.2.0",
+        "@codbex/codbex-orders-data": "0.3.0",
         "@codbex/codbex-industries": "0.1.0",
         "@codbex/codbex-industries-data": "0.1.0",
         "@codbex/codbex-number-generator": "0.2.0"
