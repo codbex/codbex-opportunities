@@ -1,0 +1,25 @@
+{
+    "name": "@codbex/codbex-opportunities",
+    "version": "0.1.0",
+    "repository": {
+        "url": "https://github.com/codbex/codbex-opportunities.git",
+        "type": "git"
+    },
+    "publishConfig": {
+        "registry": "https://npm.pkg.github.com"
+    },
+    "dependencies": {
+        "@codbex/codbex-products": "0.2.0",
+        "@codbex/codbex-products-data": "0.2.0",
+        "@codbex/codbex-partners": "0.2.0",
+        "@codbex/codbex-employees": "0.2.0",
+        "@codbex/codbex-currencies": "0.2.0",
+        "@codbex/codbex-currencies-data": "0.2.0",
+        "@codbex/codbex-uoms": "0.2.0",
+        "@codbex/codbex-orders": "0.2.0",
+        "@codbex/codbex-orders-data": "0.2.0",
+        "@codbex/codbex-industries": "0.1.0",
+        "@codbex/codbex-industries-data": "0.1.0",
+        "@codbex/codbex-number-generator": "0.2.0"
+    }
+}
