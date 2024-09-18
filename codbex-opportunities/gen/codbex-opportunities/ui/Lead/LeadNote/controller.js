@@ -132,14 +132,14 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.showDialogWindow("LeadNote-details", {
 				action: "select",
 				entity: entity,
-				optionsLead: $scope.optionsLead,
+				optionsType: $scope.optionsType,
 			});
 		};
 
 		$scope.openFilter = function (entity) {
 			messageHub.showDialogWindow("LeadNote-filter", {
 				entity: $scope.filterEntity,
-				optionsLead: $scope.optionsLead,
+				optionsType: $scope.optionsType,
 			});
 		};
 
@@ -150,7 +150,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				entity: {},
 				selectedMainEntityKey: "${masterEntityId}",
 				selectedMainEntityId: $scope.selectedMainEntityId,
-				optionsLead: $scope.optionsLead,
+				optionsType: $scope.optionsType,
 			}, null, false);
 		};
 
@@ -160,7 +160,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				entity: entity,
 				selectedMainEntityKey: "${masterEntityId}",
 				selectedMainEntityId: $scope.selectedMainEntityId,
-				optionsLead: $scope.optionsLead,
+				optionsType: $scope.optionsType,
 			}, null, false);
 		};
 
@@ -194,11 +194,11 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		};
 
 		//----------------Dropdowns-----------------//
-		$scope.optionsLead = [];
+		$scope.optionsType = [];
 
 
-		$http.get("/services/ts/codbex-opportunities/gen/codbex-opportunities/api/Lead/LeadService.ts").then(function (response) {
-			$scope.optionsLead = response.data.map(e => {
+		$http.get("/services/ts/codbex-opportunities/gen/codbex-opportunities/api/Settings/NoteTypeService.ts").then(function (response) {
+			$scope.optionsType = response.data.map(e => {
 				return {
 					value: e.Id,
 					text: e.Name
@@ -206,10 +206,10 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		});
 
-		$scope.optionsLeadValue = function (optionKey) {
-			for (let i = 0; i < $scope.optionsLead.length; i++) {
-				if ($scope.optionsLead[i].value === optionKey) {
-					return $scope.optionsLead[i].text;
+		$scope.optionsTypeValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsType.length; i++) {
+				if ($scope.optionsType[i].value === optionKey) {
+					return $scope.optionsType[i].text;
 				}
 			}
 			return null;

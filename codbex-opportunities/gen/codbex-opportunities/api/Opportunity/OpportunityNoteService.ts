@@ -130,9 +130,6 @@ class OpportunityNoteService {
     }
 
     private validateEntity(entity: any): void {
-        if (entity.Opportunity === null || entity.Opportunity === undefined) {
-            throw new ValidationError(`The 'Opportunity' property is required, provide a valid value`);
-        }
         if (entity.Note === null || entity.Note === undefined) {
             throw new ValidationError(`The 'Note' property is required, provide a valid value`);
         }

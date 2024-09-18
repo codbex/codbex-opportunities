@@ -1,0 +1,12 @@
+ACTIONSTATUS_ID,ACTIONSTATUS_NAME
+1,Sent
+2,Opened
+3,Clicked
+4,Replied
+5,Scheduled
+6,Completed
+7,Follow-up Scheduled
+8,In Progress
+9,Failed
+10,No Response
+11,Canceled:

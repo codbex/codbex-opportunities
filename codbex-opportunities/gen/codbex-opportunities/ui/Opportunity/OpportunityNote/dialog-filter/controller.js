@@ -20,7 +20,7 @@ angular.module('page', ["ideUI", "ideView"])
 			$scope.entity = params.entity ?? {};
 			$scope.selectedMainEntityKey = params.selectedMainEntityKey;
 			$scope.selectedMainEntityId = params.selectedMainEntityId;
-			$scope.optionsOpportunity = params.optionsOpportunity;
+			$scope.optionsNoteType = params.optionsNoteType;
 		}
 
 		$scope.filter = function () {
@@ -45,9 +45,6 @@ angular.module('page', ["ideUI", "ideView"])
 			};
 			if (entity.Id !== undefined) {
 				filter.$filter.equals.Id = entity.Id;
-			}
-			if (entity.Opportunity !== undefined) {
-				filter.$filter.equals.Opportunity = entity.Opportunity;
 			}
 			if (entity.NoteType !== undefined) {
 				filter.$filter.equals.NoteType = entity.NoteType;
