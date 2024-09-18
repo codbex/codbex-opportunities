@@ -5740,13 +5740,13 @@
           "inputRule": ""
         },
         {
-          "dataLength": "20",
+          "dataLength": "50",
           "dataName": "LEADQUALIFICATIONTIMELINE_NAME",
           "dataNullable": true,
           "dataType": "VARCHAR",
           "name": "Name",
           "widgetIsMajor": true,
-          "widgetLength": "20",
+          "widgetLength": "50",
           "widgetSize": "",
           "widgetType": "TEXTBOX",
           "dataNotNull": false,
@@ -5760,7 +5760,7 @@
           "dataTypeJava": "string",
           "dataTypeTypescript": "string",
           "minLength": 0,
-          "maxLength": 20,
+          "maxLength": 50,
           "inputRule": ""
         }
       ],

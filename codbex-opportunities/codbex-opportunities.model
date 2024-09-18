@@ -2812,13 +2812,13 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
-                        "dataLength": "20",
+                        "dataLength": "50",
                         "dataName": "LEADQUALIFICATIONTIMELINE_NAME",
                         "dataNullable": "true",
                         "dataType": "VARCHAR",
                         "name": "Name",
                         "widgetIsMajor": "true",
-                        "widgetLength": "20",
+                        "widgetLength": "50",
                         "widgetSize": "",
                         "widgetType": "TEXTBOX"
                     }

@@ -567,7 +567,7 @@
                     },
                     {
                         "type": "VARCHAR",
-                        "length": 20,
+                        "length": 50,
                         "nullable": true,
                         "name": "LEADQUALIFICATIONTIMELINE_NAME"
                     }
