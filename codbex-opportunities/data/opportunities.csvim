@@ -3,7 +3,7 @@
     {
       "table": "CODBEX_LEADSTATUS",
       "schema": "PUBLIC",
-      "file": "/codbex-opportunities-data/lead-statuses.csv",
+      "file": "/codbex-opportunities/data/lead-statuses.csv",
       "header": true,
       "useHeaderNames": true,
       "delimField": ",",
@@ -14,7 +14,7 @@
     {
       "table": "CODBEX_NOTETYPE",
       "schema": "PUBLIC",
-      "file": "/codbex-opportunities-data/note-types.csv",
+      "file": "/codbex-opportunities/data/note-types.csv",
       "header": true,
       "useHeaderNames": true,
       "delimField": ",",
@@ -25,7 +25,7 @@
     {
       "table": "CODBEX_OPPORTUNITYPRIORITY",
       "schema": "PUBLIC",
-      "file": "/codbex-opportunities-data/opportunity-priorities.csv",
+      "file": "/codbex-opportunities/data/opportunity-priorities.csv",
       "header": true,
       "useHeaderNames": true,
       "delimField": ",",
@@ -36,7 +36,7 @@
     {
       "table": "CODBEX_OPPORTUNITYPROBABILITY",
       "schema": "PUBLIC",
-      "file": "/codbex-opportunities-data/opportunity-probabilities.csv",
+      "file": "/codbex-opportunities/data/opportunity-probabilities.csv",
       "header": true,
       "useHeaderNames": true,
       "delimField": ",",
@@ -47,7 +47,7 @@
     {
       "table": "CODBEX_OPPORTUNITYSTATUS",
       "schema": "PUBLIC",
-      "file": "/codbex-opportunities-data/opportunity-statuses.csv",
+      "file": "/codbex-opportunities/data/opportunity-statuses.csv",
       "header": true,
       "useHeaderNames": true,
       "delimField": ",",
@@ -58,7 +58,7 @@
     {
       "table": "CODBEX_OPPORTUNITYTYPE",
       "schema": "PUBLIC",
-      "file": "/codbex-opportunities-data/opportunity-types.csv",
+      "file": "/codbex-opportunities/data/opportunity-types.csv",
       "header": true,
       "useHeaderNames": true,
       "delimField": ",",
@@ -69,7 +69,7 @@
     {
       "table": "CODBEX_QUOTATIONSTATUS",
       "schema": "PUBLIC",
-      "file": "/codbex-opportunities-data/quotation-statuses.csv",
+      "file": "/codbex-opportunities/data/quotation-statuses.csv",
       "header": true,
       "useHeaderNames": true,
       "delimField": ",",
@@ -80,7 +80,7 @@
     {
       "table": "CODBEX_ACTIONSTATUS",
       "schema": "PUBLIC",
-      "file": "/codbex-opportunities-data/action-statuses.csv",
+      "file": "/codbex-opportunities/data/action-statuses.csv",
       "header": true,
       "useHeaderNames": true,
       "delimField": ",",
@@ -91,7 +91,7 @@
     {
       "table": "CODBEX_ACTIONTYPE",
       "schema": "PUBLIC",
-      "file": "/codbex-opportunities-data/action-types.csv",
+      "file": "/codbex-opportunities/data/action-types.csv",
       "header": true,
       "useHeaderNames": true,
       "delimField": ",",
@@ -102,7 +102,7 @@
     {
       "table": "CODBEX_LEADQUALIFICATIONAUTHORITY",
       "schema": "PUBLIC",
-      "file": "/codbex-opportunities-data/lead-authorities.csv",
+      "file": "/codbex-opportunities/data/lead-authorities.csv",
       "header": true,
       "useHeaderNames": true,
       "delimField": ",",
@@ -113,7 +113,7 @@
     {
       "table": "CODBEX_LEADQUALIFICATIONNEED",
       "schema": "PUBLIC",
-      "file": "/codbex-opportunities-data/lead-needs.csv",
+      "file": "/codbex-opportunities/data/lead-needs.csv",
       "header": true,
       "useHeaderNames": true,
       "delimField": ",",
@@ -124,7 +124,7 @@
     {
       "table": "CODBEX_LEADQUALIFICATIONTIMELINE",
       "schema": "PUBLIC",
-      "file": "/codbex-opportunities-data/lead-timeline.csv",
+      "file": "/codbex-opportunities/data/lead-timeline.csv",
       "header": true,
       "useHeaderNames": true,
       "delimField": ",",
