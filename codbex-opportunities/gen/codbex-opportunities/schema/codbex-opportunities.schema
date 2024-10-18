@@ -67,6 +67,11 @@
                         "type": "INTEGER",
                         "nullable": true,
                         "name": "LEAD_QUALIFICATION"
+                    },
+                    {
+                        "type": "DATE",
+                        "nullable": true,
+                        "name": "LEAD_DATE"
                     }
                 ]
             },
@@ -207,6 +212,11 @@
                         "type": "INTEGER",
                         "nullable": true,
                         "name": "OPPORTUNITY_CURRENCY"
+                    },
+                    {
+                        "type": "DATE",
+                        "nullable": true,
+                        "name": "OPPORTUNITY_DATE"
                     }
                 ]
             },

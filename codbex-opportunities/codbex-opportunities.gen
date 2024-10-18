@@ -474,6 +474,28 @@
           "dataTypeJava": "int",
           "dataTypeTypescript": "number",
           "inputRule": ""
+        },
+        {
+          "dataName": "LEAD_DATE",
+          "dataNullable": true,
+          "dataType": "DATE",
+          "isRequiredProperty": true,
+          "name": "Date",
+          "widgetIsMajor": true,
+          "widgetLength": "20",
+          "widgetSize": "",
+          "widgetType": "DATE",
+          "dataNotNull": false,
+          "dataAutoIncrement": false,
+          "dataPrimaryKey": false,
+          "dataUnique": false,
+          "isCalculatedProperty": false,
+          "widgetLabel": "Date",
+          "widgetDropdownUrl": "",
+          "dataTypeJava": "date",
+          "dataTypeTypescript": "Date",
+          "isDateType": true,
+          "inputRule": ""
         }
       ],
       "caption": "Manage entity Lead",
@@ -770,10 +792,33 @@
             "dataTypeJava": "int",
             "dataTypeTypescript": "number",
             "inputRule": ""
+          },
+          {
+            "dataName": "LEAD_DATE",
+            "dataNullable": true,
+            "dataType": "DATE",
+            "isRequiredProperty": true,
+            "name": "Date",
+            "widgetIsMajor": true,
+            "widgetLength": "20",
+            "widgetSize": "",
+            "widgetType": "DATE",
+            "dataNotNull": false,
+            "dataAutoIncrement": false,
+            "dataPrimaryKey": false,
+            "dataUnique": false,
+            "isCalculatedProperty": false,
+            "widgetLabel": "Date",
+            "widgetDropdownUrl": "",
+            "dataTypeJava": "date",
+            "dataTypeTypescript": "Date",
+            "isDateType": true,
+            "inputRule": ""
           }
         ]
       },
-      "hasDropdowns": true
+      "hasDropdowns": true,
+      "hasDates": true
     },
     {
       "properties": [
@@ -1664,6 +1709,28 @@
           "dataTypeJava": "int",
           "dataTypeTypescript": "number",
           "inputRule": ""
+        },
+        {
+          "dataName": "OPPORTUNITY_DATE",
+          "dataNullable": true,
+          "dataType": "DATE",
+          "isRequiredProperty": true,
+          "name": "Date",
+          "widgetIsMajor": true,
+          "widgetLength": "20",
+          "widgetSize": "",
+          "widgetType": "DATE",
+          "dataNotNull": false,
+          "dataAutoIncrement": false,
+          "dataPrimaryKey": false,
+          "dataUnique": false,
+          "isCalculatedProperty": false,
+          "widgetLabel": "Date",
+          "widgetDropdownUrl": "",
+          "dataTypeJava": "date",
+          "dataTypeTypescript": "Date",
+          "isDateType": true,
+          "inputRule": ""
         }
       ],
       "caption": "Manage entity Opportunity",
@@ -2001,10 +2068,33 @@
             "dataTypeJava": "int",
             "dataTypeTypescript": "number",
             "inputRule": ""
+          },
+          {
+            "dataName": "OPPORTUNITY_DATE",
+            "dataNullable": true,
+            "dataType": "DATE",
+            "isRequiredProperty": true,
+            "name": "Date",
+            "widgetIsMajor": true,
+            "widgetLength": "20",
+            "widgetSize": "",
+            "widgetType": "DATE",
+            "dataNotNull": false,
+            "dataAutoIncrement": false,
+            "dataPrimaryKey": false,
+            "dataUnique": false,
+            "isCalculatedProperty": false,
+            "widgetLabel": "Date",
+            "widgetDropdownUrl": "",
+            "dataTypeJava": "date",
+            "dataTypeTypescript": "Date",
+            "isDateType": true,
+            "inputRule": ""
           }
         ]
       },
-      "hasDropdowns": true
+      "hasDropdowns": true,
+      "hasDates": true
     },
     {
       "properties": [

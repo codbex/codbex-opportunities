@@ -151,6 +151,17 @@
                         "relationshipEntityName": "LeadQualification",
                         "relationshipEntityPerspectiveName": "Lead",
                         "relationshipEntityPerspectiveLabel": "Entities"
+                    },
+                    {
+                        "dataName": "LEAD_DATE",
+                        "dataNullable": "true",
+                        "dataType": "DATE",
+                        "isRequiredProperty": "true",
+                        "name": "Date",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "DATE"
                     }
                 ],
                 "caption": "Manage entity Lead",
@@ -719,6 +730,17 @@
                         "relationshipEntityName": "Currency",
                         "relationshipEntityPerspectiveName": "Currencies",
                         "relationshipEntityPerspectiveLabel": "Entities"
+                    },
+                    {
+                        "dataName": "OPPORTUNITY_DATE",
+                        "dataNullable": "true",
+                        "dataType": "DATE",
+                        "isRequiredProperty": "true",
+                        "name": "Date",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "DATE"
                     }
                 ],
                 "caption": "Manage entity Opportunity",

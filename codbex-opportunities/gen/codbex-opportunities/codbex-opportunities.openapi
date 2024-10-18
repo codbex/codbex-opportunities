@@ -8826,6 +8826,7 @@ components:
         - ContactEmail
         - ContactPhone
         - Owner
+        - Date
       properties:
         Id:
           type: integer
@@ -8867,6 +8868,7 @@ components:
         Qualification:
           type: integer
           format: int32
+        Date:
     LeadFilterOptions:
       type: object
       properties:
@@ -8982,6 +8984,8 @@ components:
                       items:
                         type: integer
                         format: int32
+                Date:
+                  oneOf:
             notEquals:
               type: object
               properties:
@@ -9091,6 +9095,8 @@ components:
                       items:
                         type: integer
                         format: int32
+                Date:
+                  oneOf:
             contains:
               type: object
               properties:
@@ -9123,6 +9129,7 @@ components:
                 Status:
                 Owner:
                 Qualification:
+                Date:
             greaterThan:
               type: object
               properties:
@@ -9165,6 +9172,7 @@ components:
                 Qualification:
                   type: integer
                   format: int32
+                Date:
             greaterThanOrEqual:
               type: object
               properties:
@@ -9207,6 +9215,7 @@ components:
                 Qualification:
                   type: integer
                   format: int32
+                Date:
             lessThan:
               type: object
               properties:
@@ -9249,6 +9258,7 @@ components:
                 Qualification:
                   type: integer
                   format: int32
+                Date:
             lessThanOrEqual:
               type: object
               properties:
@@ -9291,14 +9301,15 @@ components:
                 Qualification:
                   type: integer
                   format: int32
+                Date:
         $select:
           type: array
-          example: ["Id", "Number", "CompanyName", "ContactName", "ContactDesignation", "ContactEmail", "ContactPhone", "Industry", "Status", "Owner", "Qualification"]
+          example: ["Id", "Number", "CompanyName", "ContactName", "ContactDesignation", "ContactEmail", "ContactPhone", "Industry", "Status", "Owner", "Qualification", "Date"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,Number,CompanyName,ContactName,ContactDesignation,ContactEmail,ContactPhone,Industry,Status,Owner,Qualification"
+            example: "Id,Number,CompanyName,ContactName,ContactDesignation,ContactEmail,ContactPhone,Industry,Status,Owner,Qualification,Date"
         $order:
           type: string
           enum: ["asc", "desc"]
@@ -9740,6 +9751,7 @@ components:
         - Amount
         - Owner
         - Currency
+        - Date
       properties:
         Id:
           type: integer
@@ -9780,6 +9792,7 @@ components:
         Currency:
           type: integer
           format: int32
+        Date:
     OpportunityFilterOptions:
       type: object
       properties:
@@ -9891,6 +9904,8 @@ components:
                       items:
                         type: integer
                         format: int32
+                Date:
+                  oneOf:
             notEquals:
               type: object
               properties:
@@ -9996,6 +10011,8 @@ components:
                       items:
                         type: integer
                         format: int32
+                Date:
+                  oneOf:
             contains:
               type: object
               properties:
@@ -10017,6 +10034,7 @@ components:
                 Probability:
                 Status:
                 Currency:
+                Date:
             greaterThan:
               type: object
               properties:
@@ -10058,6 +10076,7 @@ components:
                 Currency:
                   type: integer
                   format: int32
+                Date:
             greaterThanOrEqual:
               type: object
               properties:
@@ -10099,6 +10118,7 @@ components:
                 Currency:
                   type: integer
                   format: int32
+                Date:
             lessThan:
               type: object
               properties:
@@ -10140,6 +10160,7 @@ components:
                 Currency:
                   type: integer
                   format: int32
+                Date:
             lessThanOrEqual:
               type: object
               properties:
@@ -10181,14 +10202,15 @@ components:
                 Currency:
                   type: integer
                   format: int32
+                Date:
         $select:
           type: array
-          example: ["Id", "Number", "Source", "Customer", "Amount", "Lead", "Owner", "Type", "Priority", "Probability", "Status", "Currency"]
+          example: ["Id", "Number", "Source", "Customer", "Amount", "Lead", "Owner", "Type", "Priority", "Probability", "Status", "Currency", "Date"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,Number,Source,Customer,Amount,Lead,Owner,Type,Priority,Probability,Status,Currency"
+            example: "Id,Number,Source,Customer,Amount,Lead,Owner,Type,Priority,Probability,Status,Currency,Date"
         $order:
           type: string
           enum: ["asc", "desc"]

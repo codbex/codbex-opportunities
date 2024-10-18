@@ -59,7 +59,8 @@
 								{{optionsPriorityValue(next.Priority)}} |
 								{{optionsProbabilityValue(next.Probability)}} |
 								{{optionsStatusValue(next.Status)}} |
-								{{optionsCurrencyValue(next.Currency)}}
+								{{optionsCurrencyValue(next.Currency)}} |
+								{{next.Date | date: "dd/MMM/yyyy"}}
 							</fd-list-byline>
 						</fd-list-content>
 					</fd-list-link>

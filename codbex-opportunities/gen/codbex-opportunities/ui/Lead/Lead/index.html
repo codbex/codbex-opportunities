@@ -58,7 +58,8 @@
 								{{optionsIndustryValue(next.Industry)}} |
 								{{optionsStatusValue(next.Status)}} |
 								{{optionsOwnerValue(next.Owner)}} |
-								{{optionsQualificationValue(next.Qualification)}}
+								{{optionsQualificationValue(next.Qualification)}} |
+								{{next.Date | date: "dd/MMM/yyyy"}}
 							</fd-list-byline>
 						</fd-list-content>
 					</fd-list-link>
