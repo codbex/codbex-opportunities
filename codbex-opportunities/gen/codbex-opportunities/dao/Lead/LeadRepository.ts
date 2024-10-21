@@ -17,7 +17,6 @@ export interface LeadEntity {
     Industry?: number;
     Status?: number;
     Owner?: number;
-    Qualification?: number;
     Date?: Date;
 }
 
@@ -30,7 +29,6 @@ export interface LeadCreateEntity {
     readonly Industry?: number;
     readonly Status?: number;
     readonly Owner?: number;
-    readonly Qualification?: number;
     readonly Date?: Date;
 }
 
@@ -51,7 +49,6 @@ export interface LeadEntityOptions {
             Industry?: number | number[];
             Status?: number | number[];
             Owner?: number | number[];
-            Qualification?: number | number[];
             Date?: Date | Date[];
         };
         notEquals?: {
@@ -65,7 +62,6 @@ export interface LeadEntityOptions {
             Industry?: number | number[];
             Status?: number | number[];
             Owner?: number | number[];
-            Qualification?: number | number[];
             Date?: Date | Date[];
         };
         contains?: {
@@ -79,7 +75,6 @@ export interface LeadEntityOptions {
             Industry?: number;
             Status?: number;
             Owner?: number;
-            Qualification?: number;
             Date?: Date;
         };
         greaterThan?: {
@@ -93,7 +88,6 @@ export interface LeadEntityOptions {
             Industry?: number;
             Status?: number;
             Owner?: number;
-            Qualification?: number;
             Date?: Date;
         };
         greaterThanOrEqual?: {
@@ -107,7 +101,6 @@ export interface LeadEntityOptions {
             Industry?: number;
             Status?: number;
             Owner?: number;
-            Qualification?: number;
             Date?: Date;
         };
         lessThan?: {
@@ -121,7 +114,6 @@ export interface LeadEntityOptions {
             Industry?: number;
             Status?: number;
             Owner?: number;
-            Qualification?: number;
             Date?: Date;
         };
         lessThanOrEqual?: {
@@ -135,7 +127,6 @@ export interface LeadEntityOptions {
             Industry?: number;
             Status?: number;
             Owner?: number;
-            Qualification?: number;
             Date?: Date;
         };
     },
@@ -216,11 +207,6 @@ export class LeadRepository {
             {
                 name: "Owner",
                 column: "LEAD_OWNER",
-                type: "INTEGER",
-            },
-            {
-                name: "Qualification",
-                column: "LEAD_QUALIFICATION",
                 type: "INTEGER",
             },
             {

@@ -137,22 +137,6 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
-                        "dataName": "LEAD_QUALIFICATION",
-                        "dataNullable": "true",
-                        "dataType": "INTEGER",
-                        "name": "Qualification",
-                        "widgetDropDownKey": "Id",
-                        "widgetDropDownValue": "Name",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "20",
-                        "widgetSize": "",
-                        "widgetType": "DROPDOWN",
-                        "relationshipName": "Lead_LeadQualification",
-                        "relationshipEntityName": "LeadQualification",
-                        "relationshipEntityPerspectiveName": "Lead",
-                        "relationshipEntityPerspectiveLabel": "Entities"
-                    },
-                    {
                         "dataName": "LEAD_DATE",
                         "dataNullable": "true",
                         "dataType": "DATE",
@@ -2695,6 +2679,22 @@
                         "relationshipName": "LeadQualification_LeadQualificationTimeline",
                         "relationshipEntityName": "LeadQualificationTimeline",
                         "relationshipEntityPerspectiveName": "Settings",
+                        "relationshipEntityPerspectiveLabel": "Entities"
+                    },
+                    {
+                        "dataName": "LEADQUALIFICATION_LEAD",
+                        "dataNullable": "true",
+                        "dataType": "INTEGER",
+                        "name": "Lead",
+                        "widgetDropDownDependsOn": "ContactName",
+                        "widgetDropDownValue": "Id",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "DROPDOWN",
+                        "relationshipName": "LeadQualification_Lead",
+                        "relationshipEntityName": "Lead",
+                        "relationshipEntityPerspectiveName": "Lead",
                         "relationshipEntityPerspectiveLabel": "Entities"
                     }
                 ],

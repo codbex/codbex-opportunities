@@ -8865,9 +8865,6 @@ components:
         Owner:
           type: integer
           format: int32
-        Qualification:
-          type: integer
-          format: int32
         Date:
     LeadFilterOptions:
       type: object
@@ -8969,14 +8966,6 @@ components:
                         type: integer
                         format: int32
                 Owner:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
-                Qualification:
                   oneOf:
                     - type: integer
                       format: int32
@@ -9087,14 +9076,6 @@ components:
                       items:
                         type: integer
                         format: int32
-                Qualification:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
                 Date:
                   oneOf:
             contains:
@@ -9128,7 +9109,6 @@ components:
                 Industry:
                 Status:
                 Owner:
-                Qualification:
                 Date:
             greaterThan:
               type: object
@@ -9167,9 +9147,6 @@ components:
                   type: integer
                   format: int32
                 Owner:
-                  type: integer
-                  format: int32
-                Qualification:
                   type: integer
                   format: int32
                 Date:
@@ -9212,9 +9189,6 @@ components:
                 Owner:
                   type: integer
                   format: int32
-                Qualification:
-                  type: integer
-                  format: int32
                 Date:
             lessThan:
               type: object
@@ -9253,9 +9227,6 @@ components:
                   type: integer
                   format: int32
                 Owner:
-                  type: integer
-                  format: int32
-                Qualification:
                   type: integer
                   format: int32
                 Date:
@@ -9298,18 +9269,15 @@ components:
                 Owner:
                   type: integer
                   format: int32
-                Qualification:
-                  type: integer
-                  format: int32
                 Date:
         $select:
           type: array
-          example: ["Id", "Number", "CompanyName", "ContactName", "ContactDesignation", "ContactEmail", "ContactPhone", "Industry", "Status", "Owner", "Qualification", "Date"]
+          example: ["Id", "Number", "CompanyName", "ContactName", "ContactDesignation", "ContactEmail", "ContactPhone", "Industry", "Status", "Owner", "Date"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,Number,CompanyName,ContactName,ContactDesignation,ContactEmail,ContactPhone,Industry,Status,Owner,Qualification,Date"
+            example: "Id,Number,CompanyName,ContactName,ContactDesignation,ContactEmail,ContactPhone,Industry,Status,Owner,Date"
         $order:
           type: string
           enum: ["asc", "desc"]
@@ -11929,6 +11897,9 @@ components:
         Timeline:
           type: integer
           format: int32
+        Lead:
+          type: integer
+          format: int32
     LeadQualificationFilterOptions:
       type: object
       properties:
@@ -11971,6 +11942,14 @@ components:
                         type: integer
                         format: int32
                 Timeline:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Lead:
                   oneOf:
                     - type: integer
                       format: int32
@@ -12021,6 +12000,14 @@ components:
                       items:
                         type: integer
                         format: int32
+                Lead:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
             contains:
               type: object
               properties:
@@ -12029,6 +12016,7 @@ components:
                 Authority:
                 Need:
                 Timeline:
+                Lead:
             greaterThan:
               type: object
               properties:
@@ -12045,6 +12033,9 @@ components:
                   type: integer
                   format: int32
                 Timeline:
+                  type: integer
+                  format: int32
+                Lead:
                   type: integer
                   format: int32
             greaterThanOrEqual:
@@ -12065,6 +12056,9 @@ components:
                 Timeline:
                   type: integer
                   format: int32
+                Lead:
+                  type: integer
+                  format: int32
             lessThan:
               type: object
               properties:
@@ -12081,6 +12075,9 @@ components:
                   type: integer
                   format: int32
                 Timeline:
+                  type: integer
+                  format: int32
+                Lead:
                   type: integer
                   format: int32
             lessThanOrEqual:
@@ -12101,14 +12098,17 @@ components:
                 Timeline:
                   type: integer
                   format: int32
+                Lead:
+                  type: integer
+                  format: int32
         $select:
           type: array
-          example: ["Id", "Budget", "Authority", "Need", "Timeline"]
+          example: ["Id", "Budget", "Authority", "Need", "Timeline", "Lead"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,Budget,Authority,Need,Timeline"
+            example: "Id,Budget,Authority,Need,Timeline,Lead"
         $order:
           type: string
           enum: ["asc", "desc"]

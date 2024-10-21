@@ -43,7 +43,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				$scope.optionsIndustry = [];
 				$scope.optionsStatus = [];
 				$scope.optionsOwner = [];
-				$scope.optionsQualification = [];
 				$scope.action = 'select';
 			});
 		});
@@ -57,7 +56,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				$scope.optionsIndustry = msg.data.optionsIndustry;
 				$scope.optionsStatus = msg.data.optionsStatus;
 				$scope.optionsOwner = msg.data.optionsOwner;
-				$scope.optionsQualification = msg.data.optionsQualification;
 				$scope.action = 'select';
 			});
 		});
@@ -68,7 +66,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				$scope.optionsIndustry = msg.data.optionsIndustry;
 				$scope.optionsStatus = msg.data.optionsStatus;
 				$scope.optionsOwner = msg.data.optionsOwner;
-				$scope.optionsQualification = msg.data.optionsQualification;
 				$scope.action = 'create';
 			});
 		});
@@ -82,7 +79,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				$scope.optionsIndustry = msg.data.optionsIndustry;
 				$scope.optionsStatus = msg.data.optionsStatus;
 				$scope.optionsOwner = msg.data.optionsOwner;
-				$scope.optionsQualification = msg.data.optionsQualification;
 				$scope.action = 'update';
 			});
 		});

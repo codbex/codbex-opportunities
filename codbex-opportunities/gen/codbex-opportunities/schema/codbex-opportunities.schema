@@ -64,11 +64,6 @@
                         "name": "LEAD_OWNER"
                     },
                     {
-                        "type": "INTEGER",
-                        "nullable": true,
-                        "name": "LEAD_QUALIFICATION"
-                    },
-                    {
                         "type": "DATE",
                         "nullable": true,
                         "name": "LEAD_DATE"
@@ -523,6 +518,11 @@
                         "type": "INTEGER",
                         "nullable": true,
                         "name": "LEADQUALIFICATION_TIMELINE"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "LEADQUALIFICATION_LEAD"
                     }
                 ]
             },
@@ -742,15 +742,6 @@
                 "referencedColumns": "EMPLOYEE_ID"
             },
             {
-                "name": "Lead_LeadQualification",
-                "type": "foreignKey",
-                "table": "CODBEX_LEAD",
-                "constraintName": "Lead_LeadQualification",
-                "columns": "LEAD_QUALIFICATION",
-                "referencedTable": "CODBEX_LEADQUALIFICATION",
-                "referencedColumns": "LEADQUALIFICATION_ID"
-            },
-            {
                 "name": "LeadNote_NoteType",
                 "type": "foreignKey",
                 "table": "CODBEX_LEADNOTE",
@@ -965,6 +956,15 @@
                 "columns": "LEADQUALIFICATION_TIMELINE",
                 "referencedTable": "CODBEX_LEADQUALIFICATIONTIMELINE",
                 "referencedColumns": "LEADQUALIFICATIONTIMELINE_ID"
+            },
+            {
+                "name": "LeadQualification_Lead",
+                "type": "foreignKey",
+                "table": "CODBEX_LEADQUALIFICATION",
+                "constraintName": "LeadQualification_Lead",
+                "columns": "LEADQUALIFICATION_LEAD",
+                "referencedTable": "CODBEX_LEAD",
+                "referencedColumns": "LEAD_ID"
             },
             {
                 "name": "LeadAction_Lead",
