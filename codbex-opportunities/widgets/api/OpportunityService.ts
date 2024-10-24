@@ -20,28 +20,28 @@ class OpportunityService {
 
     @Get("/LeadData")
     public LeadData() {
-        let leadsNum = this.leadDao.count();
+        let allLeads = this.leadDao.findAll();
 
         return {
-            totalLeads: leadsNum
+            allLeads: allLeads
         };
     }
 
     @Get("/OpportunityData")
     public OpportunityData() {
-        let opportunityNum = this.opportunityDao.count();
+        let allOpportunities = this.opportunityDao.findAll();
 
         return {
-            totalOpportunities: opportunityNum
+            allOpportunities: allOpportunities
         };
     }
 
     @Get("/QuotationData")
     public QuotationData() {
-        let quotationNum = this.quotationDao.count();
+        let allQuotations = this.quotationDao.findAll();
 
         return {
-            totalQuotation: quotationNum
+            allQuotations: allQuotations
         };
     }
 

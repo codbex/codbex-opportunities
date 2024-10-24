@@ -8,9 +8,25 @@ angular.module('open-opportunities', ['ideUI', 'ideView'])
 
         $scope.today = new Date().toDateString();
 
-        const leadServiceUrl = "/services/ts/codbex-opportunities/widgets/api/OpportunityService.ts/OpportunityData";
-        $http.get(leadServiceUrl)
+        const opportunityServiceUrl = "/services/ts/codbex-opportunities/widgets/api/OpportunityService.ts/OpportunityData";
+        $http.get(opportunityServiceUrl)
             .then(function (response) {
-                $scope.totalOpportunities = response.data.totalOpportunities;
+                let allOpportunities = response.data.allOpportunities;
+
+                let openOpportunities = allOpportunities.filter(opportunity => {
+                    return opportunity.Status == 1;
+                })
+
+                $scope.totalOpenOpportunities = openOpportunities.length;
+
+                debugger;
+            })
+            .catch(function (error) {
+                $scope.state.error = true;
+                $scope.state.isBusy = false;
+                console.error('Error fetching opportunities:', error);
+            })
+            .finally(function () {
+                $scope.state.isBusy = false;
             });
     }]);
