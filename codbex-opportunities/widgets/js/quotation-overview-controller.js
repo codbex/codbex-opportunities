@@ -7,15 +7,23 @@ angular.module('quotation-overview', ['ideUI', 'ideView'])
         };
 
         $scope.today = new Date().toDateString();
-
+        $scope.quotations = [];
         const opportunityServiceUrl = "/services/ts/codbex-opportunities/widgets/api/OpportunityService.ts/QuotationData";
+
         $http.get(opportunityServiceUrl)
             .then(function (response) {
                 let allQuotations = response.data.allQuotations;
+
+                $scope.quotations = allQuotations.map(function (quotation) {
+                    return {
+                        Number: quotation.Number,
+                        Stage: quotation.Status,
+                        Gross: quotation.Total
+                    };
+                });
             })
             .catch(function (error) {
                 $scope.state.error = true;
-                $scope.state.isBusy = false;
                 console.error('Error fetching quotations:', error);
             })
             .finally(function () {
