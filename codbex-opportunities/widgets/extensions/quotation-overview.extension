@@ -1,0 +1,5 @@
+{
+    "extensionPoint": "dashboard-widgets",
+    "module": "codbex-opportunities/widgets/services/quotation-overview.js",
+    "description": "Quotation Overview"
+}

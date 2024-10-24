@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" ng-app="open-opportunities" ng-controller="OpenOpportunities">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" ng-app="quotation-overview" ng-controller="QuotationOverview">
 
     <head>
         <meta charset="utf-8" />
@@ -7,14 +7,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="icon" sizes="any" href="data:;base64,iVBORw0KGgo=">
         <title dg-view-title></title>
-        <script type="text/javascript" src="../services/open-opportunities.js"></script>
+        <script type="text/javascript" src="../services/quotation-overview.js"></script>
         <theme></theme>
         <script type="text/javascript" src="/services/js/resources-core/services/loader.js?id=application-view-js">
         </script>
         <link type="text/css" rel="stylesheet"
             href="/services/js/resources-core/services/loader.js?id=application-view-css" />
         <script type="text/javascript" src="/webjars/chart.js/dist/chart.umd.js"></script>
-        <script type="text/javascript" src="../js/open-opportunities-controller.js"></script>
+        <script type="text/javascript" src="../js/quotation-overview-controller.js"></script>
 
         <style>
             .tile-auto-layout {
@@ -30,25 +30,14 @@
     <body>
         <div class="fd-col fd-col--6 fd-col-md--3 fd-col-lg--3 fd-col-xl--3">
             <div role="button" tabindex="0" class="fd-tile fd-tile--feed tile-auto-layout"
-                ng-click="openPerspective('open-opportunities')">
+                ng-click="openPerspective('quotation-overview')">
                 <div class="fd-tile__header tile-auto-layout">
-                    <div class="fd-tile__title">Open Opportunities</div>
+                    <div class="fd-tile__title">Quotation Overview</div>
                 </div>
-                <fd-card-subtitle>This month
-                </fd-card-subtitle>
                 <div class="fd-tile__content tile-auto-layout">
                     <div class="fd-tile__section">
-                        <div class="fd-numeric-content">
-                            <div class="fd-numeric-content__kpi-container">
-                                <div class="fd-numeric-content__kpi">
-                                    {{totalOpenOpportunities}}
-                                </div>
-                            </div>
-                        </div>
+
                     </div>
-                </div>
-                <div class="fd-tile__footer tile-auto-layout">
-                    <span class="fd-tile__footer-text">{{today}}</span>
                 </div>
             </div>
         </div>
