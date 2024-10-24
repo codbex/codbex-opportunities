@@ -18,8 +18,6 @@ angular.module('open-opportunities', ['ideUI', 'ideView'])
                 })
 
                 $scope.totalOpenOpportunities = openOpportunities.length;
-
-                debugger;
             })
             .catch(function (error) {
                 $scope.state.error = true;
