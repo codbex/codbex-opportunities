@@ -20,10 +20,28 @@ class OpportunityService {
 
     @Get("/LeadData")
     public LeadData() {
-        let leadsNum = this.opportunityDao.count();
+        let leadsNum = this.leadDao.count();
 
         return {
             totalLeads: leadsNum
+        };
+    }
+
+    @Get("/OpportunityData")
+    public OpportunityData() {
+        let opportunityNum = this.opportunityDao.count();
+
+        return {
+            totalOpportunities: opportunityNum
+        };
+    }
+
+    @Get("/QuotationData")
+    public QuotationData() {
+        let quotationNum = this.quotationDao.count();
+
+        return {
+            totalQuotation: quotationNum
         };
     }
 
