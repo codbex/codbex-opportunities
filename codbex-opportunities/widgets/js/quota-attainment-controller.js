@@ -24,12 +24,7 @@ angular.module('quota-attainment', ['ideUI', 'ideView'])
 
                 let monthlyQuotationsApproved = monthlyQuotations.filter(quotation => quotation.Status === 3).length;
 
-                console.log(monthlyQuotationsApproved);
-                console.log(monthlyQuotations.length);
-
                 let quotaAttainment = (monthlyQuotationsApproved / monthlyQuotations.length) * 100;
-
-                console.log(quotaAttainment);
 
                 updateGauge(quotaAttainment);
             })
