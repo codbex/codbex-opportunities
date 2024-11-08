@@ -8,28 +8,34 @@ angular.module('close-rate', ['ideUI', 'ideView'])
 
         let doughnutCharts = {};
 
-        $scope.today = new Date().toDateString();
-
         const leadServiceUrl = "/services/ts/codbex-opportunities/widgets/api/OpportunityService.ts/LeadData";
         $http.get(leadServiceUrl)
             .then(function (response) {
                 let allLeads = response.data.allLeads;
 
-                let opportunityLeads = allLeads.filter(lead => lead.Status === 5).length;
-                let lostLeads = allLeads.filter(lead => lead.Status === 7).length;
+                let initialLeads = allLeads.filter(lead => lead.Status === 1).length;
+                let openLeads = allLeads.filter(lead => lead.Status === 2).length;
                 let contactedLeads = allLeads.filter(lead => lead.Status === 3).length;
+                let repliedLeads = allLeads.filter(lead => lead.Status === 4).length;
+                let opportunityLeads = allLeads.filter(lead => lead.Status === 5).length;
                 let quoteLeads = allLeads.filter(lead => lead.Status === 6).length;
+                let lostLeads = allLeads.filter(lead => lead.Status === 7).length;
+                let closedLeads = allLeads.filter(lead => lead.Status === 9).length;
 
                 $scope.closeRate = (opportunityLeads / allLeads.length) * 100;
 
                 const closeRateData = {
-                    labels: ["Closed Won", "Closed Lost", "Contacted", "Quote"],
+                    labels: ["Initial", "Open", "Contacted", "Replied", "To Opportunity", "To Quotation", "Lost", "Closed"],
                     datasets: [{
                         data: [
-                            opportunityLeads,
-                            lostLeads,
+                            initialLeads,
+                            openLeads,
                             contactedLeads,
-                            quoteLeads
+                            repliedLeads,
+                            opportunityLeads,
+                            quoteLeads,
+                            lostLeads,
+                            closedLeads
                         ],
                         backgroundColor: ['#36a2eb', '#ff6384', '#ffce56', '#4bc0c0']
                     }]
@@ -59,7 +65,7 @@ angular.module('close-rate', ['ideUI', 'ideView'])
                     },
                     title: {
                         display: true,
-                        text: 'Lead Status Distribution'
+                        text: 'Lead Distribution'
                     }
                 },
                 animation: {
