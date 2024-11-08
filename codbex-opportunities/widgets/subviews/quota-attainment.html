@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="quota-attainment" ng-controller="QuotaAttainment">
+
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" sizes="any" href="data:;base64,iVBORw0KGgo=">
+        <title dg-view-title></title>
+        <script type="text/javascript" src="../services/quota-attainment.js"></script>
+        <theme></theme>
+        <script type="text/javascript" src="/services/js/resources-core/services/loader.js?id=application-view-js">
+        </script>
+        <link type="text/css" rel="stylesheet"
+            href="/services/js/resources-core/services/loader.js?id=application-view-css" />
+        <script type="text/javascript" src="/webjars/chart.js/dist/chart.umd.js"></script>
+        <script type="text/javascript" src="../js/quota-attainment-controller.js"></script>
+
+        <style>
+            .tile-auto-layout {
+                min-height: auto;
+                height: auto;
+                width: auto;
+                max-width: 100%;
+            }
+
+            .gauge {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: relative;
+                width: 200px;
+                height: 100px;
+                overflow: hidden;
+            }
+
+            .gauge .background {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: #eee;
+                border-radius: 100px 100px 0 0;
+                clip-path: polygon(0% 100%, 0% 0%, 100% 0%, 100% 100%);
+            }
+
+            .gauge .foreground {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: coral;
+                border-radius: 100px 100px 0 0;
+                clip-path: polygon(0% 100%, 0% 0%, 100% 0%, 100% 100%);
+                transform-origin: 50% 100%;
+                transform: rotate(-90deg);
+                transition: transform 0.5s ease;
+            }
+
+            .gauge .percentage {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                font-size: 24px;
+                font-weight: bold;
+                color: #333;
+                z-index: 2;
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <div class="fd-col fd-col--6 fd-col-md--6 fd-col-lg--6 fd-col-xl--6">
+            <fd-card card-type="table">
+                <fd-card-header>
+                    <fd-card-title>Quota Attainment</fd-card-title>
+                </fd-card-header>
+                <fd-card-content>
+                    <div class="gauge">
+                        <div class="background"></div>
+                        <div class="foreground"></div>
+                        <div class="inner-circle"></div>
+                        <div class="percentage">0%</div>
+                    </div>
+                </fd-card-content>
+            </fd-card>
+        </div>
+    </body>
+
+</html>
