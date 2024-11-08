@@ -8,6 +8,8 @@ angular.module('churn-rate', ['ideUI', 'ideView'])
 
         let lineGraphs = {};
 
+        $scope.today = new Date().toDateString();
+
         const opportunityServiceUrl = "/services/ts/codbex-opportunities/widgets/api/OpportunityService.ts/OpportunityData";
         $http.get(opportunityServiceUrl)
             .then(function (response) {

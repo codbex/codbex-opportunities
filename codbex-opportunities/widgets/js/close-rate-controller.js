@@ -13,16 +13,25 @@ angular.module('close-rate', ['ideUI', 'ideView'])
             .then(function (response) {
                 let allLeads = response.data.allLeads;
 
-                let initialLeads = allLeads.filter(lead => lead.Status === 1).length;
-                let openLeads = allLeads.filter(lead => lead.Status === 2).length;
-                let contactedLeads = allLeads.filter(lead => lead.Status === 3).length;
-                let repliedLeads = allLeads.filter(lead => lead.Status === 4).length;
-                let opportunityLeads = allLeads.filter(lead => lead.Status === 5).length;
-                let quoteLeads = allLeads.filter(lead => lead.Status === 6).length;
-                let lostLeads = allLeads.filter(lead => lead.Status === 7).length;
-                let closedLeads = allLeads.filter(lead => lead.Status === 9).length;
+                let currentDate = new Date();
+                let currentMonth = currentDate.getMonth();
+                let currentYear = currentDate.getFullYear();
 
-                $scope.closeRate = (opportunityLeads / allLeads.length) * 100;
+                let monthlyLeads = allLeads.filter(function (lead) {
+                    let leadCreationDate = new Date(lead.Date);
+                    return leadCreationDate.getMonth() === currentMonth && leadCreationDate.getFullYear() === currentYear;
+                });
+
+                let initialLeads = monthlyLeads.filter(lead => lead.Status === 1).length;
+                let openLeads = monthlyLeads.filter(lead => lead.Status === 2).length;
+                let contactedLeads = monthlyLeads.filter(lead => lead.Status === 3).length;
+                let repliedLeads = monthlyLeads.filter(lead => lead.Status === 4).length;
+                let opportunityLeads = monthlyLeads.filter(lead => lead.Status === 5).length;
+                let quoteLeads = monthlyLeads.filter(lead => lead.Status === 6).length;
+                let lostLeads = monthlyLeads.filter(lead => lead.Status === 7).length;
+                let closedLeads = monthlyLeads.filter(lead => lead.Status === 9).length;
+
+                $scope.closeRate = (opportunityLeads / monthlyLeads.length) * 100;
 
                 const closeRateData = {
                     labels: ["Initial", "Open", "Contacted", "Replied", "To Opportunity", "To Quotation", "Lost", "Closed"],
