@@ -8,8 +8,8 @@ angular.module('churn-rate', ['ideUI', 'ideView'])
 
         let lineGraphs = {};
 
-        const leadServiceUrl = "/services/ts/codbex-opportunities/widgets/api/OpportunityService.ts/OpportunityData";
-        $http.get(leadServiceUrl)
+        const opportunityServiceUrl = "/services/ts/codbex-opportunities/widgets/api/OpportunityService.ts/OpportunityData";
+        $http.get(opportunityServiceUrl)
             .then(function (response) {
                 let allOpportunities = response.data.allOpportunities;
 
