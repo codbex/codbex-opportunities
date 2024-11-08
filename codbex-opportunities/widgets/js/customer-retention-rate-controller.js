@@ -17,19 +17,13 @@ angular.module('customer-retention-rate', ['ideUI', 'ideView'])
             .then(function (response) {
                 let allOpportunities = response.data.allOpportunities;
 
-                console.log("allOpportunities: ", allOpportunities);
-
                 $scope.lostOpportunities = allOpportunities.filter(function (opportunity) {
                     return opportunity.Status === 2;
                 });
 
-                console.log("lostOpportunities: ", $scope.lostOpportunities);
-
                 $scope.activeOpportunities = allOpportunities.filter(function (opportunity) {
                     return opportunity.Status !== 2 && opportunity.Status !== 3;
                 });
-
-                console.log("activeOpportunities: ", $scope.activeOpportunities);
 
                 $scope.activeMonthlyOpportunities = $scope.activeOpportunities.filter(opportunity => {
                     let opportunityDate = new Date(opportunity.Date);
@@ -38,14 +32,10 @@ angular.module('customer-retention-rate', ['ideUI', 'ideView'])
                         opportunityDate.getFullYear() === $scope.currentYear;
                 })
 
-                console.log("activeMonthlyOpportunities: ", $scope.activeMonthlyOpportunities);
-
                 return $http.get(opportunityActionServiceUrl);
             })
             .then(function (response) {
                 let opportunityActions = response.data.allOpportunityActions;
-
-                console.log("opportunityActions: ", opportunityActions);
 
                 let lostMonthlyOpportunities = $scope.lostOpportunities.filter(function (opportunity) {
                     let actionsForOpportunity = opportunityActions.filter(function (action) {
@@ -72,10 +62,6 @@ angular.module('customer-retention-rate', ['ideUI', 'ideView'])
                 let numberOfAllActiveOpportunities = $scope.activeOpportunities.length;
                 let numberOfAllActiveOpportunitiesCreatedThisMonth = $scope.activeMonthlyOpportunities.length;
                 let numberOfClosedOpportunitiesThisMonth = lostMonthlyOpportunities.length;
-
-                console.log("opportunitiesWithActions: ", lostMonthlyOpportunities);
-
-                console.log("((", numberOfAllActiveOpportunities, " - ", numberOfAllActiveOpportunitiesCreatedThisMonth, ") / (", numberOfAllActiveOpportunities, " + ", numberOfClosedOpportunitiesThisMonth);
 
                 $scope.customerRetentionRate = ((numberOfAllActiveOpportunities - numberOfAllActiveOpportunitiesCreatedThisMonth) /
                     (numberOfAllActiveOpportunities - numberOfAllActiveOpportunitiesCreatedThisMonth + numberOfClosedOpportunitiesThisMonth)) * 100;
