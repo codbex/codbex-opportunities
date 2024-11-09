@@ -2,6 +2,7 @@ import { query } from "sdk/db";
 import { producer } from "sdk/messaging";
 import { extensions } from "sdk/extensions";
 import { dao as daoApi } from "sdk/db";
+import { EntityUtils } from "../utils/EntityUtils";
 // custom imports
 import { NumberGeneratorService } from "/codbex-number-generator/service/generator";
 
@@ -18,6 +19,7 @@ export interface OpportunityEntity {
     Probability?: number;
     Status?: number;
     Currency?: number;
+    Date?: Date;
 }
 
 export interface OpportunityCreateEntity {
@@ -31,6 +33,7 @@ export interface OpportunityCreateEntity {
     readonly Probability?: number;
     readonly Status?: number;
     readonly Currency?: number;
+    readonly Date?: Date;
 }
 
 export interface OpportunityUpdateEntity extends OpportunityCreateEntity {
@@ -52,6 +55,7 @@ export interface OpportunityEntityOptions {
             Probability?: number | number[];
             Status?: number | number[];
             Currency?: number | number[];
+            Date?: Date | Date[];
         };
         notEquals?: {
             Id?: number | number[];
@@ -66,6 +70,7 @@ export interface OpportunityEntityOptions {
             Probability?: number | number[];
             Status?: number | number[];
             Currency?: number | number[];
+            Date?: Date | Date[];
         };
         contains?: {
             Id?: number;
@@ -80,6 +85,7 @@ export interface OpportunityEntityOptions {
             Probability?: number;
             Status?: number;
             Currency?: number;
+            Date?: Date;
         };
         greaterThan?: {
             Id?: number;
@@ -94,6 +100,7 @@ export interface OpportunityEntityOptions {
             Probability?: number;
             Status?: number;
             Currency?: number;
+            Date?: Date;
         };
         greaterThanOrEqual?: {
             Id?: number;
@@ -108,6 +115,7 @@ export interface OpportunityEntityOptions {
             Probability?: number;
             Status?: number;
             Currency?: number;
+            Date?: Date;
         };
         lessThan?: {
             Id?: number;
@@ -122,6 +130,7 @@ export interface OpportunityEntityOptions {
             Probability?: number;
             Status?: number;
             Currency?: number;
+            Date?: Date;
         };
         lessThanOrEqual?: {
             Id?: number;
@@ -136,6 +145,7 @@ export interface OpportunityEntityOptions {
             Probability?: number;
             Status?: number;
             Currency?: number;
+            Date?: Date;
         };
     },
     $select?: (keyof OpportunityEntity)[],
@@ -226,6 +236,11 @@ export class OpportunityRepository {
                 name: "Currency",
                 column: "OPPORTUNITY_CURRENCY",
                 type: "INTEGER",
+            },
+            {
+                name: "Date",
+                column: "OPPORTUNITY_DATE",
+                type: "DATE",
             }
         ]
     };
@@ -237,15 +252,20 @@ export class OpportunityRepository {
     }
 
     public findAll(options?: OpportunityEntityOptions): OpportunityEntity[] {
-        return this.dao.list(options);
+        return this.dao.list(options).map((e: OpportunityEntity) => {
+            EntityUtils.setDate(e, "Date");
+            return e;
+        });
     }
 
     public findById(id: number): OpportunityEntity | undefined {
         const entity = this.dao.find(id);
+        EntityUtils.setDate(entity, "Date");
         return entity ?? undefined;
     }
 
     public create(entity: OpportunityCreateEntity): number {
+        EntityUtils.setLocalDate(entity, "Date");
         // @ts-ignore
         (entity as OpportunityEntity).Number = new NumberGeneratorService().generate(2);
         const id = this.dao.insert(entity);
@@ -263,6 +283,7 @@ export class OpportunityRepository {
     }
 
     public update(entity: OpportunityUpdateEntity): void {
+        // EntityUtils.setLocalDate(entity, "Date");
         const previousEntity = this.findById(entity.Id);
         this.dao.update(entity);
         this.triggerEvent({

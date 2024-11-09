@@ -2,6 +2,7 @@ import { query } from "sdk/db";
 import { producer } from "sdk/messaging";
 import { extensions } from "sdk/extensions";
 import { dao as daoApi } from "sdk/db";
+import { EntityUtils } from "../utils/EntityUtils";
 // custom imports
 import { NumberGeneratorService } from "/codbex-number-generator/service/generator";
 
@@ -16,7 +17,7 @@ export interface LeadEntity {
     Industry?: number;
     Status?: number;
     Owner?: number;
-    Qualification?: number;
+    Date?: Date;
 }
 
 export interface LeadCreateEntity {
@@ -28,7 +29,7 @@ export interface LeadCreateEntity {
     readonly Industry?: number;
     readonly Status?: number;
     readonly Owner?: number;
-    readonly Qualification?: number;
+    readonly Date?: Date;
 }
 
 export interface LeadUpdateEntity extends LeadCreateEntity {
@@ -48,7 +49,7 @@ export interface LeadEntityOptions {
             Industry?: number | number[];
             Status?: number | number[];
             Owner?: number | number[];
-            Qualification?: number | number[];
+            Date?: Date | Date[];
         };
         notEquals?: {
             Id?: number | number[];
@@ -61,7 +62,7 @@ export interface LeadEntityOptions {
             Industry?: number | number[];
             Status?: number | number[];
             Owner?: number | number[];
-            Qualification?: number | number[];
+            Date?: Date | Date[];
         };
         contains?: {
             Id?: number;
@@ -74,7 +75,7 @@ export interface LeadEntityOptions {
             Industry?: number;
             Status?: number;
             Owner?: number;
-            Qualification?: number;
+            Date?: Date;
         };
         greaterThan?: {
             Id?: number;
@@ -87,7 +88,7 @@ export interface LeadEntityOptions {
             Industry?: number;
             Status?: number;
             Owner?: number;
-            Qualification?: number;
+            Date?: Date;
         };
         greaterThanOrEqual?: {
             Id?: number;
@@ -100,7 +101,7 @@ export interface LeadEntityOptions {
             Industry?: number;
             Status?: number;
             Owner?: number;
-            Qualification?: number;
+            Date?: Date;
         };
         lessThan?: {
             Id?: number;
@@ -113,7 +114,7 @@ export interface LeadEntityOptions {
             Industry?: number;
             Status?: number;
             Owner?: number;
-            Qualification?: number;
+            Date?: Date;
         };
         lessThanOrEqual?: {
             Id?: number;
@@ -126,7 +127,7 @@ export interface LeadEntityOptions {
             Industry?: number;
             Status?: number;
             Owner?: number;
-            Qualification?: number;
+            Date?: Date;
         };
     },
     $select?: (keyof LeadEntity)[],
@@ -209,9 +210,9 @@ export class LeadRepository {
                 type: "INTEGER",
             },
             {
-                name: "Qualification",
-                column: "LEAD_QUALIFICATION",
-                type: "INTEGER",
+                name: "Date",
+                column: "LEAD_DATE",
+                type: "DATE",
             }
         ]
     };
@@ -223,15 +224,20 @@ export class LeadRepository {
     }
 
     public findAll(options?: LeadEntityOptions): LeadEntity[] {
-        return this.dao.list(options);
+        return this.dao.list(options).map((e: LeadEntity) => {
+            EntityUtils.setDate(e, "Date");
+            return e;
+        });
     }
 
     public findById(id: number): LeadEntity | undefined {
         const entity = this.dao.find(id);
+        EntityUtils.setDate(entity, "Date");
         return entity ?? undefined;
     }
 
     public create(entity: LeadCreateEntity): number {
+        EntityUtils.setLocalDate(entity, "Date");
         // @ts-ignore
         (entity as LeadEntity).Number = new NumberGeneratorService().generate(1);
         const id = this.dao.insert(entity);
@@ -249,6 +255,7 @@ export class LeadRepository {
     }
 
     public update(entity: LeadUpdateEntity): void {
+        // EntityUtils.setLocalDate(entity, "Date");
         const previousEntity = this.findById(entity.Id);
         this.dao.update(entity);
         this.triggerEvent({

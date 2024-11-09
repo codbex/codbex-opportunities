@@ -9,6 +9,7 @@ export interface LeadQualificationEntity {
     Authority?: number;
     Need?: number;
     Timeline?: number;
+    Lead?: number;
 }
 
 export interface LeadQualificationCreateEntity {
@@ -16,6 +17,7 @@ export interface LeadQualificationCreateEntity {
     readonly Authority?: number;
     readonly Need?: number;
     readonly Timeline?: number;
+    readonly Lead?: number;
 }
 
 export interface LeadQualificationUpdateEntity extends LeadQualificationCreateEntity {
@@ -30,6 +32,7 @@ export interface LeadQualificationEntityOptions {
             Authority?: number | number[];
             Need?: number | number[];
             Timeline?: number | number[];
+            Lead?: number | number[];
         };
         notEquals?: {
             Id?: number | number[];
@@ -37,6 +40,7 @@ export interface LeadQualificationEntityOptions {
             Authority?: number | number[];
             Need?: number | number[];
             Timeline?: number | number[];
+            Lead?: number | number[];
         };
         contains?: {
             Id?: number;
@@ -44,6 +48,7 @@ export interface LeadQualificationEntityOptions {
             Authority?: number;
             Need?: number;
             Timeline?: number;
+            Lead?: number;
         };
         greaterThan?: {
             Id?: number;
@@ -51,6 +56,7 @@ export interface LeadQualificationEntityOptions {
             Authority?: number;
             Need?: number;
             Timeline?: number;
+            Lead?: number;
         };
         greaterThanOrEqual?: {
             Id?: number;
@@ -58,6 +64,7 @@ export interface LeadQualificationEntityOptions {
             Authority?: number;
             Need?: number;
             Timeline?: number;
+            Lead?: number;
         };
         lessThan?: {
             Id?: number;
@@ -65,6 +72,7 @@ export interface LeadQualificationEntityOptions {
             Authority?: number;
             Need?: number;
             Timeline?: number;
+            Lead?: number;
         };
         lessThanOrEqual?: {
             Id?: number;
@@ -72,6 +80,7 @@ export interface LeadQualificationEntityOptions {
             Authority?: number;
             Need?: number;
             Timeline?: number;
+            Lead?: number;
         };
     },
     $select?: (keyof LeadQualificationEntity)[],
@@ -126,6 +135,11 @@ export class LeadQualificationRepository {
             {
                 name: "Timeline",
                 column: "LEADQUALIFICATION_TIMELINE",
+                type: "INTEGER",
+            },
+            {
+                name: "Lead",
+                column: "LEADQUALIFICATION_LEAD",
                 type: "INTEGER",
             }
         ]

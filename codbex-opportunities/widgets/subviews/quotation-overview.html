@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="quotation-overview" ng-controller="QuotationOverview">
+
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" sizes="any" href="data:;base64,iVBORw0KGgo=">
+        <title dg-view-title></title>
+        <script type="text/javascript" src="../services/quotation-overview.js"></script>
+        <theme></theme>
+        <script type="text/javascript" src="/services/js/resources-core/services/loader.js?id=application-view-js">
+        </script>
+        <link type="text/css" rel="stylesheet"
+            href="/services/js/resources-core/services/loader.js?id=application-view-css" />
+        <script type="text/javascript" src="/webjars/chart.js/dist/chart.umd.js"></script>
+        <script type="text/javascript" src="../js/quotation-overview-controller.js"></script>
+        <style>
+            .tile-auto-layout {
+                min-height: auto;
+                height: auto;
+                width: auto;
+                max-width: 100%;
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <div class="fd-layout-grid">
+            <div class="fd-row">
+                <div class="fd-col">
+                    <div>
+                        <label for="projectSelect">Select Criteria:</label>
+                        <select id="projectSelect" ng-model="selectedProject"
+                            ng-options="project as project.Name for project in projects"
+                            ng-change="filterDeliverableByProject(selectedProject)">
+                            <option value="">Select Criteria</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="fd-col fd-col--12 fd-col-md--6 fd-col-lg--6 fd-col-xl--6">
+                <fd-card card-type="table">
+                    <fd-card-header>
+                        <fd-card-title>Quotation Overview</fd-card-title>
+                    </fd-card-header>
+                    <fd-card-content>
+                        <table class="fd-table fd-table--no-horizontal-borders fd-table--no-vertical-borders">
+                            <thead class="fd-table__header">
+                                <tr class="fd-table__row">
+                                    <th class="fd-table__cell" scope="col">Number</th>
+                                    <th class="fd-table__cell" scope="col">Stage</th>
+                                    <th class="fd-table__cell" scope="col" style="text-align:right">Expected Revenue
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody class="fd-table__body" id="top_sales">
+                                <tr ng-repeat="next in filteredQuotations">
+                                    <td class="fd-table__cell"><a class="fd-link"><span
+                                                class="fd-link__content">{{next.Number}}</span></a></td>
+                                    <td class="fd-table__cell">{{next.Stage}}</td>
+                                    <td class="fd-table__cell" style="text-align:right">{{next.Gross | number : 2}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </fd-card-content>
+                </fd-card>
+            </div>
+        </div>
+    </body>
+
+</html>

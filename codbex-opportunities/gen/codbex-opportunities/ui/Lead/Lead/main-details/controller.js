@@ -43,18 +43,19 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				$scope.optionsIndustry = [];
 				$scope.optionsStatus = [];
 				$scope.optionsOwner = [];
-				$scope.optionsQualification = [];
 				$scope.action = 'select';
 			});
 		});
 
 		messageHub.onDidReceiveMessage("entitySelected", function (msg) {
 			$scope.$apply(function () {
+				if (msg.data.entity.Date) {
+					msg.data.entity.Date = new Date(msg.data.entity.Date);
+				}
 				$scope.entity = msg.data.entity;
 				$scope.optionsIndustry = msg.data.optionsIndustry;
 				$scope.optionsStatus = msg.data.optionsStatus;
 				$scope.optionsOwner = msg.data.optionsOwner;
-				$scope.optionsQualification = msg.data.optionsQualification;
 				$scope.action = 'select';
 			});
 		});
@@ -65,18 +66,19 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				$scope.optionsIndustry = msg.data.optionsIndustry;
 				$scope.optionsStatus = msg.data.optionsStatus;
 				$scope.optionsOwner = msg.data.optionsOwner;
-				$scope.optionsQualification = msg.data.optionsQualification;
 				$scope.action = 'create';
 			});
 		});
 
 		messageHub.onDidReceiveMessage("updateEntity", function (msg) {
 			$scope.$apply(function () {
+				if (msg.data.entity.Date) {
+					msg.data.entity.Date = new Date(msg.data.entity.Date);
+				}
 				$scope.entity = msg.data.entity;
 				$scope.optionsIndustry = msg.data.optionsIndustry;
 				$scope.optionsStatus = msg.data.optionsStatus;
 				$scope.optionsOwner = msg.data.optionsOwner;
-				$scope.optionsQualification = msg.data.optionsQualification;
 				$scope.action = 'update';
 			});
 		});

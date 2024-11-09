@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="churn-rate" ng-controller="ChurnRate">
+
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" sizes="any" href="data:;base64,iVBORw0KGgo=">
+        <title dg-view-title></title>
+        <script type="text/javascript" src="../services/churn-rate.js"></script>
+        <theme></theme>
+        <script type="text/javascript" src="/services/js/resources-core/services/loader.js?id=application-view-js">
+        </script>
+        <link type="text/css" rel="stylesheet"
+            href="/services/js/resources-core/services/loader.js?id=application-view-css" />
+        <script type="text/javascript" src="/webjars/chart.js/dist/chart.umd.js"></script>
+        <script type="text/javascript" src="../js/churn-rate-controller.js"></script>
+
+        <style>
+            .tile-auto-layout {
+                min-height: auto;
+                height: auto;
+                width: auto;
+                max-width: 100%;
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <div class="fd-col fd-col--6 fd-col-md--6 fd-col-lg--6 fd-col-xl--6">
+            <fd-card card-type="table">
+                <fd-card-content>
+                    <canvas id="churnRateGraph" width="200" height="200"></canvas>
+                </fd-card-content>
+            </fd-card>
+        </div>
+    </body>
+
+</html>
