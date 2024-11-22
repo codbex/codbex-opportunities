@@ -60,6 +60,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		};
 
+		$scope.serviceType = "/services/ts/codbex-opportunities/gen/codbex-opportunities/api/Settings/NoteTypeService.ts";
+
 		$scope.cancel = function () {
 			$scope.entity = {};
 			$scope.action = 'select';

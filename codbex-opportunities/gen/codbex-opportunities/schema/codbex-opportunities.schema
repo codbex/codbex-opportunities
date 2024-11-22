@@ -584,7 +584,7 @@
                 ]
             },
             {
-                "name": "CODBEX_LEADACTIONS",
+                "name": "CODBEX_LEADACTION",
                 "type": "TABLE",
                 "columns": [
                     {
@@ -969,7 +969,7 @@
             {
                 "name": "LeadAction_Lead",
                 "type": "foreignKey",
-                "table": "CODBEX_LEADACTIONS",
+                "table": "CODBEX_LEADACTION",
                 "constraintName": "LeadAction_Lead",
                 "columns": "LEADACTIONS_LEAD",
                 "referencedTable": "CODBEX_LEAD",
@@ -978,7 +978,7 @@
             {
                 "name": "LeadAction_LeadNote",
                 "type": "foreignKey",
-                "table": "CODBEX_LEADACTIONS",
+                "table": "CODBEX_LEADACTION",
                 "constraintName": "LeadAction_LeadNote",
                 "columns": "LEADACTIONS_NOTE",
                 "referencedTable": "CODBEX_LEADNOTE",
@@ -987,7 +987,7 @@
             {
                 "name": "LeadAction_ActionType",
                 "type": "foreignKey",
-                "table": "CODBEX_LEADACTIONS",
+                "table": "CODBEX_LEADACTION",
                 "constraintName": "LeadAction_ActionType",
                 "columns": "LEADACTIONS_ACTIONTYPE",
                 "referencedTable": "CODBEX_ACTIONTYPE",
@@ -996,7 +996,7 @@
             {
                 "name": "LeadAction_ActionStatus",
                 "type": "foreignKey",
-                "table": "CODBEX_LEADACTIONS",
+                "table": "CODBEX_LEADACTION",
                 "constraintName": "LeadAction_ActionStatus",
                 "columns": "LEADACTIONS_STATUS",
                 "referencedTable": "CODBEX_ACTIONSTATUS",

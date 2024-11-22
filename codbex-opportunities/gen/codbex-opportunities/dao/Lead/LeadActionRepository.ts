@@ -118,7 +118,7 @@ interface LeadActionUpdateEntityEvent extends LeadActionEntityEvent {
 export class LeadActionRepository {
 
     private static readonly DEFINITION = {
-        table: "CODBEX_LEADACTIONS",
+        table: "CODBEX_LEADACTION",
         properties: [
             {
                 name: "Id",
@@ -184,7 +184,7 @@ export class LeadActionRepository {
         const id = this.dao.insert(entity);
         this.triggerEvent({
             operation: "create",
-            table: "CODBEX_LEADACTIONS",
+            table: "CODBEX_LEADACTION",
             entity: entity,
             key: {
                 name: "Id",
@@ -201,7 +201,7 @@ export class LeadActionRepository {
         this.dao.update(entity);
         this.triggerEvent({
             operation: "update",
-            table: "CODBEX_LEADACTIONS",
+            table: "CODBEX_LEADACTION",
             entity: entity,
             previousEntity: previousEntity,
             key: {
@@ -232,7 +232,7 @@ export class LeadActionRepository {
         this.dao.remove(id);
         this.triggerEvent({
             operation: "delete",
-            table: "CODBEX_LEADACTIONS",
+            table: "CODBEX_LEADACTION",
             entity: entity,
             key: {
                 name: "Id",
@@ -247,7 +247,7 @@ export class LeadActionRepository {
     }
 
     public customDataCount(): number {
-        const resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX_LEADACTIONS"');
+        const resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX_LEADACTION"');
         if (resultSet !== null && resultSet[0] !== null) {
             if (resultSet[0].COUNT !== undefined && resultSet[0].COUNT !== null) {
                 return resultSet[0].COUNT;
