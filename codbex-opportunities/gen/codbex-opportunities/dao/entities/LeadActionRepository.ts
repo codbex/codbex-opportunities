@@ -122,39 +122,39 @@ export class LeadActionRepository {
         properties: [
             {
                 name: "Id",
-                column: "LEADACTIONS_ID",
+                column: "LEADACTION_ID",
                 type: "INTEGER",
                 id: true,
                 autoIncrement: true,
             },
             {
                 name: "Date",
-                column: "LEADACTIONS_DATE",
+                column: "LEADACTION_DATE",
                 type: "DATE",
             },
             {
                 name: "Subject",
-                column: "LEADACTIONS_SUBJECT",
+                column: "LEADACTION_SUBJECT",
                 type: "VARCHAR",
             },
             {
                 name: "Lead",
-                column: "LEADACTIONS_LEAD",
+                column: "LEADACTION_LEAD",
                 type: "INTEGER",
             },
             {
                 name: "Note",
-                column: "LEADACTIONS_NOTE",
+                column: "LEADACTION_NOTE",
                 type: "INTEGER",
             },
             {
                 name: "Type",
-                column: "LEADACTIONS_ACTIONTYPE",
+                column: "LEADACTION_TYPE",
                 type: "INTEGER",
             },
             {
                 name: "Status",
-                column: "LEADACTIONS_STATUS",
+                column: "LEADACTION_STATUS",
                 type: "INTEGER",
             }
         ]
@@ -188,7 +188,7 @@ export class LeadActionRepository {
             entity: entity,
             key: {
                 name: "Id",
-                column: "LEADACTIONS_ID",
+                column: "LEADACTION_ID",
                 value: id
             }
         });
@@ -206,7 +206,7 @@ export class LeadActionRepository {
             previousEntity: previousEntity,
             key: {
                 name: "Id",
-                column: "LEADACTIONS_ID",
+                column: "LEADACTION_ID",
                 value: entity.Id
             }
         });
@@ -236,7 +236,7 @@ export class LeadActionRepository {
             entity: entity,
             key: {
                 name: "Id",
-                column: "LEADACTIONS_ID",
+                column: "LEADACTION_ID",
                 value: id
             }
         });
@@ -259,7 +259,7 @@ export class LeadActionRepository {
     }
 
     private async triggerEvent(data: LeadActionEntityEvent | LeadActionUpdateEntityEvent) {
-        const triggerExtensions = await extensions.loadExtensionModules("codbex-opportunities-Lead-LeadAction", ["trigger"]);
+        const triggerExtensions = await extensions.loadExtensionModules("codbex-opportunities-entities-LeadAction", ["trigger"]);
         triggerExtensions.forEach(triggerExtension => {
             try {
                 triggerExtension.trigger(data);
@@ -267,6 +267,6 @@ export class LeadActionRepository {
                 console.error(error);
             }            
         });
-        producer.topic("codbex-opportunities-Lead-LeadAction").send(JSON.stringify(data));
+        producer.topic("codbex-opportunities-entities-LeadAction").send(JSON.stringify(data));
     }
 }

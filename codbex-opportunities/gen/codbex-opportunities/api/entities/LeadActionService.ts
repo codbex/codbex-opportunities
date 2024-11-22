@@ -1,10 +1,10 @@
 import { Controller, Get, Post, Put, Delete, response } from "sdk/http"
 import { Extensions } from "sdk/extensions"
-import { LeadActionRepository, LeadActionEntityOptions } from "../../dao/Lead/LeadActionRepository";
+import { LeadActionRepository, LeadActionEntityOptions } from "../../dao/entities/LeadActionRepository";
 import { ValidationError } from "../utils/ValidationError";
 import { HttpUtils } from "../utils/HttpUtils";
 
-const validationModules = await Extensions.loadExtensionModules("codbex-opportunities-Lead-LeadAction", ["validate"]);
+const validationModules = await Extensions.loadExtensionModules("codbex-opportunities-entities-LeadAction", ["validate"]);
 
 @Controller
 class LeadActionService {
@@ -30,7 +30,7 @@ class LeadActionService {
         try {
             this.validateEntity(entity);
             entity.Id = this.repository.create(entity);
-            response.setHeader("Content-Location", "/services/ts/codbex-opportunities/gen/codbex-opportunities/api/Lead/LeadActionService.ts/" + entity.Id);
+            response.setHeader("Content-Location", "/services/ts/codbex-opportunities/gen/codbex-opportunities/api/entities/LeadActionService.ts/" + entity.Id);
             response.setStatus(response.CREATED);
             return entity;
         } catch (error: any) {

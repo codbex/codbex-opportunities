@@ -584,50 +584,6 @@
                 ]
             },
             {
-                "name": "CODBEX_LEADACTION",
-                "type": "TABLE",
-                "columns": [
-                    {
-                        "type": "INTEGER",
-                        "primaryKey": true,
-                        "identity": true,
-                        "nullable": true,
-                        "name": "LEADACTIONS_ID"
-                    },
-                    {
-                        "type": "DATE",
-                        "nullable": true,
-                        "name": "LEADACTIONS_DATE"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 100,
-                        "nullable": true,
-                        "name": "LEADACTIONS_SUBJECT"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "nullable": true,
-                        "name": "LEADACTIONS_LEAD"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "nullable": true,
-                        "name": "LEADACTIONS_NOTE"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "nullable": true,
-                        "name": "LEADACTIONS_ACTIONTYPE"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "nullable": true,
-                        "name": "LEADACTIONS_STATUS"
-                    }
-                ]
-            },
-            {
                 "name": "CODBEX_OPPORTUNITYACTION",
                 "type": "TABLE",
                 "columns": [
@@ -711,6 +667,50 @@
                         "length": 20,
                         "nullable": true,
                         "name": "ACTIONSTATUS_NAME"
+                    }
+                ]
+            },
+            {
+                "name": "CODBEX_LEADACTION",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "LEADACTION_ID"
+                    },
+                    {
+                        "type": "DATE",
+                        "nullable": true,
+                        "name": "LEADACTION_DATE"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 100,
+                        "nullable": true,
+                        "name": "LEADACTION_SUBJECT"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "LEADACTION_LEAD"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "LEADACTION_NOTE"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "LEADACTION_TYPE"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "LEADACTION_STATUS"
                     }
                 ]
             },
@@ -967,42 +967,6 @@
                 "referencedColumns": "LEAD_ID"
             },
             {
-                "name": "LeadAction_Lead",
-                "type": "foreignKey",
-                "table": "CODBEX_LEADACTION",
-                "constraintName": "LeadAction_Lead",
-                "columns": "LEADACTIONS_LEAD",
-                "referencedTable": "CODBEX_LEAD",
-                "referencedColumns": "LEAD_ID"
-            },
-            {
-                "name": "LeadAction_LeadNote",
-                "type": "foreignKey",
-                "table": "CODBEX_LEADACTION",
-                "constraintName": "LeadAction_LeadNote",
-                "columns": "LEADACTIONS_NOTE",
-                "referencedTable": "CODBEX_LEADNOTE",
-                "referencedColumns": "LEADNOTE_ID"
-            },
-            {
-                "name": "LeadAction_ActionType",
-                "type": "foreignKey",
-                "table": "CODBEX_LEADACTION",
-                "constraintName": "LeadAction_ActionType",
-                "columns": "LEADACTIONS_ACTIONTYPE",
-                "referencedTable": "CODBEX_ACTIONTYPE",
-                "referencedColumns": "ACTIONTYPE_ID"
-            },
-            {
-                "name": "LeadAction_ActionStatus",
-                "type": "foreignKey",
-                "table": "CODBEX_LEADACTION",
-                "constraintName": "LeadAction_ActionStatus",
-                "columns": "LEADACTIONS_STATUS",
-                "referencedTable": "CODBEX_ACTIONSTATUS",
-                "referencedColumns": "ACTIONSTATUS_ID"
-            },
-            {
                 "name": "OpportunityAction_Opportunity",
                 "type": "foreignKey",
                 "table": "CODBEX_OPPORTUNITYACTION",
@@ -1044,6 +1008,42 @@
                 "table": "CODBEX_OPPORTUNITYACTION",
                 "constraintName": "OpportunityAction_ActionStatus",
                 "columns": "OPPORTUNITYACTION_ACTIONSTATUS",
+                "referencedTable": "CODBEX_ACTIONSTATUS",
+                "referencedColumns": "ACTIONSTATUS_ID"
+            },
+            {
+                "name": "LeadAction_Lead",
+                "type": "foreignKey",
+                "table": "CODBEX_LEADACTION",
+                "constraintName": "LeadAction_Lead",
+                "columns": "LEADACTION_LEAD",
+                "referencedTable": "CODBEX_LEAD",
+                "referencedColumns": "LEAD_ID"
+            },
+            {
+                "name": "LeadAction_LeadNote",
+                "type": "foreignKey",
+                "table": "CODBEX_LEADACTION",
+                "constraintName": "LeadAction_LeadNote",
+                "columns": "LEADACTION_NOTE",
+                "referencedTable": "CODBEX_LEADNOTE",
+                "referencedColumns": "LEADNOTE_ID"
+            },
+            {
+                "name": "LeadAction_ActionType",
+                "type": "foreignKey",
+                "table": "CODBEX_LEADACTION",
+                "constraintName": "LeadAction_ActionType",
+                "columns": "LEADACTION_TYPE",
+                "referencedTable": "CODBEX_ACTIONTYPE",
+                "referencedColumns": "ACTIONTYPE_ID"
+            },
+            {
+                "name": "LeadAction_ActionStatus",
+                "type": "foreignKey",
+                "table": "CODBEX_LEADACTION",
+                "constraintName": "LeadAction_ActionStatus",
+                "columns": "LEADACTION_STATUS",
                 "referencedTable": "CODBEX_ACTIONSTATUS",
                 "referencedColumns": "ACTIONSTATUS_ID"
             }
