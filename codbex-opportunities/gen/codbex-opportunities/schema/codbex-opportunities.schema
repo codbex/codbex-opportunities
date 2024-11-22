@@ -350,7 +350,7 @@
                     {
                         "type": "INTEGER",
                         "nullable": true,
-                        "name": "QUOTATION_QUOTATIONSTATUS"
+                        "name": "QUOTATION_STATUS"
                     }
                 ]
             },
@@ -863,7 +863,7 @@
                 "type": "foreignKey",
                 "table": "CODBEX_QUOTATION",
                 "constraintName": "Quotation_QuotationStatus",
-                "columns": "QUOTATION_QUOTATIONSTATUS",
+                "columns": "QUOTATION_STATUS",
                 "referencedTable": "CODBEX_QUOTATIONSTATUS",
                 "referencedColumns": "QUOTATIONSTATUS_ID"
             },

@@ -3098,7 +3098,7 @@
           "inputRule": ""
         },
         {
-          "dataName": "QUOTATION_QUOTATIONSTATUS",
+          "dataName": "QUOTATION_STATUS",
           "dataNullable": true,
           "dataType": "INTEGER",
           "description": "",
@@ -3369,7 +3369,7 @@
             "inputRule": ""
           },
           {
-            "dataName": "QUOTATION_QUOTATIONSTATUS",
+            "dataName": "QUOTATION_STATUS",
             "dataNullable": true,
             "dataType": "INTEGER",
             "description": "",

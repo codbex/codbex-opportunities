@@ -183,7 +183,7 @@ export class QuotationRepository {
             },
             {
                 name: "Status",
-                column: "QUOTATION_QUOTATIONSTATUS",
+                column: "QUOTATION_STATUS",
                 type: "INTEGER",
             }
         ]
