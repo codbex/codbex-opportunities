@@ -158,7 +158,7 @@ export class OpportunityActionRepository {
             },
             {
                 name: "Note",
-                column: "OPPORTUNITYACTION_OPPORTUNITYNOTE",
+                column: "OPPORTUNITYACTION_NOTE",
                 type: "INTEGER",
             },
             {

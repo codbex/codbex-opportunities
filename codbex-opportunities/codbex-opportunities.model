@@ -3290,7 +3290,7 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
-                        "dataName": "OPPORTUNITYACTION_OPPORTUNITYNOTE",
+                        "dataName": "OPPORTUNITYACTION_NOTE",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
                         "description": "",

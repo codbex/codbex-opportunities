@@ -618,7 +618,7 @@
                     {
                         "type": "INTEGER",
                         "nullable": true,
-                        "name": "OPPORTUNITYACTION_OPPORTUNITYNOTE"
+                        "name": "OPPORTUNITYACTION_NOTE"
                     },
                     {
                         "type": "INTEGER",
@@ -985,11 +985,11 @@
                 "referencedColumns": "EMPLOYEE_ID"
             },
             {
-                "name": "OpportunityAction_OpportunityNote",
+                "name": "OpportunityAction_Note",
                 "type": "foreignKey",
                 "table": "CODBEX_OPPORTUNITYACTION",
-                "constraintName": "OpportunityAction_OpportunityNote",
-                "columns": "OPPORTUNITYACTION_OPPORTUNITYNOTE",
+                "constraintName": "OpportunityAction_Note",
+                "columns": "OPPORTUNITYACTION_NOTE",
                 "referencedTable": "CODBEX_OPPORTUNITYNOTE",
                 "referencedColumns": "OPPORTUNITYNOTE_ID"
             },

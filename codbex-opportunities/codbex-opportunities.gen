@@ -6394,7 +6394,7 @@
           "inputRule": ""
         },
         {
-          "dataName": "OPPORTUNITYACTION_OPPORTUNITYNOTE",
+          "dataName": "OPPORTUNITYACTION_NOTE",
           "dataNullable": true,
           "dataType": "INTEGER",
           "description": "",
@@ -6406,7 +6406,7 @@
           "widgetLength": "20",
           "widgetSize": "",
           "widgetType": "DROPDOWN",
-          "relationshipName": "OpportunityAction_OpportunityNote",
+          "relationshipName": "OpportunityAction_Note",
           "relationshipEntityName": "OpportunityNote",
           "relationshipEntityPerspectiveName": "Opportunity",
           "relationshipEntityPerspectiveLabel": "Entities",
