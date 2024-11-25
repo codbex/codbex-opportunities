@@ -623,12 +623,12 @@
                     {
                         "type": "INTEGER",
                         "nullable": true,
-                        "name": "OPPORTUNITYACTION_ACTIONTYPE"
+                        "name": "OPPORTUNITYACTION_TYPE"
                     },
                     {
                         "type": "INTEGER",
                         "nullable": true,
-                        "name": "OPPORTUNITYACTION_ACTIONSTATUS"
+                        "name": "OPPORTUNITYACTION_STATUS"
                     }
                 ]
             },
@@ -985,20 +985,20 @@
                 "referencedColumns": "EMPLOYEE_ID"
             },
             {
-                "name": "OpportunityAction_Note",
+                "name": "OpportunityAction_OpportunityNote",
                 "type": "foreignKey",
                 "table": "CODBEX_OPPORTUNITYACTION",
-                "constraintName": "OpportunityAction_Note",
+                "constraintName": "OpportunityAction_OpportunityNote",
                 "columns": "OPPORTUNITYACTION_NOTE",
                 "referencedTable": "CODBEX_OPPORTUNITYNOTE",
                 "referencedColumns": "OPPORTUNITYNOTE_ID"
             },
             {
-                "name": "OpportunityAction_ActionType",
+                "name": "OpportunityAction_Type",
                 "type": "foreignKey",
                 "table": "CODBEX_OPPORTUNITYACTION",
-                "constraintName": "OpportunityAction_ActionType",
-                "columns": "OPPORTUNITYACTION_ACTIONTYPE",
+                "constraintName": "OpportunityAction_Type",
+                "columns": "OPPORTUNITYACTION_TYPE",
                 "referencedTable": "CODBEX_ACTIONTYPE",
                 "referencedColumns": "ACTIONTYPE_ID"
             },
@@ -1007,7 +1007,7 @@
                 "type": "foreignKey",
                 "table": "CODBEX_OPPORTUNITYACTION",
                 "constraintName": "OpportunityAction_ActionStatus",
-                "columns": "OPPORTUNITYACTION_ACTIONSTATUS",
+                "columns": "OPPORTUNITYACTION_STATUS",
                 "referencedTable": "CODBEX_ACTIONSTATUS",
                 "referencedColumns": "ACTIONSTATUS_ID"
             },
@@ -1030,10 +1030,10 @@
                 "referencedColumns": "LEADNOTE_ID"
             },
             {
-                "name": "LeadAction_ActionType",
+                "name": "LeadAction_Type",
                 "type": "foreignKey",
                 "table": "CODBEX_LEADACTION",
-                "constraintName": "LeadAction_ActionType",
+                "constraintName": "LeadAction_Type",
                 "columns": "LEADACTION_TYPE",
                 "referencedTable": "CODBEX_ACTIONTYPE",
                 "referencedColumns": "ACTIONTYPE_ID"

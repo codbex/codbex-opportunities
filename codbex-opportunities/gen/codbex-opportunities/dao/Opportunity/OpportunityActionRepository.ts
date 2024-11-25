@@ -163,12 +163,12 @@ export class OpportunityActionRepository {
             },
             {
                 name: "Type",
-                column: "OPPORTUNITYACTION_ACTIONTYPE",
+                column: "OPPORTUNITYACTION_TYPE",
                 type: "INTEGER",
             },
             {
                 name: "Status",
-                column: "OPPORTUNITYACTION_ACTIONSTATUS",
+                column: "OPPORTUNITYACTION_STATUS",
                 type: "INTEGER",
             }
         ]

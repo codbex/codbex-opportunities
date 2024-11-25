@@ -6406,7 +6406,7 @@
           "widgetLength": "20",
           "widgetSize": "",
           "widgetType": "DROPDOWN",
-          "relationshipName": "OpportunityAction_Note",
+          "relationshipName": "OpportunityAction_OpportunityNote",
           "relationshipEntityName": "OpportunityNote",
           "relationshipEntityPerspectiveName": "Opportunity",
           "relationshipEntityPerspectiveLabel": "Entities",
@@ -6423,7 +6423,7 @@
           "inputRule": ""
         },
         {
-          "dataName": "OPPORTUNITYACTION_ACTIONTYPE",
+          "dataName": "OPPORTUNITYACTION_TYPE",
           "dataNullable": true,
           "dataType": "INTEGER",
           "description": "",
@@ -6435,7 +6435,7 @@
           "widgetLength": "20",
           "widgetSize": "",
           "widgetType": "DROPDOWN",
-          "relationshipName": "OpportunityAction_ActionType",
+          "relationshipName": "OpportunityAction_Type",
           "relationshipEntityName": "ActionType",
           "relationshipEntityPerspectiveName": "Settings",
           "relationshipEntityPerspectiveLabel": "Entities",
@@ -6452,7 +6452,7 @@
           "inputRule": ""
         },
         {
-          "dataName": "OPPORTUNITYACTION_ACTIONSTATUS",
+          "dataName": "OPPORTUNITYACTION_STATUS",
           "dataNullable": true,
           "dataType": "INTEGER",
           "description": "",
@@ -6823,7 +6823,7 @@
           "widgetLength": "20",
           "widgetSize": "",
           "widgetType": "TEXTBOX",
-          "relationshipName": "LeadAction_ActionType",
+          "relationshipName": "LeadAction_Type",
           "relationshipEntityName": "ActionType",
           "relationshipEntityPerspectiveName": "Settings",
           "relationshipEntityPerspectiveLabel": "Entities",
