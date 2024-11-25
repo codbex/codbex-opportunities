@@ -1,0 +1,5 @@
+{
+    "module": "codbex-opportunities/gen/codbex-opportunities/ui/Lead/${masterEntity}/LeadAction/dialog-window/view.js",
+    "extensionPoint": "codbex-opportunities-dialog-window",
+    "description": "codbex-opportunities - Application Dialog Window"
+}

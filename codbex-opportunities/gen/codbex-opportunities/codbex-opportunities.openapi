@@ -30,7 +30,7 @@ tags:
   - name: Opportunity
   - name: Settings
   - name: Settings
-  - name: entities
+  - name: Lead
 paths:
   /codbex-opportunities/gen/codbex-opportunities/api/Lead/LeadService.ts:
     get:
@@ -8416,7 +8416,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-opportunities/gen/codbex-opportunities/api/entities/LeadActionService.ts:
+  /codbex-opportunities/gen/codbex-opportunities/api/Lead/LeadActionService.ts:
     get:
       summary: List LeadAction
       parameters:
@@ -8437,7 +8437,7 @@ paths:
             type: integer
             allowEmptyValue: true
       tags:
-        - entities
+        - Lead
       responses:
         200:
           description: Successful Request
@@ -8468,7 +8468,7 @@ paths:
     post:
       summary: Create LeadAction
       tags:
-        - entities
+        - Lead
       requestBody:
         content:
           application/json:
@@ -8500,7 +8500,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-opportunities/gen/codbex-opportunities/api/entities/LeadActionService.ts/{id}:
+  /codbex-opportunities/gen/codbex-opportunities/api/Lead/LeadActionService.ts/{id}:
     get:
       summary: Get LeadAction by Id
       parameters:
@@ -8511,7 +8511,7 @@ paths:
           schema:
             type: string
       tags:
-        - entities
+        - Lead
       responses:
         200:
           description: Successful Request
@@ -8549,7 +8549,7 @@ paths:
           schema:
             type: string
       tags:
-        - entities
+        - Lead
       requestBody:
         content:
           application/json:
@@ -8597,7 +8597,7 @@ paths:
           schema:
             type: string
       tags:
-        - entities
+        - Lead
       responses:
         204:
           description: Successful Request
@@ -8619,11 +8619,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-opportunities/gen/codbex-opportunities/api/entities/LeadActionService.ts/count:
+  /codbex-opportunities/gen/codbex-opportunities/api/Lead/LeadActionService.ts/count:
     get:
       summary: Count the number of LeadAction
       tags:
-        - entities
+        - Lead
       responses:
         200:
           description: Successful Request
@@ -8647,7 +8647,7 @@ paths:
     post:
       summary: Count the number of LeadAction by LeadActionFilterOptions
       tags:
-        - entities
+        - Lead
       requestBody:
         content:
           application/json:
@@ -8729,11 +8729,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-opportunities/gen/codbex-opportunities/api/entities/LeadActionService.ts/search:
+  /codbex-opportunities/gen/codbex-opportunities/api/Lead/LeadActionService.ts/search:
     post:
       summary: Search LeadAction by LeadActionFilterOptions
       tags:
-        - entities
+        - Lead
       requestBody:
         content:
           application/json:

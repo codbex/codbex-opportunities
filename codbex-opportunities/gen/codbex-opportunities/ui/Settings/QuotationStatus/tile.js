@@ -9,7 +9,7 @@ exports.getTile = function () {
         name: "QuotationStatus",
         caption: "Manage entity QuotationStatus",
         tooltip: "QuotationStatus",
-        type: "PRIMARY",
+        type: "SETTING",
         report: "false",
         icon: "/services/web/resources/unicons/file.svg",
         location: "/services/web/codbex-opportunities/gen/codbex-opportunities/ui/Settings/index.html",

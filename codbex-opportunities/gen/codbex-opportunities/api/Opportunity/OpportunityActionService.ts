@@ -19,6 +19,17 @@ class OpportunityActionService {
                 $offset: ctx.queryParameters["$offset"] ? parseInt(ctx.queryParameters["$offset"]) : undefined
             };
 
+            let ${masterEntityId} = parseInt(ctx.queryParameters.${masterEntityId});
+            ${masterEntityId} = isNaN(${masterEntityId}) ? ctx.queryParameters.${masterEntityId} : ${masterEntityId};
+
+            if (${masterEntityId} !== undefined) {
+                options.$filter = {
+                    equals: {
+                        ${masterEntityId}: ${masterEntityId}
+                    }
+                };
+            }
+
             return this.repository.findAll(options);
         } catch (error: any) {
             this.handleError(error);

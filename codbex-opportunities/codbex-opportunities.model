@@ -301,7 +301,7 @@
                 "perspectiveRole": "",
                 "title": "LeadStatus",
                 "tooltip": "LeadStatus",
-                "type": "PRIMARY"
+                "type": "SETTING"
             },
             {
                 "properties": [
@@ -592,7 +592,7 @@
                 "perspectiveRole": "",
                 "title": "NoteType",
                 "tooltip": "NoteType",
-                "type": "PRIMARY"
+                "type": "SETTING"
             },
             {
                 "properties": [
@@ -1096,7 +1096,7 @@
                 "perspectiveRole": "",
                 "title": "OpportunityType",
                 "tooltip": "OpportunityType",
-                "type": "PRIMARY"
+                "type": "SETTING"
             },
             {
                 "properties": [
@@ -1150,7 +1150,7 @@
                 "perspectiveRole": "",
                 "title": "OpportunityPriority",
                 "tooltip": "OpportunityPriority",
-                "type": "PRIMARY"
+                "type": "SETTING"
             },
             {
                 "properties": [
@@ -1217,7 +1217,7 @@
                 "perspectiveRole": "",
                 "title": "OpportunityStatus",
                 "tooltip": "OpportunityStatus",
-                "type": "PRIMARY"
+                "type": "SETTING"
             },
             {
                 "properties": [
@@ -1271,7 +1271,7 @@
                 "perspectiveRole": "",
                 "title": "OpportunityProbability",
                 "tooltip": "OpportunityProbability",
-                "type": "PRIMARY"
+                "type": "SETTING"
             },
             {
                 "properties": [
@@ -1892,7 +1892,7 @@
                 "perspectiveRole": "",
                 "title": "QuotationStatus",
                 "tooltip": "QuotationStatus",
-                "type": "PRIMARY"
+                "type": "SETTING"
             },
             {
                 "properties": [
@@ -3035,7 +3035,7 @@
                 "feedUsername": "YWRtaW4=",
                 "generateReport": "false",
                 "icon": "/services/web/resources/unicons/file.svg",
-                "layoutType": "MANAGE",
+                "layoutType": "MANAGE_DETAILS",
                 "menuIndex": "100",
                 "menuKey": "leadqualification",
                 "menuLabel": "LeadQualification",
@@ -3102,7 +3102,7 @@
                 "perspectiveRole": "",
                 "title": "LeadQualificationAuthority",
                 "tooltip": "LeadQualificationAuthority",
-                "type": "PRIMARY"
+                "type": "SETTING"
             },
             {
                 "properties": [
@@ -3156,7 +3156,7 @@
                 "perspectiveRole": "",
                 "title": "LeadQualificationNeed",
                 "tooltip": "LeadQualificationNeed",
-                "type": "PRIMARY"
+                "type": "SETTING"
             },
             {
                 "properties": [
@@ -3210,7 +3210,7 @@
                 "perspectiveRole": "",
                 "title": "LeadQualificationTimeline",
                 "tooltip": "LeadQualificationTimeline",
-                "type": "PRIMARY"
+                "type": "SETTING"
             },
             {
                 "properties": [
@@ -3353,7 +3353,7 @@
                 "feedUsername": "YWRtaW4=",
                 "generateReport": "false",
                 "icon": "/services/web/resources/unicons/file.svg",
-                "layoutType": "MANAGE",
+                "layoutType": "MANAGE_DETAILS",
                 "menuIndex": "100",
                 "menuKey": "opportunityaction",
                 "menuLabel": "OpportunityAction",
@@ -3420,7 +3420,7 @@
                 "perspectiveRole": "",
                 "title": "ActionType",
                 "tooltip": "ActionType",
-                "type": "PRIMARY"
+                "type": "SETTING"
             },
             {
                 "properties": [
@@ -3474,7 +3474,7 @@
                 "perspectiveRole": "",
                 "title": "ActionStatus",
                 "tooltip": "ActionStatus",
-                "type": "PRIMARY"
+                "type": "SETTING"
             },
             {
                 "properties": [
@@ -3587,22 +3587,24 @@
                 "dataName": "LEADACTION",
                 "dataQuery": "",
                 "description": "Manage entity LeadAction",
+                "feedPassword": "YWRtaW4=",
+                "feedUsername": "YWRtaW4=",
                 "generateReport": "false",
                 "icon": "/services/web/resources/unicons/file.svg",
-                "layoutType": "MANAGE",
+                "layoutType": "MANAGE_DETAILS",
                 "menuIndex": "100",
                 "menuKey": "leadaction",
                 "menuLabel": "LeadAction",
                 "name": "LeadAction",
                 "navigationPath": "/Home",
-                "perspectiveIcon": "/services/web/resources/unicons/copy.svg",
-                "perspectiveLabel": "Entities",
-                "perspectiveName": "entities",
+                "perspectiveIcon": "/services/web/resources/unicons/head-side.svg",
+                "perspectiveLabel": "Lead",
+                "perspectiveName": "Lead",
                 "perspectiveOrder": "100",
                 "perspectiveRole": "",
                 "title": "LeadAction",
                 "tooltip": "LeadAction",
-                "type": "PRIMARY"
+                "type": "DEPENDENT"
             }
         ],
         "perspectives": [

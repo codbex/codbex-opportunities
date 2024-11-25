@@ -1,20 +1,20 @@
 import { Controller, Get, Post, Put, Delete, response } from "sdk/http"
 import { Extensions } from "sdk/extensions"
-import { LeadQualificationRepository, LeadQualificationEntityOptions } from "../../dao/Lead/LeadQualificationRepository";
+import { LeadActionRepository, LeadActionEntityOptions } from "../../dao/Lead/LeadActionRepository";
 import { ValidationError } from "../utils/ValidationError";
 import { HttpUtils } from "../utils/HttpUtils";
 
-const validationModules = await Extensions.loadExtensionModules("codbex-opportunities-Lead-LeadQualification", ["validate"]);
+const validationModules = await Extensions.loadExtensionModules("codbex-opportunities-Lead-LeadAction", ["validate"]);
 
 @Controller
-class LeadQualificationService {
+class LeadActionService {
 
-    private readonly repository = new LeadQualificationRepository();
+    private readonly repository = new LeadActionRepository();
 
     @Get("/")
     public getAll(_: any, ctx: any) {
         try {
-            const options: LeadQualificationEntityOptions = {
+            const options: LeadActionEntityOptions = {
                 $limit: ctx.queryParameters["$limit"] ? parseInt(ctx.queryParameters["$limit"]) : undefined,
                 $offset: ctx.queryParameters["$offset"] ? parseInt(ctx.queryParameters["$offset"]) : undefined
             };
@@ -41,7 +41,7 @@ class LeadQualificationService {
         try {
             this.validateEntity(entity);
             entity.Id = this.repository.create(entity);
-            response.setHeader("Content-Location", "/services/ts/codbex-opportunities/gen/codbex-opportunities/api/Lead/LeadQualificationService.ts/" + entity.Id);
+            response.setHeader("Content-Location", "/services/ts/codbex-opportunities/gen/codbex-opportunities/api/Lead/LeadActionService.ts/" + entity.Id);
             response.setStatus(response.CREATED);
             return entity;
         } catch (error: any) {
@@ -84,7 +84,7 @@ class LeadQualificationService {
             if (entity) {
                 return entity;
             } else {
-                HttpUtils.sendResponseNotFound("LeadQualification not found");
+                HttpUtils.sendResponseNotFound("LeadAction not found");
             }
         } catch (error: any) {
             this.handleError(error);
@@ -112,7 +112,7 @@ class LeadQualificationService {
                 this.repository.deleteById(id);
                 HttpUtils.sendResponseNoContent();
             } else {
-                HttpUtils.sendResponseNotFound("LeadQualification not found");
+                HttpUtils.sendResponseNotFound("LeadAction not found");
             }
         } catch (error: any) {
             this.handleError(error);
@@ -130,6 +130,9 @@ class LeadQualificationService {
     }
 
     private validateEntity(entity: any): void {
+        if (entity.Subject?.length > 100) {
+            throw new ValidationError(`The 'Subject' exceeds the maximum length of [100] characters`);
+        }
         for (const next of validationModules) {
             next.validate(entity);
         }
