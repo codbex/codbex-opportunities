@@ -149,16 +149,17 @@
                 </fd-card-header>
                 <div class="funnel-container">
                     <div class="funnel">
-                        <div class="funnel-stage" id="initial" data-tooltip="Initial: 33.33%"></div>
-                        <div class="funnel-stage" id="open" data-tooltip="Open: 16.67%"></div>
-                        <div class="funnel-stage" id="contacted" data-tooltip="Contacted: 8.33%">
+                        <div class="funnel-stage" id="initial" data-tooltip="Initial: {{ initialRatio }}%"></div>
+                        <div class="funnel-stage" id="open" data-tooltip="Open: {{ openRatio }} | Number:2%"></div>
+                        <div class="funnel-stage" id="contacted" data-tooltip="Contacted: {{ contactedRatio }}%">
                         </div>
-                        <div class="funnel-stage" id="replied" data-tooltip="Replied: 8.33%"></div>
-                        <div class="funnel-stage" id="opportunity" data-tooltip="To Opportunity: 8.33%"></div>
-                        <div class="funnel-stage" id="quote" data-tooltip="To Quotation: 8.33%">
+                        <div class="funnel-stage" id="replied" data-tooltip="Replied: {{ repliedRatio }}%"></div>
+                        <div class="funnel-stage" id="opportunity"
+                            data-tooltip="To Opportunity: {{ opportunityRatio }}%"></div>
+                        <div class="funnel-stage" id="quote" data-tooltip="To Quotation: {{ quoteRatio }}%">
                         </div>
-                        <div class="funnel-stage" id="lost" data-tooltip="Lost: 8.33%"></div>
-                        <div class="funnel-stage" id="closed" data-tooltip="Closed: 8.33%"></div>
+                        <div class="funnel-stage" id="lost" data-tooltip="Lost: {{ lostRatio }}%"></div>
+                        <div class="funnel-stage" id="closed" data-tooltip="Closed: {{ closedRatio }}%"></div>
                     </div>
 
                     <!-- Legend -->

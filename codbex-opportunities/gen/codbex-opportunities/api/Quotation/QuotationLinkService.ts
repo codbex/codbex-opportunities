@@ -19,13 +19,13 @@ class QuotationLinkService {
                 $offset: ctx.queryParameters["$offset"] ? parseInt(ctx.queryParameters["$offset"]) : undefined
             };
 
-            let ${masterEntityId} = parseInt(ctx.queryParameters.${masterEntityId});
-            ${masterEntityId} = isNaN(${masterEntityId}) ? ctx.queryParameters.${masterEntityId} : ${masterEntityId};
+            let Quotation = parseInt(ctx.queryParameters.Quotation);
+            Quotation = isNaN(Quotation) ? ctx.queryParameters.Quotation : Quotation;
 
-            if (${masterEntityId} !== undefined) {
+            if (Quotation !== undefined) {
                 options.$filter = {
                     equals: {
-                        ${masterEntityId}: ${masterEntityId}
+                        Quotation: Quotation
                     }
                 };
             }

@@ -23,6 +23,7 @@ angular.module('leads-pipeline', ['ideUI', 'ideView'])
                 let lostLeads = allLeads.filter(lead => lead.Status === 7).length;
                 let closedLeads = allLeads.filter(lead => lead.Status === 9).length;
 
+                // $scope.aply(() => {
                 $scope.initialRatio = (initialLeads / totalLeads) * 100;
                 $scope.openRatio = (openLeads / totalLeads) * 100;
                 $scope.contactedRatio = (contactedLeads / totalLeads) * 100;
@@ -31,6 +32,7 @@ angular.module('leads-pipeline', ['ideUI', 'ideView'])
                 $scope.quoteRatio = (quoteLeads / totalLeads) * 100;
                 $scope.lostRatio = (lostLeads / totalLeads) * 100;
                 $scope.closedRatio = (closedLeads / totalLeads) * 100;
+                // })
             })
             .catch(function (error) {
                 $scope.state.error = true;

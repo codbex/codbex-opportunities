@@ -19,13 +19,13 @@ class LeadActionService {
                 $offset: ctx.queryParameters["$offset"] ? parseInt(ctx.queryParameters["$offset"]) : undefined
             };
 
-            let ${masterEntityId} = parseInt(ctx.queryParameters.${masterEntityId});
-            ${masterEntityId} = isNaN(${masterEntityId}) ? ctx.queryParameters.${masterEntityId} : ${masterEntityId};
+            let Lead = parseInt(ctx.queryParameters.Lead);
+            Lead = isNaN(Lead) ? ctx.queryParameters.Lead : Lead;
 
-            if (${masterEntityId} !== undefined) {
+            if (Lead !== undefined) {
                 options.$filter = {
                     equals: {
-                        ${masterEntityId}: ${masterEntityId}
+                        Lead: Lead
                     }
                 };
             }
@@ -132,6 +132,9 @@ class LeadActionService {
     private validateEntity(entity: any): void {
         if (entity.Subject?.length > 100) {
             throw new ValidationError(`The 'Subject' exceeds the maximum length of [100] characters`);
+        }
+        if (entity.Note?.length > 1000) {
+            throw new ValidationError(`The 'Note' exceeds the maximum length of [1000] characters`);
         }
         for (const next of validationModules) {
             next.validate(entity);

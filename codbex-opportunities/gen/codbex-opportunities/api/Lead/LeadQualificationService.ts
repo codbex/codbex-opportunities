@@ -19,13 +19,13 @@ class LeadQualificationService {
                 $offset: ctx.queryParameters["$offset"] ? parseInt(ctx.queryParameters["$offset"]) : undefined
             };
 
-            let ${masterEntityId} = parseInt(ctx.queryParameters.${masterEntityId});
-            ${masterEntityId} = isNaN(${masterEntityId}) ? ctx.queryParameters.${masterEntityId} : ${masterEntityId};
+            let Lead = parseInt(ctx.queryParameters.Lead);
+            Lead = isNaN(Lead) ? ctx.queryParameters.Lead : Lead;
 
-            if (${masterEntityId} !== undefined) {
+            if (Lead !== undefined) {
                 options.$filter = {
                     equals: {
-                        ${masterEntityId}: ${masterEntityId}
+                        Lead: Lead
                     }
                 };
             }

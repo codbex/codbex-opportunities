@@ -28,7 +28,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			$scope.entity = params.entity;
 			$scope.selectedMainEntityKey = params.selectedMainEntityKey;
 			$scope.selectedMainEntityId = params.selectedMainEntityId;
-			$scope.optionsNoteType = params.optionsNoteType;
 		}
 
 		$scope.create = function () {
@@ -60,7 +59,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		};
 
-		$scope.serviceNoteType = "/services/ts/codbex-opportunities/gen/codbex-opportunities/api/Settings/NoteTypeService.ts";
 
 		$scope.cancel = function () {
 			$scope.entity = {};

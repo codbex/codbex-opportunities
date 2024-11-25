@@ -21,23 +21,6 @@
                 <fd-form-group dg-header="{{formHeaders[action]}}" name="entityForm" class="fd-container fd-form-layout-grid-container">
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idNoteType" dg-required="false" dg-colon="true">NoteType</fd-form-label>
-                        </div>
-                        <div class="fd-col  fd-col-md--8 ">
-	                        <fd-combobox-input id="idNoteType"
-	                            name="NoteType"
-	                            state="{{ forms.details['NoteType'].$valid ? '' : 'error' }}"
-	                            ng-required="false"
-	                            ng-model="entity.NoteType"
-	                            dg-disabled="action === 'select'"
-	                            dropdown-items="optionsNoteType"
-	                            dg-placeholder="Search NoteType ...">
-	                        </fd-combobox-input>
-	                        <i class="sap-icon--information" role="presentation" onclick="javascript:alert('')"></i>
-	                    </div>
-                    </fd-form-item>
-                    <fd-form-item class="fd-row">
-                    	<div class="fd-col fd-col-md--2">
                         	<fd-form-label for="idNote" dg-required="true" dg-colon="true">Note</fd-form-label>
                         </div>
                         <div class="fd-col  fd-col-md--8 ">

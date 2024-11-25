@@ -1,5 +1,0 @@
-{
-    "module": "codbex-opportunities/gen/codbex-opportunities/ui/Lead/${masterEntity}/LeadQualification/dialog-window/view.js",
-    "extensionPoint": "codbex-opportunities-dialog-window",
-    "description": "codbex-opportunities - Application Dialog Window"
-}

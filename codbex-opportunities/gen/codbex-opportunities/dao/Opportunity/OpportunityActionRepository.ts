@@ -13,6 +13,8 @@ export interface OpportunityActionEntity {
     Note?: number;
     Type?: number;
     Status?: number;
+    Note?: string;
+    Timestamp?: Date;
 }
 
 export interface OpportunityActionCreateEntity {
@@ -23,6 +25,8 @@ export interface OpportunityActionCreateEntity {
     readonly Note?: number;
     readonly Type?: number;
     readonly Status?: number;
+    readonly Note?: string;
+    readonly Timestamp?: Date;
 }
 
 export interface OpportunityActionUpdateEntity extends OpportunityActionCreateEntity {
@@ -40,6 +44,8 @@ export interface OpportunityActionEntityOptions {
             Note?: number | number[];
             Type?: number | number[];
             Status?: number | number[];
+            Note?: string | string[];
+            Timestamp?: Date | Date[];
         };
         notEquals?: {
             Id?: number | number[];
@@ -50,6 +56,8 @@ export interface OpportunityActionEntityOptions {
             Note?: number | number[];
             Type?: number | number[];
             Status?: number | number[];
+            Note?: string | string[];
+            Timestamp?: Date | Date[];
         };
         contains?: {
             Id?: number;
@@ -60,6 +68,8 @@ export interface OpportunityActionEntityOptions {
             Note?: number;
             Type?: number;
             Status?: number;
+            Note?: string;
+            Timestamp?: Date;
         };
         greaterThan?: {
             Id?: number;
@@ -70,6 +80,8 @@ export interface OpportunityActionEntityOptions {
             Note?: number;
             Type?: number;
             Status?: number;
+            Note?: string;
+            Timestamp?: Date;
         };
         greaterThanOrEqual?: {
             Id?: number;
@@ -80,6 +92,8 @@ export interface OpportunityActionEntityOptions {
             Note?: number;
             Type?: number;
             Status?: number;
+            Note?: string;
+            Timestamp?: Date;
         };
         lessThan?: {
             Id?: number;
@@ -90,6 +104,8 @@ export interface OpportunityActionEntityOptions {
             Note?: number;
             Type?: number;
             Status?: number;
+            Note?: string;
+            Timestamp?: Date;
         };
         lessThanOrEqual?: {
             Id?: number;
@@ -100,6 +116,8 @@ export interface OpportunityActionEntityOptions {
             Note?: number;
             Type?: number;
             Status?: number;
+            Note?: string;
+            Timestamp?: Date;
         };
     },
     $select?: (keyof OpportunityActionEntity)[],
@@ -170,6 +188,16 @@ export class OpportunityActionRepository {
                 name: "Status",
                 column: "OPPORTUNITYACTION_STATUS",
                 type: "INTEGER",
+            },
+            {
+                name: "Note",
+                column: "OPPORTUNITYACTION_NOTE",
+                type: "VARCHAR",
+            },
+            {
+                name: "Timestamp",
+                column: "OPPORTUNITYACTION_TIMESTAMP",
+                type: "TIMESTAMP",
             }
         ]
     };

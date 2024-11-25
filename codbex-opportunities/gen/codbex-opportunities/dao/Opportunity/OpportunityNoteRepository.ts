@@ -5,13 +5,11 @@ import { dao as daoApi } from "sdk/db";
 
 export interface OpportunityNoteEntity {
     readonly Id: number;
-    NoteType?: number;
     Note?: string;
     Timestamp?: Date;
 }
 
 export interface OpportunityNoteCreateEntity {
-    readonly NoteType?: number;
     readonly Note?: string;
     readonly Timestamp?: Date;
 }
@@ -24,43 +22,36 @@ export interface OpportunityNoteEntityOptions {
     $filter?: {
         equals?: {
             Id?: number | number[];
-            NoteType?: number | number[];
             Note?: string | string[];
             Timestamp?: Date | Date[];
         };
         notEquals?: {
             Id?: number | number[];
-            NoteType?: number | number[];
             Note?: string | string[];
             Timestamp?: Date | Date[];
         };
         contains?: {
             Id?: number;
-            NoteType?: number;
             Note?: string;
             Timestamp?: Date;
         };
         greaterThan?: {
             Id?: number;
-            NoteType?: number;
             Note?: string;
             Timestamp?: Date;
         };
         greaterThanOrEqual?: {
             Id?: number;
-            NoteType?: number;
             Note?: string;
             Timestamp?: Date;
         };
         lessThan?: {
             Id?: number;
-            NoteType?: number;
             Note?: string;
             Timestamp?: Date;
         };
         lessThanOrEqual?: {
             Id?: number;
-            NoteType?: number;
             Note?: string;
             Timestamp?: Date;
         };
@@ -98,11 +89,6 @@ export class OpportunityNoteRepository {
                 type: "INTEGER",
                 id: true,
                 autoIncrement: true,
-            },
-            {
-                name: "NoteType",
-                column: "OPPORTUNITYNOTE_NOTETYPE",
-                type: "INTEGER",
             },
             {
                 name: "Note",

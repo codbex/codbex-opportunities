@@ -9,18 +9,20 @@ export interface LeadActionEntity {
     Date?: Date;
     Subject?: string;
     Lead?: number;
-    Note?: number;
     Type?: number;
     Status?: number;
+    Note?: string;
+    Timestamp?: Date;
 }
 
 export interface LeadActionCreateEntity {
     readonly Date?: Date;
     readonly Subject?: string;
     readonly Lead?: number;
-    readonly Note?: number;
     readonly Type?: number;
     readonly Status?: number;
+    readonly Note?: string;
+    readonly Timestamp?: Date;
 }
 
 export interface LeadActionUpdateEntity extends LeadActionCreateEntity {
@@ -34,63 +36,70 @@ export interface LeadActionEntityOptions {
             Date?: Date | Date[];
             Subject?: string | string[];
             Lead?: number | number[];
-            Note?: number | number[];
             Type?: number | number[];
             Status?: number | number[];
+            Note?: string | string[];
+            Timestamp?: Date | Date[];
         };
         notEquals?: {
             Id?: number | number[];
             Date?: Date | Date[];
             Subject?: string | string[];
             Lead?: number | number[];
-            Note?: number | number[];
             Type?: number | number[];
             Status?: number | number[];
+            Note?: string | string[];
+            Timestamp?: Date | Date[];
         };
         contains?: {
             Id?: number;
             Date?: Date;
             Subject?: string;
             Lead?: number;
-            Note?: number;
             Type?: number;
             Status?: number;
+            Note?: string;
+            Timestamp?: Date;
         };
         greaterThan?: {
             Id?: number;
             Date?: Date;
             Subject?: string;
             Lead?: number;
-            Note?: number;
             Type?: number;
             Status?: number;
+            Note?: string;
+            Timestamp?: Date;
         };
         greaterThanOrEqual?: {
             Id?: number;
             Date?: Date;
             Subject?: string;
             Lead?: number;
-            Note?: number;
             Type?: number;
             Status?: number;
+            Note?: string;
+            Timestamp?: Date;
         };
         lessThan?: {
             Id?: number;
             Date?: Date;
             Subject?: string;
             Lead?: number;
-            Note?: number;
             Type?: number;
             Status?: number;
+            Note?: string;
+            Timestamp?: Date;
         };
         lessThanOrEqual?: {
             Id?: number;
             Date?: Date;
             Subject?: string;
             Lead?: number;
-            Note?: number;
             Type?: number;
             Status?: number;
+            Note?: string;
+            Timestamp?: Date;
         };
     },
     $select?: (keyof LeadActionEntity)[],
@@ -143,11 +152,6 @@ export class LeadActionRepository {
                 type: "INTEGER",
             },
             {
-                name: "Note",
-                column: "LEADACTION_NOTE",
-                type: "INTEGER",
-            },
-            {
                 name: "Type",
                 column: "LEADACTION_TYPE",
                 type: "INTEGER",
@@ -156,6 +160,16 @@ export class LeadActionRepository {
                 name: "Status",
                 column: "LEADACTION_STATUS",
                 type: "INTEGER",
+            },
+            {
+                name: "Note",
+                column: "LEADACTION_NOTE",
+                type: "VARCHAR",
+            },
+            {
+                name: "Timestamp",
+                column: "LEADACTION_TIMESTAMP",
+                type: "TIMESTAMP",
             }
         ]
     };
