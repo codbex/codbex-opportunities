@@ -27,6 +27,8 @@ angular.module('page', ["ideUI", "ideView"])
 			$scope.selectedMainEntityKey = params.selectedMainEntityKey;
 			$scope.selectedMainEntityId = params.selectedMainEntityId;
 			$scope.optionsLead = params.optionsLead;
+			$scope.optionsType = params.optionsType;
+			$scope.optionsStatus = params.optionsStatus;
 		}
 
 		$scope.filter = function () {

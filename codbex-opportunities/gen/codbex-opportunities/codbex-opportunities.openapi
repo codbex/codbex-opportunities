@@ -10758,6 +10758,8 @@ components:
     LeadQualification:
       type: object
       required:
+        - Budget
+        - Lead
       properties:
         Id:
           type: integer
@@ -11987,6 +11989,10 @@ components:
     LeadAction:
       type: object
       required:
+        - Subject
+        - Lead
+        - Note
+        - Timestamp
       properties:
         Id:
           type: integer

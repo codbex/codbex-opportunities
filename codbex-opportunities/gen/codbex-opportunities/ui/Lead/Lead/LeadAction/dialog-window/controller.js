@@ -32,6 +32,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			$scope.selectedMainEntityKey = params.selectedMainEntityKey;
 			$scope.selectedMainEntityId = params.selectedMainEntityId;
 			$scope.optionsLead = params.optionsLead;
+			$scope.optionsType = params.optionsType;
+			$scope.optionsStatus = params.optionsStatus;
 		}
 
 		$scope.create = function () {
@@ -64,6 +66,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		};
 
 		$scope.serviceLead = "/services/ts/codbex-opportunities/gen/codbex-opportunities/api/Lead/LeadService.ts";
+		$scope.serviceType = "/services/ts/codbex-opportunities/gen/codbex-opportunities/api/Settings/ActionTypeService.ts";
+		$scope.serviceStatus = "/services/ts/codbex-opportunities/gen/codbex-opportunities/api/Settings/ActionStatusService.ts";
 
 		$scope.cancel = function () {
 			$scope.entity = {};

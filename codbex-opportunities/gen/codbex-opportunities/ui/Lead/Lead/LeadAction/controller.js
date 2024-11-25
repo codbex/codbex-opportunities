@@ -136,6 +136,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				action: "select",
 				entity: entity,
 				optionsLead: $scope.optionsLead,
+				optionsType: $scope.optionsType,
+				optionsStatus: $scope.optionsStatus,
 			});
 		};
 
@@ -143,6 +145,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.showDialogWindow("LeadAction-filter", {
 				entity: $scope.filterEntity,
 				optionsLead: $scope.optionsLead,
+				optionsType: $scope.optionsType,
+				optionsStatus: $scope.optionsStatus,
 			});
 		};
 
@@ -154,6 +158,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				selectedMainEntityKey: "Lead",
 				selectedMainEntityId: $scope.selectedMainEntityId,
 				optionsLead: $scope.optionsLead,
+				optionsType: $scope.optionsType,
+				optionsStatus: $scope.optionsStatus,
 			}, null, false);
 		};
 
@@ -164,6 +170,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				selectedMainEntityKey: "Lead",
 				selectedMainEntityId: $scope.selectedMainEntityId,
 				optionsLead: $scope.optionsLead,
+				optionsType: $scope.optionsType,
+				optionsStatus: $scope.optionsStatus,
 			}, null, false);
 		};
 
@@ -198,6 +206,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 
 		//----------------Dropdowns-----------------//
 		$scope.optionsLead = [];
+		$scope.optionsType = [];
+		$scope.optionsStatus = [];
 
 
 		$http.get("/services/ts/codbex-opportunities/gen/codbex-opportunities/api/Lead/LeadService.ts").then(function (response) {
@@ -209,10 +219,44 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		});
 
+		$http.get("/services/ts/codbex-opportunities/gen/codbex-opportunities/api/Settings/ActionTypeService.ts").then(function (response) {
+			$scope.optionsType = response.data.map(e => {
+				return {
+					value: e.Id,
+					text: e.Name
+				}
+			});
+		});
+
+		$http.get("/services/ts/codbex-opportunities/gen/codbex-opportunities/api/Settings/ActionStatusService.ts").then(function (response) {
+			$scope.optionsStatus = response.data.map(e => {
+				return {
+					value: e.Id,
+					text: e.Name
+				}
+			});
+		});
+
 		$scope.optionsLeadValue = function (optionKey) {
 			for (let i = 0; i < $scope.optionsLead.length; i++) {
 				if ($scope.optionsLead[i].value === optionKey) {
 					return $scope.optionsLead[i].text;
+				}
+			}
+			return null;
+		};
+		$scope.optionsTypeValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsType.length; i++) {
+				if ($scope.optionsType[i].value === optionKey) {
+					return $scope.optionsType[i].text;
+				}
+			}
+			return null;
+		};
+		$scope.optionsStatusValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsStatus.length; i++) {
+				if ($scope.optionsStatus[i].value === optionKey) {
+					return $scope.optionsStatus[i].text;
 				}
 			}
 			return null;
