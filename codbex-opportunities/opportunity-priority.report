@@ -1,0 +1,58 @@
+{
+    "query": "SELECT OpportunityPriority.OPPORTUNITYPRIORITY_NAME as \"Priority\", COUNT(Opportunity.OPPORTUNITY_ID) as \"Total Opportunities\", SUM(Opportunity.OPPORTUNITY_AMOUNT) as \"Total Amount\", Currency.CURRENCY_CODE as \"Currency\"\nFROM CODBEX_OPPORTUNITYPRIORITY as OpportunityPriority\n  INNER JOIN CODBEX_CURRENCY Currency ON Opportunity.OPPORTUNITY_CURRENCY = Currency.CURRENCY_ID\n  INNER JOIN CODBEX_OPPORTUNITY Opportunity ON OpportunityPriority.OPPORTUNITYPRIORITY_ID = Opportunity.OPPORTUNITY_PRIORITY\nGROUP BY OpportunityPriority.OPPORTUNITYPRIORITY_NAME",
+    "name": "OpportunityPriority",
+    "alias": "OpportunityPriority",
+    "table": "CODBEX_OPPORTUNITYPRIORITY",
+    "columns": [
+        {
+            "table": "OpportunityPriority",
+            "alias": "Priority",
+            "name": "OPPORTUNITYPRIORITY_NAME",
+            "type": "VARCHAR",
+            "aggregate": "NONE",
+            "select": true,
+            "grouping": true
+        },
+        {
+            "table": "Opportunity",
+            "alias": "Total Opportunities",
+            "name": "OPPORTUNITY_ID",
+            "type": "DECIMAL",
+            "aggregate": "COUNT",
+            "select": true,
+            "grouping": false
+        },
+        {
+            "table": "Opportunity",
+            "alias": "Total Amount",
+            "name": "OPPORTUNITY_AMOUNT",
+            "type": "DOUBLE",
+            "aggregate": "SUM",
+            "select": true,
+            "grouping": false
+        },
+        {
+            "table": "Currency",
+            "alias": "Currency",
+            "name": "CURRENCY_CODE",
+            "type": "VARCHAR",
+            "aggregate": "NONE",
+            "select": true,
+            "grouping": false
+        }
+    ],
+    "joins": [
+        {
+            "alias": "Currency",
+            "name": "CODBEX_CURRENCY",
+            "type": "INNER",
+            "condition": "Opportunity.OPPORTUNITY_CURRENCY = Currency.CURRENCY_ID"
+        },
+        {
+            "alias": "Opportunity",
+            "name": "CODBEX_OPPORTUNITY",
+            "type": "INNER",
+            "condition": "OpportunityPriority.OPPORTUNITYPRIORITY_ID = Opportunity.OPPORTUNITY_PRIORITY"
+        }
+    ]
+}

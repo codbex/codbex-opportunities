@@ -1,0 +1,5 @@
+{
+    "module": "codbex-opportunities/gen/quotation-issuance-and-acceptance/ui/Reports/QuotationIssuanceAndAcceptance/tile.js",
+    "extensionPoint": "codbex-opportunities-tile",
+    "description": "codbex-opportunities - Application Tile"
+}

@@ -307,30 +307,6 @@
                 ]
             },
             {
-                "name": "CODBEX_OPPORTUNITYNOTE",
-                "type": "TABLE",
-                "columns": [
-                    {
-                        "type": "INTEGER",
-                        "primaryKey": true,
-                        "identity": true,
-                        "nullable": true,
-                        "name": "OPPORTUNITYNOTE_ID"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 1000,
-                        "nullable": true,
-                        "name": "OPPORTUNITYNOTE_NOTE"
-                    },
-                    {
-                        "type": "TIMESTAMP",
-                        "nullable": true,
-                        "name": "OPPORTUNITYNOTE_TIMESTAMP"
-                    }
-                ]
-            },
-            {
                 "name": "CODBEX_ENTITY71921",
                 "type": "TABLE",
                 "columns": [
@@ -561,11 +537,6 @@
                         "type": "INTEGER",
                         "nullable": true,
                         "name": "OPPORTUNITYACTION_EMPLOYEE"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "nullable": true,
-                        "name": "OPPORTUNITYACTION_NOTE"
                     },
                     {
                         "type": "INTEGER",
@@ -931,15 +902,6 @@
                 "referencedColumns": "EMPLOYEE_ID"
             },
             {
-                "name": "OpportunityAction_OpportunityNote",
-                "type": "foreignKey",
-                "table": "CODBEX_OPPORTUNITYACTION",
-                "constraintName": "OpportunityAction_OpportunityNote",
-                "columns": "OPPORTUNITYACTION_NOTE",
-                "referencedTable": "CODBEX_OPPORTUNITYNOTE",
-                "referencedColumns": "OPPORTUNITYNOTE_ID"
-            },
-            {
                 "name": "OpportunityAction_ActionType",
                 "type": "foreignKey",
                 "table": "CODBEX_OPPORTUNITYACTION",
@@ -956,15 +918,6 @@
                 "columns": "OPPORTUNITYACTION_STATUS",
                 "referencedTable": "CODBEX_ACTIONSTATUS",
                 "referencedColumns": "ACTIONSTATUS_ID"
-            },
-            {
-                "name": "OpportunityAction_OpportunityNote",
-                "type": "foreignKey",
-                "table": "CODBEX_OPPORTUNITYACTION",
-                "constraintName": "OpportunityAction_OpportunityNote",
-                "columns": "OPPORTUNITYACTION_NOTE",
-                "referencedTable": "CODBEX_OPPORTUNITYNOTE",
-                "referencedColumns": "OPPORTUNITYNOTE_ID"
             },
             {
                 "name": "LeadAction_Lead",

@@ -1446,73 +1446,6 @@
                 "properties": [
                     {
                         "dataAutoIncrement": "true",
-                        "dataName": "OPPORTUNITYNOTE_ID",
-                        "dataNullable": "true",
-                        "dataPrimaryKey": "true",
-                        "dataType": "INTEGER",
-                        "description": "",
-                        "name": "Id",
-                        "tooltip": "",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "20",
-                        "widgetSize": "",
-                        "widgetType": "TEXTBOX"
-                    },
-                    {
-                        "dataLength": "1000",
-                        "dataName": "OPPORTUNITYNOTE_NOTE",
-                        "dataNullable": "true",
-                        "dataType": "VARCHAR",
-                        "description": "",
-                        "isRequiredProperty": "true",
-                        "name": "Note",
-                        "tooltip": "",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "1000",
-                        "widgetSize": "",
-                        "widgetType": "TEXTBOX"
-                    },
-                    {
-                        "dataName": "OPPORTUNITYNOTE_TIMESTAMP",
-                        "dataNullable": "true",
-                        "dataType": "TIMESTAMP",
-                        "description": "",
-                        "name": "Timestamp",
-                        "tooltip": "",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "20",
-                        "widgetSize": "",
-                        "widgetType": "DATETIME-LOCAL"
-                    }
-                ],
-                "caption": "Manage entity OpportunityNote",
-                "dataCount": "SELECT COUNT(*) AS COUNT FROM \"${tablePrefix}OPPORTUNITYNOTE\"",
-                "dataName": "OPPORTUNITYNOTE",
-                "dataQuery": "",
-                "description": "Manage entity OpportunityNote",
-                "feedPassword": "YWRtaW4=",
-                "feedUsername": "YWRtaW4=",
-                "generateReport": "false",
-                "icon": "/services/web/resources/unicons/file.svg",
-                "layoutType": "MANAGE_DETAILS",
-                "menuIndex": "100",
-                "menuKey": "opportunitynote",
-                "menuLabel": "OpportunityNote",
-                "name": "OpportunityNote",
-                "navigationPath": "/Home",
-                "perspectiveIcon": "/services/web/resources/unicons/lightbulb.svg",
-                "perspectiveLabel": "Opportunity",
-                "perspectiveName": "Opportunity",
-                "perspectiveOrder": "200",
-                "perspectiveRole": "",
-                "title": "OpportunityNote",
-                "tooltip": "OpportunityNote",
-                "type": "DEPENDENT"
-            },
-            {
-                "properties": [
-                    {
-                        "dataAutoIncrement": "true",
                         "dataName": "ENTITY71921_ID",
                         "dataNullable": "true",
                         "dataPrimaryKey": "true",
@@ -3144,24 +3077,6 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
-                        "dataName": "OPPORTUNITYACTION_NOTE",
-                        "dataNullable": "true",
-                        "dataType": "INTEGER",
-                        "description": "",
-                        "name": "Note",
-                        "tooltip": "",
-                        "widgetDropDownKey": "Id",
-                        "widgetDropDownValue": "Name",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "20",
-                        "widgetSize": "",
-                        "widgetType": "DROPDOWN",
-                        "relationshipName": "OpportunityAction_OpportunityNote",
-                        "relationshipEntityName": "OpportunityNote",
-                        "relationshipEntityPerspectiveName": "Opportunity",
-                        "relationshipEntityPerspectiveLabel": "Entities"
-                    },
-                    {
                         "dataName": "OPPORTUNITYACTION_TYPE",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
@@ -3208,11 +3123,7 @@
                         "widgetIsMajor": "true",
                         "widgetLength": "20",
                         "widgetSize": "",
-                        "widgetType": "TEXTBOX",
-                        "relationshipName": "OpportunityAction_OpportunityNote",
-                        "relationshipEntityName": "OpportunityNote",
-                        "relationshipEntityPerspectiveName": "Opportunity",
-                        "relationshipEntityPerspectiveLabel": "Entities"
+                        "widgetType": "TEXTBOX"
                     },
                     {
                         "dataName": "OPPORTUNITYACTION_TIMESTAMP",

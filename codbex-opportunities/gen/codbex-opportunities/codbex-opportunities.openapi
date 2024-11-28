@@ -17,7 +17,6 @@ tags:
   - name: Settings
   - name: Settings
   - name: Quotation
-  - name: Opportunity
   - name: Quotation
   - name: Settings
   - name: Quotation
@@ -3246,406 +3245,6 @@ paths:
                 type: array
                 items:
                     $ref: '#/components/schemas/Quotation'
-        403:
-          description: Forbidden Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-  /codbex-opportunities/gen/codbex-opportunities/api/Opportunity/OpportunityNoteService.ts:
-    get:
-      summary: List OpportunityNote
-      parameters:
-        - in: query
-          name: $limit
-          description: The number of records to be returned _(both `$limit` and `$offset` should be provided)_.
-          required: false
-          allowReserved: true
-          schema:
-            type: integer
-            allowEmptyValue: true
-        - in: query
-          name: $offset
-          description: The number of records to skip _(both `$limit` and `$offset` should be provided)_.
-          required: false
-          allowReserved: true
-          schema:
-            type: integer
-            allowEmptyValue: true
-      tags:
-        - Opportunity
-      responses:
-        200:
-          description: Successful Request
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                    $ref: '#/components/schemas/OpportunityNote'
-        400:
-          description: Bad Request Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        403:
-          description: Forbidden Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-    post:
-      summary: Create OpportunityNote
-      tags:
-        - Opportunity
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/OpportunityNote'
-        required: true
-      responses:
-        201:
-          description: Successful Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/OpportunityNote'
-        400:
-          description: Bad Request Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        403:
-          description: Forbidden Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-  /codbex-opportunities/gen/codbex-opportunities/api/Opportunity/OpportunityNoteService.ts/{id}:
-    get:
-      summary: Get OpportunityNote by Id
-      parameters:
-        - in: path
-          name: id
-          description: The Id of the entity.
-          required: true
-          schema:
-            type: string
-      tags:
-        - Opportunity
-      responses:
-        200:
-          description: Successful Request
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                    $ref: '#/components/schemas/OpportunityNote'
-        404:
-          description: Entity Not Found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        403:
-          description: Forbidden Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-    put:
-      summary: Update OpportunityNote by Id
-      parameters:
-        - in: path
-          name: id
-          description: The Id of the entity.
-          required: true
-          schema:
-            type: string
-      tags:
-        - Opportunity
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/OpportunityNote'
-        required: true
-      responses:
-        200:
-          description: Successful Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/OpportunityNote'
-        400:
-          description: Bad Request Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        404:
-          description: Entity Not Found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        403:
-          description: Forbidden Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-    delete:
-      summary: Delete OpportunityNote by Id
-      parameters:
-        - in: path
-          name: id
-          description: The Id of the entity.
-          required: true
-          schema:
-            type: string
-      tags:
-        - Opportunity
-      responses:
-        204:
-          description: Successful Request
-        404:
-          description: Entity Not Found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        403:
-          description: Forbidden Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-  /codbex-opportunities/gen/codbex-opportunities/api/Opportunity/OpportunityNoteService.ts/count:
-    get:
-      summary: Count the number of OpportunityNote
-      tags:
-        - Opportunity
-      responses:
-        200:
-          description: Successful Request
-          content:
-            application/json:
-              schema:
-                type: integer
-                example: 100
-        403:
-          description: Forbidden Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-    post:
-      summary: Count the number of OpportunityNote by OpportunityNoteFilterOptions
-      tags:
-        - Opportunity
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/OpportunityNoteFilterOptions'
-            examples:
-              countWithMultipleCriteria:
-                summary: Count with multiple criteria
-                value:
-                  $filter:
-                    notEquals:
-                      Id: 33
-                    contains:
-                      Note: "abcd"
-                    greaterThan:
-                      Id: 0
-                    lessThanOrEqual:
-                      Id: 100
-              countWithEquals:
-                summary: Count with Equals
-                value:
-                  $filter:
-                    equals:
-                      Id: 0
-              countWithNotEquals:
-                summary: Count with Not Equals
-                value:
-                  $filter:
-                    notEquals:
-                      Id: 0
-              countWithContains:
-                summary: Count with Contains
-                value:
-                  $filter:
-                    contains:
-                      Note: "abcd"
-              countWithGreaterThan:
-                summary: Count with Greater Than
-                value:
-                  $filter:
-                    greaterThan:
-                      Id: 0
-              countWithGreaterThanOrEqual:
-                summary: Count with Greater Than Or Equal
-                value:
-                  $filter:
-                    greaterThanOrEqual:
-                      Id: 0
-              countWithLessThan:
-                summary: Count with Less Than
-                value:
-                  $filter:
-                    lessThan:
-                      Id: 0
-              countWithLessThanOrEqual:
-                summary: Count with Less Than Or Equal
-                value:
-                  $filter:
-                    lessThanOrEqual:
-                      Id: 0
-        required: true
-      responses:
-        200:
-          description: Successful Request
-          content:
-            application/json:
-              schema:
-                type: integer
-                example: 100
-        403:
-          description: Forbidden Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-  /codbex-opportunities/gen/codbex-opportunities/api/Opportunity/OpportunityNoteService.ts/search:
-    post:
-      summary: Search OpportunityNote by OpportunityNoteFilterOptions
-      tags:
-        - Opportunity
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/OpportunityNoteFilterOptions'
-            examples:
-              searchWithMultipleCriteria:
-                summary: Search with multiple criteria
-                value:
-                  $filter:
-                    notEquals:
-                      Id: 33
-                    contains:
-                      Note: "abcd"
-                    greaterThan:
-                      Id: 0
-                    lessThanOrEqual:
-                      Id: 100
-              searchWithEquals:
-                summary: Search with Equals
-                value:
-                  $filter:
-                    equals:
-                      Id: 0
-              searchWithNotEquals:
-                summary: Search with Not Equals
-                value:
-                  $filter:
-                    notEquals:
-                      Id: 0
-              searchWithContains:
-                summary: Search with Contains
-                value:
-                  $filter:
-                    contains:
-                      Note: "abcd"
-              searchWithGreaterThan:
-                summary: Search with Greater Than
-                value:
-                  $filter:
-                    greaterThan:
-                      Id: 0
-              searchWithGreaterThanOrEqual:
-                summary: Search with Greater Than Or Equal
-                value:
-                  $filter:
-                    greaterThanOrEqual:
-                      Id: 0
-              searchWithLessThan:
-                summary: Search with Less Than
-                value:
-                  $filter:
-                    lessThan:
-                      Id: 0
-              searchWithLessThanOrEqual:
-                summary: Search with Less Than Or Equal
-                value:
-                  $filter:
-                    lessThanOrEqual:
-                      Id: 0
-        required: true
-      responses:
-        200:
-          description: Successful Request
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                    $ref: '#/components/schemas/OpportunityNote'
         403:
           description: Forbidden Error
           content:
@@ -9986,144 +9585,6 @@ components:
         $limit:
           type: integer
           example: 10
-    OpportunityNote:
-      type: object
-      required:
-        - Note
-      properties:
-        Id:
-          type: integer
-          format: int32
-        Note:
-          type: string
-          minLength: 0
-          maxLength: 1000
-        Timestamp:
-    OpportunityNoteFilterOptions:
-      type: object
-      properties:
-        $filter:
-          type: object
-          properties:
-            equals:
-              type: object
-              properties:
-                Id:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
-                Note:
-                  oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 1000
-                    - type: array
-                      items:
-                        type: string
-                        format: double
-                        minLength: 0
-                        maxLength: 1000
-                Timestamp:
-                  oneOf:
-            notEquals:
-              type: object
-              properties:
-                Id:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
-                Note:
-                  oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 1000
-                    - type: array
-                      items:
-                        type: string
-                        format: double
-                        minLength: 0
-                        maxLength: 1000
-                Timestamp:
-                  oneOf:
-            contains:
-              type: object
-              properties:
-                Id:
-                Note:
-                  type: string
-                  minLength: 0
-                  maxLength: 1000
-                Timestamp:
-            greaterThan:
-              type: object
-              properties:
-                Id:
-                  type: integer
-                  format: int32
-                Note:
-                  type: string
-                  minLength: 0
-                  maxLength: 1000
-                Timestamp:
-            greaterThanOrEqual:
-              type: object
-              properties:
-                Id:
-                  type: integer
-                  format: int32
-                Note:
-                  type: string
-                  minLength: 0
-                  maxLength: 1000
-                Timestamp:
-            lessThan:
-              type: object
-              properties:
-                Id:
-                  type: integer
-                  format: int32
-                Note:
-                  type: string
-                  minLength: 0
-                  maxLength: 1000
-                Timestamp:
-            lessThanOrEqual:
-              type: object
-              properties:
-                Id:
-                  type: integer
-                  format: int32
-                Note:
-                  type: string
-                  minLength: 0
-                  maxLength: 1000
-                Timestamp:
-        $select:
-          type: array
-          example: ["Id", "Note", "Timestamp"]
-          items:
-            type: string
-        $sort:
-          - type: string
-            example: "Id,Note,Timestamp"
-        $order:
-          type: string
-          enum: ["asc", "desc"]
-          example: "asc"
-        $offset:
-          type: integer
-          example: 0
-        $limit:
-          type: integer
-          example: 10
     QuotationItem:
       type: object
       required:
@@ -11397,9 +10858,6 @@ components:
         Initiator:
           type: integer
           format: int32
-        Note:
-          type: integer
-          format: int32
         Type:
           type: integer
           format: int32
@@ -11450,14 +10908,6 @@ components:
                         type: integer
                         format: int32
                 Initiator:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
-                Note:
                   oneOf:
                     - type: integer
                       format: int32
@@ -11534,14 +10984,6 @@ components:
                       items:
                         type: integer
                         format: int32
-                Note:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
                 Type:
                   oneOf:
                     - type: integer
@@ -11582,7 +11024,6 @@ components:
                   maxLength: 100
                 Opportunity:
                 Initiator:
-                Note:
                 Type:
                 Status:
                 Note:
@@ -11605,9 +11046,6 @@ components:
                   type: integer
                   format: int32
                 Initiator:
-                  type: integer
-                  format: int32
-                Note:
                   type: integer
                   format: int32
                 Type:
@@ -11638,9 +11076,6 @@ components:
                 Initiator:
                   type: integer
                   format: int32
-                Note:
-                  type: integer
-                  format: int32
                 Type:
                   type: integer
                   format: int32
@@ -11667,9 +11102,6 @@ components:
                   type: integer
                   format: int32
                 Initiator:
-                  type: integer
-                  format: int32
-                Note:
                   type: integer
                   format: int32
                 Type:
@@ -11700,9 +11132,6 @@ components:
                 Initiator:
                   type: integer
                   format: int32
-                Note:
-                  type: integer
-                  format: int32
                 Type:
                   type: integer
                   format: int32
@@ -11716,12 +11145,12 @@ components:
                 Timestamp:
         $select:
           type: array
-          example: ["Id", "Date", "Subject", "Opportunity", "Initiator", "Note", "Type", "Status", "Note", "Timestamp"]
+          example: ["Id", "Date", "Subject", "Opportunity", "Initiator", "Type", "Status", "Note", "Timestamp"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,Date,Subject,Opportunity,Initiator,Note,Type,Status,Note,Timestamp"
+            example: "Id,Date,Subject,Opportunity,Initiator,Type,Status,Note,Timestamp"
         $order:
           type: string
           enum: ["asc", "desc"]

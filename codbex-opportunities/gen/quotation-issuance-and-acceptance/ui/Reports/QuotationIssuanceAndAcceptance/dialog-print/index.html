@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" ng-app="page" ng-controller="PageController">
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" href="data:;base64,iVBORw0KGgo=" dg-brand-icon />
+        <title dg-brand-title></title>
+        <theme></theme>
+        <script type="text/javascript" src="/services/js/resources-core/services/loader.js?id=application-view-js">
+        </script>
+        <link type="text/css" rel="stylesheet"
+            href="/services/js/resources-core/services/loader.js?id=application-view-css" />
+        <script type="text/javascript" src="controller.js"></script>
+    </head>
+
+    <body>
+		<fd-toolbar has-title="true">
+			<fd-toolbar-title>QuotationIssuanceAndAcceptance Report</fd-toolbar-title>
+		</fd-toolbar>
+        <fd-scrollbar ng-hide="data == null">
+            <table fd-table display-mode="compact" inner-borders="top" outer-borders="none">
+                <thead fd-table-header sticky="true">
+                    <tr fd-table-row>
+						<th fd-table-header-cell>Status</th>
+						<th fd-table-header-cell>Total Quotations</th>
+						<th fd-table-header-cell>Total Amount</th>
+						<th fd-table-header-cell>Currency</th>
+                    </tr>
+                </thead>
+                <tbody fd-table-body>
+                    <tr fd-table-row hoverable="true" ng-show="data.length == 0">
+                        <td fd-table-cell no-data="true">No data available.</td>
+                    </tr>
+                    <tr fd-table-row hoverable="true" ng-repeat="next in data">
+						<td fd-table-cell hoverable="true" activable="true">{{next['Status']}}</td>
+						<td fd-table-cell hoverable="true" activable="true">{{next['Total Quotations']}}</td>
+						<td fd-table-cell hoverable="true" activable="true">
+							<fd-checkbox id="idTotal Amount" compact="false" ng-disabled="true" ng-model="next['Total Amount']"></fd-checkbox>
+							<fd-checkbox-label for="idTotal Amount" empty="true"></fd-checkbox-label>
+						</td>
+						<td fd-table-cell hoverable="true" activable="true">{{next['Currency']}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </fd-scrollbar>
+    </body>
+
+</html>

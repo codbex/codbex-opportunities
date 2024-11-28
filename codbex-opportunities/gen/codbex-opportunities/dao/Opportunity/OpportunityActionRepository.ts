@@ -10,7 +10,6 @@ export interface OpportunityActionEntity {
     Subject?: string;
     Opportunity?: number;
     Initiator?: number;
-    Note?: number;
     Type?: number;
     Status?: number;
     Note?: string;
@@ -22,7 +21,6 @@ export interface OpportunityActionCreateEntity {
     readonly Subject?: string;
     readonly Opportunity?: number;
     readonly Initiator?: number;
-    readonly Note?: number;
     readonly Type?: number;
     readonly Status?: number;
     readonly Note?: string;
@@ -41,7 +39,6 @@ export interface OpportunityActionEntityOptions {
             Subject?: string | string[];
             Opportunity?: number | number[];
             Initiator?: number | number[];
-            Note?: number | number[];
             Type?: number | number[];
             Status?: number | number[];
             Note?: string | string[];
@@ -53,7 +50,6 @@ export interface OpportunityActionEntityOptions {
             Subject?: string | string[];
             Opportunity?: number | number[];
             Initiator?: number | number[];
-            Note?: number | number[];
             Type?: number | number[];
             Status?: number | number[];
             Note?: string | string[];
@@ -65,7 +61,6 @@ export interface OpportunityActionEntityOptions {
             Subject?: string;
             Opportunity?: number;
             Initiator?: number;
-            Note?: number;
             Type?: number;
             Status?: number;
             Note?: string;
@@ -77,7 +72,6 @@ export interface OpportunityActionEntityOptions {
             Subject?: string;
             Opportunity?: number;
             Initiator?: number;
-            Note?: number;
             Type?: number;
             Status?: number;
             Note?: string;
@@ -89,7 +83,6 @@ export interface OpportunityActionEntityOptions {
             Subject?: string;
             Opportunity?: number;
             Initiator?: number;
-            Note?: number;
             Type?: number;
             Status?: number;
             Note?: string;
@@ -101,7 +94,6 @@ export interface OpportunityActionEntityOptions {
             Subject?: string;
             Opportunity?: number;
             Initiator?: number;
-            Note?: number;
             Type?: number;
             Status?: number;
             Note?: string;
@@ -113,7 +105,6 @@ export interface OpportunityActionEntityOptions {
             Subject?: string;
             Opportunity?: number;
             Initiator?: number;
-            Note?: number;
             Type?: number;
             Status?: number;
             Note?: string;
@@ -172,11 +163,6 @@ export class OpportunityActionRepository {
             {
                 name: "Initiator",
                 column: "OPPORTUNITYACTION_EMPLOYEE",
-                type: "INTEGER",
-            },
-            {
-                name: "Note",
-                column: "OPPORTUNITYACTION_NOTE",
                 type: "INTEGER",
             },
             {

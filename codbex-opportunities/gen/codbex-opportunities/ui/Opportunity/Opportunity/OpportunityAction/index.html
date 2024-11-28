@@ -35,7 +35,6 @@
 						<th fd-table-header-cell>Date</th>
 						<th fd-table-header-cell>Subject</th>
 						<th fd-table-header-cell>Initiator</th>
-						<th fd-table-header-cell>Note</th>
 						<th fd-table-header-cell>Type</th>
 						<th fd-table-header-cell>Status</th>
 						<th fd-table-header-cell>Note</th>
@@ -53,9 +52,6 @@
 						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.Subject}}</td>
 						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">
 							{{optionsInitiatorValue(next.Initiator)}}
-						</td>
-						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">
-							{{optionsNoteValue(next.Note)}}
 						</td>
 						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">
 							{{optionsTypeValue(next.Type)}}

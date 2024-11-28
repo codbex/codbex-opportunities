@@ -33,7 +33,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			$scope.selectedMainEntityId = params.selectedMainEntityId;
 			$scope.optionsOpportunity = params.optionsOpportunity;
 			$scope.optionsInitiator = params.optionsInitiator;
-			$scope.optionsNote = params.optionsNote;
 			$scope.optionsType = params.optionsType;
 			$scope.optionsStatus = params.optionsStatus;
 		}
@@ -69,7 +68,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 
 		$scope.serviceOpportunity = "/services/ts/codbex-opportunities/gen/codbex-opportunities/api/Opportunity/OpportunityService.ts";
 		$scope.serviceInitiator = "/services/ts/codbex-employees/gen/codbex-employees/api/Employees/EmployeeService.ts";
-		$scope.serviceNote = "/services/ts/codbex-opportunities/gen/codbex-opportunities/api/Opportunity/OpportunityNoteService.ts";
 		$scope.serviceType = "/services/ts/codbex-opportunities/gen/codbex-opportunities/api/Settings/ActionTypeService.ts";
 		$scope.serviceStatus = "/services/ts/codbex-opportunities/gen/codbex-opportunities/api/Settings/ActionStatusService.ts";
 

@@ -28,7 +28,6 @@ angular.module('page', ["ideUI", "ideView"])
 			$scope.selectedMainEntityId = params.selectedMainEntityId;
 			$scope.optionsOpportunity = params.optionsOpportunity;
 			$scope.optionsInitiator = params.optionsInitiator;
-			$scope.optionsNote = params.optionsNote;
 			$scope.optionsType = params.optionsType;
 			$scope.optionsStatus = params.optionsStatus;
 		}
@@ -70,9 +69,6 @@ angular.module('page', ["ideUI", "ideView"])
 			}
 			if (entity.Initiator !== undefined) {
 				filter.$filter.equals.Initiator = entity.Initiator;
-			}
-			if (entity.Note !== undefined) {
-				filter.$filter.equals.Note = entity.Note;
 			}
 			if (entity.Type !== undefined) {
 				filter.$filter.equals.Type = entity.Type;

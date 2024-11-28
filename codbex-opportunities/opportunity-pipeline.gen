@@ -1,0 +1,14 @@
+{
+  "brand": "codbex",
+  "brandUrl": "https://www.codbex.com/",
+  "title": "Opportunity Pipeline Report",
+  "projectName": "codbex-opportunities",
+  "workspaceName": "workspace",
+  "filePath": "opportunity-pipeline.report",
+  "templateId": "template-application-ui-angular/template/template-report-file.js",
+  "fileName": "opportunity-pipeline",
+  "genFolderName": "opportunity-pipeline",
+  "extensionPoint": "codbex-opportunities",
+  "name": "OpportunityPipeline",
+  "perspectiveName": "OpportunityPipeline"
+}

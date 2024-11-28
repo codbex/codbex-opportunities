@@ -137,7 +137,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				entity: entity,
 				optionsOpportunity: $scope.optionsOpportunity,
 				optionsInitiator: $scope.optionsInitiator,
-				optionsNote: $scope.optionsNote,
 				optionsType: $scope.optionsType,
 				optionsStatus: $scope.optionsStatus,
 			});
@@ -148,7 +147,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				entity: $scope.filterEntity,
 				optionsOpportunity: $scope.optionsOpportunity,
 				optionsInitiator: $scope.optionsInitiator,
-				optionsNote: $scope.optionsNote,
 				optionsType: $scope.optionsType,
 				optionsStatus: $scope.optionsStatus,
 			});
@@ -163,7 +161,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				selectedMainEntityId: $scope.selectedMainEntityId,
 				optionsOpportunity: $scope.optionsOpportunity,
 				optionsInitiator: $scope.optionsInitiator,
-				optionsNote: $scope.optionsNote,
 				optionsType: $scope.optionsType,
 				optionsStatus: $scope.optionsStatus,
 			}, null, false);
@@ -177,7 +174,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				selectedMainEntityId: $scope.selectedMainEntityId,
 				optionsOpportunity: $scope.optionsOpportunity,
 				optionsInitiator: $scope.optionsInitiator,
-				optionsNote: $scope.optionsNote,
 				optionsType: $scope.optionsType,
 				optionsStatus: $scope.optionsStatus,
 			}, null, false);
@@ -215,7 +211,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		//----------------Dropdowns-----------------//
 		$scope.optionsOpportunity = [];
 		$scope.optionsInitiator = [];
-		$scope.optionsNote = [];
 		$scope.optionsType = [];
 		$scope.optionsStatus = [];
 
@@ -231,15 +226,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 
 		$http.get("/services/ts/codbex-employees/gen/codbex-employees/api/Employees/EmployeeService.ts").then(function (response) {
 			$scope.optionsInitiator = response.data.map(e => {
-				return {
-					value: e.Id,
-					text: e.Name
-				}
-			});
-		});
-
-		$http.get("/services/ts/codbex-opportunities/gen/codbex-opportunities/api/Opportunity/OpportunityNoteService.ts").then(function (response) {
-			$scope.optionsNote = response.data.map(e => {
 				return {
 					value: e.Id,
 					text: e.Name
@@ -277,14 +263,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			for (let i = 0; i < $scope.optionsInitiator.length; i++) {
 				if ($scope.optionsInitiator[i].value === optionKey) {
 					return $scope.optionsInitiator[i].text;
-				}
-			}
-			return null;
-		};
-		$scope.optionsNoteValue = function (optionKey) {
-			for (let i = 0; i < $scope.optionsNote.length; i++) {
-				if ($scope.optionsNote[i].value === optionKey) {
-					return $scope.optionsNote[i].text;
 				}
 			}
 			return null;
