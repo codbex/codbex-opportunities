@@ -10843,6 +10843,10 @@ components:
     OpportunityAction:
       type: object
       required:
+        - Date
+        - Subject
+        - Initiator
+        - Timestamp
       properties:
         Id:
           type: integer

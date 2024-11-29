@@ -130,11 +130,23 @@ class OpportunityActionService {
     }
 
     private validateEntity(entity: any): void {
+        if (entity.Date === null || entity.Date === undefined) {
+            throw new ValidationError(`The 'Date' property is required, provide a valid value`);
+        }
+        if (entity.Subject === null || entity.Subject === undefined) {
+            throw new ValidationError(`The 'Subject' property is required, provide a valid value`);
+        }
         if (entity.Subject?.length > 100) {
             throw new ValidationError(`The 'Subject' exceeds the maximum length of [100] characters`);
         }
+        if (entity.Initiator === null || entity.Initiator === undefined) {
+            throw new ValidationError(`The 'Initiator' property is required, provide a valid value`);
+        }
         if (entity.Note?.length > 1000) {
             throw new ValidationError(`The 'Note' exceeds the maximum length of [1000] characters`);
+        }
+        if (entity.Timestamp === null || entity.Timestamp === undefined) {
+            throw new ValidationError(`The 'Timestamp' property is required, provide a valid value`);
         }
         for (const next of validationModules) {
             next.validate(entity);

@@ -307,7 +307,7 @@
                 ]
             },
             {
-                "name": "CODBEX_ENTITY71921",
+                "name": "CODBEX_QUOTATIONITEM",
                 "type": "TABLE",
                 "columns": [
                     {
@@ -315,27 +315,27 @@
                         "primaryKey": true,
                         "identity": true,
                         "nullable": true,
-                        "name": "ENTITY71921_ID"
+                        "name": "QUOTATIONITEM_ID"
                     },
                     {
                         "type": "INTEGER",
                         "nullable": true,
-                        "name": "ENTITY71921_QUOTATION"
+                        "name": "QUOTATIONITEM_QUOTATION"
                     },
                     {
                         "type": "INTEGER",
                         "nullable": true,
-                        "name": "ENTITY71921_PRODUCT"
+                        "name": "QUOTATIONITEM_PRODUCT"
                     },
                     {
                         "type": "DOUBLE",
                         "nullable": true,
-                        "name": "ENTITY71921_QUANTITY"
+                        "name": "QUOTATIONITEM_QUANTITY"
                     },
                     {
                         "type": "INTEGER",
                         "nullable": true,
-                        "name": "ENTITY71921_UOM"
+                        "name": "QUOTATIONITEM_UOM"
                     },
                     {
                         "type": "DECIMAL",
@@ -343,7 +343,7 @@
                         "precision": "16",
                         "scale": "2",
                         "nullable": true,
-                        "name": "ENTITY71921_PRICE"
+                        "name": "QUOTATIONITEM_PRICE"
                     },
                     {
                         "type": "DECIMAL",
@@ -351,12 +351,12 @@
                         "precision": "16",
                         "scale": "2",
                         "nullable": true,
-                        "name": "ENTITY71921_TOTAL"
+                        "name": "QUOTATIONITEM_TOTAL"
                     },
                     {
                         "type": "INTEGER",
                         "nullable": true,
-                        "name": "ENTITY71921_CURRENCY"
+                        "name": "QUOTATIONITEM_CURRENCY"
                     }
                 ]
             },
@@ -796,36 +796,36 @@
             {
                 "name": "QuotationItem_Quotation",
                 "type": "foreignKey",
-                "table": "CODBEX_ENTITY71921",
+                "table": "CODBEX_QUOTATIONITEM",
                 "constraintName": "QuotationItem_Quotation",
-                "columns": "ENTITY71921_QUOTATION",
+                "columns": "QUOTATIONITEM_QUOTATION",
                 "referencedTable": "CODBEX_QUOTATION",
                 "referencedColumns": "QUOTATION_ID"
             },
             {
                 "name": "QuotationItem_Product",
                 "type": "foreignKey",
-                "table": "CODBEX_ENTITY71921",
+                "table": "CODBEX_QUOTATIONITEM",
                 "constraintName": "QuotationItem_Product",
-                "columns": "ENTITY71921_PRODUCT",
+                "columns": "QUOTATIONITEM_PRODUCT",
                 "referencedTable": "CODBEX_PRODUCT",
                 "referencedColumns": "PRODUCT_ID"
             },
             {
                 "name": "QuotationItem_UoM",
                 "type": "foreignKey",
-                "table": "CODBEX_ENTITY71921",
+                "table": "CODBEX_QUOTATIONITEM",
                 "constraintName": "QuotationItem_UoM",
-                "columns": "ENTITY71921_UOM",
+                "columns": "QUOTATIONITEM_UOM",
                 "referencedTable": "CODBEX_UOM",
                 "referencedColumns": "UOM_ID"
             },
             {
                 "name": "QuotationItem_Currency",
                 "type": "foreignKey",
-                "table": "CODBEX_ENTITY71921",
+                "table": "CODBEX_QUOTATIONITEM",
                 "constraintName": "QuotationItem_Currency",
-                "columns": "ENTITY71921_CURRENCY",
+                "columns": "QUOTATIONITEM_CURRENCY",
                 "referencedTable": "CODBEX_CURRENCY",
                 "referencedColumns": "CURRENCY_ID"
             },
