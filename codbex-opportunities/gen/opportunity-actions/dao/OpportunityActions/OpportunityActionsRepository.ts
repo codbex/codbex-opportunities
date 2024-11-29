@@ -32,7 +32,7 @@ export class OpportunityActionsRepository {
               INNER JOIN CODBEX_CUSTOMER Customer ON Opportunity.OPPORTUNITY_CUSTOMER = Customer.CUSTOMER_ID
               INNER JOIN CODBEX_OPPORTUNITYACTION OpportunityAction ON Opportunity.OPPORTUNITY_ID = OpportunityAction.OPPORTUNITYACTION_OPPORTUNITY
               INNER JOIN CODBEX_ACTIONTYPE ActionType ON OpportunityAction.OPPORTUNITYACTION_TYPE = ActionType.ACTIONTYPE_ID
-              INNER JOIN CODBEX_ACTIONSTATUS ActionStatus ON LeadAction.LEADACTION_STATUS = ActionStatus.ACTIONSTATUS_ID
+              INNER JOIN CODBEX_ACTIONSTATUS ActionStatus ON OpportunityAction.OPPORTUNITYACTION_STATUS = ActionStatus.ACTIONSTATUS_ID
             ORDER BY OPPORTUNITYACTION_DATE DESC
             ${Number.isInteger(filter.$limit) ? ` LIMIT ${filter.$limit}` : ''}
             ${Number.isInteger(filter.$offset) ? ` OFFSET ${filter.$offset}` : ''}
@@ -51,7 +51,7 @@ export class OpportunityActionsRepository {
                   INNER JOIN CODBEX_CUSTOMER Customer ON Opportunity.OPPORTUNITY_CUSTOMER = Customer.CUSTOMER_ID
                   INNER JOIN CODBEX_OPPORTUNITYACTION OpportunityAction ON Opportunity.OPPORTUNITY_ID = OpportunityAction.OPPORTUNITYACTION_OPPORTUNITY
                   INNER JOIN CODBEX_ACTIONTYPE ActionType ON OpportunityAction.OPPORTUNITYACTION_TYPE = ActionType.ACTIONTYPE_ID
-                  INNER JOIN CODBEX_ACTIONSTATUS ActionStatus ON LeadAction.LEADACTION_STATUS = ActionStatus.ACTIONSTATUS_ID
+                  INNER JOIN CODBEX_ACTIONSTATUS ActionStatus ON OpportunityAction.OPPORTUNITYACTION_STATUS = ActionStatus.ACTIONSTATUS_ID
                 ORDER BY OPPORTUNITYACTION_DATE DESC
             )
         `;

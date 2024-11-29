@@ -58,7 +58,7 @@
             "grouping": false
         }
     ],
-    "query": "SELECT Opportunity.OPPORTUNITY_ID as \"Id\", Customer.CUSTOMER_NAME as \"Name\", OpportunityAction.OPPORTUNITYACTION_DATE as \"Date\", OpportunityAction.OPPORTUNITYACTION_NOTE as \"Note\", ActionType.ACTIONTYPE_NAME as \"Type\", ActionStatus.ACTIONSTATUS_NAME as \"Status\"\nFROM CODBEX_OPPORTUNITY as Opportunity\n  INNER JOIN CODBEX_CUSTOMER Customer ON Opportunity.OPPORTUNITY_CUSTOMER = Customer.CUSTOMER_ID\n  INNER JOIN CODBEX_OPPORTUNITYACTION OpportunityAction ON Opportunity.OPPORTUNITY_ID = OpportunityAction.OPPORTUNITYACTION_OPPORTUNITY\n  INNER JOIN CODBEX_ACTIONTYPE ActionType ON OpportunityAction.OPPORTUNITYACTION_TYPE = ActionType.ACTIONTYPE_ID\n  INNER JOIN CODBEX_ACTIONSTATUS ActionStatus ON LeadAction.LEADACTION_STATUS = ActionStatus.ACTIONSTATUS_ID\nORDER BY OPPORTUNITYACTION_DATE DESC",
+    "query": "SELECT Opportunity.OPPORTUNITY_ID as \"Id\", Customer.CUSTOMER_NAME as \"Name\", OpportunityAction.OPPORTUNITYACTION_DATE as \"Date\", OpportunityAction.OPPORTUNITYACTION_NOTE as \"Note\", ActionType.ACTIONTYPE_NAME as \"Type\", ActionStatus.ACTIONSTATUS_NAME as \"Status\"\nFROM CODBEX_OPPORTUNITY as Opportunity\n  INNER JOIN CODBEX_CUSTOMER Customer ON Opportunity.OPPORTUNITY_CUSTOMER = Customer.CUSTOMER_ID\n  INNER JOIN CODBEX_OPPORTUNITYACTION OpportunityAction ON Opportunity.OPPORTUNITY_ID = OpportunityAction.OPPORTUNITYACTION_OPPORTUNITY\n  INNER JOIN CODBEX_ACTIONTYPE ActionType ON OpportunityAction.OPPORTUNITYACTION_TYPE = ActionType.ACTIONTYPE_ID\n  INNER JOIN CODBEX_ACTIONSTATUS ActionStatus ON OpportunityAction.OPPORTUNITYACTION_STATUS = ActionStatus.ACTIONSTATUS_ID\nORDER BY OPPORTUNITYACTION_DATE DESC",
     "joins": [
         {
             "alias": "Customer",
@@ -82,7 +82,7 @@
             "alias": "ActionStatus",
             "name": "CODBEX_ACTIONSTATUS",
             "type": "INNER",
-            "condition": "LeadAction.LEADACTION_STATUS = ActionStatus.ACTIONSTATUS_ID"
+            "condition": "OpportunityAction.OPPORTUNITYACTION_STATUS = ActionStatus.ACTIONSTATUS_ID"
         }
     ],
     "orderings": [
