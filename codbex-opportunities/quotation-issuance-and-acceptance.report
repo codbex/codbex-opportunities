@@ -1,0 +1,58 @@
+{
+    "query": "SELECT QuotationStatus.QUOTATIONSTATUS_NAME as \"Status\", COUNT(Quotation.QUOTATION_ID) as \"Total Quotations\", SUM(Quotation.QUOTATION_TOTAL) as \"Total Amount\", Currency.CURRENCY_CODE as \"Currency\"\nFROM CODBEX_QUOTATIONSTATUS as QuotationStatus\n  INNER JOIN CODBEX_QUOTATION Quotation ON QuotationStatus.QUOTATIONSTATUS_ID = Quotation.QUOTATION_STATUS\n  INNER JOIN CODBEX_CURRENCY Currency ON Quotation.QUOTATION_CURRENCY = Currency.CURRENCY_ID\nGROUP BY QuotationStatus.QUOTATIONSTATUS_NAME",
+    "name": "QuotationIssuanceAndAcceptance",
+    "alias": "QuotationStatus",
+    "table": "CODBEX_QUOTATIONSTATUS",
+    "columns": [
+        {
+            "table": "QuotationStatus",
+            "alias": "Status",
+            "name": "QUOTATIONSTATUS_NAME",
+            "type": "VARCHAR",
+            "aggregate": "NONE",
+            "select": true,
+            "grouping": true
+        },
+        {
+            "table": "Quotation",
+            "alias": "Total Quotations",
+            "name": "QUOTATION_ID",
+            "type": "DECIMAL",
+            "aggregate": "COUNT",
+            "select": true,
+            "grouping": false
+        },
+        {
+            "table": "Quotation",
+            "alias": "Total Amount",
+            "name": "QUOTATION_TOTAL",
+            "type": "BOOLEAN",
+            "aggregate": "SUM",
+            "select": true,
+            "grouping": false
+        },
+        {
+            "table": "Currency",
+            "alias": "Currency",
+            "name": "CURRENCY_CODE",
+            "type": "CHARACTER VARYING",
+            "aggregate": "NONE",
+            "select": true,
+            "grouping": false
+        }
+    ],
+    "joins": [
+        {
+            "alias": "Quotation",
+            "name": "CODBEX_QUOTATION",
+            "type": "INNER",
+            "condition": "QuotationStatus.QUOTATIONSTATUS_ID = Quotation.QUOTATION_STATUS"
+        },
+        {
+            "alias": "Currency",
+            "name": "CODBEX_CURRENCY",
+            "type": "INNER",
+            "condition": "Quotation.QUOTATION_CURRENCY = Currency.CURRENCY_ID"
+        }
+    ]
+}

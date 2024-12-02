@@ -126,48 +126,48 @@ interface QuotationItemUpdateEntityEvent extends QuotationItemEntityEvent {
 export class QuotationItemRepository {
 
     private static readonly DEFINITION = {
-        table: "CODBEX_ENTITY71921",
+        table: "CODBEX_QUOTATIONITEM",
         properties: [
             {
                 name: "Id",
-                column: "ENTITY71921_ID",
+                column: "QUOTATIONITEM_ID",
                 type: "INTEGER",
                 id: true,
                 autoIncrement: true,
             },
             {
                 name: "Quotation",
-                column: "ENTITY71921_QUOTATION",
+                column: "QUOTATIONITEM_QUOTATION",
                 type: "INTEGER",
             },
             {
                 name: "Product",
-                column: "ENTITY71921_PRODUCT",
+                column: "QUOTATIONITEM_PRODUCT",
                 type: "INTEGER",
             },
             {
                 name: "Quantity",
-                column: "ENTITY71921_QUANTITY",
+                column: "QUOTATIONITEM_QUANTITY",
                 type: "DOUBLE",
             },
             {
                 name: "UoM",
-                column: "ENTITY71921_UOM",
+                column: "QUOTATIONITEM_UOM",
                 type: "INTEGER",
             },
             {
                 name: "Price",
-                column: "ENTITY71921_PRICE",
+                column: "QUOTATIONITEM_PRICE",
                 type: "DECIMAL",
             },
             {
                 name: "Total",
-                column: "ENTITY71921_TOTAL",
+                column: "QUOTATIONITEM_TOTAL",
                 type: "DECIMAL",
             },
             {
                 name: "Currency",
-                column: "ENTITY71921_CURRENCY",
+                column: "QUOTATIONITEM_CURRENCY",
                 type: "INTEGER",
             }
         ]
@@ -192,11 +192,11 @@ export class QuotationItemRepository {
         const id = this.dao.insert(entity);
         this.triggerEvent({
             operation: "create",
-            table: "CODBEX_ENTITY71921",
+            table: "CODBEX_QUOTATIONITEM",
             entity: entity,
             key: {
                 name: "Id",
-                column: "ENTITY71921_ID",
+                column: "QUOTATIONITEM_ID",
                 value: id
             }
         });
@@ -208,12 +208,12 @@ export class QuotationItemRepository {
         this.dao.update(entity);
         this.triggerEvent({
             operation: "update",
-            table: "CODBEX_ENTITY71921",
+            table: "CODBEX_QUOTATIONITEM",
             entity: entity,
             previousEntity: previousEntity,
             key: {
                 name: "Id",
-                column: "ENTITY71921_ID",
+                column: "QUOTATIONITEM_ID",
                 value: entity.Id
             }
         });
@@ -239,11 +239,11 @@ export class QuotationItemRepository {
         this.dao.remove(id);
         this.triggerEvent({
             operation: "delete",
-            table: "CODBEX_ENTITY71921",
+            table: "CODBEX_QUOTATIONITEM",
             entity: entity,
             key: {
                 name: "Id",
-                column: "ENTITY71921_ID",
+                column: "QUOTATIONITEM_ID",
                 value: id
             }
         });
@@ -254,7 +254,7 @@ export class QuotationItemRepository {
     }
 
     public customDataCount(): number {
-        const resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX_ENTITY71921"');
+        const resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX_QUOTATIONITEM"');
         if (resultSet !== null && resultSet[0] !== null) {
             if (resultSet[0].COUNT !== undefined && resultSet[0].COUNT !== null) {
                 return resultSet[0].COUNT;

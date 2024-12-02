@@ -1,0 +1,5 @@
+{
+    "module": "codbex-opportunities/gen/opportunity-pipeline/ui/Reports/perspective.js",
+    "extensionPoint": "portal",
+    "description": "codbex-opportunities - Perspective - Reports"
+}

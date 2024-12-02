@@ -19,6 +19,17 @@ class LeadActionService {
                 $offset: ctx.queryParameters["$offset"] ? parseInt(ctx.queryParameters["$offset"]) : undefined
             };
 
+            let Lead = parseInt(ctx.queryParameters.Lead);
+            Lead = isNaN(Lead) ? ctx.queryParameters.Lead : Lead;
+
+            if (Lead !== undefined) {
+                options.$filter = {
+                    equals: {
+                        Lead: Lead
+                    }
+                };
+            }
+
             return this.repository.findAll(options);
         } catch (error: any) {
             this.handleError(error);
@@ -119,8 +130,23 @@ class LeadActionService {
     }
 
     private validateEntity(entity: any): void {
+        if (entity.Subject === null || entity.Subject === undefined) {
+            throw new ValidationError(`The 'Subject' property is required, provide a valid value`);
+        }
         if (entity.Subject?.length > 100) {
             throw new ValidationError(`The 'Subject' exceeds the maximum length of [100] characters`);
+        }
+        if (entity.Lead === null || entity.Lead === undefined) {
+            throw new ValidationError(`The 'Lead' property is required, provide a valid value`);
+        }
+        if (entity.Note === null || entity.Note === undefined) {
+            throw new ValidationError(`The 'Note' property is required, provide a valid value`);
+        }
+        if (entity.Note?.length > 1000) {
+            throw new ValidationError(`The 'Note' exceeds the maximum length of [1000] characters`);
+        }
+        if (entity.Timestamp === null || entity.Timestamp === undefined) {
+            throw new ValidationError(`The 'Timestamp' property is required, provide a valid value`);
         }
         for (const next of validationModules) {
             next.validate(entity);

@@ -1,0 +1,5 @@
+{
+    "module": "codbex-opportunities/gen/lead-engagement/ui/Reports/LeadEngagement/view.js",
+    "extensionPoint": "codbex-opportunities-view",
+    "description": "codbex-opportunities - Application View"
+}

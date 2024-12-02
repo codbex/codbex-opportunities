@@ -1,0 +1,5 @@
+{
+    "module": "codbex-opportunities/gen/opportunity-priority/ui/Reports/OpportunityPriority/view.js",
+    "extensionPoint": "codbex-opportunities-view",
+    "description": "codbex-opportunities - Application View"
+}

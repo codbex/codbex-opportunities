@@ -12,17 +12,6 @@
       "version": "1.0"
     },
     {
-      "table": "CODBEX_NOTETYPE",
-      "schema": "PUBLIC",
-      "file": "/codbex-opportunities/data/note-types.csv",
-      "header": true,
-      "useHeaderNames": true,
-      "delimField": ",",
-      "delimEnclosing": "\"",
-      "distinguishEmptyFromNull": true,
-      "version": "1.0"
-    },
-    {
       "table": "CODBEX_OPPORTUNITYPRIORITY",
       "schema": "PUBLIC",
       "file": "/codbex-opportunities/data/opportunity-priorities.csv",

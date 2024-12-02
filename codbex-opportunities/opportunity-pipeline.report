@@ -1,0 +1,58 @@
+{
+    "query": "SELECT OpportunityStatus.OPPORTUNITYSTATUS_NAME as \"Status\", COUNT(Opportunity.OPPORTUNITY_ID) as \"Opportunities\", SUM(Opportunity.OPPORTUNITY_AMOUNT) as \"Total\", Currency.CURRENCY_CODE as \"Currency\"\nFROM CODBEX_OPPORTUNITYSTATUS as OpportunityStatus\n  INNER JOIN CODBEX_OPPORTUNITY Opportunity ON OpportunityStatus.OPPORTUNITYSTATUS_ID = Opportunity.OPPORTUNITY_STATUS\n  INNER JOIN CODBEX_CURRENCY Currency ON Opportunity.OPPORTUNITY_CURRENCY = Currency.CURRENCY_ID\nGROUP BY OpportunityStatus.OPPORTUNITYSTATUS_NAME",
+    "name": "OpportunityPipeline",
+    "alias": "OpportunityStatus",
+    "table": "CODBEX_OPPORTUNITYSTATUS",
+    "columns": [
+        {
+            "table": "OpportunityStatus",
+            "alias": "Status",
+            "name": "OPPORTUNITYSTATUS_NAME",
+            "type": "VARCHAR",
+            "aggregate": "NONE",
+            "select": true,
+            "grouping": true
+        },
+        {
+            "table": "Opportunity",
+            "alias": "Opportunities",
+            "name": "OPPORTUNITY_ID",
+            "type": "DECIMAL",
+            "aggregate": "COUNT",
+            "select": true,
+            "grouping": false
+        },
+        {
+            "table": "Opportunity",
+            "alias": "Total",
+            "name": "OPPORTUNITY_AMOUNT",
+            "type": "DOUBLE",
+            "aggregate": "SUM",
+            "select": true,
+            "grouping": false
+        },
+        {
+            "table": "Currency",
+            "alias": "Currency",
+            "name": "CURRENCY_CODE",
+            "type": "VARCHAR",
+            "aggregate": "NONE",
+            "select": true,
+            "grouping": false
+        }
+    ],
+    "joins": [
+        {
+            "alias": "Opportunity",
+            "name": "CODBEX_OPPORTUNITY",
+            "type": "INNER",
+            "condition": "OpportunityStatus.OPPORTUNITYSTATUS_ID = Opportunity.OPPORTUNITY_STATUS"
+        },
+        {
+            "alias": "Currency",
+            "name": "CODBEX_CURRENCY",
+            "type": "INNER",
+            "condition": "Opportunity.OPPORTUNITY_CURRENCY = Currency.CURRENCY_ID"
+        }
+    ]
+}

@@ -1,0 +1,94 @@
+{
+    "name": "OpportunityActions",
+    "alias": "Opportunity",
+    "table": "CODBEX_OPPORTUNITY",
+    "columns": [
+        {
+            "table": "Opportunity",
+            "alias": "Id",
+            "name": "OPPORTUNITY_ID",
+            "type": "INTEGER",
+            "aggregate": "NONE",
+            "select": true,
+            "grouping": false
+        },
+        {
+            "table": "Customer",
+            "alias": "Name",
+            "name": "CUSTOMER_NAME",
+            "type": "VARCHAR",
+            "aggregate": "NONE",
+            "select": true,
+            "grouping": false
+        },
+        {
+            "table": "OpportunityAction",
+            "alias": "Date",
+            "name": "OPPORTUNITYACTION_DATE",
+            "type": "DATE",
+            "aggregate": "NONE",
+            "select": true,
+            "grouping": false
+        },
+        {
+            "table": "OpportunityAction",
+            "alias": "Note",
+            "name": "OPPORTUNITYACTION_NOTE",
+            "type": "VARCHAR",
+            "aggregate": "NONE",
+            "select": true,
+            "grouping": false
+        },
+        {
+            "table": "ActionType",
+            "alias": "Type",
+            "name": "ACTIONTYPE_NAME",
+            "type": "VARCHAR",
+            "aggregate": "NONE",
+            "select": true,
+            "grouping": false
+        },
+        {
+            "table": "ActionStatus",
+            "alias": "Status",
+            "name": "ACTIONSTATUS_NAME",
+            "type": "VARCHAR",
+            "aggregate": "NONE",
+            "select": true,
+            "grouping": false
+        }
+    ],
+    "query": "SELECT Opportunity.OPPORTUNITY_ID as \"Id\", Customer.CUSTOMER_NAME as \"Name\", OpportunityAction.OPPORTUNITYACTION_DATE as \"Date\", OpportunityAction.OPPORTUNITYACTION_NOTE as \"Note\", ActionType.ACTIONTYPE_NAME as \"Type\", ActionStatus.ACTIONSTATUS_NAME as \"Status\"\nFROM CODBEX_OPPORTUNITY as Opportunity\n  INNER JOIN CODBEX_CUSTOMER Customer ON Opportunity.OPPORTUNITY_CUSTOMER = Customer.CUSTOMER_ID\n  INNER JOIN CODBEX_OPPORTUNITYACTION OpportunityAction ON Opportunity.OPPORTUNITY_ID = OpportunityAction.OPPORTUNITYACTION_OPPORTUNITY\n  INNER JOIN CODBEX_ACTIONTYPE ActionType ON OpportunityAction.OPPORTUNITYACTION_TYPE = ActionType.ACTIONTYPE_ID\n  INNER JOIN CODBEX_ACTIONSTATUS ActionStatus ON OpportunityAction.OPPORTUNITYACTION_STATUS = ActionStatus.ACTIONSTATUS_ID\nORDER BY OPPORTUNITYACTION_DATE DESC",
+    "joins": [
+        {
+            "alias": "Customer",
+            "name": "CODBEX_CUSTOMER",
+            "type": "INNER",
+            "condition": "Opportunity.OPPORTUNITY_CUSTOMER = Customer.CUSTOMER_ID"
+        },
+        {
+            "alias": "OpportunityAction",
+            "name": "CODBEX_OPPORTUNITYACTION",
+            "type": "INNER",
+            "condition": "Opportunity.OPPORTUNITY_ID = OpportunityAction.OPPORTUNITYACTION_OPPORTUNITY"
+        },
+        {
+            "alias": "ActionType",
+            "name": "CODBEX_ACTIONTYPE",
+            "type": "INNER",
+            "condition": "OpportunityAction.OPPORTUNITYACTION_TYPE = ActionType.ACTIONTYPE_ID"
+        },
+        {
+            "alias": "ActionStatus",
+            "name": "CODBEX_ACTIONSTATUS",
+            "type": "INNER",
+            "condition": "OpportunityAction.OPPORTUNITYACTION_STATUS = ActionStatus.ACTIONSTATUS_ID"
+        }
+    ],
+    "orderings": [
+        {
+            "column": "OPPORTUNITYACTION_DATE",
+            "direction": "DESC"
+        }
+    ]
+}

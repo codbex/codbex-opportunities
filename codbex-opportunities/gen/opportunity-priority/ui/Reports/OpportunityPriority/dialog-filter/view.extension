@@ -1,0 +1,5 @@
+{
+    "module": "codbex-opportunities/gen/opportunity-priority/ui/Reports/OpportunityPriority/dialog-filter/view.js",
+    "extensionPoint": "codbex-opportunities-dialog-window",
+    "description": "codbex-opportunities - Application Dialog Window"
+}

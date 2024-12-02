@@ -9,18 +9,20 @@ export interface LeadActionEntity {
     Date?: Date;
     Subject?: string;
     Lead?: number;
-    Note?: number;
     Type?: number;
     Status?: number;
+    Note?: string;
+    Timestamp?: Date;
 }
 
 export interface LeadActionCreateEntity {
     readonly Date?: Date;
     readonly Subject?: string;
     readonly Lead?: number;
-    readonly Note?: number;
     readonly Type?: number;
     readonly Status?: number;
+    readonly Note?: string;
+    readonly Timestamp?: Date;
 }
 
 export interface LeadActionUpdateEntity extends LeadActionCreateEntity {
@@ -34,63 +36,70 @@ export interface LeadActionEntityOptions {
             Date?: Date | Date[];
             Subject?: string | string[];
             Lead?: number | number[];
-            Note?: number | number[];
             Type?: number | number[];
             Status?: number | number[];
+            Note?: string | string[];
+            Timestamp?: Date | Date[];
         };
         notEquals?: {
             Id?: number | number[];
             Date?: Date | Date[];
             Subject?: string | string[];
             Lead?: number | number[];
-            Note?: number | number[];
             Type?: number | number[];
             Status?: number | number[];
+            Note?: string | string[];
+            Timestamp?: Date | Date[];
         };
         contains?: {
             Id?: number;
             Date?: Date;
             Subject?: string;
             Lead?: number;
-            Note?: number;
             Type?: number;
             Status?: number;
+            Note?: string;
+            Timestamp?: Date;
         };
         greaterThan?: {
             Id?: number;
             Date?: Date;
             Subject?: string;
             Lead?: number;
-            Note?: number;
             Type?: number;
             Status?: number;
+            Note?: string;
+            Timestamp?: Date;
         };
         greaterThanOrEqual?: {
             Id?: number;
             Date?: Date;
             Subject?: string;
             Lead?: number;
-            Note?: number;
             Type?: number;
             Status?: number;
+            Note?: string;
+            Timestamp?: Date;
         };
         lessThan?: {
             Id?: number;
             Date?: Date;
             Subject?: string;
             Lead?: number;
-            Note?: number;
             Type?: number;
             Status?: number;
+            Note?: string;
+            Timestamp?: Date;
         };
         lessThanOrEqual?: {
             Id?: number;
             Date?: Date;
             Subject?: string;
             Lead?: number;
-            Note?: number;
             Type?: number;
             Status?: number;
+            Note?: string;
+            Timestamp?: Date;
         };
     },
     $select?: (keyof LeadActionEntity)[],
@@ -118,44 +127,49 @@ interface LeadActionUpdateEntityEvent extends LeadActionEntityEvent {
 export class LeadActionRepository {
 
     private static readonly DEFINITION = {
-        table: "CODBEX_LEADACTIONS",
+        table: "CODBEX_LEADACTION",
         properties: [
             {
                 name: "Id",
-                column: "LEADACTIONS_ID",
+                column: "LEADACTION_ID",
                 type: "INTEGER",
                 id: true,
                 autoIncrement: true,
             },
             {
                 name: "Date",
-                column: "LEADACTIONS_DATE",
+                column: "LEADACTION_DATE",
                 type: "DATE",
             },
             {
                 name: "Subject",
-                column: "LEADACTIONS_SUBJECT",
+                column: "LEADACTION_SUBJECT",
                 type: "VARCHAR",
             },
             {
                 name: "Lead",
-                column: "LEADACTIONS_LEAD",
-                type: "INTEGER",
-            },
-            {
-                name: "Note",
-                column: "LEADACTIONS_NOTE",
+                column: "LEADACTION_LEAD",
                 type: "INTEGER",
             },
             {
                 name: "Type",
-                column: "LEADACTIONS_ACTIONTYPE",
+                column: "LEADACTION_TYPE",
                 type: "INTEGER",
             },
             {
                 name: "Status",
-                column: "LEADACTIONS_STATUS",
+                column: "LEADACTION_STATUS",
                 type: "INTEGER",
+            },
+            {
+                name: "Note",
+                column: "LEADACTION_NOTE",
+                type: "VARCHAR",
+            },
+            {
+                name: "Timestamp",
+                column: "LEADACTION_TIMESTAMP",
+                type: "TIMESTAMP",
             }
         ]
     };
@@ -184,11 +198,11 @@ export class LeadActionRepository {
         const id = this.dao.insert(entity);
         this.triggerEvent({
             operation: "create",
-            table: "CODBEX_LEADACTIONS",
+            table: "CODBEX_LEADACTION",
             entity: entity,
             key: {
                 name: "Id",
-                column: "LEADACTIONS_ID",
+                column: "LEADACTION_ID",
                 value: id
             }
         });
@@ -201,12 +215,12 @@ export class LeadActionRepository {
         this.dao.update(entity);
         this.triggerEvent({
             operation: "update",
-            table: "CODBEX_LEADACTIONS",
+            table: "CODBEX_LEADACTION",
             entity: entity,
             previousEntity: previousEntity,
             key: {
                 name: "Id",
-                column: "LEADACTIONS_ID",
+                column: "LEADACTION_ID",
                 value: entity.Id
             }
         });
@@ -232,11 +246,11 @@ export class LeadActionRepository {
         this.dao.remove(id);
         this.triggerEvent({
             operation: "delete",
-            table: "CODBEX_LEADACTIONS",
+            table: "CODBEX_LEADACTION",
             entity: entity,
             key: {
                 name: "Id",
-                column: "LEADACTIONS_ID",
+                column: "LEADACTION_ID",
                 value: id
             }
         });
@@ -247,7 +261,7 @@ export class LeadActionRepository {
     }
 
     public customDataCount(): number {
-        const resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX_LEADACTIONS"');
+        const resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX_LEADACTION"');
         if (resultSet !== null && resultSet[0] !== null) {
             if (resultSet[0].COUNT !== undefined && resultSet[0].COUNT !== null) {
                 return resultSet[0].COUNT;

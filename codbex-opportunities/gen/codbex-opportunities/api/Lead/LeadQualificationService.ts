@@ -19,6 +19,17 @@ class LeadQualificationService {
                 $offset: ctx.queryParameters["$offset"] ? parseInt(ctx.queryParameters["$offset"]) : undefined
             };
 
+            let Lead = parseInt(ctx.queryParameters.Lead);
+            Lead = isNaN(Lead) ? ctx.queryParameters.Lead : Lead;
+
+            if (Lead !== undefined) {
+                options.$filter = {
+                    equals: {
+                        Lead: Lead
+                    }
+                };
+            }
+
             return this.repository.findAll(options);
         } catch (error: any) {
             this.handleError(error);
@@ -119,6 +130,12 @@ class LeadQualificationService {
     }
 
     private validateEntity(entity: any): void {
+        if (entity.Budget === null || entity.Budget === undefined) {
+            throw new ValidationError(`The 'Budget' property is required, provide a valid value`);
+        }
+        if (entity.Lead === null || entity.Lead === undefined) {
+            throw new ValidationError(`The 'Lead' property is required, provide a valid value`);
+        }
         for (const next of validationModules) {
             next.validate(entity);
         }

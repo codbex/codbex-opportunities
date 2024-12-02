@@ -1,0 +1,5 @@
+{
+    "module": "codbex-opportunities/gen/opportunity-priority/ui/Reports/perspective.js",
+    "extensionPoint": "codbex-opportunities",
+    "description": "codbex-opportunities - Perspective - Reports"
+}

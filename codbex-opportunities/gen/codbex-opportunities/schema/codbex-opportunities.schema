@@ -90,54 +90,6 @@
                 ]
             },
             {
-                "name": "CODBEX_LEADNOTE",
-                "type": "TABLE",
-                "columns": [
-                    {
-                        "type": "INTEGER",
-                        "primaryKey": true,
-                        "identity": true,
-                        "nullable": true,
-                        "name": "LEADNOTE_ID"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "nullable": true,
-                        "name": "LEADNOTE_TYPE"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 1000,
-                        "nullable": true,
-                        "name": "LEADNOTE_NOTE"
-                    },
-                    {
-                        "type": "TIMESTAMP",
-                        "nullable": true,
-                        "name": "LEADNOTE_TIMESTAMP"
-                    }
-                ]
-            },
-            {
-                "name": "CODBEX_NOTETYPE",
-                "type": "TABLE",
-                "columns": [
-                    {
-                        "type": "VARCHAR",
-                        "length": 20,
-                        "nullable": true,
-                        "name": "NOTETYPE_NAME"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "primaryKey": true,
-                        "identity": true,
-                        "nullable": true,
-                        "name": "NOTETYPE_ID"
-                    }
-                ]
-            },
-            {
                 "name": "CODBEX_OPPORTUNITY",
                 "type": "TABLE",
                 "columns": [
@@ -350,12 +302,12 @@
                     {
                         "type": "INTEGER",
                         "nullable": true,
-                        "name": "QUOTATION_QUOTATIONSTATUS"
+                        "name": "QUOTATION_STATUS"
                     }
                 ]
             },
             {
-                "name": "CODBEX_OPPORTUNITYNOTE",
+                "name": "CODBEX_QUOTATIONITEM",
                 "type": "TABLE",
                 "columns": [
                     {
@@ -363,56 +315,27 @@
                         "primaryKey": true,
                         "identity": true,
                         "nullable": true,
-                        "name": "OPPORTUNITYNOTE_ID"
+                        "name": "QUOTATIONITEM_ID"
                     },
                     {
                         "type": "INTEGER",
                         "nullable": true,
-                        "name": "OPPORTUNITYNOTE_NOTETYPE"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 1000,
-                        "nullable": true,
-                        "name": "OPPORTUNITYNOTE_NOTE"
-                    },
-                    {
-                        "type": "TIMESTAMP",
-                        "nullable": true,
-                        "name": "OPPORTUNITYNOTE_TIMESTAMP"
-                    }
-                ]
-            },
-            {
-                "name": "CODBEX_ENTITY71921",
-                "type": "TABLE",
-                "columns": [
-                    {
-                        "type": "INTEGER",
-                        "primaryKey": true,
-                        "identity": true,
-                        "nullable": true,
-                        "name": "ENTITY71921_ID"
+                        "name": "QUOTATIONITEM_QUOTATION"
                     },
                     {
                         "type": "INTEGER",
                         "nullable": true,
-                        "name": "ENTITY71921_QUOTATION"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "nullable": true,
-                        "name": "ENTITY71921_PRODUCT"
+                        "name": "QUOTATIONITEM_PRODUCT"
                     },
                     {
                         "type": "DOUBLE",
                         "nullable": true,
-                        "name": "ENTITY71921_QUANTITY"
+                        "name": "QUOTATIONITEM_QUANTITY"
                     },
                     {
                         "type": "INTEGER",
                         "nullable": true,
-                        "name": "ENTITY71921_UOM"
+                        "name": "QUOTATIONITEM_UOM"
                     },
                     {
                         "type": "DECIMAL",
@@ -420,7 +343,7 @@
                         "precision": "16",
                         "scale": "2",
                         "nullable": true,
-                        "name": "ENTITY71921_PRICE"
+                        "name": "QUOTATIONITEM_PRICE"
                     },
                     {
                         "type": "DECIMAL",
@@ -428,12 +351,12 @@
                         "precision": "16",
                         "scale": "2",
                         "nullable": true,
-                        "name": "ENTITY71921_TOTAL"
+                        "name": "QUOTATIONITEM_TOTAL"
                     },
                     {
                         "type": "INTEGER",
                         "nullable": true,
-                        "name": "ENTITY71921_CURRENCY"
+                        "name": "QUOTATIONITEM_CURRENCY"
                     }
                 ]
             },
@@ -584,50 +507,6 @@
                 ]
             },
             {
-                "name": "CODBEX_LEADACTIONS",
-                "type": "TABLE",
-                "columns": [
-                    {
-                        "type": "INTEGER",
-                        "primaryKey": true,
-                        "identity": true,
-                        "nullable": true,
-                        "name": "LEADACTIONS_ID"
-                    },
-                    {
-                        "type": "DATE",
-                        "nullable": true,
-                        "name": "LEADACTIONS_DATE"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 100,
-                        "nullable": true,
-                        "name": "LEADACTIONS_SUBJECT"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "nullable": true,
-                        "name": "LEADACTIONS_LEAD"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "nullable": true,
-                        "name": "LEADACTIONS_NOTE"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "nullable": true,
-                        "name": "LEADACTIONS_ACTIONTYPE"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "nullable": true,
-                        "name": "LEADACTIONS_STATUS"
-                    }
-                ]
-            },
-            {
                 "name": "CODBEX_OPPORTUNITYACTION",
                 "type": "TABLE",
                 "columns": [
@@ -662,17 +541,23 @@
                     {
                         "type": "INTEGER",
                         "nullable": true,
-                        "name": "OPPORTUNITYACTION_OPPORTUNITYNOTE"
+                        "name": "OPPORTUNITYACTION_TYPE"
                     },
                     {
                         "type": "INTEGER",
                         "nullable": true,
-                        "name": "OPPORTUNITYACTION_ACTIONTYPE"
+                        "name": "OPPORTUNITYACTION_STATUS"
                     },
                     {
-                        "type": "INTEGER",
+                        "type": "VARCHAR",
+                        "length": 1000,
                         "nullable": true,
-                        "name": "OPPORTUNITYACTION_ACTIONSTATUS"
+                        "name": "OPPORTUNITYACTION_NOTE"
+                    },
+                    {
+                        "type": "TIMESTAMP",
+                        "nullable": true,
+                        "name": "OPPORTUNITYACTION_TIMESTAMP"
                     }
                 ]
             },
@@ -715,6 +600,56 @@
                 ]
             },
             {
+                "name": "CODBEX_LEADACTION",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "LEADACTION_ID"
+                    },
+                    {
+                        "type": "DATE",
+                        "nullable": true,
+                        "name": "LEADACTION_DATE"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 100,
+                        "nullable": true,
+                        "name": "LEADACTION_SUBJECT"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "LEADACTION_LEAD"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "LEADACTION_TYPE"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "LEADACTION_STATUS"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 1000,
+                        "nullable": true,
+                        "name": "LEADACTION_NOTE"
+                    },
+                    {
+                        "type": "TIMESTAMP",
+                        "nullable": true,
+                        "name": "LEADACTION_TIMESTAMP"
+                    }
+                ]
+            },
+            {
                 "name": "Lead_Industry",
                 "type": "foreignKey",
                 "table": "CODBEX_LEAD",
@@ -740,15 +675,6 @@
                 "columns": "LEAD_OWNER",
                 "referencedTable": "CODBEX_EMPLOYEE",
                 "referencedColumns": "EMPLOYEE_ID"
-            },
-            {
-                "name": "LeadNote_NoteType",
-                "type": "foreignKey",
-                "table": "CODBEX_LEADNOTE",
-                "constraintName": "LeadNote_NoteType",
-                "columns": "LEADNOTE_TYPE",
-                "referencedTable": "CODBEX_NOTETYPE",
-                "referencedColumns": "NOTETYPE_ID"
             },
             {
                 "name": "Opportunity_Customer",
@@ -863,52 +789,43 @@
                 "type": "foreignKey",
                 "table": "CODBEX_QUOTATION",
                 "constraintName": "Quotation_QuotationStatus",
-                "columns": "QUOTATION_QUOTATIONSTATUS",
+                "columns": "QUOTATION_STATUS",
                 "referencedTable": "CODBEX_QUOTATIONSTATUS",
                 "referencedColumns": "QUOTATIONSTATUS_ID"
             },
             {
-                "name": "OpportunityNote_NoteType",
-                "type": "foreignKey",
-                "table": "CODBEX_OPPORTUNITYNOTE",
-                "constraintName": "OpportunityNote_NoteType",
-                "columns": "OPPORTUNITYNOTE_NOTETYPE",
-                "referencedTable": "CODBEX_NOTETYPE",
-                "referencedColumns": "NOTETYPE_ID"
-            },
-            {
                 "name": "QuotationItem_Quotation",
                 "type": "foreignKey",
-                "table": "CODBEX_ENTITY71921",
+                "table": "CODBEX_QUOTATIONITEM",
                 "constraintName": "QuotationItem_Quotation",
-                "columns": "ENTITY71921_QUOTATION",
+                "columns": "QUOTATIONITEM_QUOTATION",
                 "referencedTable": "CODBEX_QUOTATION",
                 "referencedColumns": "QUOTATION_ID"
             },
             {
                 "name": "QuotationItem_Product",
                 "type": "foreignKey",
-                "table": "CODBEX_ENTITY71921",
+                "table": "CODBEX_QUOTATIONITEM",
                 "constraintName": "QuotationItem_Product",
-                "columns": "ENTITY71921_PRODUCT",
+                "columns": "QUOTATIONITEM_PRODUCT",
                 "referencedTable": "CODBEX_PRODUCT",
                 "referencedColumns": "PRODUCT_ID"
             },
             {
                 "name": "QuotationItem_UoM",
                 "type": "foreignKey",
-                "table": "CODBEX_ENTITY71921",
+                "table": "CODBEX_QUOTATIONITEM",
                 "constraintName": "QuotationItem_UoM",
-                "columns": "ENTITY71921_UOM",
+                "columns": "QUOTATIONITEM_UOM",
                 "referencedTable": "CODBEX_UOM",
                 "referencedColumns": "UOM_ID"
             },
             {
                 "name": "QuotationItem_Currency",
                 "type": "foreignKey",
-                "table": "CODBEX_ENTITY71921",
+                "table": "CODBEX_QUOTATIONITEM",
                 "constraintName": "QuotationItem_Currency",
-                "columns": "ENTITY71921_CURRENCY",
+                "columns": "QUOTATIONITEM_CURRENCY",
                 "referencedTable": "CODBEX_CURRENCY",
                 "referencedColumns": "CURRENCY_ID"
             },
@@ -967,42 +884,6 @@
                 "referencedColumns": "LEAD_ID"
             },
             {
-                "name": "LeadAction_Lead",
-                "type": "foreignKey",
-                "table": "CODBEX_LEADACTIONS",
-                "constraintName": "LeadAction_Lead",
-                "columns": "LEADACTIONS_LEAD",
-                "referencedTable": "CODBEX_LEAD",
-                "referencedColumns": "LEAD_ID"
-            },
-            {
-                "name": "LeadAction_LeadNote",
-                "type": "foreignKey",
-                "table": "CODBEX_LEADACTIONS",
-                "constraintName": "LeadAction_LeadNote",
-                "columns": "LEADACTIONS_NOTE",
-                "referencedTable": "CODBEX_LEADNOTE",
-                "referencedColumns": "LEADNOTE_ID"
-            },
-            {
-                "name": "LeadAction_ActionType",
-                "type": "foreignKey",
-                "table": "CODBEX_LEADACTIONS",
-                "constraintName": "LeadAction_ActionType",
-                "columns": "LEADACTIONS_ACTIONTYPE",
-                "referencedTable": "CODBEX_ACTIONTYPE",
-                "referencedColumns": "ACTIONTYPE_ID"
-            },
-            {
-                "name": "LeadAction_ActionStatus",
-                "type": "foreignKey",
-                "table": "CODBEX_LEADACTIONS",
-                "constraintName": "LeadAction_ActionStatus",
-                "columns": "LEADACTIONS_STATUS",
-                "referencedTable": "CODBEX_ACTIONSTATUS",
-                "referencedColumns": "ACTIONSTATUS_ID"
-            },
-            {
                 "name": "OpportunityAction_Opportunity",
                 "type": "foreignKey",
                 "table": "CODBEX_OPPORTUNITYACTION",
@@ -1021,20 +902,11 @@
                 "referencedColumns": "EMPLOYEE_ID"
             },
             {
-                "name": "OpportunityAction_OpportunityNote",
-                "type": "foreignKey",
-                "table": "CODBEX_OPPORTUNITYACTION",
-                "constraintName": "OpportunityAction_OpportunityNote",
-                "columns": "OPPORTUNITYACTION_OPPORTUNITYNOTE",
-                "referencedTable": "CODBEX_OPPORTUNITYNOTE",
-                "referencedColumns": "OPPORTUNITYNOTE_ID"
-            },
-            {
                 "name": "OpportunityAction_ActionType",
                 "type": "foreignKey",
                 "table": "CODBEX_OPPORTUNITYACTION",
                 "constraintName": "OpportunityAction_ActionType",
-                "columns": "OPPORTUNITYACTION_ACTIONTYPE",
+                "columns": "OPPORTUNITYACTION_TYPE",
                 "referencedTable": "CODBEX_ACTIONTYPE",
                 "referencedColumns": "ACTIONTYPE_ID"
             },
@@ -1043,7 +915,34 @@
                 "type": "foreignKey",
                 "table": "CODBEX_OPPORTUNITYACTION",
                 "constraintName": "OpportunityAction_ActionStatus",
-                "columns": "OPPORTUNITYACTION_ACTIONSTATUS",
+                "columns": "OPPORTUNITYACTION_STATUS",
+                "referencedTable": "CODBEX_ACTIONSTATUS",
+                "referencedColumns": "ACTIONSTATUS_ID"
+            },
+            {
+                "name": "LeadAction_Lead",
+                "type": "foreignKey",
+                "table": "CODBEX_LEADACTION",
+                "constraintName": "LeadAction_Lead",
+                "columns": "LEADACTION_LEAD",
+                "referencedTable": "CODBEX_LEAD",
+                "referencedColumns": "LEAD_ID"
+            },
+            {
+                "name": "LeadAction_ActionType",
+                "type": "foreignKey",
+                "table": "CODBEX_LEADACTION",
+                "constraintName": "LeadAction_ActionType",
+                "columns": "LEADACTION_TYPE",
+                "referencedTable": "CODBEX_ACTIONTYPE",
+                "referencedColumns": "ACTIONTYPE_ID"
+            },
+            {
+                "name": "LeadAction_ActionStatus",
+                "type": "foreignKey",
+                "table": "CODBEX_LEADACTION",
+                "constraintName": "LeadAction_ActionStatus",
+                "columns": "LEADACTION_STATUS",
                 "referencedTable": "CODBEX_ACTIONSTATUS",
                 "referencedColumns": "ACTIONSTATUS_ID"
             }

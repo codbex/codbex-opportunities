@@ -9,7 +9,7 @@ exports.getTile = function () {
         name: "ActionType",
         caption: "Manage entity ActionType",
         tooltip: "ActionType",
-        type: "PRIMARY",
+        type: "SETTING",
         report: "false",
         icon: "/services/web/resources/unicons/file.svg",
         location: "/services/web/codbex-opportunities/gen/codbex-opportunities/ui/Settings/index.html",

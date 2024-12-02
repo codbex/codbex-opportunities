@@ -9,7 +9,7 @@ exports.getTile = function () {
         name: "LeadStatus",
         caption: "Manage entity LeadStatus",
         tooltip: "LeadStatus",
-        type: "PRIMARY",
+        type: "SETTING",
         report: "false",
         icon: "/services/web/resources/unicons/file.svg",
         location: "/services/web/codbex-opportunities/gen/codbex-opportunities/ui/Settings/index.html",
