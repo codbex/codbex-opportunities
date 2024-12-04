@@ -1,5 +1,0 @@
-{
-    "extensionPoint": "dashboard-widgets",
-    "module": "codbex-opportunities/widgets/services/churn-rate.js",
-    "description": "Churn Rate"
-}

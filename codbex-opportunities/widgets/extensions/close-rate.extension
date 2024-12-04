@@ -1,5 +1,0 @@
-{
-    "extensionPoint": "dashboard-widgets",
-    "module": "codbex-opportunities/widgets/services/close-rate.js",
-    "description": "Close Rate"
-}

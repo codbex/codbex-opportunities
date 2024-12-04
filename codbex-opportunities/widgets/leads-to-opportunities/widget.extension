@@ -1,0 +1,5 @@
+{
+    "extensionPoint": "dashboard-widgets",
+    "module": "codbex-opportunities/widgets/leads-to-opportunities/service.js",
+    "description": "Leads converted to Opportunities"
+}

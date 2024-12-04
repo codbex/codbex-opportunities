@@ -1,5 +1,0 @@
-{
-    "extensionPoint": "dashboard-widgets",
-    "module": "codbex-opportunities/widgets/services/customer-retention-rate.js",
-    "description": "Customer Retention Rate"
-}
