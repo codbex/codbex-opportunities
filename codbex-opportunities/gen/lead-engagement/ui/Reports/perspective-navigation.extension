@@ -1,0 +1,5 @@
+{
+    "module": "codbex-opportunities/gen/lead-engagement/ui/Reports/perspective-navigation.js",
+    "extensionPoint": "dashboard-navigations",
+    "description": "Lead Engagement Report - Navigation"
+}

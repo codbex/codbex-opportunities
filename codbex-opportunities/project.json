@@ -57,7 +57,7 @@
         {
             "guid": "codbex-navigation-groups",
             "type": "git",
-            "url": "https://github.com/codbex/codbex-navigation-groups",
+            "url": "https://github.com/codbex/codbex-navigation-groups.git",
             "branch": "main"
         }
     ],
