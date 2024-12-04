@@ -2,7 +2,7 @@ const navigationData = {
     id: 'quotations-navigation',
     label: "Quotations",
     group: "opportunities",
-    orderNumber: 300,
+    order: 300,
     link: "/services/web/codbex-opportunities/gen/codbex-opportunities/ui/Quotation/index.html?embedded"
 };
 

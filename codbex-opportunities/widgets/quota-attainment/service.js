@@ -3,7 +3,7 @@ const widgetData = {
     label: 'Quota Attainment',
     link: '/services/web/codbex-opportunities/widgets/quota-attainment/index.html',
     redirectViewId: 'quotations-navigation',
-    size: "medium"
+    size: "small"
 };
 
 function getWidget() {
