@@ -3,7 +3,7 @@ const widgetData = {
     label: 'Leads Pipeline',
     link: '/services/web/codbex-opportunities/widgets/leads-pipeline/index.html',
     redirectViewId: 'leads-navigation',
-    size: "medium"
+    size: "large"
 };
 
 function getWidget() {
