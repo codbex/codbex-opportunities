@@ -1,0 +1,5 @@
+{
+    "module": "codbex-opportunities/gen/opportunity-pipeline/ui/Reports/perspective-navigation.js",
+    "extensionPoint": "dashboard-navigations",
+    "description": "Opportunity Pipeline Report - Navigation"
+}

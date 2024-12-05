@@ -1,0 +1,5 @@
+{
+    "extensionPoint": "dashboard-widgets",
+    "module": "codbex-opportunities/widgets/open-opportunities/service.js",
+    "description": "Open Opportunities"
+}

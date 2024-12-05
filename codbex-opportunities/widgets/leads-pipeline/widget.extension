@@ -1,0 +1,5 @@
+{
+    "extensionPoint": "dashboard-widgets",
+    "module": "codbex-opportunities/widgets/leads-pipeline/service.js",
+    "description": "Leads Pipeline"
+}

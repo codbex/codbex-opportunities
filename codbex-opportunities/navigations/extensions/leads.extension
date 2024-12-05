@@ -1,5 +1,0 @@
-{
-    "extensionPoint": "dashboard-navigations",
-    "module": "codbex-opportunities/navigations/services/leads.js",
-    "description": "Leads Navigation"
-}
