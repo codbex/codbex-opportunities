@@ -23,7 +23,6 @@
             <table fd-table display-mode="compact" inner-borders="top" outer-borders="none">
                 <thead fd-table-header sticky="true">
                     <tr fd-table-row>
-						<th fd-table-header-cell>Id</th>
 						<th fd-table-header-cell>Name</th>
 						<th fd-table-header-cell>Date</th>
 						<th fd-table-header-cell>Description</th>
@@ -36,7 +35,6 @@
                         <td fd-table-cell no-data="true">No data available.</td>
                     </tr>
                     <tr fd-table-row hoverable="true" ng-repeat="next in data">
-						<td fd-table-cell hoverable="true" activable="true">{{next['Id']}}</td>
 						<td fd-table-cell hoverable="true" activable="true">{{next['Name']}}</td>
 						<td fd-table-cell hoverable="true" activable="true">
 							<fd-input type="date" ng-model="next['Date']" ng-readonly="true"></fd-input>

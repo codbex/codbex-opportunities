@@ -1,5 +1,5 @@
 {
     "module": "codbex-opportunities/gen/opportunity-actions/ui/Reports/perspective-navigation.js",
     "extensionPoint": "dashboard-navigations",
-    "description": "Opportunity Action Report - Navigation"
+    "description": "Opportunity Actions Report - Navigation"
 }

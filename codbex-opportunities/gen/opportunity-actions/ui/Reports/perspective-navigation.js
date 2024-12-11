@@ -5,7 +5,7 @@
  */
 const navigationData = {
 	id: 'codbex-opportunities-opportunity-actions',
-	label: 'Opportunity Action Report',
+	label: 'Opportunity Actions Report',
 	group: 'reports',
 	link: '/services/web/codbex-opportunities/gen/opportunity-actions/ui/Reports/OpportunityActions/index.html',
 	order: 999,
