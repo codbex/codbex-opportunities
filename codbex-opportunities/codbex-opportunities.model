@@ -3278,7 +3278,7 @@
                 "properties": [
                     {
                         "dataAutoIncrement": "true",
-                        "dataName": "LEADACTION_ID",
+                        "dataName": "LEADENGAGEMENT_ID",
                         "dataNullable": "true",
                         "dataPrimaryKey": "true",
                         "dataType": "INTEGER",
@@ -3291,7 +3291,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
-                        "dataName": "LEADACTION_DATE",
+                        "dataName": "LEADENGAGEMENT_DATE",
                         "dataNullable": "true",
                         "dataType": "DATE",
                         "description": "",
@@ -3304,7 +3304,7 @@
                     },
                     {
                         "dataLength": "100",
-                        "dataName": "LEADACTION_SUBJECT",
+                        "dataName": "LEADENGAGEMENT_SUBJECT",
                         "dataNullable": "true",
                         "dataType": "VARCHAR",
                         "description": "",
@@ -3317,14 +3317,14 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
-                        "dataName": "LEADACTION_LEAD",
+                        "dataName": "LEADENGAGEMENT_LEAD",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
                         "description": "",
                         "isRequiredProperty": "true",
                         "name": "Lead",
                         "relationshipCardinality": "1_n",
-                        "relationshipName": "LeadAction_Lead",
+                        "relationshipName": "LeadEngagement_Lead",
                         "relationshipType": "COMPOSITION",
                         "tooltip": "",
                         "widgetDropDownKey": "Id",
@@ -3338,7 +3338,7 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
-                        "dataName": "LEADACTION_TYPE",
+                        "dataName": "LEADENGAGEMENT_TYPE",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
                         "description": "",
@@ -3350,13 +3350,13 @@
                         "widgetLength": "20",
                         "widgetSize": "",
                         "widgetType": "DROPDOWN",
-                        "relationshipName": "LeadAction_ActionType",
+                        "relationshipName": "LeadEngagement_ActionType",
                         "relationshipEntityName": "ActionType",
                         "relationshipEntityPerspectiveName": "Settings",
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
-                        "dataName": "LEADACTION_STATUS",
+                        "dataName": "LEADENGAGEMENT_STATUS",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
                         "description": "",
@@ -3368,14 +3368,14 @@
                         "widgetLength": "20",
                         "widgetSize": "",
                         "widgetType": "DROPDOWN",
-                        "relationshipName": "LeadAction_ActionStatus",
+                        "relationshipName": "LeadEngagement_ActionStatus",
                         "relationshipEntityName": "ActionStatus",
                         "relationshipEntityPerspectiveName": "Settings",
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
                         "dataLength": "1000",
-                        "dataName": "LEADACTION_NOTE",
+                        "dataName": "LEADENGAGEMENT_NOTE",
                         "dataNullable": "true",
                         "dataType": "VARCHAR",
                         "description": "",
@@ -3388,7 +3388,7 @@
                         "widgetType": "TEXTAREA"
                     },
                     {
-                        "dataName": "LEADACTION_TIMESTAMP",
+                        "dataName": "LEADENGAGEMENT_TIMESTAMP",
                         "dataNullable": "true",
                         "dataType": "TIMESTAMP",
                         "description": "",
@@ -3401,28 +3401,28 @@
                         "widgetType": "DATETIME-LOCAL"
                     }
                 ],
-                "caption": "Manage entity LeadAction",
-                "dataCount": "SELECT COUNT(*) AS COUNT FROM \"${tablePrefix}LEADACTION\"",
-                "dataName": "LEADACTION",
+                "caption": "Manage entity LeadEngagement",
+                "dataCount": "SELECT COUNT(*) AS COUNT FROM \"${tablePrefix}LEADENGAGEMENT\"",
+                "dataName": "LEADENGAGEMENT",
                 "dataQuery": "",
-                "description": "Manage entity LeadAction",
+                "description": "Manage entity LeadEngagement",
                 "feedPassword": "YWRtaW4=",
                 "feedUsername": "YWRtaW4=",
                 "generateReport": "false",
                 "icon": "/services/web/resources/unicons/file.svg",
                 "layoutType": "MANAGE_DETAILS",
                 "menuIndex": "100",
-                "menuKey": "leadaction",
-                "menuLabel": "LeadAction",
-                "name": "LeadAction",
+                "menuKey": "leadengagement",
+                "menuLabel": "LeadEngagement",
+                "name": "LeadEngagement",
                 "navigationPath": "/Home",
                 "perspectiveIcon": "/services/web/resources/unicons/head-side.svg",
                 "perspectiveLabel": "Lead",
                 "perspectiveName": "Lead",
                 "perspectiveOrder": "100",
                 "perspectiveRole": "",
-                "title": "LeadAction",
-                "tooltip": "LeadAction",
+                "title": "LeadEngagement",
+                "tooltip": "LeadEngagement",
                 "type": "DEPENDENT"
             }
         ],
