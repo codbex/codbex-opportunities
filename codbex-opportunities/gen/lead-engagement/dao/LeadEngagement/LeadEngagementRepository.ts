@@ -31,7 +31,7 @@ export class LeadEngagementRepository {
               INNER JOIN CODBEX_LEADENGAGEMENT LeadEngagement ON Lead.LEAD_ID = LeadEngagement.LEADENGAGEMENT_LEAD
               INNER JOIN CODBEX_ACTIONTYPE ActionType ON LeadEngagement.LEADENGAGEMENT_TYPE = ActionType.ACTIONTYPE_ID
               INNER JOIN CODBEX_ACTIONSTATUS ActionStatus ON LeadEngagement.LEADENGAGEMENT_STATUS = ActionStatus.ACTIONSTATUS_ID
-            ORDER BY LEADACTION_DATE DESC
+            ORDER BY LEADENGAGEMENT_DATE DESC
             ${Number.isInteger(filter.$limit) ? ` LIMIT ${filter.$limit}` : ''}
             ${Number.isInteger(filter.$offset) ? ` OFFSET ${filter.$offset}` : ''}
         `;
@@ -49,7 +49,7 @@ export class LeadEngagementRepository {
                   INNER JOIN CODBEX_LEADENGAGEMENT LeadEngagement ON Lead.LEAD_ID = LeadEngagement.LEADENGAGEMENT_LEAD
                   INNER JOIN CODBEX_ACTIONTYPE ActionType ON LeadEngagement.LEADENGAGEMENT_TYPE = ActionType.ACTIONTYPE_ID
                   INNER JOIN CODBEX_ACTIONSTATUS ActionStatus ON LeadEngagement.LEADENGAGEMENT_STATUS = ActionStatus.ACTIONSTATUS_ID
-                ORDER BY LEADACTION_DATE DESC
+                ORDER BY LEADENGAGEMENT_DATE DESC
             )
         `;
 

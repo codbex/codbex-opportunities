@@ -1,5 +1,0 @@
-{
-    "extensionPoint": "codbex-opportunities-custom-action",
-    "module": "codbex-opportunities/gen/opportunity-actions/ui/Reports/OpportunityActions/dialog-print/print.js",
-    "description": "Print OpportunityActions Report"
-}
