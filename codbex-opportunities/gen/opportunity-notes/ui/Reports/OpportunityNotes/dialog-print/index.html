@@ -24,7 +24,7 @@
                 <thead fd-table-header sticky="true">
                     <tr fd-table-row>
 						<th fd-table-header-cell>Name</th>
-						<th fd-table-header-cell>Date</th>
+						<th fd-table-header-cell>Timestamp</th>
 						<th fd-table-header-cell>Description</th>
 						<th fd-table-header-cell>Type</th>
 						<th fd-table-header-cell>Status</th>
@@ -37,7 +37,7 @@
                     <tr fd-table-row hoverable="true" ng-repeat="next in data">
 						<td fd-table-cell hoverable="true" activable="true">{{next['Name']}}</td>
 						<td fd-table-cell hoverable="true" activable="true">
-							<fd-input type="date" ng-model="next['Date']" ng-readonly="true"></fd-input>
+							<fd-input type="datetime-local" ng-model="next['Timestamp']" ng-readonly="true"></fd-input>
 						</td>
 						<td fd-table-cell hoverable="true" activable="true">{{next['Description']}}</td>
 						<td fd-table-cell hoverable="true" activable="true">{{next['Type']}}</td>

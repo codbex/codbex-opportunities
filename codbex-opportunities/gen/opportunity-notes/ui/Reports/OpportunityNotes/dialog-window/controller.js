@@ -7,8 +7,8 @@ angular.module('page', ["ideUI", "ideView"])
 		if (Object.keys(params).length) {
 			$scope.action = "select";;
 
-			if (params.entity['Date']) {
-				params.entity['Date'] = new Date(params.entity['Date']);
+			if (params.entity['Timestamp']) {
+				params.entity['Timestamp'] = new Date(params.entity['Timestamp']);
 			}
 			$scope.entity = params.entity;
 		}
