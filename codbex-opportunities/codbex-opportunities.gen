@@ -6085,7 +6085,7 @@
         },
         {
           "dataLength": "1000",
-          "dataName": "OPPORTUNITYACTION_NOTE",
+          "dataName": "OPPORTUNITYACTION_DESCRIPTION",
           "dataNullable": true,
           "dataType": "VARCHAR",
           "description": "",
@@ -6538,7 +6538,7 @@
         },
         {
           "dataLength": "1000",
-          "dataName": "LEADENGAGEMENT_NOTE",
+          "dataName": "LEADENGAGEMENT_DESCRIPTION",
           "dataNullable": true,
           "dataType": "VARCHAR",
           "description": "",

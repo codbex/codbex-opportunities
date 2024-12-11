@@ -172,7 +172,7 @@ export class OpportunityActionRepository {
             },
             {
                 name: "Description",
-                column: "OPPORTUNITYACTION_NOTE",
+                column: "OPPORTUNITYACTION_DESCRIPTION",
                 type: "VARCHAR",
             },
             {

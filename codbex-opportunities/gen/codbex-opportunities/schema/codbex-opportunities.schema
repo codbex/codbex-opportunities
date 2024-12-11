@@ -547,7 +547,7 @@
                         "type": "VARCHAR",
                         "length": 1000,
                         "nullable": true,
-                        "name": "OPPORTUNITYACTION_NOTE"
+                        "name": "OPPORTUNITYACTION_DESCRIPTION"
                     },
                     {
                         "type": "INTEGER",
@@ -640,7 +640,7 @@
                         "type": "VARCHAR",
                         "length": 1000,
                         "nullable": true,
-                        "name": "LEADENGAGEMENT_NOTE"
+                        "name": "LEADENGAGEMENT_DESCRIPTION"
                     },
                     {
                         "type": "TIMESTAMP",

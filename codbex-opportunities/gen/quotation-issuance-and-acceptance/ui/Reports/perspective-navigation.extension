@@ -1,5 +1,5 @@
 {
     "module": "codbex-opportunities/gen/quotation-issuance-and-acceptance/ui/Reports/perspective-navigation.js",
     "extensionPoint": "dashboard-navigations",
-    "description": "Quottion Issuance and Acceptance Report - Navigation"
+    "description": "Quotation Issuance and Acceptance Report - Navigation"
 }

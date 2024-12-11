@@ -163,7 +163,7 @@ export class LeadEngagementRepository {
             },
             {
                 name: "Description",
-                column: "LEADENGAGEMENT_NOTE",
+                column: "LEADENGAGEMENT_DESCRIPTION",
                 type: "VARCHAR",
             },
             {
