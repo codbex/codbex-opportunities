@@ -4,14 +4,16 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "LeadAction-filter",
-    label: "LeadAction Filter",
-    link: "/services/web/codbex-opportunities/gen/codbex-opportunities/ui/Lead/Lead/LeadAction/dialog-filter/index.html",
+    id: "LeadEngagement",
+    label: "LeadEngagement",
+    factory: "frame",
+    region: "bottom",
+    link: "/services/web/codbex-opportunities/gen/codbex-opportunities/ui/Lead/Lead/LeadEngagement/index.html",
     perspectiveName: "Lead",
 };
 
 if (typeof exports !== 'undefined') {
-    exports.getDialogWindow = function () {
+    exports.getView = function () {
         return viewData;
     }
 }

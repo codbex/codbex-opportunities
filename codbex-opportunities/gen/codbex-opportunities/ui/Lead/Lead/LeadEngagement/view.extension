@@ -1,5 +1,5 @@
 {
-    "module": "codbex-opportunities/gen/codbex-opportunities/ui/Lead/Lead/LeadAction/view.js",
+    "module": "codbex-opportunities/gen/codbex-opportunities/ui/Lead/Lead/LeadEngagement/view.js",
     "extensionPoint": "codbex-opportunities-view",
     "description": "codbex-opportunities - Application View - Details"
 }

@@ -1,20 +1,20 @@
 import { Controller, Get, Post, Put, Delete, response } from "sdk/http"
 import { Extensions } from "sdk/extensions"
-import { LeadActionRepository, LeadActionEntityOptions } from "../../dao/Lead/LeadActionRepository";
+import { LeadEngagementRepository, LeadEngagementEntityOptions } from "../../dao/Lead/LeadEngagementRepository";
 import { ValidationError } from "../utils/ValidationError";
 import { HttpUtils } from "../utils/HttpUtils";
 
-const validationModules = await Extensions.loadExtensionModules("codbex-opportunities-Lead-LeadAction", ["validate"]);
+const validationModules = await Extensions.loadExtensionModules("codbex-opportunities-Lead-LeadEngagement", ["validate"]);
 
 @Controller
-class LeadActionService {
+class LeadEngagementService {
 
-    private readonly repository = new LeadActionRepository();
+    private readonly repository = new LeadEngagementRepository();
 
     @Get("/")
     public getAll(_: any, ctx: any) {
         try {
-            const options: LeadActionEntityOptions = {
+            const options: LeadEngagementEntityOptions = {
                 $limit: ctx.queryParameters["$limit"] ? parseInt(ctx.queryParameters["$limit"]) : undefined,
                 $offset: ctx.queryParameters["$offset"] ? parseInt(ctx.queryParameters["$offset"]) : undefined
             };
@@ -41,7 +41,7 @@ class LeadActionService {
         try {
             this.validateEntity(entity);
             entity.Id = this.repository.create(entity);
-            response.setHeader("Content-Location", "/services/ts/codbex-opportunities/gen/codbex-opportunities/api/Lead/LeadActionService.ts/" + entity.Id);
+            response.setHeader("Content-Location", "/services/ts/codbex-opportunities/gen/codbex-opportunities/api/Lead/LeadEngagementService.ts/" + entity.Id);
             response.setStatus(response.CREATED);
             return entity;
         } catch (error: any) {
@@ -84,7 +84,7 @@ class LeadActionService {
             if (entity) {
                 return entity;
             } else {
-                HttpUtils.sendResponseNotFound("LeadAction not found");
+                HttpUtils.sendResponseNotFound("LeadEngagement not found");
             }
         } catch (error: any) {
             this.handleError(error);
@@ -112,7 +112,7 @@ class LeadActionService {
                 this.repository.deleteById(id);
                 HttpUtils.sendResponseNoContent();
             } else {
-                HttpUtils.sendResponseNotFound("LeadAction not found");
+                HttpUtils.sendResponseNotFound("LeadEngagement not found");
             }
         } catch (error: any) {
             this.handleError(error);
@@ -139,11 +139,11 @@ class LeadActionService {
         if (entity.Lead === null || entity.Lead === undefined) {
             throw new ValidationError(`The 'Lead' property is required, provide a valid value`);
         }
-        if (entity.Note === null || entity.Note === undefined) {
-            throw new ValidationError(`The 'Note' property is required, provide a valid value`);
+        if (entity.Description === null || entity.Description === undefined) {
+            throw new ValidationError(`The 'Description' property is required, provide a valid value`);
         }
-        if (entity.Note?.length > 1000) {
-            throw new ValidationError(`The 'Note' exceeds the maximum length of [1000] characters`);
+        if (entity.Description?.length > 1000) {
+            throw new ValidationError(`The 'Description' exceeds the maximum length of [1000] characters`);
         }
         if (entity.Timestamp === null || entity.Timestamp === undefined) {
             throw new ValidationError(`The 'Timestamp' property is required, provide a valid value`);

@@ -1,6 +1,6 @@
 angular.module('page', ["ideUI", "ideView"])
 	.config(["messageHubProvider", function (messageHubProvider) {
-		messageHubProvider.eventIdPrefix = 'codbex-opportunities.Lead.LeadAction';
+		messageHubProvider.eventIdPrefix = 'codbex-opportunities.Lead.LeadEngagement';
 	}])
 	.controller('PageController', ['$scope', 'messageHub', 'ViewParameters', function ($scope, messageHub, ViewParameters) {
 
@@ -72,8 +72,8 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.Status !== undefined) {
 				filter.$filter.equals.Status = entity.Status;
 			}
-			if (entity.Note) {
-				filter.$filter.contains.Note = entity.Note;
+			if (entity.Description) {
+				filter.$filter.contains.Description = entity.Description;
 			}
 			if (entity.TimestampFrom) {
 				filter.$filter.greaterThanOrEqual.Timestamp = entity.TimestampFrom;
@@ -94,7 +94,7 @@ angular.module('page', ["ideUI", "ideView"])
 		};
 
 		$scope.cancel = function () {
-			messageHub.closeDialogWindow("LeadAction-filter");
+			messageHub.closeDialogWindow("LeadEngagement-filter");
 		};
 
 		$scope.clearErrorMessage = function () {

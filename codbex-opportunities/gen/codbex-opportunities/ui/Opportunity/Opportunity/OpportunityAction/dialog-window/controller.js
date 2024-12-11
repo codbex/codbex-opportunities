@@ -25,8 +25,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			if (params.entity.Date) {
 				params.entity.Date = new Date(params.entity.Date);
 			}
-			if (params.entity.Timestamp) {
-				params.entity.Timestamp = new Date(params.entity.Timestamp);
+			if (params.entity.Due) {
+				params.entity.Due = new Date(params.entity.Due);
 			}
 			$scope.entity = params.entity;
 			$scope.selectedMainEntityKey = params.selectedMainEntityKey;

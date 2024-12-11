@@ -12,162 +12,145 @@
             src="/services/js/resources-core/services/loader.js?id=application-view-js"></script>
         <link type="text/css" rel="stylesheet"
             href="/services/js/resources-core/services/loader.js?id=application-view-css" />
-
         <script type="text/javascript" src="controller.js"></script>
     </head>
 
     <body class="dg-vbox">
         <fd-scrollbar class="dg-full-height">
-            <div class="fd-margin--md fd-message-strip fd-message-strip--error fd-message-strip--dismissible"
-                role="alert" ng-show="errorMessage">
-                <p class="fd-message-strip__text">{{ errorMessage }}</p>
-                <fd-button glyph="sap-icon--decline" compact="true" dg-type="transparent" aria-label="Close" in-msg-strip="true" ng-click="clearErrorMessage()">
-		        </fd-button>
-            </div>
-
             <fd-fieldset ng-form="forms.details">
-                <fd-form-group dg-header="LeadAction Filter" name="entityForm" class="fd-container fd-form-layout-grid-container">
+                <fd-form-group dg-header="{{formHeaders[action]}}" name="entityForm" class="fd-container fd-form-layout-grid-container">
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idDateFrom" dg-colon="true">From Date</fd-form-label>
+                        	<fd-form-label for="idDate" dg-required="false" dg-colon="true">Date</fd-form-label>
                         </div>
-                        <div class="fd-col fd-col-md--2">
+                        <div class="fd-col  fd-col-md--2 ">
 	                        <fd-form-input-message-group dg-inactive="{{ forms.details['Date'].$valid }}">
-	                            <fd-input id="idDateFrom"
+	                            <fd-input id="idDate"
 	                                name="Date"
 	                                state="{{ forms.details['Date'].$valid ? '' : 'error' }}"
-	                                ng-model="entity.DateFrom"
+									ng-required="false"
+	                                ng-model="entity.Date"
+	                                ng-readonly="action === 'select'"
 	                                type="date">
 	                            </fd-input>
 	                            <fd-form-message dg-type="error">Incorrect Input</fd-form-message>
 	                        </fd-form-input-message-group>
-	                    </div>
-                    	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idDateTo" dg-colon="true">To Date</fd-form-label>
-                        </div>
-                        <div class="fd-col fd-col-md--2">
-	                        <fd-form-input-message-group dg-inactive="{{ forms.details['Date'].$valid }}">
-	                            <fd-input id="idDateTo"
-	                                name="Date"
-	                                state="{{ forms.details['Date'].$valid ? '' : 'error' }}"
-	                                ng-model="entity.DateTo"
-	                                type="date">
-	                            </fd-input>
-	                            <fd-form-message dg-type="error">Incorrect Input</fd-form-message>
-	                        </fd-form-input-message-group>
+	                        <i class="sap-icon--information" role="presentation" onclick="javascript:alert('')"></i>
 	                    </div>
                     </fd-form-item>
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idSubject" dg-colon="true">Subject</fd-form-label>
+                        	<fd-form-label for="idSubject" dg-required="true" dg-colon="true">Subject</fd-form-label>
                         </div>
-                        <div class="fd-col fd-col-md--8">
+                        <div class="fd-col  fd-col-md--8 ">
 	                        <fd-form-input-message-group dg-inactive="{{ forms.details['Subject'].$valid }}">
 	                            <fd-input id="idSubject"
 	                                name="Subject"
 	                                state="{{ forms.details['Subject'].$valid ? '' : 'error' }}"
+									ng-required="true"
 	                                ng-model="entity.Subject"
+	                                ng-readonly="action === 'select'"
 	                                ng-minlength="0.0 || 0"
 	                                ng-maxlength="20.0 || -1"
+	                                dg-input-rules="{ patterns: [''] }"
 	                                type="text"
 	                                placeholder="Enter Subject">
 	                            </fd-input>
-	                            <fd-form-message dg-type="error">Incorrect Input</fd-form-message>
+	                            <fd-form-message dg-type="error">The value doesn't match the required pattern ''</fd-form-message>
 	                        </fd-form-input-message-group>
+	                        <i class="sap-icon--information" role="presentation" onclick="javascript:alert('')"></i>
 	                    </div>
                     </fd-form-item>
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idType" dg-colon="true">Type</fd-form-label>
+                        	<fd-form-label for="idType" dg-required="false" dg-colon="true">Type</fd-form-label>
                         </div>
-                        <div class="fd-col fd-col-md--8">
+                        <div class="fd-col  fd-col-md--8 ">
 	                        <fd-combobox-input id="idType"
 	                            name="Type"
 	                            state="{{ forms.details['Type'].$valid ? '' : 'error' }}"
+	                            ng-required="false"
 	                            ng-model="entity.Type"
+	                            dg-disabled="action === 'select'"
 	                            dropdown-items="optionsType"
 	                            dg-placeholder="Search Type ...">
 	                        </fd-combobox-input>
+	                        <i class="sap-icon--information" role="presentation" onclick="javascript:alert('')"></i>
 	                    </div>
                     </fd-form-item>
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idStatus" dg-colon="true">Status</fd-form-label>
+                        	<fd-form-label for="idStatus" dg-required="false" dg-colon="true">Status</fd-form-label>
                         </div>
-                        <div class="fd-col fd-col-md--8">
+                        <div class="fd-col  fd-col-md--8 ">
 	                        <fd-combobox-input id="idStatus"
 	                            name="Status"
 	                            state="{{ forms.details['Status'].$valid ? '' : 'error' }}"
+	                            ng-required="false"
 	                            ng-model="entity.Status"
+	                            dg-disabled="action === 'select'"
 	                            dropdown-items="optionsStatus"
 	                            dg-placeholder="Search Status ...">
 	                        </fd-combobox-input>
+	                        <i class="sap-icon--information" role="presentation" onclick="javascript:alert('')"></i>
 	                    </div>
                     </fd-form-item>
 					<fd-form-item class="fd-row">
 						<div class="fd-col fd-col-md--2">
-							<fd-form-label for="idNote" dg-colon="true">Note</fd-form-label>
+							<fd-form-label for="idDescription" dg-required="true" dg-colon="true">Description</fd-form-label>
 						</div>
-						<div class="fd-col fd-col-md--8">
-							<fd-textarea id="idNote"
-								name="Note"
-								state="{{ forms.details['Note'].$valid ? '' : 'error' }}"
-								ng-model="entity.Note"
+						<div class="fd-col  fd-col-md--8 ">
+							<fd-textarea id="idDescription"
+								name="Description"
+								state="{{ forms.details['Description'].$valid ? '' : 'error' }}"
+								ng-required="true"
+								ng-model="entity.Description"
+	                            ng-readonly="action === 'select'"
 								ng-minlength="0.0 || 0"
 								ng-maxlength="1000.0 || -1"
-								placeholder="Enter Note">
+								dg-input-rules="{ patterns: [''] }"
+								placeholder="Enter Description">
 							</fd-textarea>
-							<fd-form-message dg-type="error" ng-show="!forms.details['Note'].$valid">Incorrect Input</fd-form-message>
+							<fd-form-message dg-type="error" ng-show="!forms.details['Description'].$valid">The value doesn't match the required pattern ''</fd-form-message>
+						</div>
+						<div class="fd-col fd-col-md--1">
+							<i class="sap-icon--information" role="presentation"
+								onclick="javascript:alert('')"></i>
 						</div>
 					</fd-form-item>
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idTimestampFrom" dg-colon="true">From Timestamp</fd-form-label>
+                        	<fd-form-label for="idTimestamp" dg-required="true" dg-colon="true">Timestamp</fd-form-label>
                         </div>
-                        <div class="fd-col fd-col-md--3">
+                        <div class="fd-col  fd-col-md--3 ">
 	                        <fd-form-input-message-group dg-inactive="{{ forms.details['Timestamp'].$valid }}">
-	                            <fd-input id="idTimestampFrom"
+	                            <fd-input id="idTimestamp"
 	                                name="Timestamp"
 	                                state="{{ forms.details['Timestamp'].$valid ? '' : 'error' }}"
-	                                ng-model="entity.TimestampFrom"
+									ng-required="true"
+	                                ng-model="entity.Timestamp"
+	                                ng-readonly="action === 'select'"
 	                                type="datetime-local">
 	                            </fd-input>
 	                            <fd-form-message dg-type="error">Incorrect Input</fd-form-message>
 	                        </fd-form-input-message-group>
-	                    </div>
-                    	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idTimestampTo" dg-colon="true">To Timestamp</fd-form-label>
-                        </div>
-                        <div class="fd-col fd-col-md--3">
-	                        <fd-form-input-message-group dg-inactive="{{ forms.details['Timestamp'].$valid }}">
-	                            <fd-input id="idTimestampTo"
-	                                name="Timestamp"
-	                                state="{{ forms.details['Timestamp'].$valid ? '' : 'error' }}"
-	                                ng-model="entity.TimestampTo"
-	                                type="datetime-local">
-	                            </fd-input>
-	                            <fd-form-message dg-type="error">Incorrect Input</fd-form-message>
-	                        </fd-form-input-message-group>
+	                        <i class="sap-icon--information" role="presentation" onclick="javascript:alert('')"></i>
 	                    </div>
                     </fd-form-item>
                 </fd-form-group>
             </fd-fieldset>
         </fd-scrollbar>
 
-        <fd-bar bar-design="footer" compact="true" ng-show="action !== 'select'">
+		<fd-bar bar-design="footer" compact="true" ng-show="action !== 'select'">
 			<fd-bar-right>
 				<fd-bar-element>
-					<fd-button dg-label="Filter" dg-type="emphasized" ng-click="filter()"></fd-button>
-				</fd-bar-element>
-				<fd-bar-element>
-					<fd-button dg-label="Reset" ng-click="resetFilter()"></fd-button>
+					<fd-button dg-label="{{action === 'create' ? 'Create' : 'Update'}}" dg-type="emphasized" ng-click="action === 'create' ? create() : update()" state="{{ forms.details.$valid ? '' : 'disabled' }}"></fd-button>
 				</fd-bar-element>
 				<fd-bar-element>
 					<fd-button dg-label="Cancel" ng-click="cancel()"></fd-button>
 				</fd-bar-element>
 			</fd-bar-right>
 		</fd-bar>
-
     </body>
 
 </html>

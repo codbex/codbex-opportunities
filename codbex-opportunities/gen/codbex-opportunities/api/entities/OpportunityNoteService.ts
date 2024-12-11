@@ -1,34 +1,23 @@
 import { Controller, Get, Post, Put, Delete, response } from "sdk/http"
 import { Extensions } from "sdk/extensions"
-import { OpportunityActionRepository, OpportunityActionEntityOptions } from "../../dao/Opportunity/OpportunityActionRepository";
+import { OpportunityNoteRepository, OpportunityNoteEntityOptions } from "../../dao/entities/OpportunityNoteRepository";
 import { ValidationError } from "../utils/ValidationError";
 import { HttpUtils } from "../utils/HttpUtils";
 
-const validationModules = await Extensions.loadExtensionModules("codbex-opportunities-Opportunity-OpportunityAction", ["validate"]);
+const validationModules = await Extensions.loadExtensionModules("codbex-opportunities-entities-OpportunityNote", ["validate"]);
 
 @Controller
-class OpportunityActionService {
+class OpportunityNoteService {
 
-    private readonly repository = new OpportunityActionRepository();
+    private readonly repository = new OpportunityNoteRepository();
 
     @Get("/")
     public getAll(_: any, ctx: any) {
         try {
-            const options: OpportunityActionEntityOptions = {
+            const options: OpportunityNoteEntityOptions = {
                 $limit: ctx.queryParameters["$limit"] ? parseInt(ctx.queryParameters["$limit"]) : undefined,
                 $offset: ctx.queryParameters["$offset"] ? parseInt(ctx.queryParameters["$offset"]) : undefined
             };
-
-            let Opportunity = parseInt(ctx.queryParameters.Opportunity);
-            Opportunity = isNaN(Opportunity) ? ctx.queryParameters.Opportunity : Opportunity;
-
-            if (Opportunity !== undefined) {
-                options.$filter = {
-                    equals: {
-                        Opportunity: Opportunity
-                    }
-                };
-            }
 
             return this.repository.findAll(options);
         } catch (error: any) {
@@ -41,7 +30,7 @@ class OpportunityActionService {
         try {
             this.validateEntity(entity);
             entity.Id = this.repository.create(entity);
-            response.setHeader("Content-Location", "/services/ts/codbex-opportunities/gen/codbex-opportunities/api/Opportunity/OpportunityActionService.ts/" + entity.Id);
+            response.setHeader("Content-Location", "/services/ts/codbex-opportunities/gen/codbex-opportunities/api/entities/OpportunityNoteService.ts/" + entity.Id);
             response.setStatus(response.CREATED);
             return entity;
         } catch (error: any) {
@@ -84,7 +73,7 @@ class OpportunityActionService {
             if (entity) {
                 return entity;
             } else {
-                HttpUtils.sendResponseNotFound("OpportunityAction not found");
+                HttpUtils.sendResponseNotFound("OpportunityNote not found");
             }
         } catch (error: any) {
             this.handleError(error);
@@ -112,7 +101,7 @@ class OpportunityActionService {
                 this.repository.deleteById(id);
                 HttpUtils.sendResponseNoContent();
             } else {
-                HttpUtils.sendResponseNotFound("OpportunityAction not found");
+                HttpUtils.sendResponseNotFound("OpportunityNote not found");
             }
         } catch (error: any) {
             this.handleError(error);
@@ -130,18 +119,6 @@ class OpportunityActionService {
     }
 
     private validateEntity(entity: any): void {
-        if (entity.Date === null || entity.Date === undefined) {
-            throw new ValidationError(`The 'Date' property is required, provide a valid value`);
-        }
-        if (entity.Subject === null || entity.Subject === undefined) {
-            throw new ValidationError(`The 'Subject' property is required, provide a valid value`);
-        }
-        if (entity.Subject?.length > 100) {
-            throw new ValidationError(`The 'Subject' exceeds the maximum length of [100] characters`);
-        }
-        if (entity.Initiator === null || entity.Initiator === undefined) {
-            throw new ValidationError(`The 'Initiator' property is required, provide a valid value`);
-        }
         if (entity.Description?.length > 1000) {
             throw new ValidationError(`The 'Description' exceeds the maximum length of [1000] characters`);
         }

@@ -7,24 +7,24 @@ import { EntityUtils } from "../utils/EntityUtils";
 export interface OpportunityActionEntity {
     readonly Id: number;
     Date?: Date;
+    Due?: Date;
     Subject?: string;
     Opportunity?: number;
     Initiator?: number;
+    Description?: string;
     Type?: number;
     Status?: number;
-    Note?: string;
-    Timestamp?: Date;
 }
 
 export interface OpportunityActionCreateEntity {
     readonly Date?: Date;
+    readonly Due?: Date;
     readonly Subject?: string;
     readonly Opportunity?: number;
     readonly Initiator?: number;
+    readonly Description?: string;
     readonly Type?: number;
     readonly Status?: number;
-    readonly Note?: string;
-    readonly Timestamp?: Date;
 }
 
 export interface OpportunityActionUpdateEntity extends OpportunityActionCreateEntity {
@@ -36,79 +36,79 @@ export interface OpportunityActionEntityOptions {
         equals?: {
             Id?: number | number[];
             Date?: Date | Date[];
+            Due?: Date | Date[];
             Subject?: string | string[];
             Opportunity?: number | number[];
             Initiator?: number | number[];
+            Description?: string | string[];
             Type?: number | number[];
             Status?: number | number[];
-            Note?: string | string[];
-            Timestamp?: Date | Date[];
         };
         notEquals?: {
             Id?: number | number[];
             Date?: Date | Date[];
+            Due?: Date | Date[];
             Subject?: string | string[];
             Opportunity?: number | number[];
             Initiator?: number | number[];
+            Description?: string | string[];
             Type?: number | number[];
             Status?: number | number[];
-            Note?: string | string[];
-            Timestamp?: Date | Date[];
         };
         contains?: {
             Id?: number;
             Date?: Date;
+            Due?: Date;
             Subject?: string;
             Opportunity?: number;
             Initiator?: number;
+            Description?: string;
             Type?: number;
             Status?: number;
-            Note?: string;
-            Timestamp?: Date;
         };
         greaterThan?: {
             Id?: number;
             Date?: Date;
+            Due?: Date;
             Subject?: string;
             Opportunity?: number;
             Initiator?: number;
+            Description?: string;
             Type?: number;
             Status?: number;
-            Note?: string;
-            Timestamp?: Date;
         };
         greaterThanOrEqual?: {
             Id?: number;
             Date?: Date;
+            Due?: Date;
             Subject?: string;
             Opportunity?: number;
             Initiator?: number;
+            Description?: string;
             Type?: number;
             Status?: number;
-            Note?: string;
-            Timestamp?: Date;
         };
         lessThan?: {
             Id?: number;
             Date?: Date;
+            Due?: Date;
             Subject?: string;
             Opportunity?: number;
             Initiator?: number;
+            Description?: string;
             Type?: number;
             Status?: number;
-            Note?: string;
-            Timestamp?: Date;
         };
         lessThanOrEqual?: {
             Id?: number;
             Date?: Date;
+            Due?: Date;
             Subject?: string;
             Opportunity?: number;
             Initiator?: number;
+            Description?: string;
             Type?: number;
             Status?: number;
-            Note?: string;
-            Timestamp?: Date;
         };
     },
     $select?: (keyof OpportunityActionEntity)[],
@@ -151,6 +151,11 @@ export class OpportunityActionRepository {
                 type: "DATE",
             },
             {
+                name: "Due",
+                column: "OPPORTUNITYACTION_DUE",
+                type: "DATE",
+            },
+            {
                 name: "Subject",
                 column: "OPPORTUNITYACTION_SUBJECT",
                 type: "VARCHAR",
@@ -166,6 +171,11 @@ export class OpportunityActionRepository {
                 type: "INTEGER",
             },
             {
+                name: "Description",
+                column: "OPPORTUNITYACTION_NOTE",
+                type: "VARCHAR",
+            },
+            {
                 name: "Type",
                 column: "OPPORTUNITYACTION_TYPE",
                 type: "INTEGER",
@@ -174,16 +184,6 @@ export class OpportunityActionRepository {
                 name: "Status",
                 column: "OPPORTUNITYACTION_STATUS",
                 type: "INTEGER",
-            },
-            {
-                name: "Note",
-                column: "OPPORTUNITYACTION_NOTE",
-                type: "VARCHAR",
-            },
-            {
-                name: "Timestamp",
-                column: "OPPORTUNITYACTION_TIMESTAMP",
-                type: "TIMESTAMP",
             }
         ]
     };
@@ -197,6 +197,7 @@ export class OpportunityActionRepository {
     public findAll(options?: OpportunityActionEntityOptions): OpportunityActionEntity[] {
         return this.dao.list(options).map((e: OpportunityActionEntity) => {
             EntityUtils.setDate(e, "Date");
+            EntityUtils.setDate(e, "Due");
             return e;
         });
     }
@@ -204,11 +205,13 @@ export class OpportunityActionRepository {
     public findById(id: number): OpportunityActionEntity | undefined {
         const entity = this.dao.find(id);
         EntityUtils.setDate(entity, "Date");
+        EntityUtils.setDate(entity, "Due");
         return entity ?? undefined;
     }
 
     public create(entity: OpportunityActionCreateEntity): number {
         EntityUtils.setLocalDate(entity, "Date");
+        EntityUtils.setLocalDate(entity, "Due");
         const id = this.dao.insert(entity);
         this.triggerEvent({
             operation: "create",
@@ -225,6 +228,7 @@ export class OpportunityActionRepository {
 
     public update(entity: OpportunityActionUpdateEntity): void {
         // EntityUtils.setLocalDate(entity, "Date");
+        // EntityUtils.setLocalDate(entity, "Due");
         const previousEntity = this.findById(entity.Id);
         this.dao.update(entity);
         this.triggerEvent({

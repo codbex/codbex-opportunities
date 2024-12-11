@@ -1,9 +1,9 @@
 angular.module('page', ["ideUI", "ideView", "entityApi"])
 	.config(["messageHubProvider", function (messageHubProvider) {
-		messageHubProvider.eventIdPrefix = 'codbex-opportunities.Lead.LeadAction';
+		messageHubProvider.eventIdPrefix = 'codbex-opportunities.Lead.LeadEngagement';
 	}])
 	.config(["entityApiProvider", function (entityApiProvider) {
-		entityApiProvider.baseUrl = "/services/ts/codbex-opportunities/gen/codbex-opportunities/api/Lead/LeadActionService.ts";
+		entityApiProvider.baseUrl = "/services/ts/codbex-opportunities/gen/codbex-opportunities/api/Lead/LeadEngagementService.ts";
 	}])
 	.controller('PageController', ['$scope', 'messageHub', 'ViewParameters', 'entityApi', function ($scope, messageHub, ViewParameters, entityApi) {
 
@@ -12,9 +12,9 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			details: {},
 		};
 		$scope.formHeaders = {
-			select: "LeadAction Details",
-			create: "Create LeadAction",
-			update: "Update LeadAction"
+			select: "LeadEngagement Details",
+			create: "Create LeadEngagement",
+			update: "Update LeadEngagement"
 		};
 		$scope.action = 'select';
 
@@ -41,12 +41,12 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			entity[$scope.selectedMainEntityKey] = $scope.selectedMainEntityId;
 			entityApi.create(entity).then(function (response) {
 				if (response.status != 201) {
-					messageHub.showAlertError("LeadAction", `Unable to create LeadAction: '${response.message}'`);
+					messageHub.showAlertError("LeadEngagement", `Unable to create LeadEngagement: '${response.message}'`);
 					return;
 				}
 				messageHub.postMessage("entityCreated", response.data);
 				$scope.cancel();
-				messageHub.showAlertSuccess("LeadAction", "LeadAction successfully created");
+				messageHub.showAlertSuccess("LeadEngagement", "LeadEngagement successfully created");
 			});
 		};
 
@@ -56,12 +56,12 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			entity[$scope.selectedMainEntityKey] = $scope.selectedMainEntityId;
 			entityApi.update(id, entity).then(function (response) {
 				if (response.status != 200) {
-					messageHub.showAlertError("LeadAction", `Unable to update LeadAction: '${response.message}'`);
+					messageHub.showAlertError("LeadEngagement", `Unable to update LeadEngagement: '${response.message}'`);
 					return;
 				}
 				messageHub.postMessage("entityUpdated", response.data);
 				$scope.cancel();
-				messageHub.showAlertSuccess("LeadAction", "LeadAction successfully updated");
+				messageHub.showAlertSuccess("LeadEngagement", "LeadEngagement successfully updated");
 			});
 		};
 
@@ -72,7 +72,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		$scope.cancel = function () {
 			$scope.entity = {};
 			$scope.action = 'select';
-			messageHub.closeDialogWindow("LeadAction-details");
+			messageHub.closeDialogWindow("LeadEngagement-details");
 		};
 
 	}]);

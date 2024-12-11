@@ -1,15 +1,15 @@
 angular.module('page', ["ideUI", "ideView", "entityApi"])
 	.config(["messageHubProvider", function (messageHubProvider) {
-		messageHubProvider.eventIdPrefix = 'codbex-opportunities.Lead.LeadAction';
+		messageHubProvider.eventIdPrefix = 'codbex-opportunities.Lead.LeadEngagement';
 	}])
 	.config(["entityApiProvider", function (entityApiProvider) {
-		entityApiProvider.baseUrl = "/services/ts/codbex-opportunities/gen/codbex-opportunities/api/Lead/LeadActionService.ts";
+		entityApiProvider.baseUrl = "/services/ts/codbex-opportunities/gen/codbex-opportunities/api/Lead/LeadEngagementService.ts";
 	}])
 	.controller('PageController', ['$scope', '$http', 'messageHub', 'entityApi', 'Extensions', function ($scope, $http, messageHub, entityApi, Extensions) {
 		//-----------------Custom Actions-------------------//
 		Extensions.get('dialogWindow', 'codbex-opportunities-custom-action').then(function (response) {
-			$scope.pageActions = response.filter(e => e.perspective === "Lead" && e.view === "LeadAction" && (e.type === "page" || e.type === undefined));
-			$scope.entityActions = response.filter(e => e.perspective === "Lead" && e.view === "LeadAction" && e.type === "entity");
+			$scope.pageActions = response.filter(e => e.perspective === "Lead" && e.view === "LeadEngagement" && (e.type === "page" || e.type === undefined));
+			$scope.entityActions = response.filter(e => e.perspective === "Lead" && e.view === "LeadEngagement" && e.type === "entity");
 		});
 
 		$scope.triggerPageAction = function (action) {
@@ -98,7 +98,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			filter.$filter.equals.Lead = Lead;
 			entityApi.count(filter).then(function (response) {
 				if (response.status != 200) {
-					messageHub.showAlertError("LeadAction", `Unable to count LeadAction: '${response.message}'`);
+					messageHub.showAlertError("LeadEngagement", `Unable to count LeadEngagement: '${response.message}'`);
 					return;
 				}
 				if (response.data) {
@@ -108,7 +108,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				filter.$limit = $scope.dataLimit;
 				entityApi.search(filter).then(function (response) {
 					if (response.status != 200) {
-						messageHub.showAlertError("LeadAction", `Unable to list/filter LeadAction: '${response.message}'`);
+						messageHub.showAlertError("LeadEngagement", `Unable to list/filter LeadEngagement: '${response.message}'`);
 						return;
 					}
 
@@ -132,7 +132,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 
 		$scope.openDetails = function (entity) {
 			$scope.selectedEntity = entity;
-			messageHub.showDialogWindow("LeadAction-details", {
+			messageHub.showDialogWindow("LeadEngagement-details", {
 				action: "select",
 				entity: entity,
 				optionsLead: $scope.optionsLead,
@@ -142,7 +142,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		};
 
 		$scope.openFilter = function (entity) {
-			messageHub.showDialogWindow("LeadAction-filter", {
+			messageHub.showDialogWindow("LeadEngagement-filter", {
 				entity: $scope.filterEntity,
 				optionsLead: $scope.optionsLead,
 				optionsType: $scope.optionsType,
@@ -152,7 +152,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 
 		$scope.createEntity = function () {
 			$scope.selectedEntity = null;
-			messageHub.showDialogWindow("LeadAction-details", {
+			messageHub.showDialogWindow("LeadEngagement-details", {
 				action: "create",
 				entity: {},
 				selectedMainEntityKey: "Lead",
@@ -164,7 +164,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		};
 
 		$scope.updateEntity = function (entity) {
-			messageHub.showDialogWindow("LeadAction-details", {
+			messageHub.showDialogWindow("LeadEngagement-details", {
 				action: "update",
 				entity: entity,
 				selectedMainEntityKey: "Lead",
@@ -178,8 +178,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		$scope.deleteEntity = function (entity) {
 			let id = entity.Id;
 			messageHub.showDialogAsync(
-				'Delete LeadAction?',
-				`Are you sure you want to delete LeadAction? This action cannot be undone.`,
+				'Delete LeadEngagement?',
+				`Are you sure you want to delete LeadEngagement? This action cannot be undone.`,
 				[{
 					id: "delete-btn-yes",
 					type: "emphasized",
@@ -194,7 +194,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				if (msg.data === "delete-btn-yes") {
 					entityApi.delete(id).then(function (response) {
 						if (response.status != 204) {
-							messageHub.showAlertError("LeadAction", `Unable to delete LeadAction: '${response.message}'`);
+							messageHub.showAlertError("LeadEngagement", `Unable to delete LeadEngagement: '${response.message}'`);
 							return;
 						}
 						$scope.loadPage($scope.dataPage, $scope.filter);

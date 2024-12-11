@@ -4,32 +4,32 @@ import { extensions } from "sdk/extensions";
 import { dao as daoApi } from "sdk/db";
 import { EntityUtils } from "../utils/EntityUtils";
 
-export interface LeadActionEntity {
+export interface LeadEngagementEntity {
     readonly Id: number;
     Date?: Date;
     Subject?: string;
     Lead?: number;
     Type?: number;
     Status?: number;
-    Note?: string;
+    Description?: string;
     Timestamp?: Date;
 }
 
-export interface LeadActionCreateEntity {
+export interface LeadEngagementCreateEntity {
     readonly Date?: Date;
     readonly Subject?: string;
     readonly Lead?: number;
     readonly Type?: number;
     readonly Status?: number;
-    readonly Note?: string;
+    readonly Description?: string;
     readonly Timestamp?: Date;
 }
 
-export interface LeadActionUpdateEntity extends LeadActionCreateEntity {
+export interface LeadEngagementUpdateEntity extends LeadEngagementCreateEntity {
     readonly Id: number;
 }
 
-export interface LeadActionEntityOptions {
+export interface LeadEngagementEntityOptions {
     $filter?: {
         equals?: {
             Id?: number | number[];
@@ -38,7 +38,7 @@ export interface LeadActionEntityOptions {
             Lead?: number | number[];
             Type?: number | number[];
             Status?: number | number[];
-            Note?: string | string[];
+            Description?: string | string[];
             Timestamp?: Date | Date[];
         };
         notEquals?: {
@@ -48,7 +48,7 @@ export interface LeadActionEntityOptions {
             Lead?: number | number[];
             Type?: number | number[];
             Status?: number | number[];
-            Note?: string | string[];
+            Description?: string | string[];
             Timestamp?: Date | Date[];
         };
         contains?: {
@@ -58,7 +58,7 @@ export interface LeadActionEntityOptions {
             Lead?: number;
             Type?: number;
             Status?: number;
-            Note?: string;
+            Description?: string;
             Timestamp?: Date;
         };
         greaterThan?: {
@@ -68,7 +68,7 @@ export interface LeadActionEntityOptions {
             Lead?: number;
             Type?: number;
             Status?: number;
-            Note?: string;
+            Description?: string;
             Timestamp?: Date;
         };
         greaterThanOrEqual?: {
@@ -78,7 +78,7 @@ export interface LeadActionEntityOptions {
             Lead?: number;
             Type?: number;
             Status?: number;
-            Note?: string;
+            Description?: string;
             Timestamp?: Date;
         };
         lessThan?: {
@@ -88,7 +88,7 @@ export interface LeadActionEntityOptions {
             Lead?: number;
             Type?: number;
             Status?: number;
-            Note?: string;
+            Description?: string;
             Timestamp?: Date;
         };
         lessThanOrEqual?: {
@@ -98,21 +98,21 @@ export interface LeadActionEntityOptions {
             Lead?: number;
             Type?: number;
             Status?: number;
-            Note?: string;
+            Description?: string;
             Timestamp?: Date;
         };
     },
-    $select?: (keyof LeadActionEntity)[],
-    $sort?: string | (keyof LeadActionEntity)[],
+    $select?: (keyof LeadEngagementEntity)[],
+    $sort?: string | (keyof LeadEngagementEntity)[],
     $order?: 'asc' | 'desc',
     $offset?: number,
     $limit?: number,
 }
 
-interface LeadActionEntityEvent {
+interface LeadEngagementEntityEvent {
     readonly operation: 'create' | 'update' | 'delete';
     readonly table: string;
-    readonly entity: Partial<LeadActionEntity>;
+    readonly entity: Partial<LeadEngagementEntity>;
     readonly key: {
         name: string;
         column: string;
@@ -120,55 +120,55 @@ interface LeadActionEntityEvent {
     }
 }
 
-interface LeadActionUpdateEntityEvent extends LeadActionEntityEvent {
-    readonly previousEntity: LeadActionEntity;
+interface LeadEngagementUpdateEntityEvent extends LeadEngagementEntityEvent {
+    readonly previousEntity: LeadEngagementEntity;
 }
 
-export class LeadActionRepository {
+export class LeadEngagementRepository {
 
     private static readonly DEFINITION = {
-        table: "CODBEX_LEADACTION",
+        table: "CODBEX_LEADENGAGEMENT",
         properties: [
             {
                 name: "Id",
-                column: "LEADACTION_ID",
+                column: "LEADENGAGEMENT_ID",
                 type: "INTEGER",
                 id: true,
                 autoIncrement: true,
             },
             {
                 name: "Date",
-                column: "LEADACTION_DATE",
+                column: "LEADENGAGEMENT_DATE",
                 type: "DATE",
             },
             {
                 name: "Subject",
-                column: "LEADACTION_SUBJECT",
+                column: "LEADENGAGEMENT_SUBJECT",
                 type: "VARCHAR",
             },
             {
                 name: "Lead",
-                column: "LEADACTION_LEAD",
+                column: "LEADENGAGEMENT_LEAD",
                 type: "INTEGER",
             },
             {
                 name: "Type",
-                column: "LEADACTION_TYPE",
+                column: "LEADENGAGEMENT_TYPE",
                 type: "INTEGER",
             },
             {
                 name: "Status",
-                column: "LEADACTION_STATUS",
+                column: "LEADENGAGEMENT_STATUS",
                 type: "INTEGER",
             },
             {
-                name: "Note",
-                column: "LEADACTION_NOTE",
+                name: "Description",
+                column: "LEADENGAGEMENT_NOTE",
                 type: "VARCHAR",
             },
             {
                 name: "Timestamp",
-                column: "LEADACTION_TIMESTAMP",
+                column: "LEADENGAGEMENT_TIMESTAMP",
                 type: "TIMESTAMP",
             }
         ]
@@ -177,64 +177,64 @@ export class LeadActionRepository {
     private readonly dao;
 
     constructor(dataSource = "DefaultDB") {
-        this.dao = daoApi.create(LeadActionRepository.DEFINITION, null, dataSource);
+        this.dao = daoApi.create(LeadEngagementRepository.DEFINITION, null, dataSource);
     }
 
-    public findAll(options?: LeadActionEntityOptions): LeadActionEntity[] {
-        return this.dao.list(options).map((e: LeadActionEntity) => {
+    public findAll(options?: LeadEngagementEntityOptions): LeadEngagementEntity[] {
+        return this.dao.list(options).map((e: LeadEngagementEntity) => {
             EntityUtils.setDate(e, "Date");
             return e;
         });
     }
 
-    public findById(id: number): LeadActionEntity | undefined {
+    public findById(id: number): LeadEngagementEntity | undefined {
         const entity = this.dao.find(id);
         EntityUtils.setDate(entity, "Date");
         return entity ?? undefined;
     }
 
-    public create(entity: LeadActionCreateEntity): number {
+    public create(entity: LeadEngagementCreateEntity): number {
         EntityUtils.setLocalDate(entity, "Date");
         const id = this.dao.insert(entity);
         this.triggerEvent({
             operation: "create",
-            table: "CODBEX_LEADACTION",
+            table: "CODBEX_LEADENGAGEMENT",
             entity: entity,
             key: {
                 name: "Id",
-                column: "LEADACTION_ID",
+                column: "LEADENGAGEMENT_ID",
                 value: id
             }
         });
         return id;
     }
 
-    public update(entity: LeadActionUpdateEntity): void {
+    public update(entity: LeadEngagementUpdateEntity): void {
         // EntityUtils.setLocalDate(entity, "Date");
         const previousEntity = this.findById(entity.Id);
         this.dao.update(entity);
         this.triggerEvent({
             operation: "update",
-            table: "CODBEX_LEADACTION",
+            table: "CODBEX_LEADENGAGEMENT",
             entity: entity,
             previousEntity: previousEntity,
             key: {
                 name: "Id",
-                column: "LEADACTION_ID",
+                column: "LEADENGAGEMENT_ID",
                 value: entity.Id
             }
         });
     }
 
-    public upsert(entity: LeadActionCreateEntity | LeadActionUpdateEntity): number {
-        const id = (entity as LeadActionUpdateEntity).Id;
+    public upsert(entity: LeadEngagementCreateEntity | LeadEngagementUpdateEntity): number {
+        const id = (entity as LeadEngagementUpdateEntity).Id;
         if (!id) {
             return this.create(entity);
         }
 
         const existingEntity = this.findById(id);
         if (existingEntity) {
-            this.update(entity as LeadActionUpdateEntity);
+            this.update(entity as LeadEngagementUpdateEntity);
             return id;
         } else {
             return this.create(entity);
@@ -246,22 +246,22 @@ export class LeadActionRepository {
         this.dao.remove(id);
         this.triggerEvent({
             operation: "delete",
-            table: "CODBEX_LEADACTION",
+            table: "CODBEX_LEADENGAGEMENT",
             entity: entity,
             key: {
                 name: "Id",
-                column: "LEADACTION_ID",
+                column: "LEADENGAGEMENT_ID",
                 value: id
             }
         });
     }
 
-    public count(options?: LeadActionEntityOptions): number {
+    public count(options?: LeadEngagementEntityOptions): number {
         return this.dao.count(options);
     }
 
     public customDataCount(): number {
-        const resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX_LEADACTION"');
+        const resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX_LEADENGAGEMENT"');
         if (resultSet !== null && resultSet[0] !== null) {
             if (resultSet[0].COUNT !== undefined && resultSet[0].COUNT !== null) {
                 return resultSet[0].COUNT;
@@ -272,8 +272,8 @@ export class LeadActionRepository {
         return 0;
     }
 
-    private async triggerEvent(data: LeadActionEntityEvent | LeadActionUpdateEntityEvent) {
-        const triggerExtensions = await extensions.loadExtensionModules("codbex-opportunities-Lead-LeadAction", ["trigger"]);
+    private async triggerEvent(data: LeadEngagementEntityEvent | LeadEngagementUpdateEntityEvent) {
+        const triggerExtensions = await extensions.loadExtensionModules("codbex-opportunities-Lead-LeadEngagement", ["trigger"]);
         triggerExtensions.forEach(triggerExtension => {
             try {
                 triggerExtension.trigger(data);
@@ -281,6 +281,6 @@ export class LeadActionRepository {
                 console.error(error);
             }            
         });
-        producer.topic("codbex-opportunities-Lead-LeadAction").send(JSON.stringify(data));
+        producer.topic("codbex-opportunities-Lead-LeadEngagement").send(JSON.stringify(data));
     }
 }
