@@ -35,7 +35,9 @@ angular.module('churn-rate', ['ideUI', 'ideView'])
                         const closedOpportunities = monthlyOpportunities.filter(opportunity => opportunity.Status === 2).length;
                         const churnRate = (closedOpportunities / monthlyOpportunities.length) * 100;
                         churnRates.unshift(churnRate);
-                    } else {
+                    }
+
+                    else {
                         churnRates.unshift(0);
                     }
 
