@@ -1,0 +1,5 @@
+{
+    "extensionPoint": "dashboard-navigations",
+    "module": "codbex-opportunities/navigations/lead-qualification-authority/service.js",
+    "description": "Lead Qualification Navigation"
+}

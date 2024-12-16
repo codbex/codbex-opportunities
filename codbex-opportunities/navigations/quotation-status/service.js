@@ -1,9 +1,9 @@
 const navigationData = {
-    id: 'opportunity-priority',
-    label: "Opportunity Priority",
+    id: 'quotation-status',
+    label: "Quotation Status",
     group: "reference data",
-    order: 3200,
-    link: "/services/web/codbex-opportunities/gen/codbex-opportunities/ui/Settings/OpportunityPriority/index.html?embedded"
+    order: 3500,
+    link: "/services/web/codbex-opportunities/gen/codbex-opportunities/ui/Settings/QuotationStatus/index.html?embedded"
 };
 
 function getNavigation() {

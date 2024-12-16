@@ -1,0 +1,5 @@
+{
+    "extensionPoint": "dashboard-navigations",
+    "module": "codbex-opportunities/navigations/opportunity-priority/service.js",
+    "description": "Opportunity Priority"
+}

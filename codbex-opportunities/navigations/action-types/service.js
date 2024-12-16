@@ -1,9 +1,9 @@
 const navigationData = {
-    id: 'opportunity-priority',
-    label: "Opportunity Priority",
+    id: 'action-types-navigation',
+    label: "Action Types",
     group: "reference data",
-    order: 3200,
-    link: "/services/web/codbex-opportunities/gen/codbex-opportunities/ui/Settings/OpportunityPriority/index.html?embedded"
+    order: 3600,
+    link: "/services/web/codbex-opportunities/gen/codbex-opportunities/ui/Settings/ActionTypes/index.html?embedded"
 };
 
 function getNavigation() {
