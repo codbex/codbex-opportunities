@@ -40,6 +40,25 @@
                     </fd-form-item>
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
+                        	<fd-form-label for="idDue" dg-required="false" dg-colon="true">Due</fd-form-label>
+                        </div>
+                        <div class="fd-col  fd-col-md--2 ">
+	                        <fd-form-input-message-group dg-inactive="{{ forms.details['Due'].$valid }}">
+	                            <fd-input id="idDue"
+	                                name="Due"
+	                                state="{{ forms.details['Due'].$valid ? '' : 'error' }}"
+									ng-required="false"
+	                                ng-model="entity.Due"
+	                                ng-readonly="action === 'select'"
+	                                type="date">
+	                            </fd-input>
+	                            <fd-form-message dg-type="error">Incorrect Input</fd-form-message>
+	                        </fd-form-input-message-group>
+	                        <i class="sap-icon--information" role="presentation" onclick="javascript:alert('')"></i>
+	                    </div>
+                    </fd-form-item>
+                    <fd-form-item class="fd-row">
+                    	<div class="fd-col fd-col-md--2">
                         	<fd-form-label for="idSubject" dg-required="true" dg-colon="true">Subject</fd-form-label>
                         </div>
                         <div class="fd-col  fd-col-md--8 ">
@@ -78,6 +97,29 @@
 	                        <i class="sap-icon--information" role="presentation" onclick="javascript:alert('')"></i>
 	                    </div>
                     </fd-form-item>
+					<fd-form-item class="fd-row">
+						<div class="fd-col fd-col-md--2">
+							<fd-form-label for="idDescription" dg-required="false" dg-colon="true">Description</fd-form-label>
+						</div>
+						<div class="fd-col  fd-col-md--8 ">
+							<fd-textarea id="idDescription"
+								name="Description"
+								state="{{ forms.details['Description'].$valid ? '' : 'error' }}"
+								ng-required="false"
+								ng-model="entity.Description"
+	                            ng-readonly="action === 'select'"
+								ng-minlength="0.0 || 0"
+								ng-maxlength="1000.0 || -1"
+								dg-input-rules="{ patterns: [''] }"
+								placeholder="Enter Description">
+							</fd-textarea>
+							<fd-form-message dg-type="error" ng-show="!forms.details['Description'].$valid">The value doesn't match the required pattern ''</fd-form-message>
+						</div>
+						<div class="fd-col fd-col-md--1">
+							<i class="sap-icon--information" role="presentation"
+								onclick="javascript:alert('')"></i>
+						</div>
+					</fd-form-item>
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
                         	<fd-form-label for="idType" dg-required="false" dg-colon="true">Type</fd-form-label>
@@ -109,48 +151,6 @@
 	                            dropdown-items="optionsStatus"
 	                            dg-placeholder="Search Status ...">
 	                        </fd-combobox-input>
-	                        <i class="sap-icon--information" role="presentation" onclick="javascript:alert('')"></i>
-	                    </div>
-                    </fd-form-item>
-					<fd-form-item class="fd-row">
-						<div class="fd-col fd-col-md--2">
-							<fd-form-label for="idNote" dg-required="false" dg-colon="true">Note</fd-form-label>
-						</div>
-						<div class="fd-col  fd-col-md--8 ">
-							<fd-textarea id="idNote"
-								name="Note"
-								state="{{ forms.details['Note'].$valid ? '' : 'error' }}"
-								ng-required="false"
-								ng-model="entity.Note"
-	                            ng-readonly="action === 'select'"
-								ng-minlength="0.0 || 0"
-								ng-maxlength="1000.0 || -1"
-								dg-input-rules="{ patterns: [''] }"
-								placeholder="Enter Note">
-							</fd-textarea>
-							<fd-form-message dg-type="error" ng-show="!forms.details['Note'].$valid">The value doesn't match the required pattern ''</fd-form-message>
-						</div>
-						<div class="fd-col fd-col-md--1">
-							<i class="sap-icon--information" role="presentation"
-								onclick="javascript:alert('')"></i>
-						</div>
-					</fd-form-item>
-                    <fd-form-item class="fd-row">
-                    	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idTimestamp" dg-required="true" dg-colon="true">Timestamp</fd-form-label>
-                        </div>
-                        <div class="fd-col  fd-col-md--3 ">
-	                        <fd-form-input-message-group dg-inactive="{{ forms.details['Timestamp'].$valid }}">
-	                            <fd-input id="idTimestamp"
-	                                name="Timestamp"
-	                                state="{{ forms.details['Timestamp'].$valid ? '' : 'error' }}"
-									ng-required="true"
-	                                ng-model="entity.Timestamp"
-	                                ng-readonly="action === 'select'"
-	                                type="datetime-local">
-	                            </fd-input>
-	                            <fd-form-message dg-type="error">Incorrect Input</fd-form-message>
-	                        </fd-form-input-message-group>
 	                        <i class="sap-icon--information" role="presentation" onclick="javascript:alert('')"></i>
 	                    </div>
                     </fd-form-item>

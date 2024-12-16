@@ -13,18 +13,18 @@
             "grouping": false
         },
         {
-            "table": "LeadAction",
+            "table": "LeadEngagement",
             "alias": "Date",
-            "name": "LEADACTION_DATE",
+            "name": "LEADENGAGEMENT_DATE",
             "type": "DATE",
             "aggregate": "NONE",
             "select": true,
             "grouping": false
         },
         {
-            "table": "LeadAction",
-            "alias": "Note",
-            "name": "LEADACTION_NOTE",
+            "table": "LeadEngagement",
+            "alias": "Description",
+            "name": "LEADENGAGEMENT_DESCRIPTION",
             "type": "VARCHAR",
             "aggregate": "NONE",
             "select": true,
@@ -49,30 +49,30 @@
             "grouping": false
         }
     ],
-    "query": "SELECT Lead.LEAD_CONTACTNAME as \"Name\", LeadAction.LEADACTION_DATE as \"Date\", LeadAction.LEADACTION_NOTE as \"Note\", ActionType.ACTIONTYPE_NAME as \"Type\", ActionStatus.ACTIONSTATUS_NAME as \"Status\"\nFROM CODBEX_LEAD as Lead\n  INNER JOIN CODBEX_LEADACTION LeadAction ON Lead.LEAD_ID = LeadAction.LEADACTION_LEAD\n  INNER JOIN CODBEX_ACTIONTYPE ActionType ON LeadAction.LEADACTION_TYPE = ActionType.ACTIONTYPE_ID\n  INNER JOIN CODBEX_ACTIONSTATUS ActionStatus ON LeadAction.LEADACTION_STATUS = ActionStatus.ACTIONSTATUS_ID\nORDER BY LEADACTION_DATE DESC",
+    "query": "SELECT Lead.LEAD_CONTACTNAME as \"Name\", LeadEngagement.LEADENGAGEMENT_DATE as \"Date\", LeadEngagement.LEADENGAGEMENT_DESCRIPTION as \"Description\", ActionType.ACTIONTYPE_NAME as \"Type\", ActionStatus.ACTIONSTATUS_NAME as \"Status\"\nFROM CODBEX_LEAD as Lead\n  INNER JOIN CODBEX_LEADENGAGEMENT LeadEngagement ON Lead.LEAD_ID = LeadEngagement.LEADENGAGEMENT_LEAD\n  INNER JOIN CODBEX_ACTIONTYPE ActionType ON LeadEngagement.LEADENGAGEMENT_TYPE = ActionType.ACTIONTYPE_ID\n  INNER JOIN CODBEX_ACTIONSTATUS ActionStatus ON LeadEngagement.LEADENGAGEMENT_STATUS = ActionStatus.ACTIONSTATUS_ID\nORDER BY LEADENGAGEMENT_DATE DESC",
     "joins": [
         {
-            "alias": "LeadAction",
-            "name": "CODBEX_LEADACTION",
+            "alias": "LeadEngagement",
+            "name": "CODBEX_LEADENGAGEMENT",
             "type": "INNER",
-            "condition": "Lead.LEAD_ID = LeadAction.LEADACTION_LEAD"
+            "condition": "Lead.LEAD_ID = LeadEngagement.LEADENGAGEMENT_LEAD"
         },
         {
             "alias": "ActionType",
             "name": "CODBEX_ACTIONTYPE",
             "type": "INNER",
-            "condition": "LeadAction.LEADACTION_TYPE = ActionType.ACTIONTYPE_ID"
+            "condition": "LeadEngagement.LEADENGAGEMENT_TYPE = ActionType.ACTIONTYPE_ID"
         },
         {
             "alias": "ActionStatus",
             "name": "CODBEX_ACTIONSTATUS",
             "type": "INNER",
-            "condition": "LeadAction.LEADACTION_STATUS = ActionStatus.ACTIONSTATUS_ID"
+            "condition": "LeadEngagement.LEADENGAGEMENT_STATUS = ActionStatus.ACTIONSTATUS_ID"
         }
     ],
     "orderings": [
         {
-            "column": "LEADACTION_DATE",
+            "column": "LEADENGAGEMENT_DATE",
             "direction": "DESC"
         }
     ]

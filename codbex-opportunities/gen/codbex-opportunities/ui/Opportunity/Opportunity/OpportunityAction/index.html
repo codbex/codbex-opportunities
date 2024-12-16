@@ -33,12 +33,12 @@
 				<thead fd-table-header sticky="true">
 					<tr fd-table-row>
 						<th fd-table-header-cell>Date</th>
+						<th fd-table-header-cell>Due</th>
 						<th fd-table-header-cell>Subject</th>
 						<th fd-table-header-cell>Initiator</th>
+						<th fd-table-header-cell>Description</th>
 						<th fd-table-header-cell>Type</th>
 						<th fd-table-header-cell>Status</th>
-						<th fd-table-header-cell>Note</th>
-						<th fd-table-header-cell>Timestamp</th>
 						<th fd-table-header-cell></th>
 					</tr>
 				</thead>
@@ -51,19 +51,19 @@
 						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">
 							<fd-input type="date" ng-model="next.Date" ng-readonly="true"></fd-input>
 						</td>
+						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">
+							<fd-input type="date" ng-model="next.Due" ng-readonly="true"></fd-input>
+						</td>
 						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.Subject}}</td>
 						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">
 							{{optionsInitiatorValue(next.Initiator)}}
 						</td>
+						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.Description}}</td>
 						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">
 							{{optionsTypeValue(next.Type)}}
 						</td>
 						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">
 							{{optionsStatusValue(next.Status)}}
-						</td>
-						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.Note}}</td>
-						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">
-							<fd-input type="datetime-local" ng-model="next.Timestamp" ng-readonly="true"></fd-input>
 						</td>
 						<td fd-table-cell fit-content="true">
 							<fd-popover>
