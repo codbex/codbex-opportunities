@@ -17,11 +17,11 @@ angular.module('page', ["ideUI", "ideView"])
 			if (params?.entity?.DateTo) {
 				params.entity.DateTo = new Date(params.entity.DateTo);
 			}
-			if (params?.entity?.TimestampFrom) {
-				params.entity.TimestampFrom = new Date(params.entity.TimestampFrom);
+			if (params?.entity?.DueFrom) {
+				params.entity.DueFrom = new Date(params.entity.DueFrom);
 			}
-			if (params?.entity?.TimestampTo) {
-				params.entity.TimestampTo = new Date(params.entity.TimestampTo);
+			if (params?.entity?.DueTo) {
+				params.entity.DueTo = new Date(params.entity.DueTo);
 			}
 			$scope.entity = params.entity ?? {};
 			$scope.selectedMainEntityKey = params.selectedMainEntityKey;
@@ -61,6 +61,12 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.DateTo) {
 				filter.$filter.lessThanOrEqual.Date = entity.DateTo;
 			}
+			if (entity.DueFrom) {
+				filter.$filter.greaterThanOrEqual.Due = entity.DueFrom;
+			}
+			if (entity.DueTo) {
+				filter.$filter.lessThanOrEqual.Due = entity.DueTo;
+			}
 			if (entity.Subject) {
 				filter.$filter.contains.Subject = entity.Subject;
 			}
@@ -70,20 +76,14 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.Initiator !== undefined) {
 				filter.$filter.equals.Initiator = entity.Initiator;
 			}
+			if (entity.Description) {
+				filter.$filter.contains.Description = entity.Description;
+			}
 			if (entity.Type !== undefined) {
 				filter.$filter.equals.Type = entity.Type;
 			}
 			if (entity.Status !== undefined) {
 				filter.$filter.equals.Status = entity.Status;
-			}
-			if (entity.Note) {
-				filter.$filter.contains.Note = entity.Note;
-			}
-			if (entity.TimestampFrom) {
-				filter.$filter.greaterThanOrEqual.Timestamp = entity.TimestampFrom;
-			}
-			if (entity.TimestampTo) {
-				filter.$filter.lessThanOrEqual.Timestamp = entity.TimestampTo;
 			}
 			messageHub.postMessage("entitySearch", {
 				entity: entity,

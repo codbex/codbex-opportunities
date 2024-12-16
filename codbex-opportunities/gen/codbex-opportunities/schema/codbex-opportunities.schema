@@ -523,6 +523,11 @@
                         "name": "OPPORTUNITYACTION_DATE"
                     },
                     {
+                        "type": "DATE",
+                        "nullable": true,
+                        "name": "OPPORTUNITYACTION_DUE"
+                    },
+                    {
                         "type": "VARCHAR",
                         "length": 100,
                         "nullable": true,
@@ -539,6 +544,12 @@
                         "name": "OPPORTUNITYACTION_EMPLOYEE"
                     },
                     {
+                        "type": "VARCHAR",
+                        "length": 1000,
+                        "nullable": true,
+                        "name": "OPPORTUNITYACTION_DESCRIPTION"
+                    },
+                    {
                         "type": "INTEGER",
                         "nullable": true,
                         "name": "OPPORTUNITYACTION_TYPE"
@@ -547,17 +558,6 @@
                         "type": "INTEGER",
                         "nullable": true,
                         "name": "OPPORTUNITYACTION_STATUS"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 1000,
-                        "nullable": true,
-                        "name": "OPPORTUNITYACTION_NOTE"
-                    },
-                    {
-                        "type": "TIMESTAMP",
-                        "nullable": true,
-                        "name": "OPPORTUNITYACTION_TIMESTAMP"
                     }
                 ]
             },
@@ -600,7 +600,7 @@
                 ]
             },
             {
-                "name": "CODBEX_LEADACTION",
+                "name": "CODBEX_LEADENGAGEMENT",
                 "type": "TABLE",
                 "columns": [
                     {
@@ -608,44 +608,78 @@
                         "primaryKey": true,
                         "identity": true,
                         "nullable": true,
-                        "name": "LEADACTION_ID"
+                        "name": "LEADENGAGEMENT_ID"
                     },
                     {
                         "type": "DATE",
                         "nullable": true,
-                        "name": "LEADACTION_DATE"
+                        "name": "LEADENGAGEMENT_DATE"
                     },
                     {
                         "type": "VARCHAR",
                         "length": 100,
                         "nullable": true,
-                        "name": "LEADACTION_SUBJECT"
+                        "name": "LEADENGAGEMENT_SUBJECT"
                     },
                     {
                         "type": "INTEGER",
                         "nullable": true,
-                        "name": "LEADACTION_LEAD"
+                        "name": "LEADENGAGEMENT_LEAD"
                     },
                     {
                         "type": "INTEGER",
                         "nullable": true,
-                        "name": "LEADACTION_TYPE"
+                        "name": "LEADENGAGEMENT_TYPE"
                     },
                     {
                         "type": "INTEGER",
                         "nullable": true,
-                        "name": "LEADACTION_STATUS"
+                        "name": "LEADENGAGEMENT_STATUS"
                     },
                     {
                         "type": "VARCHAR",
                         "length": 1000,
                         "nullable": true,
-                        "name": "LEADACTION_NOTE"
+                        "name": "LEADENGAGEMENT_DESCRIPTION"
                     },
                     {
                         "type": "TIMESTAMP",
                         "nullable": true,
-                        "name": "LEADACTION_TIMESTAMP"
+                        "name": "LEADENGAGEMENT_TIMESTAMP"
+                    }
+                ]
+            },
+            {
+                "name": "CODBEX_OPPORTUNITYNOTE",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "OPPORTUNITYNOTE_ID"
+                    },
+                    {
+                        "type": "TIMESTAMP",
+                        "nullable": true,
+                        "name": "OPPORTUNITYNOTE_TIMESTAMP"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "OPPORTUNITYNOTE_ACTION"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 1000,
+                        "nullable": true,
+                        "name": "OPPORTUNITYNOTE_DESCRIPTION"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "OPPORTUNITYNOTE_OPPORTUNITY"
                     }
                 ]
             },
@@ -920,31 +954,49 @@
                 "referencedColumns": "ACTIONSTATUS_ID"
             },
             {
-                "name": "LeadAction_Lead",
+                "name": "LeadEngagement_Lead",
                 "type": "foreignKey",
-                "table": "CODBEX_LEADACTION",
-                "constraintName": "LeadAction_Lead",
-                "columns": "LEADACTION_LEAD",
+                "table": "CODBEX_LEADENGAGEMENT",
+                "constraintName": "LeadEngagement_Lead",
+                "columns": "LEADENGAGEMENT_LEAD",
                 "referencedTable": "CODBEX_LEAD",
                 "referencedColumns": "LEAD_ID"
             },
             {
-                "name": "LeadAction_ActionType",
+                "name": "LeadEngagement_ActionType",
                 "type": "foreignKey",
-                "table": "CODBEX_LEADACTION",
-                "constraintName": "LeadAction_ActionType",
-                "columns": "LEADACTION_TYPE",
+                "table": "CODBEX_LEADENGAGEMENT",
+                "constraintName": "LeadEngagement_ActionType",
+                "columns": "LEADENGAGEMENT_TYPE",
                 "referencedTable": "CODBEX_ACTIONTYPE",
                 "referencedColumns": "ACTIONTYPE_ID"
             },
             {
-                "name": "LeadAction_ActionStatus",
+                "name": "LeadEngagement_ActionStatus",
                 "type": "foreignKey",
-                "table": "CODBEX_LEADACTION",
-                "constraintName": "LeadAction_ActionStatus",
-                "columns": "LEADACTION_STATUS",
+                "table": "CODBEX_LEADENGAGEMENT",
+                "constraintName": "LeadEngagement_ActionStatus",
+                "columns": "LEADENGAGEMENT_STATUS",
                 "referencedTable": "CODBEX_ACTIONSTATUS",
                 "referencedColumns": "ACTIONSTATUS_ID"
+            },
+            {
+                "name": "OpportunityNote_OpportunityAction",
+                "type": "foreignKey",
+                "table": "CODBEX_OPPORTUNITYNOTE",
+                "constraintName": "OpportunityNote_OpportunityAction",
+                "columns": "OPPORTUNITYNOTE_ACTION",
+                "referencedTable": "CODBEX_OPPORTUNITYACTION",
+                "referencedColumns": "OPPORTUNITYACTION_ID"
+            },
+            {
+                "name": "OpportunityNote_Opportunity",
+                "type": "foreignKey",
+                "table": "CODBEX_OPPORTUNITYNOTE",
+                "constraintName": "OpportunityNote_Opportunity",
+                "columns": "OPPORTUNITYNOTE_OPPORTUNITY",
+                "referencedTable": "CODBEX_OPPORTUNITY",
+                "referencedColumns": "OPPORTUNITY_ID"
             }
         ]
     },

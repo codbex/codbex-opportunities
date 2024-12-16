@@ -3,7 +3,7 @@ import { Query, NamedQueryParameter } from "sdk/db";
 export interface LeadEngagement {
     readonly 'Name': string;
     readonly 'Date': Date;
-    readonly 'Note': string;
+    readonly 'Description': string;
     readonly 'Type': string;
     readonly 'Status': string;
 }
@@ -26,12 +26,12 @@ export class LeadEngagementRepository {
 
     public findAll(filter: LeadEngagementPaginatedFilter): LeadEngagement[] {
         const sql = `
-            SELECT Lead.LEAD_CONTACTNAME as "Name", LeadAction.LEADACTION_DATE as "Date", LeadAction.LEADACTION_NOTE as "Note", ActionType.ACTIONTYPE_NAME as "Type", ActionStatus.ACTIONSTATUS_NAME as "Status"
+            SELECT Lead.LEAD_CONTACTNAME as "Name", LeadEngagement.LEADENGAGEMENT_DATE as "Date", LeadEngagement.LEADENGAGEMENT_DESCRIPTION as "Description", ActionType.ACTIONTYPE_NAME as "Type", ActionStatus.ACTIONSTATUS_NAME as "Status"
             FROM CODBEX_LEAD as Lead
-              INNER JOIN CODBEX_LEADACTION LeadAction ON Lead.LEAD_ID = LeadAction.LEADACTION_LEAD
-              INNER JOIN CODBEX_ACTIONTYPE ActionType ON LeadAction.LEADACTION_TYPE = ActionType.ACTIONTYPE_ID
-              INNER JOIN CODBEX_ACTIONSTATUS ActionStatus ON LeadAction.LEADACTION_STATUS = ActionStatus.ACTIONSTATUS_ID
-            ORDER BY LEADACTION_DATE DESC
+              INNER JOIN CODBEX_LEADENGAGEMENT LeadEngagement ON Lead.LEAD_ID = LeadEngagement.LEADENGAGEMENT_LEAD
+              INNER JOIN CODBEX_ACTIONTYPE ActionType ON LeadEngagement.LEADENGAGEMENT_TYPE = ActionType.ACTIONTYPE_ID
+              INNER JOIN CODBEX_ACTIONSTATUS ActionStatus ON LeadEngagement.LEADENGAGEMENT_STATUS = ActionStatus.ACTIONSTATUS_ID
+            ORDER BY LEADENGAGEMENT_DATE DESC
             ${Number.isInteger(filter.$limit) ? ` LIMIT ${filter.$limit}` : ''}
             ${Number.isInteger(filter.$offset) ? ` OFFSET ${filter.$offset}` : ''}
         `;
@@ -44,12 +44,12 @@ export class LeadEngagementRepository {
     public count(filter: LeadEngagementFilter): number {
         const sql = `
             SELECT COUNT(*) as REPORT_COUNT FROM (
-                SELECT Lead.LEAD_CONTACTNAME as "Name", LeadAction.LEADACTION_DATE as "Date", LeadAction.LEADACTION_NOTE as "Note", ActionType.ACTIONTYPE_NAME as "Type", ActionStatus.ACTIONSTATUS_NAME as "Status"
+                SELECT Lead.LEAD_CONTACTNAME as "Name", LeadEngagement.LEADENGAGEMENT_DATE as "Date", LeadEngagement.LEADENGAGEMENT_DESCRIPTION as "Description", ActionType.ACTIONTYPE_NAME as "Type", ActionStatus.ACTIONSTATUS_NAME as "Status"
                 FROM CODBEX_LEAD as Lead
-                  INNER JOIN CODBEX_LEADACTION LeadAction ON Lead.LEAD_ID = LeadAction.LEADACTION_LEAD
-                  INNER JOIN CODBEX_ACTIONTYPE ActionType ON LeadAction.LEADACTION_TYPE = ActionType.ACTIONTYPE_ID
-                  INNER JOIN CODBEX_ACTIONSTATUS ActionStatus ON LeadAction.LEADACTION_STATUS = ActionStatus.ACTIONSTATUS_ID
-                ORDER BY LEADACTION_DATE DESC
+                  INNER JOIN CODBEX_LEADENGAGEMENT LeadEngagement ON Lead.LEAD_ID = LeadEngagement.LEADENGAGEMENT_LEAD
+                  INNER JOIN CODBEX_ACTIONTYPE ActionType ON LeadEngagement.LEADENGAGEMENT_TYPE = ActionType.ACTIONTYPE_ID
+                  INNER JOIN CODBEX_ACTIONSTATUS ActionStatus ON LeadEngagement.LEADENGAGEMENT_STATUS = ActionStatus.ACTIONSTATUS_ID
+                ORDER BY LEADENGAGEMENT_DATE DESC
             )
         `;
 

@@ -1,5 +1,0 @@
-{
-    "module": "codbex-opportunities/gen/opportunity-actions/ui/Reports/OpportunityActions/dialog-window/view.js",
-    "extensionPoint": "codbex-opportunities-dialog-window",
-    "description": "codbex-opportunities - Application Dialog Window"
-}

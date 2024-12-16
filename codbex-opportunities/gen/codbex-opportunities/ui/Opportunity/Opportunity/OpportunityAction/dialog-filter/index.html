@@ -59,6 +59,36 @@
                     </fd-form-item>
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
+                        	<fd-form-label for="idDueFrom" dg-colon="true">From Due</fd-form-label>
+                        </div>
+                        <div class="fd-col fd-col-md--2">
+	                        <fd-form-input-message-group dg-inactive="{{ forms.details['Due'].$valid }}">
+	                            <fd-input id="idDueFrom"
+	                                name="Due"
+	                                state="{{ forms.details['Due'].$valid ? '' : 'error' }}"
+	                                ng-model="entity.DueFrom"
+	                                type="date">
+	                            </fd-input>
+	                            <fd-form-message dg-type="error">Incorrect Input</fd-form-message>
+	                        </fd-form-input-message-group>
+	                    </div>
+                    	<div class="fd-col fd-col-md--2">
+                        	<fd-form-label for="idDueTo" dg-colon="true">To Due</fd-form-label>
+                        </div>
+                        <div class="fd-col fd-col-md--2">
+	                        <fd-form-input-message-group dg-inactive="{{ forms.details['Due'].$valid }}">
+	                            <fd-input id="idDueTo"
+	                                name="Due"
+	                                state="{{ forms.details['Due'].$valid ? '' : 'error' }}"
+	                                ng-model="entity.DueTo"
+	                                type="date">
+	                            </fd-input>
+	                            <fd-form-message dg-type="error">Incorrect Input</fd-form-message>
+	                        </fd-form-input-message-group>
+	                    </div>
+                    </fd-form-item>
+                    <fd-form-item class="fd-row">
+                    	<div class="fd-col fd-col-md--2">
                         	<fd-form-label for="idSubject" dg-colon="true">Subject</fd-form-label>
                         </div>
                         <div class="fd-col fd-col-md--8">
@@ -90,6 +120,22 @@
 	                        </fd-combobox-input>
 	                    </div>
                     </fd-form-item>
+					<fd-form-item class="fd-row">
+						<div class="fd-col fd-col-md--2">
+							<fd-form-label for="idDescription" dg-colon="true">Description</fd-form-label>
+						</div>
+						<div class="fd-col fd-col-md--8">
+							<fd-textarea id="idDescription"
+								name="Description"
+								state="{{ forms.details['Description'].$valid ? '' : 'error' }}"
+								ng-model="entity.Description"
+								ng-minlength="0.0 || 0"
+								ng-maxlength="1000.0 || -1"
+								placeholder="Enter Description">
+							</fd-textarea>
+							<fd-form-message dg-type="error" ng-show="!forms.details['Description'].$valid">Incorrect Input</fd-form-message>
+						</div>
+					</fd-form-item>
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
                         	<fd-form-label for="idType" dg-colon="true">Type</fd-form-label>
@@ -116,52 +162,6 @@
 	                            dropdown-items="optionsStatus"
 	                            dg-placeholder="Search Status ...">
 	                        </fd-combobox-input>
-	                    </div>
-                    </fd-form-item>
-					<fd-form-item class="fd-row">
-						<div class="fd-col fd-col-md--2">
-							<fd-form-label for="idNote" dg-colon="true">Note</fd-form-label>
-						</div>
-						<div class="fd-col fd-col-md--8">
-							<fd-textarea id="idNote"
-								name="Note"
-								state="{{ forms.details['Note'].$valid ? '' : 'error' }}"
-								ng-model="entity.Note"
-								ng-minlength="0.0 || 0"
-								ng-maxlength="1000.0 || -1"
-								placeholder="Enter Note">
-							</fd-textarea>
-							<fd-form-message dg-type="error" ng-show="!forms.details['Note'].$valid">Incorrect Input</fd-form-message>
-						</div>
-					</fd-form-item>
-                    <fd-form-item class="fd-row">
-                    	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idTimestampFrom" dg-colon="true">From Timestamp</fd-form-label>
-                        </div>
-                        <div class="fd-col fd-col-md--3">
-	                        <fd-form-input-message-group dg-inactive="{{ forms.details['Timestamp'].$valid }}">
-	                            <fd-input id="idTimestampFrom"
-	                                name="Timestamp"
-	                                state="{{ forms.details['Timestamp'].$valid ? '' : 'error' }}"
-	                                ng-model="entity.TimestampFrom"
-	                                type="datetime-local">
-	                            </fd-input>
-	                            <fd-form-message dg-type="error">Incorrect Input</fd-form-message>
-	                        </fd-form-input-message-group>
-	                    </div>
-                    	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idTimestampTo" dg-colon="true">To Timestamp</fd-form-label>
-                        </div>
-                        <div class="fd-col fd-col-md--3">
-	                        <fd-form-input-message-group dg-inactive="{{ forms.details['Timestamp'].$valid }}">
-	                            <fd-input id="idTimestampTo"
-	                                name="Timestamp"
-	                                state="{{ forms.details['Timestamp'].$valid ? '' : 'error' }}"
-	                                ng-model="entity.TimestampTo"
-	                                type="datetime-local">
-	                            </fd-input>
-	                            <fd-form-message dg-type="error">Incorrect Input</fd-form-message>
-	                        </fd-form-input-message-group>
 	                    </div>
                     </fd-form-item>
                 </fd-form-group>

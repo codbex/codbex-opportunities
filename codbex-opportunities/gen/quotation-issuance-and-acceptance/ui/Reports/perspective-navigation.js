@@ -5,7 +5,7 @@
  */
 const navigationData = {
 	id: 'codbex-opportunities-quotation-issuance-and-acceptance',
-	label: 'Quottion Issuance and Acceptance Report',
+	label: 'Quotation Issuance and Acceptance Report',
 	group: 'reports',
 	link: '/services/web/codbex-opportunities/gen/quotation-issuance-and-acceptance/ui/Reports/QuotationIssuanceAndAcceptance/index.html',
 	order: 999,

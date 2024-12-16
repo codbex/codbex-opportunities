@@ -142,11 +142,8 @@ class OpportunityActionService {
         if (entity.Initiator === null || entity.Initiator === undefined) {
             throw new ValidationError(`The 'Initiator' property is required, provide a valid value`);
         }
-        if (entity.Note?.length > 1000) {
-            throw new ValidationError(`The 'Note' exceeds the maximum length of [1000] characters`);
-        }
-        if (entity.Timestamp === null || entity.Timestamp === undefined) {
-            throw new ValidationError(`The 'Timestamp' property is required, provide a valid value`);
+        if (entity.Description?.length > 1000) {
+            throw new ValidationError(`The 'Description' exceeds the maximum length of [1000] characters`);
         }
         for (const next of validationModules) {
             next.validate(entity);

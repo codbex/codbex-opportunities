@@ -28,6 +28,7 @@ tags:
   - name: Settings
   - name: Settings
   - name: Lead
+  - name: entities
 paths:
   /codbex-opportunities/gen/codbex-opportunities/api/Lead/LeadService.ts:
     get:
@@ -6259,7 +6260,7 @@ paths:
                       Id: 33
                     contains:
                       Subject: "abcd"
-                      Note: "abcd"
+                      Description: "abcd"
                     greaterThan:
                       Id: 0
                     lessThanOrEqual:
@@ -6282,7 +6283,7 @@ paths:
                   $filter:
                     contains:
                       Subject: "abcd"
-                      Note: "abcd"
+                      Description: "abcd"
               countWithGreaterThan:
                 summary: Count with Greater Than
                 value:
@@ -6347,7 +6348,7 @@ paths:
                       Id: 33
                     contains:
                       Subject: "abcd"
-                      Note: "abcd"
+                      Description: "abcd"
                     greaterThan:
                       Id: 0
                     lessThanOrEqual:
@@ -6370,7 +6371,7 @@ paths:
                   $filter:
                     contains:
                       Subject: "abcd"
-                      Note: "abcd"
+                      Description: "abcd"
               searchWithGreaterThan:
                 summary: Search with Greater Than
                 value:
@@ -7217,9 +7218,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-opportunities/gen/codbex-opportunities/api/Lead/LeadActionService.ts:
+  /codbex-opportunities/gen/codbex-opportunities/api/Lead/LeadEngagementService.ts:
     get:
-      summary: List LeadAction
+      summary: List LeadEngagement
       parameters:
         - in: query
           name: $limit
@@ -7247,7 +7248,7 @@ paths:
               schema:
                 type: array
                 items:
-                    $ref: '#/components/schemas/LeadAction'
+                    $ref: '#/components/schemas/LeadEngagement'
         400:
           description: Bad Request Error
           content:
@@ -7267,14 +7268,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
     post:
-      summary: Create LeadAction
+      summary: Create LeadEngagement
       tags:
         - Lead
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/LeadAction'
+              $ref: '#/components/schemas/LeadEngagement'
         required: true
       responses:
         201:
@@ -7282,7 +7283,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/LeadAction'
+                $ref: '#/components/schemas/LeadEngagement'
         400:
           description: Bad Request Error
           content:
@@ -7301,9 +7302,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-opportunities/gen/codbex-opportunities/api/Lead/LeadActionService.ts/{id}:
+  /codbex-opportunities/gen/codbex-opportunities/api/Lead/LeadEngagementService.ts/{id}:
     get:
-      summary: Get LeadAction by Id
+      summary: Get LeadEngagement by Id
       parameters:
         - in: path
           name: id
@@ -7321,7 +7322,7 @@ paths:
               schema:
                 type: array
                 items:
-                    $ref: '#/components/schemas/LeadAction'
+                    $ref: '#/components/schemas/LeadEngagement'
         404:
           description: Entity Not Found
           content:
@@ -7341,7 +7342,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
     put:
-      summary: Update LeadAction by Id
+      summary: Update LeadEngagement by Id
       parameters:
         - in: path
           name: id
@@ -7355,7 +7356,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/LeadAction'
+              $ref: '#/components/schemas/LeadEngagement'
         required: true
       responses:
         200:
@@ -7363,7 +7364,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/LeadAction'
+                $ref: '#/components/schemas/LeadEngagement'
         400:
           description: Bad Request Error
           content:
@@ -7389,7 +7390,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
     delete:
-      summary: Delete LeadAction by Id
+      summary: Delete LeadEngagement by Id
       parameters:
         - in: path
           name: id
@@ -7420,9 +7421,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-opportunities/gen/codbex-opportunities/api/Lead/LeadActionService.ts/count:
+  /codbex-opportunities/gen/codbex-opportunities/api/Lead/LeadEngagementService.ts/count:
     get:
-      summary: Count the number of LeadAction
+      summary: Count the number of LeadEngagement
       tags:
         - Lead
       responses:
@@ -7446,14 +7447,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
     post:
-      summary: Count the number of LeadAction by LeadActionFilterOptions
+      summary: Count the number of LeadEngagement by LeadEngagementFilterOptions
       tags:
         - Lead
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/LeadActionFilterOptions'
+              $ref: '#/components/schemas/LeadEngagementFilterOptions'
             examples:
               countWithMultipleCriteria:
                 summary: Count with multiple criteria
@@ -7463,7 +7464,7 @@ paths:
                       Id: 33
                     contains:
                       Subject: "abcd"
-                      Note: "abcd"
+                      Description: "abcd"
                     greaterThan:
                       Id: 0
                     lessThanOrEqual:
@@ -7486,7 +7487,7 @@ paths:
                   $filter:
                     contains:
                       Subject: "abcd"
-                      Note: "abcd"
+                      Description: "abcd"
               countWithGreaterThan:
                 summary: Count with Greater Than
                 value:
@@ -7532,16 +7533,16 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-opportunities/gen/codbex-opportunities/api/Lead/LeadActionService.ts/search:
+  /codbex-opportunities/gen/codbex-opportunities/api/Lead/LeadEngagementService.ts/search:
     post:
-      summary: Search LeadAction by LeadActionFilterOptions
+      summary: Search LeadEngagement by LeadEngagementFilterOptions
       tags:
         - Lead
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/LeadActionFilterOptions'
+              $ref: '#/components/schemas/LeadEngagementFilterOptions'
             examples:
               searchWithMultipleCriteria:
                 summary: Search with multiple criteria
@@ -7551,7 +7552,7 @@ paths:
                       Id: 33
                     contains:
                       Subject: "abcd"
-                      Note: "abcd"
+                      Description: "abcd"
                     greaterThan:
                       Id: 0
                     lessThanOrEqual:
@@ -7574,7 +7575,7 @@ paths:
                   $filter:
                     contains:
                       Subject: "abcd"
-                      Note: "abcd"
+                      Description: "abcd"
               searchWithGreaterThan:
                 summary: Search with Greater Than
                 value:
@@ -7608,7 +7609,407 @@ paths:
               schema:
                 type: array
                 items:
-                    $ref: '#/components/schemas/LeadAction'
+                    $ref: '#/components/schemas/LeadEngagement'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /codbex-opportunities/gen/codbex-opportunities/api/entities/OpportunityNoteService.ts:
+    get:
+      summary: List OpportunityNote
+      parameters:
+        - in: query
+          name: $limit
+          description: The number of records to be returned _(both `$limit` and `$offset` should be provided)_.
+          required: false
+          allowReserved: true
+          schema:
+            type: integer
+            allowEmptyValue: true
+        - in: query
+          name: $offset
+          description: The number of records to skip _(both `$limit` and `$offset` should be provided)_.
+          required: false
+          allowReserved: true
+          schema:
+            type: integer
+            allowEmptyValue: true
+      tags:
+        - entities
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                    $ref: '#/components/schemas/OpportunityNote'
+        400:
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      summary: Create OpportunityNote
+      tags:
+        - entities
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OpportunityNote'
+        required: true
+      responses:
+        201:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OpportunityNote'
+        400:
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /codbex-opportunities/gen/codbex-opportunities/api/entities/OpportunityNoteService.ts/{id}:
+    get:
+      summary: Get OpportunityNote by Id
+      parameters:
+        - in: path
+          name: id
+          description: The Id of the entity.
+          required: true
+          schema:
+            type: string
+      tags:
+        - entities
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                    $ref: '#/components/schemas/OpportunityNote'
+        404:
+          description: Entity Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    put:
+      summary: Update OpportunityNote by Id
+      parameters:
+        - in: path
+          name: id
+          description: The Id of the entity.
+          required: true
+          schema:
+            type: string
+      tags:
+        - entities
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OpportunityNote'
+        required: true
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OpportunityNote'
+        400:
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        404:
+          description: Entity Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      summary: Delete OpportunityNote by Id
+      parameters:
+        - in: path
+          name: id
+          description: The Id of the entity.
+          required: true
+          schema:
+            type: string
+      tags:
+        - entities
+      responses:
+        204:
+          description: Successful Request
+        404:
+          description: Entity Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /codbex-opportunities/gen/codbex-opportunities/api/entities/OpportunityNoteService.ts/count:
+    get:
+      summary: Count the number of OpportunityNote
+      tags:
+        - entities
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: integer
+                example: 100
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      summary: Count the number of OpportunityNote by OpportunityNoteFilterOptions
+      tags:
+        - entities
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OpportunityNoteFilterOptions'
+            examples:
+              countWithMultipleCriteria:
+                summary: Count with multiple criteria
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 33
+                    contains:
+                      Description: "abcd"
+                    greaterThan:
+                      Id: 0
+                    lessThanOrEqual:
+                      Id: 100
+              countWithEquals:
+                summary: Count with Equals
+                value:
+                  $filter:
+                    equals:
+                      Id: 0
+              countWithNotEquals:
+                summary: Count with Not Equals
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 0
+              countWithContains:
+                summary: Count with Contains
+                value:
+                  $filter:
+                    contains:
+                      Description: "abcd"
+              countWithGreaterThan:
+                summary: Count with Greater Than
+                value:
+                  $filter:
+                    greaterThan:
+                      Id: 0
+              countWithGreaterThanOrEqual:
+                summary: Count with Greater Than Or Equal
+                value:
+                  $filter:
+                    greaterThanOrEqual:
+                      Id: 0
+              countWithLessThan:
+                summary: Count with Less Than
+                value:
+                  $filter:
+                    lessThan:
+                      Id: 0
+              countWithLessThanOrEqual:
+                summary: Count with Less Than Or Equal
+                value:
+                  $filter:
+                    lessThanOrEqual:
+                      Id: 0
+        required: true
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: integer
+                example: 100
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /codbex-opportunities/gen/codbex-opportunities/api/entities/OpportunityNoteService.ts/search:
+    post:
+      summary: Search OpportunityNote by OpportunityNoteFilterOptions
+      tags:
+        - entities
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OpportunityNoteFilterOptions'
+            examples:
+              searchWithMultipleCriteria:
+                summary: Search with multiple criteria
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 33
+                    contains:
+                      Description: "abcd"
+                    greaterThan:
+                      Id: 0
+                    lessThanOrEqual:
+                      Id: 100
+              searchWithEquals:
+                summary: Search with Equals
+                value:
+                  $filter:
+                    equals:
+                      Id: 0
+              searchWithNotEquals:
+                summary: Search with Not Equals
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 0
+              searchWithContains:
+                summary: Search with Contains
+                value:
+                  $filter:
+                    contains:
+                      Description: "abcd"
+              searchWithGreaterThan:
+                summary: Search with Greater Than
+                value:
+                  $filter:
+                    greaterThan:
+                      Id: 0
+              searchWithGreaterThanOrEqual:
+                summary: Search with Greater Than Or Equal
+                value:
+                  $filter:
+                    greaterThanOrEqual:
+                      Id: 0
+              searchWithLessThan:
+                summary: Search with Less Than
+                value:
+                  $filter:
+                    lessThan:
+                      Id: 0
+              searchWithLessThanOrEqual:
+                summary: Search with Less Than Or Equal
+                value:
+                  $filter:
+                    lessThanOrEqual:
+                      Id: 0
+        required: true
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                    $ref: '#/components/schemas/OpportunityNote'
         403:
           description: Forbidden Error
           content:
@@ -10846,12 +11247,12 @@ components:
         - Date
         - Subject
         - Initiator
-        - Timestamp
       properties:
         Id:
           type: integer
           format: int32
         Date:
+        Due:
         Subject:
           type: string
           minLength: 0
@@ -10862,17 +11263,16 @@ components:
         Initiator:
           type: integer
           format: int32
+        Description:
+          type: string
+          minLength: 0
+          maxLength: 1000
         Type:
           type: integer
           format: int32
         Status:
           type: integer
           format: int32
-        Note:
-          type: string
-          minLength: 0
-          maxLength: 1000
-        Timestamp:
     OpportunityActionFilterOptions:
       type: object
       properties:
@@ -10892,6 +11292,8 @@ components:
                         format: int32
                 Date:
                   oneOf:
+                Due:
+                  oneOf:
                 Subject:
                   oneOf:
                     - type: string
@@ -10919,6 +11321,17 @@ components:
                       items:
                         type: integer
                         format: int32
+                Description:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 1000
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 1000
                 Type:
                   oneOf:
                     - type: integer
@@ -10935,19 +11348,6 @@ components:
                       items:
                         type: integer
                         format: int32
-                Note:
-                  oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 1000
-                    - type: array
-                      items:
-                        type: string
-                        format: double
-                        minLength: 0
-                        maxLength: 1000
-                Timestamp:
-                  oneOf:
             notEquals:
               type: object
               properties:
@@ -10961,6 +11361,8 @@ components:
                         format: int32
                 Date:
                   oneOf:
+                Due:
+                  oneOf:
                 Subject:
                   oneOf:
                     - type: string
@@ -10988,23 +11390,7 @@ components:
                       items:
                         type: integer
                         format: int32
-                Type:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
-                Status:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
-                Note:
+                Description:
                   oneOf:
                     - type: string
                       minLength: 0
@@ -11015,26 +11401,40 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 1000
-                Timestamp:
+                Type:
                   oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Status:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
             contains:
               type: object
               properties:
                 Id:
                 Date:
+                Due:
                 Subject:
                   type: string
                   minLength: 0
                   maxLength: 100
                 Opportunity:
                 Initiator:
-                Type:
-                Status:
-                Note:
+                Description:
                   type: string
                   minLength: 0
                   maxLength: 1000
-                Timestamp:
+                Type:
+                Status:
             greaterThan:
               type: object
               properties:
@@ -11042,6 +11442,7 @@ components:
                   type: integer
                   format: int32
                 Date:
+                Due:
                 Subject:
                   type: string
                   minLength: 0
@@ -11052,17 +11453,16 @@ components:
                 Initiator:
                   type: integer
                   format: int32
+                Description:
+                  type: string
+                  minLength: 0
+                  maxLength: 1000
                 Type:
                   type: integer
                   format: int32
                 Status:
                   type: integer
                   format: int32
-                Note:
-                  type: string
-                  minLength: 0
-                  maxLength: 1000
-                Timestamp:
             greaterThanOrEqual:
               type: object
               properties:
@@ -11070,6 +11470,7 @@ components:
                   type: integer
                   format: int32
                 Date:
+                Due:
                 Subject:
                   type: string
                   minLength: 0
@@ -11080,17 +11481,16 @@ components:
                 Initiator:
                   type: integer
                   format: int32
+                Description:
+                  type: string
+                  minLength: 0
+                  maxLength: 1000
                 Type:
                   type: integer
                   format: int32
                 Status:
                   type: integer
                   format: int32
-                Note:
-                  type: string
-                  minLength: 0
-                  maxLength: 1000
-                Timestamp:
             lessThan:
               type: object
               properties:
@@ -11098,6 +11498,7 @@ components:
                   type: integer
                   format: int32
                 Date:
+                Due:
                 Subject:
                   type: string
                   minLength: 0
@@ -11108,17 +11509,16 @@ components:
                 Initiator:
                   type: integer
                   format: int32
+                Description:
+                  type: string
+                  minLength: 0
+                  maxLength: 1000
                 Type:
                   type: integer
                   format: int32
                 Status:
                   type: integer
                   format: int32
-                Note:
-                  type: string
-                  minLength: 0
-                  maxLength: 1000
-                Timestamp:
             lessThanOrEqual:
               type: object
               properties:
@@ -11126,6 +11526,7 @@ components:
                   type: integer
                   format: int32
                 Date:
+                Due:
                 Subject:
                   type: string
                   minLength: 0
@@ -11136,25 +11537,24 @@ components:
                 Initiator:
                   type: integer
                   format: int32
+                Description:
+                  type: string
+                  minLength: 0
+                  maxLength: 1000
                 Type:
                   type: integer
                   format: int32
                 Status:
                   type: integer
                   format: int32
-                Note:
-                  type: string
-                  minLength: 0
-                  maxLength: 1000
-                Timestamp:
         $select:
           type: array
-          example: ["Id", "Date", "Subject", "Opportunity", "Initiator", "Type", "Status", "Note", "Timestamp"]
+          example: ["Id", "Date", "Due", "Subject", "Opportunity", "Initiator", "Description", "Type", "Status"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,Date,Subject,Opportunity,Initiator,Type,Status,Note,Timestamp"
+            example: "Id,Date,Due,Subject,Opportunity,Initiator,Description,Type,Status"
         $order:
           type: string
           enum: ["asc", "desc"]
@@ -11419,12 +11819,12 @@ components:
         $limit:
           type: integer
           example: 10
-    LeadAction:
+    LeadEngagement:
       type: object
       required:
         - Subject
         - Lead
-        - Note
+        - Description
         - Timestamp
       properties:
         Id:
@@ -11444,12 +11844,12 @@ components:
         Status:
           type: integer
           format: int32
-        Note:
+        Description:
           type: string
           minLength: 0
           maxLength: 1000
         Timestamp:
-    LeadActionFilterOptions:
+    LeadEngagementFilterOptions:
       type: object
       properties:
         $filter:
@@ -11503,7 +11903,7 @@ components:
                       items:
                         type: integer
                         format: int32
-                Note:
+                Description:
                   oneOf:
                     - type: string
                       minLength: 0
@@ -11564,7 +11964,7 @@ components:
                       items:
                         type: integer
                         format: int32
-                Note:
+                Description:
                   oneOf:
                     - type: string
                       minLength: 0
@@ -11589,7 +11989,7 @@ components:
                 Lead:
                 Type:
                 Status:
-                Note:
+                Description:
                   type: string
                   minLength: 0
                   maxLength: 1000
@@ -11614,7 +12014,7 @@ components:
                 Status:
                   type: integer
                   format: int32
-                Note:
+                Description:
                   type: string
                   minLength: 0
                   maxLength: 1000
@@ -11639,7 +12039,7 @@ components:
                 Status:
                   type: integer
                   format: int32
-                Note:
+                Description:
                   type: string
                   minLength: 0
                   maxLength: 1000
@@ -11664,7 +12064,7 @@ components:
                 Status:
                   type: integer
                   format: int32
-                Note:
+                Description:
                   type: string
                   minLength: 0
                   maxLength: 1000
@@ -11689,19 +12089,220 @@ components:
                 Status:
                   type: integer
                   format: int32
-                Note:
+                Description:
                   type: string
                   minLength: 0
                   maxLength: 1000
                 Timestamp:
         $select:
           type: array
-          example: ["Id", "Date", "Subject", "Lead", "Type", "Status", "Note", "Timestamp"]
+          example: ["Id", "Date", "Subject", "Lead", "Type", "Status", "Description", "Timestamp"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,Date,Subject,Lead,Type,Status,Note,Timestamp"
+            example: "Id,Date,Subject,Lead,Type,Status,Description,Timestamp"
+        $order:
+          type: string
+          enum: ["asc", "desc"]
+          example: "asc"
+        $offset:
+          type: integer
+          example: 0
+        $limit:
+          type: integer
+          example: 10
+    OpportunityNote:
+      type: object
+      required:
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Timestamp:
+        Action:
+          type: integer
+          format: int32
+        Description:
+          type: string
+          minLength: 0
+          maxLength: 1000
+        Opportunity:
+          type: integer
+          format: int32
+    OpportunityNoteFilterOptions:
+      type: object
+      properties:
+        $filter:
+          type: object
+          properties:
+            equals:
+              type: object
+              properties:
+                Id:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Timestamp:
+                  oneOf:
+                Action:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Description:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 1000
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 1000
+                Opportunity:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+            notEquals:
+              type: object
+              properties:
+                Id:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Timestamp:
+                  oneOf:
+                Action:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Description:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 1000
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 1000
+                Opportunity:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+            contains:
+              type: object
+              properties:
+                Id:
+                Timestamp:
+                Action:
+                Description:
+                  type: string
+                  minLength: 0
+                  maxLength: 1000
+                Opportunity:
+            greaterThan:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                Timestamp:
+                Action:
+                  type: integer
+                  format: int32
+                Description:
+                  type: string
+                  minLength: 0
+                  maxLength: 1000
+                Opportunity:
+                  type: integer
+                  format: int32
+            greaterThanOrEqual:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                Timestamp:
+                Action:
+                  type: integer
+                  format: int32
+                Description:
+                  type: string
+                  minLength: 0
+                  maxLength: 1000
+                Opportunity:
+                  type: integer
+                  format: int32
+            lessThan:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                Timestamp:
+                Action:
+                  type: integer
+                  format: int32
+                Description:
+                  type: string
+                  minLength: 0
+                  maxLength: 1000
+                Opportunity:
+                  type: integer
+                  format: int32
+            lessThanOrEqual:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                Timestamp:
+                Action:
+                  type: integer
+                  format: int32
+                Description:
+                  type: string
+                  minLength: 0
+                  maxLength: 1000
+                Opportunity:
+                  type: integer
+                  format: int32
+        $select:
+          type: array
+          example: ["Id", "Timestamp", "Action", "Description", "Opportunity"]
+          items:
+            type: string
+        $sort:
+          - type: string
+            example: "Id,Timestamp,Action,Description,Opportunity"
         $order:
           type: string
           enum: ["asc", "desc"]

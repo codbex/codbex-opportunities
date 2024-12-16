@@ -1,0 +1,5 @@
+{
+    "module": "codbex-opportunities/gen/opportunity-notes/ui/Reports/OpportunityNotes/tile.js",
+    "extensionPoint": "portal-tile",
+    "description": "codbex-opportunities - Application Tile"
+}
