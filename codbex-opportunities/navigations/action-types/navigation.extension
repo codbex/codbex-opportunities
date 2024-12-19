@@ -1,0 +1,5 @@
+{
+    "extensionPoint": "dashboard-navigations",
+    "module": "codbex-opportunities/navigations/action-types/service.js",
+    "description": "Action Type"
+}
