@@ -45,17 +45,17 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.Id !== undefined) {
 				filter.$filter.equals.Id = entity.Id;
 			}
+			if (entity.Subject) {
+				filter.$filter.contains.Subject = entity.Subject;
+			}
+			if (entity.Description) {
+				filter.$filter.contains.Description = entity.Description;
+			}
 			if (entity.TimestampFrom) {
 				filter.$filter.greaterThanOrEqual.Timestamp = entity.TimestampFrom;
 			}
 			if (entity.TimestampTo) {
 				filter.$filter.lessThanOrEqual.Timestamp = entity.TimestampTo;
-			}
-			if (entity.Action !== undefined) {
-				filter.$filter.equals.Action = entity.Action;
-			}
-			if (entity.Description) {
-				filter.$filter.contains.Description = entity.Description;
 			}
 			if (entity.Opportunity !== undefined) {
 				filter.$filter.equals.Opportunity = entity.Opportunity;

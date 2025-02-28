@@ -9,15 +9,18 @@ if (!opportunityActionDue) {
     throw new Error("OpportunityActionDate is missing or invalid.");
 }
 
+// const currentTime = new Date();
+// const scheduledTime = new Date(opportunityActionDue);
+
+// if (isNaN(scheduledTime.getTime())) {
+//     throw new Error("OpportunityActionDate is not a valid date.");
+// }
+
+// if (scheduledTime <= currentTime) {
+//     throw new Error("OpportunityActionDate date has already passed.");
+// }
+
 const currentTime = new Date();
-const scheduledTime = new Date(opportunityActionDue);
-
-if (isNaN(scheduledTime.getTime())) {
-    throw new Error("OpportunityActionDate is not a valid date.");
-}
-
-if (scheduledTime <= currentTime) {
-    throw new Error("OpportunityActionDate date has already passed.");
-}
+const scheduledTime = new Date(currentTime.getTime() + 60 * 1000); // 1 minute later
 
 process.setVariable(executionId, "TimerDelay", scheduledTime.toISOString());

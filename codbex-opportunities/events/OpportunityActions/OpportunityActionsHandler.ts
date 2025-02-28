@@ -6,6 +6,7 @@ export const trigger = (event) => {
         const opportunityAction = event.entity;
 
         const opportunityActionId = opportunityAction.Id;
+        const operationaActionSubject = opportunityAction.Subject
         const opportunityActionDescription = opportunityAction.Description;
         const opportunity = opportunityAction.Opportunity;
         const opportunityActionDue = opportunityAction.Due;
@@ -13,6 +14,7 @@ export const trigger = (event) => {
         const processInstanceId = process.start("opportunity-action-process", {
             OpportunityActionDue: opportunityActionDue,
             Opportunity: opportunity,
+            OpportunityActionSubject: operationaActionSubject,
             OpportunityActionDescription: opportunityActionDescription,
             OpportunityActionId: opportunityActionId
         });

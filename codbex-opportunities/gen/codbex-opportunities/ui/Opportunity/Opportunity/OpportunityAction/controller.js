@@ -228,7 +228,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			$scope.optionsInitiator = response.data.map(e => {
 				return {
 					value: e.Id,
-					text: e.Name
+					text: e.FirstName
 				}
 			});
 		});

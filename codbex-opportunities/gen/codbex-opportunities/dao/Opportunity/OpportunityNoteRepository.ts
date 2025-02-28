@@ -5,14 +5,14 @@ import { dao as daoApi } from "sdk/db";
 
 export interface OpportunityNoteEntity {
     readonly Id: number;
-    Timestamp?: Date;
-    Action?: number;
+    Subject?: string;
     Description?: string;
+    Timestamp?: Date;
     Opportunity?: number;
 }
 
 export interface OpportunityNoteCreateEntity {
-    readonly Action?: number;
+    readonly Subject?: string;
     readonly Description?: string;
     readonly Opportunity?: number;
 }
@@ -25,51 +25,51 @@ export interface OpportunityNoteEntityOptions {
     $filter?: {
         equals?: {
             Id?: number | number[];
-            Timestamp?: Date | Date[];
-            Action?: number | number[];
+            Subject?: string | string[];
             Description?: string | string[];
+            Timestamp?: Date | Date[];
             Opportunity?: number | number[];
         };
         notEquals?: {
             Id?: number | number[];
-            Timestamp?: Date | Date[];
-            Action?: number | number[];
+            Subject?: string | string[];
             Description?: string | string[];
+            Timestamp?: Date | Date[];
             Opportunity?: number | number[];
         };
         contains?: {
             Id?: number;
-            Timestamp?: Date;
-            Action?: number;
+            Subject?: string;
             Description?: string;
+            Timestamp?: Date;
             Opportunity?: number;
         };
         greaterThan?: {
             Id?: number;
-            Timestamp?: Date;
-            Action?: number;
+            Subject?: string;
             Description?: string;
+            Timestamp?: Date;
             Opportunity?: number;
         };
         greaterThanOrEqual?: {
             Id?: number;
-            Timestamp?: Date;
-            Action?: number;
+            Subject?: string;
             Description?: string;
+            Timestamp?: Date;
             Opportunity?: number;
         };
         lessThan?: {
             Id?: number;
-            Timestamp?: Date;
-            Action?: number;
+            Subject?: string;
             Description?: string;
+            Timestamp?: Date;
             Opportunity?: number;
         };
         lessThanOrEqual?: {
             Id?: number;
-            Timestamp?: Date;
-            Action?: number;
+            Subject?: string;
             Description?: string;
+            Timestamp?: Date;
             Opportunity?: number;
         };
     },
@@ -108,19 +108,19 @@ export class OpportunityNoteRepository {
                 autoIncrement: true,
             },
             {
-                name: "Timestamp",
-                column: "OPPORTUNITYNOTE_TIMESTAMP",
-                type: "TIMESTAMP",
-            },
-            {
-                name: "Action",
-                column: "OPPORTUNITYNOTE_ACTION",
-                type: "INTEGER",
+                name: "Subject",
+                column: "OPPORTUNITYNOTE_SUBJECT",
+                type: "VARCHAR",
             },
             {
                 name: "Description",
                 column: "OPPORTUNITYNOTE_DESCRIPTION",
                 type: "VARCHAR",
+            },
+            {
+                name: "Timestamp",
+                column: "OPPORTUNITYNOTE_TIMESTAMP",
+                type: "TIMESTAMP",
             },
             {
                 name: "Opportunity",
