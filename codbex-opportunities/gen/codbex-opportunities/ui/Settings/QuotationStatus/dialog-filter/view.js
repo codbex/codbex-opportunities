@@ -7,7 +7,7 @@ const viewData = {
     id: "QuotationStatus-filter",
     label: "QuotationStatus Filter",
     link: "/services/web/codbex-opportunities/gen/codbex-opportunities/ui/Settings/QuotationStatus/dialog-filter/index.html",
-    perspectiveName: "Settings",
+    perspectiveName: "Settings"
 };
 
 if (typeof exports !== 'undefined') {

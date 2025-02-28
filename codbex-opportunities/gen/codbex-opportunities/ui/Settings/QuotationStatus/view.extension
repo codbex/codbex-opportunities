@@ -1,1 +1,5 @@
-{"module":"codbex-opportunities/gen/codbex-opportunities/ui/Settings/QuotationStatus/view.js","extensionPoint":"codbex-opportunities-view","description":"codbex-opportunities - Application View"}
+{
+    "module": "codbex-opportunities/gen/codbex-opportunities/ui/Settings/QuotationStatus/view.js",
+    "extensionPoint": "codbex-opportunities-view",
+    "description": "codbex-opportunities - Application View"
+}

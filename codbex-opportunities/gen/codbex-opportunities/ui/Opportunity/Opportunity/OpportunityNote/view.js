@@ -7,9 +7,9 @@ const viewData = {
     id: "OpportunityNote",
     label: "OpportunityNote",
     factory: "frame",
-    region: "center",
-    link: "/services/web/codbex-opportunities/gen/codbex-opportunities/ui/entities/OpportunityNote/index.html",
-    perspectiveName: "entities",
+    region: "bottom",
+    link: "/services/web/codbex-opportunities/gen/codbex-opportunities/ui/Opportunity/Opportunity/OpportunityNote/index.html",
+    perspectiveName: "Opportunity"
 };
 
 if (typeof exports !== 'undefined') {

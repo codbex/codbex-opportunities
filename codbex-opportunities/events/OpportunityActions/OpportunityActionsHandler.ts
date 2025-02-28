@@ -8,10 +8,10 @@ export const trigger = (event) => {
         const opportunityActionId = opportunityAction.Id;
         const opportunityActionDescription = opportunityAction.Description;
         const opportunity = opportunityAction.Opportunity;
-        const opportunityActionDate = opportunityAction.Date;
+        const opportunityActionDue = opportunityAction.Due;
 
         const processInstanceId = process.start("opportunity-action-process", {
-            OpportunityActionDate: opportunityActionDate,
+            OpportunityActionDue: opportunityActionDue,
             Opportunity: opportunity,
             OpportunityActionDescription: opportunityActionDescription,
             OpportunityActionId: opportunityActionId

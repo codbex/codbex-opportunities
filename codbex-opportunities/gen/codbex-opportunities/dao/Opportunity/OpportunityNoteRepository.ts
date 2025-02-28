@@ -225,7 +225,7 @@ export class OpportunityNoteRepository {
     }
 
     private async triggerEvent(data: OpportunityNoteEntityEvent | OpportunityNoteUpdateEntityEvent) {
-        const triggerExtensions = await extensions.loadExtensionModules("codbex-opportunities-entities-OpportunityNote", ["trigger"]);
+        const triggerExtensions = await extensions.loadExtensionModules("codbex-opportunities-Opportunity-OpportunityNote", ["trigger"]);
         triggerExtensions.forEach(triggerExtension => {
             try {
                 triggerExtension.trigger(data);
@@ -233,6 +233,6 @@ export class OpportunityNoteRepository {
                 console.error(error);
             }            
         });
-        producer.topic("codbex-opportunities-entities-OpportunityNote").send(JSON.stringify(data));
+        producer.topic("codbex-opportunities-Opportunity-OpportunityNote").send(JSON.stringify(data));
     }
 }

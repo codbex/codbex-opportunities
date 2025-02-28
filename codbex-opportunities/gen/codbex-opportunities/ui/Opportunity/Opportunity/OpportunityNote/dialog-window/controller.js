@@ -1,9 +1,9 @@
 angular.module('page', ["ideUI", "ideView", "entityApi"])
 	.config(["messageHubProvider", function (messageHubProvider) {
-		messageHubProvider.eventIdPrefix = 'codbex-opportunities.entities.OpportunityNote';
+		messageHubProvider.eventIdPrefix = 'codbex-opportunities.Opportunity.OpportunityNote';
 	}])
 	.config(["entityApiProvider", function (entityApiProvider) {
-		entityApiProvider.baseUrl = "/services/ts/codbex-opportunities/gen/codbex-opportunities/api/entities/OpportunityNoteService.ts";
+		entityApiProvider.baseUrl = "/services/ts/codbex-opportunities/gen/codbex-opportunities/api/Opportunity/OpportunityNoteService.ts";
 	}])
 	.controller('PageController', ['$scope', 'messageHub', 'ViewParameters', 'entityApi', function ($scope, messageHub, ViewParameters, entityApi) {
 
@@ -21,6 +21,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		let params = ViewParameters.get();
 		if (Object.keys(params).length) {
 			$scope.action = params.action;
+
 			if (params.entity.Timestamp) {
 				params.entity.Timestamp = new Date(params.entity.Timestamp);
 			}
@@ -34,7 +35,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			entity[$scope.selectedMainEntityKey] = $scope.selectedMainEntityId;
 			entityApi.create(entity).then(function (response) {
 				if (response.status != 201) {
-					$scope.errorMessage = `Unable to create OpportunityNote: '${response.message}'`;
+					messageHub.showAlertError("OpportunityNote", `Unable to create OpportunityNote: '${response.message}'`);
 					return;
 				}
 				messageHub.postMessage("entityCreated", response.data);
@@ -49,7 +50,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			entity[$scope.selectedMainEntityKey] = $scope.selectedMainEntityId;
 			entityApi.update(id, entity).then(function (response) {
 				if (response.status != 200) {
-					$scope.errorMessage = `Unable to update OpportunityNote: '${response.message}'`;
+					messageHub.showAlertError("OpportunityNote", `Unable to update OpportunityNote: '${response.message}'`);
 					return;
 				}
 				messageHub.postMessage("entityUpdated", response.data);
@@ -63,10 +64,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			$scope.entity = {};
 			$scope.action = 'select';
 			messageHub.closeDialogWindow("OpportunityNote-details");
-		};
-
-		$scope.clearErrorMessage = function () {
-			$scope.errorMessage = null;
 		};
 
 	}]);

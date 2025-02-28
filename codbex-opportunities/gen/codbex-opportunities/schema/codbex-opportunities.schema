@@ -539,15 +539,15 @@
                         "name": "OPPORTUNITYACTION_OPPORTUNITY"
                     },
                     {
-                        "type": "INTEGER",
-                        "nullable": true,
-                        "name": "OPPORTUNITYACTION_EMPLOYEE"
-                    },
-                    {
                         "type": "VARCHAR",
                         "length": 1000,
                         "nullable": true,
                         "name": "OPPORTUNITYACTION_DESCRIPTION"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "OPPORTUNITYACTION_INITIATOR"
                     },
                     {
                         "type": "INTEGER",
@@ -931,7 +931,7 @@
                 "type": "foreignKey",
                 "table": "CODBEX_OPPORTUNITYACTION",
                 "constraintName": "OpportunityAction_Employee",
-                "columns": "OPPORTUNITYACTION_EMPLOYEE",
+                "columns": "OPPORTUNITYACTION_INITIATOR",
                 "referencedTable": "CODBEX_EMPLOYEE",
                 "referencedColumns": "EMPLOYEE_ID"
             },

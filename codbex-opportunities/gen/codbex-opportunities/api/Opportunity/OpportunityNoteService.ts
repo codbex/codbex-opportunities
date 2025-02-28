@@ -1,10 +1,10 @@
 import { Controller, Get, Post, Put, Delete, response } from "sdk/http"
 import { Extensions } from "sdk/extensions"
-import { OpportunityNoteRepository, OpportunityNoteEntityOptions } from "../../dao/entities/OpportunityNoteRepository";
+import { OpportunityNoteRepository, OpportunityNoteEntityOptions } from "../../dao/Opportunity/OpportunityNoteRepository";
 import { ValidationError } from "../utils/ValidationError";
 import { HttpUtils } from "../utils/HttpUtils";
 
-const validationModules = await Extensions.loadExtensionModules("codbex-opportunities-entities-OpportunityNote", ["validate"]);
+const validationModules = await Extensions.loadExtensionModules("codbex-opportunities-Opportunity-OpportunityNote", ["validate"]);
 
 @Controller
 class OpportunityNoteService {
@@ -19,6 +19,17 @@ class OpportunityNoteService {
                 $offset: ctx.queryParameters["$offset"] ? parseInt(ctx.queryParameters["$offset"]) : undefined
             };
 
+            let Opportunity = parseInt(ctx.queryParameters.Opportunity);
+            Opportunity = isNaN(Opportunity) ? ctx.queryParameters.Opportunity : Opportunity;
+
+            if (Opportunity !== undefined) {
+                options.$filter = {
+                    equals: {
+                        Opportunity: Opportunity
+                    }
+                };
+            }
+
             return this.repository.findAll(options);
         } catch (error: any) {
             this.handleError(error);
@@ -30,7 +41,7 @@ class OpportunityNoteService {
         try {
             this.validateEntity(entity);
             entity.Id = this.repository.create(entity);
-            response.setHeader("Content-Location", "/services/ts/codbex-opportunities/gen/codbex-opportunities/api/entities/OpportunityNoteService.ts/" + entity.Id);
+            response.setHeader("Content-Location", "/services/ts/codbex-opportunities/gen/codbex-opportunities/api/Opportunity/OpportunityNoteService.ts/" + entity.Id);
             response.setStatus(response.CREATED);
             return entity;
         } catch (error: any) {

@@ -5,7 +5,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 	.config(["entityApiProvider", function (entityApiProvider) {
 		entityApiProvider.baseUrl = "/services/ts/codbex-opportunities/gen/codbex-opportunities/api/Lead/LeadService.ts";
 	}])
-	.controller('PageController', ['$scope', 'Extensions', 'messageHub', 'entityApi', function ($scope, Extensions, messageHub, entityApi) {
+	.controller('PageController', ['$scope',  '$http', 'Extensions', 'messageHub', 'entityApi', function ($scope,  $http, Extensions, messageHub, entityApi) {
 
 		$scope.entity = {};
 		$scope.forms = {
@@ -116,5 +116,69 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		$scope.cancel = function () {
 			messageHub.postMessage("clearDetails");
 		};
+		
+		//-----------------Dialogs-------------------//
+		
+		$scope.createIndustry = function () {
+			messageHub.showDialogWindow("Industry-details", {
+				action: "create",
+				entity: {},
+			}, null, false);
+		};
+		$scope.createStatus = function () {
+			messageHub.showDialogWindow("LeadStatus-details", {
+				action: "create",
+				entity: {},
+			}, null, false);
+		};
+		$scope.createOwner = function () {
+			messageHub.showDialogWindow("Employee-details", {
+				action: "create",
+				entity: {},
+			}, null, false);
+		};
+
+		//-----------------Dialogs-------------------//
+
+
+
+		//----------------Dropdowns-----------------//
+
+		$scope.refreshIndustry = function () {
+			$scope.optionsIndustry = [];
+			$http.get("/services/ts/codbex-industries/gen/codbex-industries/api/industry/IndustryService.ts").then(function (response) {
+				$scope.optionsIndustry = response.data.map(e => {
+					return {
+						value: e.Id,
+						text: e.Name
+					}
+				});
+			});
+		};
+		$scope.refreshStatus = function () {
+			$scope.optionsStatus = [];
+			$http.get("/services/ts/codbex-opportunities/gen/codbex-opportunities/api/Settings/LeadStatusService.ts").then(function (response) {
+				$scope.optionsStatus = response.data.map(e => {
+					return {
+						value: e.Id,
+						text: e.Name
+					}
+				});
+			});
+		};
+		$scope.refreshOwner = function () {
+			$scope.optionsOwner = [];
+			$http.get("/services/ts/codbex-employees/gen/codbex-employees/api/Employees/EmployeeService.ts").then(function (response) {
+				$scope.optionsOwner = response.data.map(e => {
+					return {
+						value: e.Id,
+						text: e.FirstName
+					}
+				});
+			});
+		};
+
+		//----------------Dropdowns-----------------//	
+		
 
 	}]);

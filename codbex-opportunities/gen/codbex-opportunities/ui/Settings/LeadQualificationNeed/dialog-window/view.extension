@@ -1,1 +1,5 @@
-{"module":"codbex-opportunities/gen/codbex-opportunities/ui/Settings/LeadQualificationNeed/dialog-window/view.js","extensionPoint":"codbex-opportunities-dialog-window","description":"codbex-opportunities - Application Dialog Window"}
+{
+    "module": "codbex-opportunities/gen/codbex-opportunities/ui/Settings/LeadQualificationNeed/dialog-window/view.js",
+    "extensionPoint": "dialog-window",
+    "description": "codbex-opportunities - Application Dialog Window"
+}

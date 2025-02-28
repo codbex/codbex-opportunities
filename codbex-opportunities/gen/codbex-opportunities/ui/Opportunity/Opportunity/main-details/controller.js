@@ -5,7 +5,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 	.config(["entityApiProvider", function (entityApiProvider) {
 		entityApiProvider.baseUrl = "/services/ts/codbex-opportunities/gen/codbex-opportunities/api/Opportunity/OpportunityService.ts";
 	}])
-	.controller('PageController', ['$scope', 'Extensions', 'messageHub', 'entityApi', function ($scope, Extensions, messageHub, entityApi) {
+	.controller('PageController', ['$scope',  '$http', 'Extensions', 'messageHub', 'entityApi', function ($scope,  $http, Extensions, messageHub, entityApi) {
 
 		$scope.entity = {};
 		$scope.forms = {
@@ -141,5 +141,154 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		$scope.cancel = function () {
 			messageHub.postMessage("clearDetails");
 		};
+		
+		//-----------------Dialogs-------------------//
+		
+		$scope.createCustomer = function () {
+			messageHub.showDialogWindow("Customer-details", {
+				action: "create",
+				entity: {},
+			}, null, false);
+		};
+		$scope.createLead = function () {
+			messageHub.showDialogWindow("Lead-details", {
+				action: "create",
+				entity: {},
+			}, null, false);
+		};
+		$scope.createOwner = function () {
+			messageHub.showDialogWindow("Employee-details", {
+				action: "create",
+				entity: {},
+			}, null, false);
+		};
+		$scope.createType = function () {
+			messageHub.showDialogWindow("OpportunityType-details", {
+				action: "create",
+				entity: {},
+			}, null, false);
+		};
+		$scope.createPriority = function () {
+			messageHub.showDialogWindow("OpportunityPriority-details", {
+				action: "create",
+				entity: {},
+			}, null, false);
+		};
+		$scope.createProbability = function () {
+			messageHub.showDialogWindow("OpportunityProbability-details", {
+				action: "create",
+				entity: {},
+			}, null, false);
+		};
+		$scope.createStatus = function () {
+			messageHub.showDialogWindow("OpportunityStatus-details", {
+				action: "create",
+				entity: {},
+			}, null, false);
+		};
+		$scope.createCurrency = function () {
+			messageHub.showDialogWindow("Currency-details", {
+				action: "create",
+				entity: {},
+			}, null, false);
+		};
+
+		//-----------------Dialogs-------------------//
+
+
+
+		//----------------Dropdowns-----------------//
+
+		$scope.refreshCustomer = function () {
+			$scope.optionsCustomer = [];
+			$http.get("/services/ts/codbex-partners/gen/codbex-partners/api/Customers/CustomerService.ts").then(function (response) {
+				$scope.optionsCustomer = response.data.map(e => {
+					return {
+						value: e.Id,
+						text: e.Name
+					}
+				});
+			});
+		};
+		$scope.refreshLead = function () {
+			$scope.optionsLead = [];
+			$http.get("/services/ts/codbex-opportunities/gen/codbex-opportunities/api/Lead/LeadService.ts").then(function (response) {
+				$scope.optionsLead = response.data.map(e => {
+					return {
+						value: e.Id,
+						text: e.Number
+					}
+				});
+			});
+		};
+		$scope.refreshOwner = function () {
+			$scope.optionsOwner = [];
+			$http.get("/services/ts/codbex-employees/gen/codbex-employees/api/Employees/EmployeeService.ts").then(function (response) {
+				$scope.optionsOwner = response.data.map(e => {
+					return {
+						value: e.Id,
+						text: e.FirstName
+					}
+				});
+			});
+		};
+		$scope.refreshType = function () {
+			$scope.optionsType = [];
+			$http.get("/services/ts/codbex-opportunities/gen/codbex-opportunities/api/Settings/OpportunityTypeService.ts").then(function (response) {
+				$scope.optionsType = response.data.map(e => {
+					return {
+						value: e.Id,
+						text: e.Name
+					}
+				});
+			});
+		};
+		$scope.refreshPriority = function () {
+			$scope.optionsPriority = [];
+			$http.get("/services/ts/codbex-opportunities/gen/codbex-opportunities/api/Settings/OpportunityPriorityService.ts").then(function (response) {
+				$scope.optionsPriority = response.data.map(e => {
+					return {
+						value: e.Id,
+						text: e.Name
+					}
+				});
+			});
+		};
+		$scope.refreshProbability = function () {
+			$scope.optionsProbability = [];
+			$http.get("/services/ts/codbex-opportunities/gen/codbex-opportunities/api/Settings/OpportunityProbabilityService.ts").then(function (response) {
+				$scope.optionsProbability = response.data.map(e => {
+					return {
+						value: e.Id,
+						text: e.Name
+					}
+				});
+			});
+		};
+		$scope.refreshStatus = function () {
+			$scope.optionsStatus = [];
+			$http.get("/services/ts/codbex-opportunities/gen/codbex-opportunities/api/Settings/OpportunityStatusService.ts").then(function (response) {
+				$scope.optionsStatus = response.data.map(e => {
+					return {
+						value: e.Id,
+						text: e.Name
+					}
+				});
+			});
+		};
+		$scope.refreshCurrency = function () {
+			$scope.optionsCurrency = [];
+			$http.get("/services/ts/codbex-currencies/gen/codbex-currencies/api/Currencies/CurrencyService.ts").then(function (response) {
+				$scope.optionsCurrency = response.data.map(e => {
+					return {
+						value: e.Id,
+						text: e.Code
+					}
+				});
+			});
+		};
+
+		//----------------Dropdowns-----------------//	
+		
 
 	}]);

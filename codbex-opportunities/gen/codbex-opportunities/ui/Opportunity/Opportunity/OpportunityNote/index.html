@@ -16,14 +16,18 @@
 	</head>
 
 	<body class="dg-vbox">
-		<fd-toolbar has-title="true">
+		<fd-message-page glyph="sap-icon--hint" ng-show="data == null">
+			<fd-message-page-title>Select a record to get a list of it's details.</fd-message-page-title>
+		</fd-message-page>
+
+		<fd-toolbar has-title="true" ng-hide="data == null">
 			<fd-toolbar-title>Items <span fd-object-status text="{{dataCount}}" inverted="true"></fd-toolbar-title>
 			<fd-button compact="true" dg-type="transparent" dg-label="Filter" ng-click="openFilter()"></fd-button>
 			<fd-button ng-repeat="action in pageActions" compact="true" dg-type="transparent" dg-label="{{action.label}}" ng-click="triggerPageAction(action)"></fd-button>
 			<fd-toolbar-spacer></fd-toolbar-spacer>
-			<fd-button compact="true" dg-type="emphasized" dg-label="Create" ng-click="createEntity()"></fd-button>
+			<fd-button compact="true" dg-type="emphasized" dg-label="Create" ng-click="createEntity()"
+				state="{{selectedMainEntityId == null ? 'disabled' : ''}}"></fd-button>
 		</fd-toolbar>
-
 		<fd-scrollbar class="dg-full-height" ng-hide="data == null">
 			<table fd-table display-mode="compact" inner-borders="top" outer-borders="none">
 				<thead fd-table-header sticky="true">

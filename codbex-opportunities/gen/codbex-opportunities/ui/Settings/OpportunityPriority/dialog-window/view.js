@@ -7,7 +7,7 @@ const viewData = {
     id: "OpportunityPriority-details",
     label: "OpportunityPriority",
     link: "/services/web/codbex-opportunities/gen/codbex-opportunities/ui/Settings/OpportunityPriority/dialog-window/index.html",
-    perspectiveName: "Settings",
+    perspectiveName: "Settings"
 };
 
 if (typeof exports !== 'undefined') {

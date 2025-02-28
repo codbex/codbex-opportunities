@@ -4,10 +4,10 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "OpportunityNote-filter",
-    label: "OpportunityNote Filter",
-    link: "/services/web/codbex-opportunities/gen/codbex-opportunities/ui/entities/OpportunityNote/dialog-filter/index.html",
-    perspectiveName: "entities",
+    id: "Opportunity-details",
+    label: "Opportunity",
+    link: "/services/web/codbex-opportunities/gen/codbex-opportunities/ui/Opportunity/Opportunity/dialog-window/index.html",
+    perspectiveName: "Opportunity",
 };
 
 if (typeof exports !== 'undefined') {

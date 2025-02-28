@@ -7,7 +7,7 @@ const viewData = {
     id: "ActionType-details",
     label: "ActionType",
     link: "/services/web/codbex-opportunities/gen/codbex-opportunities/ui/Settings/ActionType/dialog-window/index.html",
-    perspectiveName: "Settings",
+    perspectiveName: "Settings"
 };
 
 if (typeof exports !== 'undefined') {

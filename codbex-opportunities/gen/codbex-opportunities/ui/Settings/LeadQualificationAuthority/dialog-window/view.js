@@ -7,7 +7,7 @@ const viewData = {
     id: "LeadQualificationAuthority-details",
     label: "LeadQualificationAuthority",
     link: "/services/web/codbex-opportunities/gen/codbex-opportunities/ui/Settings/LeadQualificationAuthority/dialog-window/index.html",
-    perspectiveName: "Settings",
+    perspectiveName: "Settings"
 };
 
 if (typeof exports !== 'undefined') {

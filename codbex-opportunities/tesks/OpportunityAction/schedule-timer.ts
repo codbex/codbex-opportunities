@@ -3,14 +3,14 @@ import { process } from "sdk/bpm";
 const execution = process.getExecutionContext();
 const executionId = execution.getId();
 
-const opportunityActionDate = process.getVariable(executionId, "OpportunityActionDate");
+const opportunityActionDue = process.getVariable(executionId, "OpportunityActionDue");
 
-if (!opportunityActionDate) {
+if (!opportunityActionDue) {
     throw new Error("OpportunityActionDate is missing or invalid.");
 }
 
 const currentTime = new Date();
-const scheduledTime = new Date(opportunityActionDate);
+const scheduledTime = new Date(opportunityActionDue);
 
 if (isNaN(scheduledTime.getTime())) {
     throw new Error("OpportunityActionDate is not a valid date.");

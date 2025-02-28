@@ -81,30 +81,11 @@
 							<fd-form-message dg-type="error" ng-show="!forms.details['Description'].$valid">Incorrect Input</fd-form-message>
 						</div>
 					</fd-form-item>
-                    <fd-form-item class="fd-row">
-                    	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idOpportunity" dg-colon="true">Opportunity</fd-form-label>
-                        </div>
-                        <div class="fd-col fd-col-md--8">
-	                        <fd-form-input-message-group dg-inactive="{{ forms.details['Opportunity'].$valid }}">
-	                            <fd-input id="idOpportunity"
-	                                name="Opportunity"
-	                                state="{{ forms.details['Opportunity'].$valid ? '' : 'error' }}"
-	                                ng-model="entity.Opportunity"
-	                                ng-minlength="${property.minLength} || 0"
-	                                ng-maxlength="${property.maxLength} || -1"
-	                                type="text"
-	                                placeholder="Enter Opportunity">
-	                            </fd-input>
-	                            <fd-form-message dg-type="error">Incorrect Input</fd-form-message>
-	                        </fd-form-input-message-group>
-	                    </div>
-                    </fd-form-item>
                 </fd-form-group>
             </fd-fieldset>
         </fd-scrollbar>
 
-		<fd-bar bar-design="footer" compact="true" ng-show="action !== 'select'">
+        <fd-bar bar-design="footer" compact="true" ng-show="action !== 'select'">
 			<fd-bar-right>
 				<fd-bar-element>
 					<fd-button dg-label="Filter" dg-type="emphasized" ng-click="filter()"></fd-button>

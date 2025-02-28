@@ -7,7 +7,7 @@ const viewData = {
     id: "QuotationItem-filter",
     label: "QuotationItem Filter",
     link: "/services/web/codbex-opportunities/gen/codbex-opportunities/ui/Quotation/Quotation/QuotationItem/dialog-filter/index.html",
-    perspectiveName: "Quotation",
+    perspectiveName: "Quotation"
 };
 
 if (typeof exports !== 'undefined') {
