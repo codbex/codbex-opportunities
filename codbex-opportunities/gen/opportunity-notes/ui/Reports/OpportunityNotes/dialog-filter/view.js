@@ -7,7 +7,7 @@ const viewData = {
     id: "OpportunityNotes-Report-filter",
     label: "OpportunityNotes Rerport Filter",
     link: "/services/web/codbex-opportunities/gen/opportunity-notes/ui/Reports/OpportunityNotes/dialog-filter/index.html",
-    perspectiveName: "Reports",
+    perspectiveName: "Reports"
 };
 
 if (typeof exports !== 'undefined') {

@@ -46,10 +46,12 @@ try {
 
     console.log("Body: ", JSON.stringify(body));
 
-    const newOpportunityNote = await opportunityNoteDao.create(body);
-    if (!newOpportunityNote) {
-        // throw new Error("OpportunityNote creation failed!");
+    try {
+        const newOpportunityNote = await opportunityNoteDao.create(body);
+    } catch (e) {
+        console.log("Exception: ", e);
     }
+
 } catch (e) {
     console.log("Error: ", e);
 }

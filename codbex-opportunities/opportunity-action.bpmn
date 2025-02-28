@@ -5,7 +5,7 @@
     <serviceTask id="schedule-timer-task" name="Schedule Timer" flowable:async="true" flowable:delegateExpression="${JSTask}">
       <extensionElements>
         <flowable:field name="handler">
-          <flowable:string><![CDATA[codbex-opportunities/tesks/OpportunityAction/schedule-timer.ts]]></flowable:string>
+          <flowable:string><![CDATA[codbex-opportunities/tasks/OpportunityAction/schedule-timer.ts]]></flowable:string>
         </flowable:field>
       </extensionElements>
     </serviceTask>
@@ -20,7 +20,7 @@
     <serviceTask id="process-opportunity-action" name="Process Opportunity Action" flowable:async="true" flowable:delegateExpression="${JSTask}">
       <extensionElements>
         <flowable:field name="handler">
-          <flowable:string><![CDATA[codbex-opportunities/tesks/OpportunityAction/process-opportunity-action.ts]]></flowable:string>
+          <flowable:string><![CDATA[codbex-opportunities/tasks/OpportunityAction/process-opportunity-action.ts]]></flowable:string>
         </flowable:field>
       </extensionElements>
     </serviceTask>
