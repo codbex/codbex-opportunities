@@ -13,30 +13,20 @@ try {
     const execution = process.getExecutionContext();
     const executionId = execution.getId();
 
-    console.log("Process Id: ", executionId);
-
     const opportunityId = process.getVariable(executionId, "Opportunity");
     const opportunityActionSubject = process.getVariable(executionId, "OpportunityActionSubject");
     const opportunityActionDescription = process.getVariable(executionId, "OpportunityActionDescription");
     const opportunityActionId = process.getVariable(executionId, "OpportunityActionId");
 
-    console.log("Opportunity Id: ", opportunityId);
-    console.log("Description: ", opportunityActionDescription);
-    console.log("Action Id: ", opportunityActionId);
-
     const opportunity = await opportunityDao.findById(opportunityId);
     if (!opportunity) {
-        throw new Error(`Bank account with ID ${opportunityId} not found!`);
+        throw new Error(`Opportunity with ID ${opportunityId} not found!`);
     }
 
-    console.log("Opportunity: ", JSON.stringify(opportunity));
-
-    const opportunityAction = await opportunityActionDao.findById(opportunityActionId);
+    var opportunityAction = await opportunityActionDao.findById(opportunityActionId);
     if (!opportunityAction) {
-        throw new Error(`Bank account with ID ${opportunityActionId} not found!`);
+        throw new Error(`Opportunity Action with ID ${opportunityActionId} not found!`);
     }
-
-    console.log("Opportunity Action: ", JSON.stringify(opportunityAction));
 
     const body = {
         "Subject": opportunityActionSubject,
@@ -44,13 +34,11 @@ try {
         "Opportunity": opportunityId,
     };
 
-    console.log("Body: ", JSON.stringify(body));
+    const newOpportunityNote = await opportunityNoteDao.create(body);
 
-    try {
-        const newOpportunityNote = await opportunityNoteDao.create(body);
-    } catch (e) {
-        console.log("Exception: ", e);
-    }
+    opportunityAction.Status = 6;
+
+    opportunityActionDao.update(opportunityAction);
 
 } catch (e) {
     console.log("Error: ", e);
