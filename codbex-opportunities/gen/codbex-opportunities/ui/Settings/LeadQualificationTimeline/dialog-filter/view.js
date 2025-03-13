@@ -7,7 +7,7 @@ const viewData = {
     id: "LeadQualificationTimeline-filter",
     label: "LeadQualificationTimeline Filter",
     link: "/services/web/codbex-opportunities/gen/codbex-opportunities/ui/Settings/LeadQualificationTimeline/dialog-filter/index.html",
-    perspectiveName: "Settings",
+    perspectiveName: "Settings"
 };
 
 if (typeof exports !== 'undefined') {

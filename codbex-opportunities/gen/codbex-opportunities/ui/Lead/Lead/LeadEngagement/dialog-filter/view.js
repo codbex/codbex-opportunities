@@ -7,7 +7,7 @@ const viewData = {
     id: "LeadEngagement-filter",
     label: "LeadEngagement Filter",
     link: "/services/web/codbex-opportunities/gen/codbex-opportunities/ui/Lead/Lead/LeadEngagement/dialog-filter/index.html",
-    perspectiveName: "Lead",
+    perspectiveName: "Lead"
 };
 
 if (typeof exports !== 'undefined') {

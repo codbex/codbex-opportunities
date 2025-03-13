@@ -1,1 +1,5 @@
-{"module":"codbex-opportunities/gen/codbex-opportunities/ui/Lead/perspective.js","extensionPoint":"codbex-opportunities","description":"codbex-opportunities - Perspective - Lead"}
+{
+    "module": "codbex-opportunities/gen/codbex-opportunities/ui/Lead/perspective.js",
+    "extensionPoint": "codbex-opportunities",
+    "description": "codbex-opportunities - Perspective - Lead"
+}

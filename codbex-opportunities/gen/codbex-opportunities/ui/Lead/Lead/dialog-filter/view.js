@@ -7,7 +7,7 @@ const viewData = {
     id: "Lead-filter",
     label: "Lead Filter",
     link: "/services/web/codbex-opportunities/gen/codbex-opportunities/ui/Lead/Lead/dialog-filter/index.html",
-    perspectiveName: "Lead",
+    perspectiveName: "Lead"
 };
 
 if (typeof exports !== 'undefined') {

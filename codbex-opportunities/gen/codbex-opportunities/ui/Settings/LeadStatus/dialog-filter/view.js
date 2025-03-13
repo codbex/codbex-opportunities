@@ -7,7 +7,7 @@ const viewData = {
     id: "LeadStatus-filter",
     label: "LeadStatus Filter",
     link: "/services/web/codbex-opportunities/gen/codbex-opportunities/ui/Settings/LeadStatus/dialog-filter/index.html",
-    perspectiveName: "Settings",
+    perspectiveName: "Settings"
 };
 
 if (typeof exports !== 'undefined') {

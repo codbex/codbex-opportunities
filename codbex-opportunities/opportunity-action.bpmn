@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:flowable="http://flowable.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.flowable.org/processdef" exporter="Flowable Open Source Modeler" exporterVersion="6.8.1">
+  <process id="opportunity-action-process" name="Opportunity Action Process" isExecutable="true">
+    <startEvent id="start-event" name="Start Event"/>
+    <serviceTask id="schedule-timer-task" name="Schedule Timer" flowable:async="true" flowable:delegateExpression="${JSTask}">
+      <extensionElements>
+        <flowable:field name="handler">
+          <flowable:string><![CDATA[codbex-opportunities/tasks/OpportunityAction/schedule-timer.ts]]></flowable:string>
+        </flowable:field>
+      </extensionElements>
+    </serviceTask>
+    <sequenceFlow id="sid-797626AE-B2F6-4C00-ABEE-FB30ADC177E4" sourceRef="start-event" targetRef="schedule-timer-task"/>
+    <endEvent id="end-event" name="End Event"/>
+    <intermediateCatchEvent id="sid-2B2EAC0E-DB89-4C16-B821-B7287C0FE009">
+      <timerEventDefinition>
+        <timeDate>${TimerDelay}</timeDate>
+      </timerEventDefinition>
+    </intermediateCatchEvent>
+    <sequenceFlow id="sid-8C17498A-9600-4878-98B1-D2A928AD64A8" sourceRef="schedule-timer-task" targetRef="sid-2B2EAC0E-DB89-4C16-B821-B7287C0FE009"/>
+    <serviceTask id="process-opportunity-action" name="Process Opportunity Action" flowable:async="true" flowable:delegateExpression="${JSTask}">
+      <extensionElements>
+        <flowable:field name="handler">
+          <flowable:string><![CDATA[codbex-opportunities/tasks/OpportunityAction/process-opportunity-action.ts]]></flowable:string>
+        </flowable:field>
+      </extensionElements>
+    </serviceTask>
+    <sequenceFlow id="sid-7D353CCB-C3FD-47EB-910E-A443214134A9" sourceRef="sid-2B2EAC0E-DB89-4C16-B821-B7287C0FE009" targetRef="process-opportunity-action"/>
+    <sequenceFlow id="sid-63EBE170-597B-4220-8F58-06389C620A04" sourceRef="process-opportunity-action" targetRef="end-event"/>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_opportunity-action-process">
+    <bpmndi:BPMNPlane bpmnElement="opportunity-action-process" id="BPMNPlane_opportunity-action-process">
+      <bpmndi:BPMNShape bpmnElement="start-event" id="BPMNShape_start-event">
+        <omgdc:Bounds height="30.0" width="30.0" x="45.0" y="78.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="schedule-timer-task" id="BPMNShape_schedule-timer-task">
+        <omgdc:Bounds height="78.0" width="97.0" x="120.0" y="53.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="end-event" id="BPMNShape_end-event">
+        <omgdc:Bounds height="28.0" width="28.0" x="555.0" y="79.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-2B2EAC0E-DB89-4C16-B821-B7287C0FE009" id="BPMNShape_sid-2B2EAC0E-DB89-4C16-B821-B7287C0FE009">
+        <omgdc:Bounds height="31.0" width="31.0" x="275.5" y="78.5"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="process-opportunity-action" id="BPMNShape_process-opportunity-action">
+        <omgdc:Bounds height="80.0" width="100.0" x="375.0" y="55.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="sid-797626AE-B2F6-4C00-ABEE-FB30ADC177E4" id="BPMNEdge_sid-797626AE-B2F6-4C00-ABEE-FB30ADC177E4" flowable:sourceDockerX="15.0" flowable:sourceDockerY="15.0" flowable:targetDockerX="48.5" flowable:targetDockerY="39.0">
+        <omgdi:waypoint x="74.94998667680801" y="93.0"/>
+        <omgdi:waypoint x="97.0" y="93.0"/>
+        <omgdi:waypoint x="97.0" y="92.0"/>
+        <omgdi:waypoint x="120.0" y="92.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-8C17498A-9600-4878-98B1-D2A928AD64A8" id="BPMNEdge_sid-8C17498A-9600-4878-98B1-D2A928AD64A8" flowable:sourceDockerX="48.5" flowable:sourceDockerY="39.0" flowable:targetDockerX="15.5" flowable:targetDockerY="15.5">
+        <omgdi:waypoint x="216.9499999999996" y="92.79102040816328"/>
+        <omgdi:waypoint x="275.50139477709854" y="93.74697181294536"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-63EBE170-597B-4220-8F58-06389C620A04" id="BPMNEdge_sid-63EBE170-597B-4220-8F58-06389C620A04" flowable:sourceDockerX="50.0" flowable:sourceDockerY="40.0" flowable:targetDockerX="14.0" flowable:targetDockerY="14.0">
+        <omgdi:waypoint x="474.95000000000005" y="94.30555555555556"/>
+        <omgdi:waypoint x="555.0013199544089" y="93.19373187709316"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-7D353CCB-C3FD-47EB-910E-A443214134A9" id="BPMNEdge_sid-7D353CCB-C3FD-47EB-910E-A443214134A9" flowable:sourceDockerX="15.5" flowable:sourceDockerY="15.5" flowable:targetDockerX="50.0" flowable:targetDockerY="40.0">
+        <omgdi:waypoint x="306.4495359560427" y="94.11529538266107"/>
+        <omgdi:waypoint x="374.99999999999864" y="94.62686567164178"/>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>

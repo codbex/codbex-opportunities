@@ -7,8 +7,8 @@ const perspectiveData = {
 	id: 'Lead',
 	name: 'Lead',
 	link: '/services/web/codbex-opportunities/gen/codbex-opportunities/ui/Lead/index.html',
-	order: 100,
-	icon: '/services/web/resources/unicons/head-side.svg',
+	order: '100',
+	icon: '/services/web/resources/unicons/head-side.svg'
 };
 
 if (typeof exports !== 'undefined') {

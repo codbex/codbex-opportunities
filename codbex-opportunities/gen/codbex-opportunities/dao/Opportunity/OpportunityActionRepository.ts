@@ -10,19 +10,18 @@ export interface OpportunityActionEntity {
     Due?: Date;
     Subject?: string;
     Opportunity?: number;
-    Initiator?: number;
     Description?: string;
+    Initiator?: number;
     Type?: number;
     Status?: number;
 }
 
 export interface OpportunityActionCreateEntity {
-    readonly Date?: Date;
     readonly Due?: Date;
     readonly Subject?: string;
     readonly Opportunity?: number;
-    readonly Initiator?: number;
     readonly Description?: string;
+    readonly Initiator?: number;
     readonly Type?: number;
     readonly Status?: number;
 }
@@ -39,8 +38,8 @@ export interface OpportunityActionEntityOptions {
             Due?: Date | Date[];
             Subject?: string | string[];
             Opportunity?: number | number[];
-            Initiator?: number | number[];
             Description?: string | string[];
+            Initiator?: number | number[];
             Type?: number | number[];
             Status?: number | number[];
         };
@@ -50,8 +49,8 @@ export interface OpportunityActionEntityOptions {
             Due?: Date | Date[];
             Subject?: string | string[];
             Opportunity?: number | number[];
-            Initiator?: number | number[];
             Description?: string | string[];
+            Initiator?: number | number[];
             Type?: number | number[];
             Status?: number | number[];
         };
@@ -61,8 +60,8 @@ export interface OpportunityActionEntityOptions {
             Due?: Date;
             Subject?: string;
             Opportunity?: number;
-            Initiator?: number;
             Description?: string;
+            Initiator?: number;
             Type?: number;
             Status?: number;
         };
@@ -72,8 +71,8 @@ export interface OpportunityActionEntityOptions {
             Due?: Date;
             Subject?: string;
             Opportunity?: number;
-            Initiator?: number;
             Description?: string;
+            Initiator?: number;
             Type?: number;
             Status?: number;
         };
@@ -83,8 +82,8 @@ export interface OpportunityActionEntityOptions {
             Due?: Date;
             Subject?: string;
             Opportunity?: number;
-            Initiator?: number;
             Description?: string;
+            Initiator?: number;
             Type?: number;
             Status?: number;
         };
@@ -94,8 +93,8 @@ export interface OpportunityActionEntityOptions {
             Due?: Date;
             Subject?: string;
             Opportunity?: number;
-            Initiator?: number;
             Description?: string;
+            Initiator?: number;
             Type?: number;
             Status?: number;
         };
@@ -105,8 +104,8 @@ export interface OpportunityActionEntityOptions {
             Due?: Date;
             Subject?: string;
             Opportunity?: number;
-            Initiator?: number;
             Description?: string;
+            Initiator?: number;
             Type?: number;
             Status?: number;
         };
@@ -166,14 +165,14 @@ export class OpportunityActionRepository {
                 type: "INTEGER",
             },
             {
-                name: "Initiator",
-                column: "OPPORTUNITYACTION_EMPLOYEE",
-                type: "INTEGER",
-            },
-            {
                 name: "Description",
                 column: "OPPORTUNITYACTION_DESCRIPTION",
                 type: "VARCHAR",
+            },
+            {
+                name: "Initiator",
+                column: "OPPORTUNITYACTION_INITIATOR",
+                type: "INTEGER",
             },
             {
                 name: "Type",
@@ -212,6 +211,8 @@ export class OpportunityActionRepository {
     public create(entity: OpportunityActionCreateEntity): number {
         EntityUtils.setLocalDate(entity, "Date");
         EntityUtils.setLocalDate(entity, "Due");
+        // @ts-ignore
+        (entity as OpportunityActionEntity).Date = new Date();
         const id = this.dao.insert(entity);
         this.triggerEvent({
             operation: "create",

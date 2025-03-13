@@ -73,11 +73,11 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.Opportunity !== undefined) {
 				filter.$filter.equals.Opportunity = entity.Opportunity;
 			}
-			if (entity.Initiator !== undefined) {
-				filter.$filter.equals.Initiator = entity.Initiator;
-			}
 			if (entity.Description) {
 				filter.$filter.contains.Description = entity.Description;
+			}
+			if (entity.Initiator !== undefined) {
+				filter.$filter.equals.Initiator = entity.Initiator;
 			}
 			if (entity.Type !== undefined) {
 				filter.$filter.equals.Type = entity.Type;

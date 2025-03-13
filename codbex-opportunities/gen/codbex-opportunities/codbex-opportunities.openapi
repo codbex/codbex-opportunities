@@ -28,7 +28,7 @@ tags:
   - name: Settings
   - name: Settings
   - name: Lead
-  - name: entities
+  - name: Opportunity
 paths:
   /codbex-opportunities/gen/codbex-opportunities/api/Lead/LeadService.ts:
     get:
@@ -7622,7 +7622,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-opportunities/gen/codbex-opportunities/api/entities/OpportunityNoteService.ts:
+  /codbex-opportunities/gen/codbex-opportunities/api/Opportunity/OpportunityNoteService.ts:
     get:
       summary: List OpportunityNote
       parameters:
@@ -7643,7 +7643,7 @@ paths:
             type: integer
             allowEmptyValue: true
       tags:
-        - entities
+        - Opportunity
       responses:
         200:
           description: Successful Request
@@ -7674,7 +7674,7 @@ paths:
     post:
       summary: Create OpportunityNote
       tags:
-        - entities
+        - Opportunity
       requestBody:
         content:
           application/json:
@@ -7706,7 +7706,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-opportunities/gen/codbex-opportunities/api/entities/OpportunityNoteService.ts/{id}:
+  /codbex-opportunities/gen/codbex-opportunities/api/Opportunity/OpportunityNoteService.ts/{id}:
     get:
       summary: Get OpportunityNote by Id
       parameters:
@@ -7717,7 +7717,7 @@ paths:
           schema:
             type: string
       tags:
-        - entities
+        - Opportunity
       responses:
         200:
           description: Successful Request
@@ -7755,7 +7755,7 @@ paths:
           schema:
             type: string
       tags:
-        - entities
+        - Opportunity
       requestBody:
         content:
           application/json:
@@ -7803,7 +7803,7 @@ paths:
           schema:
             type: string
       tags:
-        - entities
+        - Opportunity
       responses:
         204:
           description: Successful Request
@@ -7825,11 +7825,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-opportunities/gen/codbex-opportunities/api/entities/OpportunityNoteService.ts/count:
+  /codbex-opportunities/gen/codbex-opportunities/api/Opportunity/OpportunityNoteService.ts/count:
     get:
       summary: Count the number of OpportunityNote
       tags:
-        - entities
+        - Opportunity
       responses:
         200:
           description: Successful Request
@@ -7853,7 +7853,7 @@ paths:
     post:
       summary: Count the number of OpportunityNote by OpportunityNoteFilterOptions
       tags:
-        - entities
+        - Opportunity
       requestBody:
         content:
           application/json:
@@ -7867,6 +7867,7 @@ paths:
                     notEquals:
                       Id: 33
                     contains:
+                      Subject: "abcd"
                       Description: "abcd"
                     greaterThan:
                       Id: 0
@@ -7889,6 +7890,7 @@ paths:
                 value:
                   $filter:
                     contains:
+                      Subject: "abcd"
                       Description: "abcd"
               countWithGreaterThan:
                 summary: Count with Greater Than
@@ -7935,11 +7937,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-opportunities/gen/codbex-opportunities/api/entities/OpportunityNoteService.ts/search:
+  /codbex-opportunities/gen/codbex-opportunities/api/Opportunity/OpportunityNoteService.ts/search:
     post:
       summary: Search OpportunityNote by OpportunityNoteFilterOptions
       tags:
-        - entities
+        - Opportunity
       requestBody:
         content:
           application/json:
@@ -7953,6 +7955,7 @@ paths:
                     notEquals:
                       Id: 33
                     contains:
+                      Subject: "abcd"
                       Description: "abcd"
                     greaterThan:
                       Id: 0
@@ -7975,6 +7978,7 @@ paths:
                 value:
                   $filter:
                     contains:
+                      Subject: "abcd"
                       Description: "abcd"
               searchWithGreaterThan:
                 summary: Search with Greater Than
@@ -11244,7 +11248,7 @@ components:
     OpportunityAction:
       type: object
       required:
-        - Date
+        - Due
         - Subject
         - Initiator
       properties:
@@ -11260,13 +11264,13 @@ components:
         Opportunity:
           type: integer
           format: int32
-        Initiator:
-          type: integer
-          format: int32
         Description:
           type: string
           minLength: 0
           maxLength: 1000
+        Initiator:
+          type: integer
+          format: int32
         Type:
           type: integer
           format: int32
@@ -11313,14 +11317,6 @@ components:
                       items:
                         type: integer
                         format: int32
-                Initiator:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
                 Description:
                   oneOf:
                     - type: string
@@ -11332,6 +11328,14 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 1000
+                Initiator:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
                 Type:
                   oneOf:
                     - type: integer
@@ -11382,14 +11386,6 @@ components:
                       items:
                         type: integer
                         format: int32
-                Initiator:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
                 Description:
                   oneOf:
                     - type: string
@@ -11401,6 +11397,14 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 1000
+                Initiator:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
                 Type:
                   oneOf:
                     - type: integer
@@ -11428,11 +11432,11 @@ components:
                   minLength: 0
                   maxLength: 100
                 Opportunity:
-                Initiator:
                 Description:
                   type: string
                   minLength: 0
                   maxLength: 1000
+                Initiator:
                 Type:
                 Status:
             greaterThan:
@@ -11450,13 +11454,13 @@ components:
                 Opportunity:
                   type: integer
                   format: int32
-                Initiator:
-                  type: integer
-                  format: int32
                 Description:
                   type: string
                   minLength: 0
                   maxLength: 1000
+                Initiator:
+                  type: integer
+                  format: int32
                 Type:
                   type: integer
                   format: int32
@@ -11478,13 +11482,13 @@ components:
                 Opportunity:
                   type: integer
                   format: int32
-                Initiator:
-                  type: integer
-                  format: int32
                 Description:
                   type: string
                   minLength: 0
                   maxLength: 1000
+                Initiator:
+                  type: integer
+                  format: int32
                 Type:
                   type: integer
                   format: int32
@@ -11506,13 +11510,13 @@ components:
                 Opportunity:
                   type: integer
                   format: int32
-                Initiator:
-                  type: integer
-                  format: int32
                 Description:
                   type: string
                   minLength: 0
                   maxLength: 1000
+                Initiator:
+                  type: integer
+                  format: int32
                 Type:
                   type: integer
                   format: int32
@@ -11534,13 +11538,13 @@ components:
                 Opportunity:
                   type: integer
                   format: int32
-                Initiator:
-                  type: integer
-                  format: int32
                 Description:
                   type: string
                   minLength: 0
                   maxLength: 1000
+                Initiator:
+                  type: integer
+                  format: int32
                 Type:
                   type: integer
                   format: int32
@@ -11549,12 +11553,12 @@ components:
                   format: int32
         $select:
           type: array
-          example: ["Id", "Date", "Due", "Subject", "Opportunity", "Initiator", "Description", "Type", "Status"]
+          example: ["Id", "Date", "Due", "Subject", "Opportunity", "Description", "Initiator", "Type", "Status"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,Date,Due,Subject,Opportunity,Initiator,Description,Type,Status"
+            example: "Id,Date,Due,Subject,Opportunity,Description,Initiator,Type,Status"
         $order:
           type: string
           enum: ["asc", "desc"]
@@ -12115,18 +12119,20 @@ components:
     OpportunityNote:
       type: object
       required:
+        - Subject
       properties:
         Id:
           type: integer
           format: int32
-        Timestamp:
-        Action:
-          type: integer
-          format: int32
+        Subject:
+          type: string
+          minLength: 0
+          maxLength: 255
         Description:
           type: string
           minLength: 0
           maxLength: 1000
+        Timestamp:
         Opportunity:
           type: integer
           format: int32
@@ -12147,16 +12153,17 @@ components:
                       items:
                         type: integer
                         format: int32
-                Timestamp:
+                Subject:
                   oneOf:
-                Action:
-                  oneOf:
-                    - type: integer
-                      format: int32
+                    - type: string
+                      minLength: 0
+                      maxLength: 255
                     - type: array
                       items:
-                        type: integer
-                        format: int32
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 255
                 Description:
                   oneOf:
                     - type: string
@@ -12168,6 +12175,8 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 1000
+                Timestamp:
+                  oneOf:
                 Opportunity:
                   oneOf:
                     - type: integer
@@ -12187,16 +12196,17 @@ components:
                       items:
                         type: integer
                         format: int32
-                Timestamp:
+                Subject:
                   oneOf:
-                Action:
-                  oneOf:
-                    - type: integer
-                      format: int32
+                    - type: string
+                      minLength: 0
+                      maxLength: 255
                     - type: array
                       items:
-                        type: integer
-                        format: int32
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 255
                 Description:
                   oneOf:
                     - type: string
@@ -12208,6 +12218,8 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 1000
+                Timestamp:
+                  oneOf:
                 Opportunity:
                   oneOf:
                     - type: integer
@@ -12220,12 +12232,15 @@ components:
               type: object
               properties:
                 Id:
-                Timestamp:
-                Action:
+                Subject:
+                  type: string
+                  minLength: 0
+                  maxLength: 255
                 Description:
                   type: string
                   minLength: 0
                   maxLength: 1000
+                Timestamp:
                 Opportunity:
             greaterThan:
               type: object
@@ -12233,14 +12248,15 @@ components:
                 Id:
                   type: integer
                   format: int32
-                Timestamp:
-                Action:
-                  type: integer
-                  format: int32
+                Subject:
+                  type: string
+                  minLength: 0
+                  maxLength: 255
                 Description:
                   type: string
                   minLength: 0
                   maxLength: 1000
+                Timestamp:
                 Opportunity:
                   type: integer
                   format: int32
@@ -12250,14 +12266,15 @@ components:
                 Id:
                   type: integer
                   format: int32
-                Timestamp:
-                Action:
-                  type: integer
-                  format: int32
+                Subject:
+                  type: string
+                  minLength: 0
+                  maxLength: 255
                 Description:
                   type: string
                   minLength: 0
                   maxLength: 1000
+                Timestamp:
                 Opportunity:
                   type: integer
                   format: int32
@@ -12267,14 +12284,15 @@ components:
                 Id:
                   type: integer
                   format: int32
-                Timestamp:
-                Action:
-                  type: integer
-                  format: int32
+                Subject:
+                  type: string
+                  minLength: 0
+                  maxLength: 255
                 Description:
                   type: string
                   minLength: 0
                   maxLength: 1000
+                Timestamp:
                 Opportunity:
                   type: integer
                   format: int32
@@ -12284,25 +12302,26 @@ components:
                 Id:
                   type: integer
                   format: int32
-                Timestamp:
-                Action:
-                  type: integer
-                  format: int32
+                Subject:
+                  type: string
+                  minLength: 0
+                  maxLength: 255
                 Description:
                   type: string
                   minLength: 0
                   maxLength: 1000
+                Timestamp:
                 Opportunity:
                   type: integer
                   format: int32
         $select:
           type: array
-          example: ["Id", "Timestamp", "Action", "Description", "Opportunity"]
+          example: ["Id", "Subject", "Description", "Timestamp", "Opportunity"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,Timestamp,Action,Description,Opportunity"
+            example: "Id,Subject,Description,Timestamp,Opportunity"
         $order:
           type: string
           enum: ["asc", "desc"]

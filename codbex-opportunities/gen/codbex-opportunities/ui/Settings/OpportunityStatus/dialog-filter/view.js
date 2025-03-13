@@ -7,7 +7,7 @@ const viewData = {
     id: "OpportunityStatus-filter",
     label: "OpportunityStatus Filter",
     link: "/services/web/codbex-opportunities/gen/codbex-opportunities/ui/Settings/OpportunityStatus/dialog-filter/index.html",
-    perspectiveName: "Settings",
+    perspectiveName: "Settings"
 };
 
 if (typeof exports !== 'undefined') {

@@ -7,8 +7,8 @@ const perspectiveData = {
 	id: 'Quotation',
 	name: 'Quotation',
 	link: '/services/web/codbex-opportunities/gen/codbex-opportunities/ui/Quotation/index.html',
-	order: 300,
-	icon: '/services/web/resources/unicons/bill.svg',
+	order: '300',
+	icon: '/services/web/resources/unicons/bill.svg'
 };
 
 if (typeof exports !== 'undefined') {
