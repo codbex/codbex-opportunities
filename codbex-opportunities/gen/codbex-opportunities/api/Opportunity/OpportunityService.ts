@@ -133,11 +133,11 @@ class OpportunityService {
         if (entity.Amount === null || entity.Amount === undefined) {
             throw new ValidationError(`The 'Amount' property is required, provide a valid value`);
         }
-        if (entity.Owner === null || entity.Owner === undefined) {
-            throw new ValidationError(`The 'Owner' property is required, provide a valid value`);
-        }
         if (entity.Currency === null || entity.Currency === undefined) {
             throw new ValidationError(`The 'Currency' property is required, provide a valid value`);
+        }
+        if (entity.Owner === null || entity.Owner === undefined) {
+            throw new ValidationError(`The 'Owner' property is required, provide a valid value`);
         }
         if (entity.Date === null || entity.Date === undefined) {
             throw new ValidationError(`The 'Date' property is required, provide a valid value`);

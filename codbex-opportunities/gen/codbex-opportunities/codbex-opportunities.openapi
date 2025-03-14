@@ -8050,6 +8050,12 @@ components:
           type: string
           minLength: 0
           maxLength: 255
+        Country:
+          type: integer
+          format: int32
+        City:
+          type: integer
+          format: int32
         ContactName:
           type: string
           minLength: 0
@@ -8066,9 +8072,6 @@ components:
           type: string
           minLength: 0
           maxLength: 255
-        Industry:
-          type: integer
-          format: int32
         Status:
           type: integer
           format: int32
@@ -8115,6 +8118,22 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 255
+                Country:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                City:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
                 ContactName:
                   oneOf:
                     - type: string
@@ -8159,14 +8178,6 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 255
-                Industry:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
                 Status:
                   oneOf:
                     - type: integer
@@ -8218,6 +8229,22 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 255
+                Country:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                City:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
                 ContactName:
                   oneOf:
                     - type: string
@@ -8262,14 +8289,6 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 255
-                Industry:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
                 Status:
                   oneOf:
                     - type: integer
@@ -8300,6 +8319,8 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 255
+                Country:
+                City:
                 ContactName:
                   type: string
                   minLength: 0
@@ -8316,7 +8337,6 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 255
-                Industry:
                 Status:
                 Owner:
                 Date:
@@ -8334,6 +8354,12 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 255
+                Country:
+                  type: integer
+                  format: int32
+                City:
+                  type: integer
+                  format: int32
                 ContactName:
                   type: string
                   minLength: 0
@@ -8350,9 +8376,6 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 255
-                Industry:
-                  type: integer
-                  format: int32
                 Status:
                   type: integer
                   format: int32
@@ -8374,6 +8397,12 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 255
+                Country:
+                  type: integer
+                  format: int32
+                City:
+                  type: integer
+                  format: int32
                 ContactName:
                   type: string
                   minLength: 0
@@ -8390,9 +8419,6 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 255
-                Industry:
-                  type: integer
-                  format: int32
                 Status:
                   type: integer
                   format: int32
@@ -8414,6 +8440,12 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 255
+                Country:
+                  type: integer
+                  format: int32
+                City:
+                  type: integer
+                  format: int32
                 ContactName:
                   type: string
                   minLength: 0
@@ -8430,9 +8462,6 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 255
-                Industry:
-                  type: integer
-                  format: int32
                 Status:
                   type: integer
                   format: int32
@@ -8454,6 +8483,12 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 255
+                Country:
+                  type: integer
+                  format: int32
+                City:
+                  type: integer
+                  format: int32
                 ContactName:
                   type: string
                   minLength: 0
@@ -8470,9 +8505,6 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 255
-                Industry:
-                  type: integer
-                  format: int32
                 Status:
                   type: integer
                   format: int32
@@ -8482,12 +8514,12 @@ components:
                 Date:
         $select:
           type: array
-          example: ["Id", "Number", "CompanyName", "ContactName", "ContactDesignation", "ContactEmail", "ContactPhone", "Industry", "Status", "Owner", "Date"]
+          example: ["Id", "Number", "CompanyName", "Country", "City", "ContactName", "ContactDesignation", "ContactEmail", "ContactPhone", "Status", "Owner", "Date"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,Number,CompanyName,ContactName,ContactDesignation,ContactEmail,ContactPhone,Industry,Status,Owner,Date"
+            example: "Id,Number,CompanyName,Country,City,ContactName,ContactDesignation,ContactEmail,ContactPhone,Status,Owner,Date"
         $order:
           type: string
           enum: ["asc", "desc"]
@@ -8630,8 +8662,8 @@ components:
       required:
         - Customer
         - Amount
-        - Owner
         - Currency
+        - Owner
         - Date
       properties:
         Id:
@@ -8652,6 +8684,9 @@ components:
         Amount:
           type: number
           format: double
+        Currency:
+          type: integer
+          format: int32
         Lead:
           type: integer
           format: int32
@@ -8668,9 +8703,6 @@ components:
           type: integer
           format: int32
         Status:
-          type: integer
-          format: int32
-        Currency:
           type: integer
           format: int32
         Date:
@@ -8729,6 +8761,14 @@ components:
                       items:
                         type: number
                         format: double
+                Currency:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
                 Lead:
                   oneOf:
                     - type: integer
@@ -8770,14 +8810,6 @@ components:
                         type: integer
                         format: int32
                 Status:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
-                Currency:
                   oneOf:
                     - type: integer
                       format: int32
@@ -8836,6 +8868,14 @@ components:
                       items:
                         type: number
                         format: double
+                Currency:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
                 Lead:
                   oneOf:
                     - type: integer
@@ -8877,14 +8917,6 @@ components:
                         type: integer
                         format: int32
                 Status:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
-                Currency:
                   oneOf:
                     - type: integer
                       format: int32
@@ -8908,13 +8940,13 @@ components:
                   maxLength: 255
                 Customer:
                 Amount:
+                Currency:
                 Lead:
                 Owner:
                 Type:
                 Priority:
                 Probability:
                 Status:
-                Currency:
                 Date:
             greaterThan:
               type: object
@@ -8936,6 +8968,9 @@ components:
                 Amount:
                   type: number
                   format: double
+                Currency:
+                  type: integer
+                  format: int32
                 Lead:
                   type: integer
                   format: int32
@@ -8952,9 +8987,6 @@ components:
                   type: integer
                   format: int32
                 Status:
-                  type: integer
-                  format: int32
-                Currency:
                   type: integer
                   format: int32
                 Date:
@@ -8978,6 +9010,9 @@ components:
                 Amount:
                   type: number
                   format: double
+                Currency:
+                  type: integer
+                  format: int32
                 Lead:
                   type: integer
                   format: int32
@@ -8994,9 +9029,6 @@ components:
                   type: integer
                   format: int32
                 Status:
-                  type: integer
-                  format: int32
-                Currency:
                   type: integer
                   format: int32
                 Date:
@@ -9020,6 +9052,9 @@ components:
                 Amount:
                   type: number
                   format: double
+                Currency:
+                  type: integer
+                  format: int32
                 Lead:
                   type: integer
                   format: int32
@@ -9036,9 +9071,6 @@ components:
                   type: integer
                   format: int32
                 Status:
-                  type: integer
-                  format: int32
-                Currency:
                   type: integer
                   format: int32
                 Date:
@@ -9062,6 +9094,9 @@ components:
                 Amount:
                   type: number
                   format: double
+                Currency:
+                  type: integer
+                  format: int32
                 Lead:
                   type: integer
                   format: int32
@@ -9080,18 +9115,15 @@ components:
                 Status:
                   type: integer
                   format: int32
-                Currency:
-                  type: integer
-                  format: int32
                 Date:
         $select:
           type: array
-          example: ["Id", "Number", "Source", "Customer", "Amount", "Lead", "Owner", "Type", "Priority", "Probability", "Status", "Currency", "Date"]
+          example: ["Id", "Number", "Source", "Customer", "Amount", "Currency", "Lead", "Owner", "Type", "Priority", "Probability", "Status", "Date"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,Number,Source,Customer,Amount,Lead,Owner,Type,Priority,Probability,Status,Currency,Date"
+            example: "Id,Number,Source,Customer,Amount,Currency,Lead,Owner,Type,Priority,Probability,Status,Date"
         $order:
           type: string
           enum: ["asc", "desc"]

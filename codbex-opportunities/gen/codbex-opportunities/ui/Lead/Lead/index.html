@@ -51,11 +51,12 @@
 							item-title="{{next.Number}}">
 							<fd-list-byline dg-align="left">
 								{{next.CompanyName}} |
+								{{optionsCountryValue(next.Country)}} |
+								{{optionsCityValue(next.City)}} |
 								{{next.ContactName}} |
 								{{next.ContactDesignation}} |
 								<a href="mailto:{{next.ContactEmail}}" class="fd-link">{{next.ContactEmail}}</a> |
 								<a href="tel:{{next.ContactPhone}}" class="fd-link">{{next.ContactPhone}}</a> |
-								{{optionsIndustryValue(next.Industry)}} |
 								{{optionsStatusValue(next.Status)}} |
 								{{optionsOwnerValue(next.Owner)}} |
 								{{next.Date | date: "dd/MMM/yyyy"}}

@@ -10,11 +10,12 @@ export interface LeadEntity {
     readonly Id: number;
     Number?: string;
     CompanyName?: string;
+    Country?: number;
+    City?: number;
     ContactName?: string;
     ContactDesignation?: string;
     ContactEmail?: string;
     ContactPhone?: string;
-    Industry?: number;
     Status?: number;
     Owner?: number;
     Date?: Date;
@@ -22,11 +23,12 @@ export interface LeadEntity {
 
 export interface LeadCreateEntity {
     readonly CompanyName?: string;
+    readonly Country?: number;
+    readonly City?: number;
     readonly ContactName?: string;
     readonly ContactDesignation?: string;
     readonly ContactEmail?: string;
     readonly ContactPhone?: string;
-    readonly Industry?: number;
     readonly Status?: number;
     readonly Owner?: number;
     readonly Date?: Date;
@@ -42,11 +44,12 @@ export interface LeadEntityOptions {
             Id?: number | number[];
             Number?: string | string[];
             CompanyName?: string | string[];
+            Country?: number | number[];
+            City?: number | number[];
             ContactName?: string | string[];
             ContactDesignation?: string | string[];
             ContactEmail?: string | string[];
             ContactPhone?: string | string[];
-            Industry?: number | number[];
             Status?: number | number[];
             Owner?: number | number[];
             Date?: Date | Date[];
@@ -55,11 +58,12 @@ export interface LeadEntityOptions {
             Id?: number | number[];
             Number?: string | string[];
             CompanyName?: string | string[];
+            Country?: number | number[];
+            City?: number | number[];
             ContactName?: string | string[];
             ContactDesignation?: string | string[];
             ContactEmail?: string | string[];
             ContactPhone?: string | string[];
-            Industry?: number | number[];
             Status?: number | number[];
             Owner?: number | number[];
             Date?: Date | Date[];
@@ -68,11 +72,12 @@ export interface LeadEntityOptions {
             Id?: number;
             Number?: string;
             CompanyName?: string;
+            Country?: number;
+            City?: number;
             ContactName?: string;
             ContactDesignation?: string;
             ContactEmail?: string;
             ContactPhone?: string;
-            Industry?: number;
             Status?: number;
             Owner?: number;
             Date?: Date;
@@ -81,11 +86,12 @@ export interface LeadEntityOptions {
             Id?: number;
             Number?: string;
             CompanyName?: string;
+            Country?: number;
+            City?: number;
             ContactName?: string;
             ContactDesignation?: string;
             ContactEmail?: string;
             ContactPhone?: string;
-            Industry?: number;
             Status?: number;
             Owner?: number;
             Date?: Date;
@@ -94,11 +100,12 @@ export interface LeadEntityOptions {
             Id?: number;
             Number?: string;
             CompanyName?: string;
+            Country?: number;
+            City?: number;
             ContactName?: string;
             ContactDesignation?: string;
             ContactEmail?: string;
             ContactPhone?: string;
-            Industry?: number;
             Status?: number;
             Owner?: number;
             Date?: Date;
@@ -107,11 +114,12 @@ export interface LeadEntityOptions {
             Id?: number;
             Number?: string;
             CompanyName?: string;
+            Country?: number;
+            City?: number;
             ContactName?: string;
             ContactDesignation?: string;
             ContactEmail?: string;
             ContactPhone?: string;
-            Industry?: number;
             Status?: number;
             Owner?: number;
             Date?: Date;
@@ -120,11 +128,12 @@ export interface LeadEntityOptions {
             Id?: number;
             Number?: string;
             CompanyName?: string;
+            Country?: number;
+            City?: number;
             ContactName?: string;
             ContactDesignation?: string;
             ContactEmail?: string;
             ContactPhone?: string;
-            Industry?: number;
             Status?: number;
             Owner?: number;
             Date?: Date;
@@ -175,6 +184,16 @@ export class LeadRepository {
                 type: "VARCHAR",
             },
             {
+                name: "Country",
+                column: "LEAD_COUNTRY",
+                type: "INTEGER",
+            },
+            {
+                name: "City",
+                column: "LEAD_CITY",
+                type: "INTEGER",
+            },
+            {
                 name: "ContactName",
                 column: "LEAD_CONTACTNAME",
                 type: "VARCHAR",
@@ -193,11 +212,6 @@ export class LeadRepository {
                 name: "ContactPhone",
                 column: "LEAD_CONTACTPHONE",
                 type: "VARCHAR",
-            },
-            {
-                name: "Industry",
-                column: "LEAD_INDUSTRY",
-                type: "INTEGER",
             },
             {
                 name: "Status",

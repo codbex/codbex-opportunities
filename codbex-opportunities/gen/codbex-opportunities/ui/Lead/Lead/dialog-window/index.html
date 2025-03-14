@@ -75,6 +75,40 @@
                     </fd-form-item>
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
+                        	<fd-form-label for="idCountry" dg-required="false" dg-colon="true">Country</fd-form-label>
+                        </div>
+                        <div class="fd-col  fd-col-md--8 ">
+	                        <fd-combobox-input id="idCountry"
+	                            name="Country"
+	                            state="{{ forms.details['Country'].$valid ? '' : 'error' }}"
+	                            ng-required="false"
+	                            ng-model="entity.Country"
+	                            dg-disabled="action === 'select'"
+	                            dropdown-items="optionsCountry"
+	                            dg-placeholder="Search Country ...">
+	                        </fd-combobox-input>
+	                        <i class="sap-icon--information" role="presentation" onclick="javascript:alert('')"></i>
+	                    </div>
+                    </fd-form-item>
+                    <fd-form-item class="fd-row">
+                    	<div class="fd-col fd-col-md--2">
+                        	<fd-form-label for="idCity" dg-required="false" dg-colon="true">City</fd-form-label>
+                        </div>
+                        <div class="fd-col  fd-col-md--8 ">
+	                        <fd-combobox-input id="idCity"
+	                            name="City"
+	                            state="{{ forms.details['City'].$valid ? '' : 'error' }}"
+	                            ng-required="false"
+	                            ng-model="entity.City"
+	                            dg-disabled="action === 'select'"
+	                            dropdown-items="optionsCity"
+	                            dg-placeholder="Search City ...">
+	                        </fd-combobox-input>
+	                        <i class="sap-icon--information" role="presentation" onclick="javascript:alert('')"></i>
+	                    </div>
+                    </fd-form-item>
+                    <fd-form-item class="fd-row">
+                    	<div class="fd-col fd-col-md--2">
                         	<fd-form-label for="idContactName" dg-required="true" dg-colon="true">ContactName</fd-form-label>
                         </div>
                         <div class="fd-col  fd-col-md--8 ">
@@ -168,23 +202,6 @@
 	                            </fd-input>
 	                            <fd-form-message dg-type="error">The value doesn't match the required pattern ''</fd-form-message>
 	                        </fd-form-input-message-group>
-	                        <i class="sap-icon--information" role="presentation" onclick="javascript:alert('')"></i>
-	                    </div>
-                    </fd-form-item>
-                    <fd-form-item class="fd-row">
-                    	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idIndustry" dg-required="false" dg-colon="true">Industry</fd-form-label>
-                        </div>
-                        <div class="fd-col  fd-col-md--8 ">
-	                        <fd-combobox-input id="idIndustry"
-	                            name="Industry"
-	                            state="{{ forms.details['Industry'].$valid ? '' : 'error' }}"
-	                            ng-required="false"
-	                            ng-model="entity.Industry"
-	                            dg-disabled="action === 'select'"
-	                            dropdown-items="optionsIndustry"
-	                            dg-placeholder="Search Industry ...">
-	                        </fd-combobox-input>
 	                        <i class="sap-icon--information" role="presentation" onclick="javascript:alert('')"></i>
 	                    </div>
                     </fd-form-item>

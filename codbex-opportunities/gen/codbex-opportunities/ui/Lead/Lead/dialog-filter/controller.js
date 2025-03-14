@@ -20,7 +20,8 @@ angular.module('page', ["ideUI", "ideView"])
 			$scope.entity = params.entity ?? {};
 			$scope.selectedMainEntityKey = params.selectedMainEntityKey;
 			$scope.selectedMainEntityId = params.selectedMainEntityId;
-			$scope.optionsIndustry = params.optionsIndustry;
+			$scope.optionsCountry = params.optionsCountry;
+			$scope.optionsCity = params.optionsCity;
 			$scope.optionsStatus = params.optionsStatus;
 			$scope.optionsOwner = params.optionsOwner;
 		}
@@ -54,6 +55,12 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.CompanyName) {
 				filter.$filter.contains.CompanyName = entity.CompanyName;
 			}
+			if (entity.Country !== undefined) {
+				filter.$filter.equals.Country = entity.Country;
+			}
+			if (entity.City !== undefined) {
+				filter.$filter.equals.City = entity.City;
+			}
 			if (entity.ContactName) {
 				filter.$filter.contains.ContactName = entity.ContactName;
 			}
@@ -65,9 +72,6 @@ angular.module('page', ["ideUI", "ideView"])
 			}
 			if (entity.ContactPhone) {
 				filter.$filter.contains.ContactPhone = entity.ContactPhone;
-			}
-			if (entity.Industry !== undefined) {
-				filter.$filter.equals.Industry = entity.Industry;
 			}
 			if (entity.Status !== undefined) {
 				filter.$filter.equals.Status = entity.Status;

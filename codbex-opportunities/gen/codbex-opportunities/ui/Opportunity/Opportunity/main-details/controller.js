@@ -41,13 +41,13 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			$scope.$apply(function () {
 				$scope.entity = {};
 				$scope.optionsCustomer = [];
+				$scope.optionsCurrency = [];
 				$scope.optionsLead = [];
 				$scope.optionsOwner = [];
 				$scope.optionsType = [];
 				$scope.optionsPriority = [];
 				$scope.optionsProbability = [];
 				$scope.optionsStatus = [];
-				$scope.optionsCurrency = [];
 				$scope.action = 'select';
 			});
 		});
@@ -59,13 +59,13 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				}
 				$scope.entity = msg.data.entity;
 				$scope.optionsCustomer = msg.data.optionsCustomer;
+				$scope.optionsCurrency = msg.data.optionsCurrency;
 				$scope.optionsLead = msg.data.optionsLead;
 				$scope.optionsOwner = msg.data.optionsOwner;
 				$scope.optionsType = msg.data.optionsType;
 				$scope.optionsPriority = msg.data.optionsPriority;
 				$scope.optionsProbability = msg.data.optionsProbability;
 				$scope.optionsStatus = msg.data.optionsStatus;
-				$scope.optionsCurrency = msg.data.optionsCurrency;
 				$scope.action = 'select';
 			});
 		});
@@ -74,13 +74,13 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			$scope.$apply(function () {
 				$scope.entity = {};
 				$scope.optionsCustomer = msg.data.optionsCustomer;
+				$scope.optionsCurrency = msg.data.optionsCurrency;
 				$scope.optionsLead = msg.data.optionsLead;
 				$scope.optionsOwner = msg.data.optionsOwner;
 				$scope.optionsType = msg.data.optionsType;
 				$scope.optionsPriority = msg.data.optionsPriority;
 				$scope.optionsProbability = msg.data.optionsProbability;
 				$scope.optionsStatus = msg.data.optionsStatus;
-				$scope.optionsCurrency = msg.data.optionsCurrency;
 				$scope.action = 'create';
 			});
 		});
@@ -92,25 +92,25 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				}
 				$scope.entity = msg.data.entity;
 				$scope.optionsCustomer = msg.data.optionsCustomer;
+				$scope.optionsCurrency = msg.data.optionsCurrency;
 				$scope.optionsLead = msg.data.optionsLead;
 				$scope.optionsOwner = msg.data.optionsOwner;
 				$scope.optionsType = msg.data.optionsType;
 				$scope.optionsPriority = msg.data.optionsPriority;
 				$scope.optionsProbability = msg.data.optionsProbability;
 				$scope.optionsStatus = msg.data.optionsStatus;
-				$scope.optionsCurrency = msg.data.optionsCurrency;
 				$scope.action = 'update';
 			});
 		});
 
 		$scope.serviceCustomer = "/services/ts/codbex-partners/gen/codbex-partners/api/Customers/CustomerService.ts";
+		$scope.serviceCurrency = "/services/ts/codbex-currencies/gen/codbex-currencies/api/Currencies/CurrencyService.ts";
 		$scope.serviceLead = "/services/ts/codbex-opportunities/gen/codbex-opportunities/api/Lead/LeadService.ts";
 		$scope.serviceOwner = "/services/ts/codbex-employees/gen/codbex-employees/api/Employees/EmployeeService.ts";
 		$scope.serviceType = "/services/ts/codbex-opportunities/gen/codbex-opportunities/api/Settings/OpportunityTypeService.ts";
 		$scope.servicePriority = "/services/ts/codbex-opportunities/gen/codbex-opportunities/api/Settings/OpportunityPriorityService.ts";
 		$scope.serviceProbability = "/services/ts/codbex-opportunities/gen/codbex-opportunities/api/Settings/OpportunityProbabilityService.ts";
 		$scope.serviceStatus = "/services/ts/codbex-opportunities/gen/codbex-opportunities/api/Settings/OpportunityStatusService.ts";
-		$scope.serviceCurrency = "/services/ts/codbex-currencies/gen/codbex-currencies/api/Currencies/CurrencyService.ts";
 
 		//-----------------Events-------------------//
 
@@ -146,6 +146,12 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		
 		$scope.createCustomer = function () {
 			messageHub.showDialogWindow("Customer-details", {
+				action: "create",
+				entity: {},
+			}, null, false);
+		};
+		$scope.createCurrency = function () {
+			messageHub.showDialogWindow("Currency-details", {
 				action: "create",
 				entity: {},
 			}, null, false);
@@ -186,12 +192,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				entity: {},
 			}, null, false);
 		};
-		$scope.createCurrency = function () {
-			messageHub.showDialogWindow("Currency-details", {
-				action: "create",
-				entity: {},
-			}, null, false);
-		};
 
 		//-----------------Dialogs-------------------//
 
@@ -206,6 +206,17 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 					return {
 						value: e.Id,
 						text: e.Name
+					}
+				});
+			});
+		};
+		$scope.refreshCurrency = function () {
+			$scope.optionsCurrency = [];
+			$http.get("/services/ts/codbex-currencies/gen/codbex-currencies/api/Currencies/CurrencyService.ts").then(function (response) {
+				$scope.optionsCurrency = response.data.map(e => {
+					return {
+						value: e.Id,
+						text: e.Code
 					}
 				});
 			});
@@ -272,17 +283,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 					return {
 						value: e.Id,
 						text: e.Name
-					}
-				});
-			});
-		};
-		$scope.refreshCurrency = function () {
-			$scope.optionsCurrency = [];
-			$http.get("/services/ts/codbex-currencies/gen/codbex-currencies/api/Currencies/CurrencyService.ts").then(function (response) {
-				$scope.optionsCurrency = response.data.map(e => {
-					return {
-						value: e.Id,
-						text: e.Code
 					}
 				});
 			});

@@ -119,7 +119,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.postMessage("entitySelected", {
 				entity: entity,
 				selectedMainEntityId: entity.Id,
-				optionsIndustry: $scope.optionsIndustry,
+				optionsCountry: $scope.optionsCountry,
+				optionsCity: $scope.optionsCity,
 				optionsStatus: $scope.optionsStatus,
 				optionsOwner: $scope.optionsOwner,
 			});
@@ -131,7 +132,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 
 			messageHub.postMessage("createEntity", {
 				entity: {},
-				optionsIndustry: $scope.optionsIndustry,
+				optionsCountry: $scope.optionsCountry,
+				optionsCity: $scope.optionsCity,
 				optionsStatus: $scope.optionsStatus,
 				optionsOwner: $scope.optionsOwner,
 			});
@@ -141,7 +143,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			$scope.action = "update";
 			messageHub.postMessage("updateEntity", {
 				entity: $scope.selectedEntity,
-				optionsIndustry: $scope.optionsIndustry,
+				optionsCountry: $scope.optionsCountry,
+				optionsCity: $scope.optionsCity,
 				optionsStatus: $scope.optionsStatus,
 				optionsOwner: $scope.optionsOwner,
 			});
@@ -180,20 +183,31 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		$scope.openFilter = function (entity) {
 			messageHub.showDialogWindow("Lead-filter", {
 				entity: $scope.filterEntity,
-				optionsIndustry: $scope.optionsIndustry,
+				optionsCountry: $scope.optionsCountry,
+				optionsCity: $scope.optionsCity,
 				optionsStatus: $scope.optionsStatus,
 				optionsOwner: $scope.optionsOwner,
 			});
 		};
 
 		//----------------Dropdowns-----------------//
-		$scope.optionsIndustry = [];
+		$scope.optionsCountry = [];
+		$scope.optionsCity = [];
 		$scope.optionsStatus = [];
 		$scope.optionsOwner = [];
 
 
-		$http.get("/services/ts/codbex-industries/gen/codbex-industries/api/industry/IndustryService.ts").then(function (response) {
-			$scope.optionsIndustry = response.data.map(e => {
+		$http.get("/services/ts/codbex-countries/gen/codbex-countries/api/Countries/CountryService.ts").then(function (response) {
+			$scope.optionsCountry = response.data.map(e => {
+				return {
+					value: e.Id,
+					text: e.Name
+				}
+			});
+		});
+
+		$http.get("/services/ts/codbex-cities/gen/codbex-cities/api/Cities/CityService.ts").then(function (response) {
+			$scope.optionsCity = response.data.map(e => {
 				return {
 					value: e.Id,
 					text: e.Name
@@ -219,10 +233,18 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		});
 
-		$scope.optionsIndustryValue = function (optionKey) {
-			for (let i = 0; i < $scope.optionsIndustry.length; i++) {
-				if ($scope.optionsIndustry[i].value === optionKey) {
-					return $scope.optionsIndustry[i].text;
+		$scope.optionsCountryValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsCountry.length; i++) {
+				if ($scope.optionsCountry[i].value === optionKey) {
+					return $scope.optionsCountry[i].text;
+				}
+			}
+			return null;
+		};
+		$scope.optionsCityValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsCity.length; i++) {
+				if ($scope.optionsCity[i].value === optionKey) {
+					return $scope.optionsCity[i].text;
 				}
 			}
 			return null;
