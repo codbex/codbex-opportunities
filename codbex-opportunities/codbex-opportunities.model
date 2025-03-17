@@ -20,7 +20,7 @@
                     {
                         "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generate(1)",
                         "dataLength": "20",
-                        "dataName": "LEAD_NAME",
+                        "dataName": "LEAD_NUMBER",
                         "dataNullable": "true",
                         "dataType": "VARCHAR",
                         "description": "",

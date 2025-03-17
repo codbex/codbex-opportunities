@@ -16,7 +16,7 @@
                         "type": "VARCHAR",
                         "length": 20,
                         "nullable": true,
-                        "name": "LEAD_NAME"
+                        "name": "LEAD_NUMBER"
                     },
                     {
                         "type": "VARCHAR",

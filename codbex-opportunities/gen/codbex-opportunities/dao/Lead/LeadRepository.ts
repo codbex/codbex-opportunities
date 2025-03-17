@@ -175,7 +175,7 @@ export class LeadRepository {
             },
             {
                 name: "Number",
-                column: "LEAD_NAME",
+                column: "LEAD_NUMBER",
                 type: "VARCHAR",
             },
             {
