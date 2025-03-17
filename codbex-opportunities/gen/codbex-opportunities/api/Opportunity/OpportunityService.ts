@@ -4,7 +4,7 @@ import { OpportunityRepository, OpportunityEntityOptions } from "../../dao/Oppor
 import { ValidationError } from "../utils/ValidationError";
 import { HttpUtils } from "../utils/HttpUtils";
 // custom imports
-import { NumberGeneratorService } from "/codbex-number-generator/service/generator";
+import { NumberGeneratorService } from "codbex-number-generator/service/generator";
 
 const validationModules = await Extensions.loadExtensionModules("codbex-opportunities-Opportunity-Opportunity", ["validate"]);
 
@@ -123,9 +123,6 @@ class OpportunityService {
     private validateEntity(entity: any): void {
         if (entity.Number?.length > 20) {
             throw new ValidationError(`The 'Number' exceeds the maximum length of [20] characters`);
-        }
-        if (entity.Source?.length > 255) {
-            throw new ValidationError(`The 'Source' exceeds the maximum length of [255] characters`);
         }
         if (entity.Customer === null || entity.Customer === undefined) {
             throw new ValidationError(`The 'Customer' property is required, provide a valid value`);

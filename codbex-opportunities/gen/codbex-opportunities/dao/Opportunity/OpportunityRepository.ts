@@ -4,12 +4,11 @@ import { extensions } from "sdk/extensions";
 import { dao as daoApi } from "sdk/db";
 import { EntityUtils } from "../utils/EntityUtils";
 // custom imports
-import { NumberGeneratorService } from "/codbex-number-generator/service/generator";
+import { NumberGeneratorService } from "codbex-number-generator/service/generator";
 
 export interface OpportunityEntity {
     readonly Id: number;
     Number?: string;
-    Source?: string;
     Customer?: number;
     Amount?: number;
     Currency?: number;
@@ -23,7 +22,6 @@ export interface OpportunityEntity {
 }
 
 export interface OpportunityCreateEntity {
-    readonly Source?: string;
     readonly Customer?: number;
     readonly Amount?: number;
     readonly Currency?: number;
@@ -45,7 +43,6 @@ export interface OpportunityEntityOptions {
         equals?: {
             Id?: number | number[];
             Number?: string | string[];
-            Source?: string | string[];
             Customer?: number | number[];
             Amount?: number | number[];
             Currency?: number | number[];
@@ -60,7 +57,6 @@ export interface OpportunityEntityOptions {
         notEquals?: {
             Id?: number | number[];
             Number?: string | string[];
-            Source?: string | string[];
             Customer?: number | number[];
             Amount?: number | number[];
             Currency?: number | number[];
@@ -75,7 +71,6 @@ export interface OpportunityEntityOptions {
         contains?: {
             Id?: number;
             Number?: string;
-            Source?: string;
             Customer?: number;
             Amount?: number;
             Currency?: number;
@@ -90,7 +85,6 @@ export interface OpportunityEntityOptions {
         greaterThan?: {
             Id?: number;
             Number?: string;
-            Source?: string;
             Customer?: number;
             Amount?: number;
             Currency?: number;
@@ -105,7 +99,6 @@ export interface OpportunityEntityOptions {
         greaterThanOrEqual?: {
             Id?: number;
             Number?: string;
-            Source?: string;
             Customer?: number;
             Amount?: number;
             Currency?: number;
@@ -120,7 +113,6 @@ export interface OpportunityEntityOptions {
         lessThan?: {
             Id?: number;
             Number?: string;
-            Source?: string;
             Customer?: number;
             Amount?: number;
             Currency?: number;
@@ -135,7 +127,6 @@ export interface OpportunityEntityOptions {
         lessThanOrEqual?: {
             Id?: number;
             Number?: string;
-            Source?: string;
             Customer?: number;
             Amount?: number;
             Currency?: number;
@@ -185,11 +176,6 @@ export class OpportunityRepository {
             {
                 name: "Number",
                 column: "OPPORTUNITY_NAME",
-                type: "VARCHAR",
-            },
-            {
-                name: "Source",
-                column: "OPPORTUNITY_SOURCE",
                 type: "VARCHAR",
             },
             {

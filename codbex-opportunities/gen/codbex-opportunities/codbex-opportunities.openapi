@@ -1096,7 +1096,6 @@ paths:
                       Id: 33
                     contains:
                       Number: "abcd"
-                      Source: "abcd"
                     greaterThan:
                       Id: 0
                     lessThanOrEqual:
@@ -1119,7 +1118,6 @@ paths:
                   $filter:
                     contains:
                       Number: "abcd"
-                      Source: "abcd"
               countWithGreaterThan:
                 summary: Count with Greater Than
                 value:
@@ -1184,7 +1182,6 @@ paths:
                       Id: 33
                     contains:
                       Number: "abcd"
-                      Source: "abcd"
                     greaterThan:
                       Id: 0
                     lessThanOrEqual:
@@ -1207,7 +1204,6 @@ paths:
                   $filter:
                     contains:
                       Number: "abcd"
-                      Source: "abcd"
               searchWithGreaterThan:
                 summary: Search with Greater Than
                 value:
@@ -8674,10 +8670,6 @@ components:
           minLength: 0
           maxLength: 20
           readOnly: true
-        Source:
-          type: string
-          minLength: 0
-          maxLength: 255
         Customer:
           type: integer
           format: int32
@@ -8734,17 +8726,6 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 20
-                Source:
-                  oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 255
-                    - type: array
-                      items:
-                        type: string
-                        format: double
-                        minLength: 0
-                        maxLength: 255
                 Customer:
                   oneOf:
                     - type: integer
@@ -8841,17 +8822,6 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 20
-                Source:
-                  oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 255
-                    - type: array
-                      items:
-                        type: string
-                        format: double
-                        minLength: 0
-                        maxLength: 255
                 Customer:
                   oneOf:
                     - type: integer
@@ -8934,10 +8904,6 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 20
-                Source:
-                  type: string
-                  minLength: 0
-                  maxLength: 255
                 Customer:
                 Amount:
                 Currency:
@@ -8958,10 +8924,6 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 20
-                Source:
-                  type: string
-                  minLength: 0
-                  maxLength: 255
                 Customer:
                   type: integer
                   format: int32
@@ -9000,10 +8962,6 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 20
-                Source:
-                  type: string
-                  minLength: 0
-                  maxLength: 255
                 Customer:
                   type: integer
                   format: int32
@@ -9042,10 +9000,6 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 20
-                Source:
-                  type: string
-                  minLength: 0
-                  maxLength: 255
                 Customer:
                   type: integer
                   format: int32
@@ -9084,10 +9038,6 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 20
-                Source:
-                  type: string
-                  minLength: 0
-                  maxLength: 255
                 Customer:
                   type: integer
                   format: int32
@@ -9118,12 +9068,12 @@ components:
                 Date:
         $select:
           type: array
-          example: ["Id", "Number", "Source", "Customer", "Amount", "Currency", "Lead", "Owner", "Type", "Priority", "Probability", "Status", "Date"]
+          example: ["Id", "Number", "Customer", "Amount", "Currency", "Lead", "Owner", "Type", "Priority", "Probability", "Status", "Date"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,Number,Source,Customer,Amount,Currency,Lead,Owner,Type,Priority,Probability,Status,Date"
+            example: "Id,Number,Customer,Amount,Currency,Lead,Owner,Type,Priority,Probability,Status,Date"
         $order:
           type: string
           enum: ["asc", "desc"]

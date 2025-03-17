@@ -112,12 +112,6 @@
                         "name": "OPPORTUNITY_NAME"
                     },
                     {
-                        "type": "VARCHAR",
-                        "length": 255,
-                        "nullable": true,
-                        "name": "OPPORTUNITY_SOURCE"
-                    },
-                    {
                         "type": "INTEGER",
                         "nullable": true,
                         "name": "OPPORTUNITY_CUSTOMER"
