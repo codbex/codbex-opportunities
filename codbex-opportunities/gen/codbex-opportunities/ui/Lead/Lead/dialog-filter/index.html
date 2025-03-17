@@ -48,18 +48,18 @@
                     </fd-form-item>
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idCompanyName" dg-colon="true">CompanyName</fd-form-label>
+                        	<fd-form-label for="idName" dg-colon="true">Name</fd-form-label>
                         </div>
                         <div class="fd-col fd-col-md--8">
-	                        <fd-form-input-message-group dg-inactive="{{ forms.details['CompanyName'].$valid }}">
-	                            <fd-input id="idCompanyName"
-	                                name="CompanyName"
-	                                state="{{ forms.details['CompanyName'].$valid ? '' : 'error' }}"
-	                                ng-model="entity.CompanyName"
+	                        <fd-form-input-message-group dg-inactive="{{ forms.details['Name'].$valid }}">
+	                            <fd-input id="idName"
+	                                name="Name"
+	                                state="{{ forms.details['Name'].$valid ? '' : 'error' }}"
+	                                ng-model="entity.Name"
 	                                ng-minlength="0.0 || 0"
 	                                ng-maxlength="255.0 || -1"
 	                                type="text"
-	                                placeholder="Enter CompanyName">
+	                                placeholder="Enter Name">
 	                            </fd-input>
 	                            <fd-form-message dg-type="error">Incorrect Input</fd-form-message>
 	                        </fd-form-input-message-group>
@@ -95,18 +95,18 @@
                     </fd-form-item>
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idContactName" dg-colon="true">ContactName</fd-form-label>
+                        	<fd-form-label for="idCompany" dg-colon="true">Company</fd-form-label>
                         </div>
                         <div class="fd-col fd-col-md--8">
-	                        <fd-form-input-message-group dg-inactive="{{ forms.details['ContactName'].$valid }}">
-	                            <fd-input id="idContactName"
-	                                name="ContactName"
-	                                state="{{ forms.details['ContactName'].$valid ? '' : 'error' }}"
-	                                ng-model="entity.ContactName"
+	                        <fd-form-input-message-group dg-inactive="{{ forms.details['Company'].$valid }}">
+	                            <fd-input id="idCompany"
+	                                name="Company"
+	                                state="{{ forms.details['Company'].$valid ? '' : 'error' }}"
+	                                ng-model="entity.Company"
 	                                ng-minlength="0.0 || 0"
 	                                ng-maxlength="255.0 || -1"
 	                                type="text"
-	                                placeholder="Enter ContactName">
+	                                placeholder="Enter Company">
 	                            </fd-input>
 	                            <fd-form-message dg-type="error">Incorrect Input</fd-form-message>
 	                        </fd-form-input-message-group>
@@ -114,18 +114,18 @@
                     </fd-form-item>
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idContactDesignation" dg-colon="true">ContactDesignation</fd-form-label>
+                        	<fd-form-label for="idDesignation" dg-colon="true">Designation</fd-form-label>
                         </div>
                         <div class="fd-col fd-col-md--8">
-	                        <fd-form-input-message-group dg-inactive="{{ forms.details['ContactDesignation'].$valid }}">
-	                            <fd-input id="idContactDesignation"
-	                                name="ContactDesignation"
-	                                state="{{ forms.details['ContactDesignation'].$valid ? '' : 'error' }}"
-	                                ng-model="entity.ContactDesignation"
+	                        <fd-form-input-message-group dg-inactive="{{ forms.details['Designation'].$valid }}">
+	                            <fd-input id="idDesignation"
+	                                name="Designation"
+	                                state="{{ forms.details['Designation'].$valid ? '' : 'error' }}"
+	                                ng-model="entity.Designation"
 	                                ng-minlength="0.0 || 0"
 	                                ng-maxlength="255.0 || -1"
 	                                type="text"
-	                                placeholder="Enter ContactDesignation">
+	                                placeholder="Enter Designation">
 	                            </fd-input>
 	                            <fd-form-message dg-type="error">Incorrect Input</fd-form-message>
 	                        </fd-form-input-message-group>
@@ -133,18 +133,18 @@
                     </fd-form-item>
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idContactEmail" dg-colon="true">ContactEmail</fd-form-label>
+                        	<fd-form-label for="idEmail" dg-colon="true">Email</fd-form-label>
                         </div>
                         <div class="fd-col fd-col-md--4">
-	                        <fd-form-input-message-group dg-inactive="{{ forms.details['ContactEmail'].$valid }}">
-	                            <fd-input id="idContactEmail"
-	                                name="ContactEmail"
-	                                state="{{ forms.details['ContactEmail'].$valid ? '' : 'error' }}"
-	                                ng-model="entity.ContactEmail"
+	                        <fd-form-input-message-group dg-inactive="{{ forms.details['Email'].$valid }}">
+	                            <fd-input id="idEmail"
+	                                name="Email"
+	                                state="{{ forms.details['Email'].$valid ? '' : 'error' }}"
+	                                ng-model="entity.Email"
 	                                ng-minlength="0.0 || 0"
 	                                ng-maxlength="255.0 || -1"
 	                                type="email"
-	                                placeholder="Enter ContactEmail">
+	                                placeholder="Enter Email">
 	                            </fd-input>
 	                            <fd-form-message dg-type="error">Incorrect Input</fd-form-message>
 	                        </fd-form-input-message-group>
@@ -152,18 +152,18 @@
                     </fd-form-item>
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idContactPhone" dg-colon="true">ContactPhone</fd-form-label>
+                        	<fd-form-label for="idPhone" dg-colon="true">Phone</fd-form-label>
                         </div>
                         <div class="fd-col fd-col-md--4">
-	                        <fd-form-input-message-group dg-inactive="{{ forms.details['ContactPhone'].$valid }}">
-	                            <fd-input id="idContactPhone"
-	                                name="ContactPhone"
-	                                state="{{ forms.details['ContactPhone'].$valid ? '' : 'error' }}"
-	                                ng-model="entity.ContactPhone"
+	                        <fd-form-input-message-group dg-inactive="{{ forms.details['Phone'].$valid }}">
+	                            <fd-input id="idPhone"
+	                                name="Phone"
+	                                state="{{ forms.details['Phone'].$valid ? '' : 'error' }}"
+	                                ng-model="entity.Phone"
 	                                ng-minlength="0.0 || 0"
 	                                ng-maxlength="255.0 || -1"
 	                                type="tel"
-	                                placeholder="Enter ContactPhone">
+	                                placeholder="Enter Phone">
 	                            </fd-input>
 	                            <fd-form-message dg-type="error">Incorrect Input</fd-form-message>
 	                        </fd-form-input-message-group>

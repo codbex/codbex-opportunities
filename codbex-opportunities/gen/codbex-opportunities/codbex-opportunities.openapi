@@ -276,11 +276,11 @@ paths:
                       Id: 33
                     contains:
                       Number: "abcd"
-                      CompanyName: "abcd"
-                      ContactName: "abcd"
-                      ContactDesignation: "abcd"
-                      ContactEmail: "abcd"
-                      ContactPhone: "abcd"
+                      Name: "abcd"
+                      Company: "abcd"
+                      Designation: "abcd"
+                      Email: "abcd"
+                      Phone: "abcd"
                     greaterThan:
                       Id: 0
                     lessThanOrEqual:
@@ -303,11 +303,11 @@ paths:
                   $filter:
                     contains:
                       Number: "abcd"
-                      CompanyName: "abcd"
-                      ContactName: "abcd"
-                      ContactDesignation: "abcd"
-                      ContactEmail: "abcd"
-                      ContactPhone: "abcd"
+                      Name: "abcd"
+                      Company: "abcd"
+                      Designation: "abcd"
+                      Email: "abcd"
+                      Phone: "abcd"
               countWithGreaterThan:
                 summary: Count with Greater Than
                 value:
@@ -372,11 +372,11 @@ paths:
                       Id: 33
                     contains:
                       Number: "abcd"
-                      CompanyName: "abcd"
-                      ContactName: "abcd"
-                      ContactDesignation: "abcd"
-                      ContactEmail: "abcd"
-                      ContactPhone: "abcd"
+                      Name: "abcd"
+                      Company: "abcd"
+                      Designation: "abcd"
+                      Email: "abcd"
+                      Phone: "abcd"
                     greaterThan:
                       Id: 0
                     lessThanOrEqual:
@@ -399,11 +399,11 @@ paths:
                   $filter:
                     contains:
                       Number: "abcd"
-                      CompanyName: "abcd"
-                      ContactName: "abcd"
-                      ContactDesignation: "abcd"
-                      ContactEmail: "abcd"
-                      ContactPhone: "abcd"
+                      Name: "abcd"
+                      Company: "abcd"
+                      Designation: "abcd"
+                      Email: "abcd"
+                      Phone: "abcd"
               searchWithGreaterThan:
                 summary: Search with Greater Than
                 value:
@@ -8031,10 +8031,10 @@ components:
     Lead:
       type: object
       required:
-        - CompanyName
-        - ContactName
-        - ContactEmail
-        - ContactPhone
+        - Name
+        - Company
+        - Email
+        - Phone
         - Owner
         - Date
       properties:
@@ -8046,7 +8046,7 @@ components:
           minLength: 0
           maxLength: 20
           readOnly: true
-        CompanyName:
+        Name:
           type: string
           minLength: 0
           maxLength: 255
@@ -8056,19 +8056,19 @@ components:
         City:
           type: integer
           format: int32
-        ContactName:
+        Company:
           type: string
           minLength: 0
           maxLength: 255
-        ContactDesignation:
+        Designation:
           type: string
           minLength: 0
           maxLength: 255
-        ContactEmail:
+        Email:
           type: string
           minLength: 0
           maxLength: 255
-        ContactPhone:
+        Phone:
           type: string
           minLength: 0
           maxLength: 255
@@ -8107,7 +8107,7 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 20
-                CompanyName:
+                Name:
                   oneOf:
                     - type: string
                       minLength: 0
@@ -8134,7 +8134,7 @@ components:
                       items:
                         type: integer
                         format: int32
-                ContactName:
+                Company:
                   oneOf:
                     - type: string
                       minLength: 0
@@ -8145,7 +8145,7 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 255
-                ContactDesignation:
+                Designation:
                   oneOf:
                     - type: string
                       minLength: 0
@@ -8156,7 +8156,7 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 255
-                ContactEmail:
+                Email:
                   oneOf:
                     - type: string
                       minLength: 0
@@ -8167,7 +8167,7 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 255
-                ContactPhone:
+                Phone:
                   oneOf:
                     - type: string
                       minLength: 0
@@ -8218,7 +8218,7 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 20
-                CompanyName:
+                Name:
                   oneOf:
                     - type: string
                       minLength: 0
@@ -8245,7 +8245,7 @@ components:
                       items:
                         type: integer
                         format: int32
-                ContactName:
+                Company:
                   oneOf:
                     - type: string
                       minLength: 0
@@ -8256,7 +8256,7 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 255
-                ContactDesignation:
+                Designation:
                   oneOf:
                     - type: string
                       minLength: 0
@@ -8267,7 +8267,7 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 255
-                ContactEmail:
+                Email:
                   oneOf:
                     - type: string
                       minLength: 0
@@ -8278,7 +8278,7 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 255
-                ContactPhone:
+                Phone:
                   oneOf:
                     - type: string
                       minLength: 0
@@ -8315,25 +8315,25 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 20
-                CompanyName:
+                Name:
                   type: string
                   minLength: 0
                   maxLength: 255
                 Country:
                 City:
-                ContactName:
+                Company:
                   type: string
                   minLength: 0
                   maxLength: 255
-                ContactDesignation:
+                Designation:
                   type: string
                   minLength: 0
                   maxLength: 255
-                ContactEmail:
+                Email:
                   type: string
                   minLength: 0
                   maxLength: 255
-                ContactPhone:
+                Phone:
                   type: string
                   minLength: 0
                   maxLength: 255
@@ -8350,7 +8350,7 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 20
-                CompanyName:
+                Name:
                   type: string
                   minLength: 0
                   maxLength: 255
@@ -8360,19 +8360,19 @@ components:
                 City:
                   type: integer
                   format: int32
-                ContactName:
+                Company:
                   type: string
                   minLength: 0
                   maxLength: 255
-                ContactDesignation:
+                Designation:
                   type: string
                   minLength: 0
                   maxLength: 255
-                ContactEmail:
+                Email:
                   type: string
                   minLength: 0
                   maxLength: 255
-                ContactPhone:
+                Phone:
                   type: string
                   minLength: 0
                   maxLength: 255
@@ -8393,7 +8393,7 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 20
-                CompanyName:
+                Name:
                   type: string
                   minLength: 0
                   maxLength: 255
@@ -8403,19 +8403,19 @@ components:
                 City:
                   type: integer
                   format: int32
-                ContactName:
+                Company:
                   type: string
                   minLength: 0
                   maxLength: 255
-                ContactDesignation:
+                Designation:
                   type: string
                   minLength: 0
                   maxLength: 255
-                ContactEmail:
+                Email:
                   type: string
                   minLength: 0
                   maxLength: 255
-                ContactPhone:
+                Phone:
                   type: string
                   minLength: 0
                   maxLength: 255
@@ -8436,7 +8436,7 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 20
-                CompanyName:
+                Name:
                   type: string
                   minLength: 0
                   maxLength: 255
@@ -8446,19 +8446,19 @@ components:
                 City:
                   type: integer
                   format: int32
-                ContactName:
+                Company:
                   type: string
                   minLength: 0
                   maxLength: 255
-                ContactDesignation:
+                Designation:
                   type: string
                   minLength: 0
                   maxLength: 255
-                ContactEmail:
+                Email:
                   type: string
                   minLength: 0
                   maxLength: 255
-                ContactPhone:
+                Phone:
                   type: string
                   minLength: 0
                   maxLength: 255
@@ -8479,7 +8479,7 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 20
-                CompanyName:
+                Name:
                   type: string
                   minLength: 0
                   maxLength: 255
@@ -8489,19 +8489,19 @@ components:
                 City:
                   type: integer
                   format: int32
-                ContactName:
+                Company:
                   type: string
                   minLength: 0
                   maxLength: 255
-                ContactDesignation:
+                Designation:
                   type: string
                   minLength: 0
                   maxLength: 255
-                ContactEmail:
+                Email:
                   type: string
                   minLength: 0
                   maxLength: 255
-                ContactPhone:
+                Phone:
                   type: string
                   minLength: 0
                   maxLength: 255
@@ -8514,12 +8514,12 @@ components:
                 Date:
         $select:
           type: array
-          example: ["Id", "Number", "CompanyName", "Country", "City", "ContactName", "ContactDesignation", "ContactEmail", "ContactPhone", "Status", "Owner", "Date"]
+          example: ["Id", "Number", "Name", "Country", "City", "Company", "Designation", "Email", "Phone", "Status", "Owner", "Date"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,Number,CompanyName,Country,City,ContactName,ContactDesignation,ContactEmail,ContactPhone,Status,Owner,Date"
+            example: "Id,Number,Name,Country,City,Company,Designation,Email,Phone,Status,Owner,Date"
         $order:
           type: string
           enum: ["asc", "desc"]

@@ -52,8 +52,8 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.Number) {
 				filter.$filter.contains.Number = entity.Number;
 			}
-			if (entity.CompanyName) {
-				filter.$filter.contains.CompanyName = entity.CompanyName;
+			if (entity.Name) {
+				filter.$filter.contains.Name = entity.Name;
 			}
 			if (entity.Country !== undefined) {
 				filter.$filter.equals.Country = entity.Country;
@@ -61,17 +61,17 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.City !== undefined) {
 				filter.$filter.equals.City = entity.City;
 			}
-			if (entity.ContactName) {
-				filter.$filter.contains.ContactName = entity.ContactName;
+			if (entity.Company) {
+				filter.$filter.contains.Company = entity.Company;
 			}
-			if (entity.ContactDesignation) {
-				filter.$filter.contains.ContactDesignation = entity.ContactDesignation;
+			if (entity.Designation) {
+				filter.$filter.contains.Designation = entity.Designation;
 			}
-			if (entity.ContactEmail) {
-				filter.$filter.contains.ContactEmail = entity.ContactEmail;
+			if (entity.Email) {
+				filter.$filter.contains.Email = entity.Email;
 			}
-			if (entity.ContactPhone) {
-				filter.$filter.contains.ContactPhone = entity.ContactPhone;
+			if (entity.Phone) {
+				filter.$filter.contains.Phone = entity.Phone;
 			}
 			if (entity.Status !== undefined) {
 				filter.$filter.equals.Status = entity.Status;

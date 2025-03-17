@@ -50,13 +50,13 @@
 						<fd-list-content
 							item-title="{{next.Number}}">
 							<fd-list-byline dg-align="left">
-								{{next.CompanyName}} |
+								{{next.Name}} |
 								{{optionsCountryValue(next.Country)}} |
 								{{optionsCityValue(next.City)}} |
-								{{next.ContactName}} |
-								{{next.ContactDesignation}} |
-								<a href="mailto:{{next.ContactEmail}}" class="fd-link">{{next.ContactEmail}}</a> |
-								<a href="tel:{{next.ContactPhone}}" class="fd-link">{{next.ContactPhone}}</a> |
+								{{next.Company}} |
+								{{next.Designation}} |
+								<a href="mailto:{{next.Email}}" class="fd-link">{{next.Email}}</a> |
+								<a href="tel:{{next.Phone}}" class="fd-link">{{next.Phone}}</a> |
 								{{optionsStatusValue(next.Status)}} |
 								{{optionsOwnerValue(next.Owner)}} |
 								{{next.Date | date: "dd/MMM/yyyy"}}

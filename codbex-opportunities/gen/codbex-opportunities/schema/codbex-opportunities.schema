@@ -22,7 +22,7 @@
                         "type": "VARCHAR",
                         "length": 255,
                         "nullable": true,
-                        "name": "LEAD_COMPANYNAME"
+                        "name": "LEAD_NAME"
                     },
                     {
                         "type": "INTEGER",
@@ -38,25 +38,25 @@
                         "type": "VARCHAR",
                         "length": 255,
                         "nullable": true,
-                        "name": "LEAD_CONTACTNAME"
+                        "name": "LEAD_COMPANY"
                     },
                     {
                         "type": "VARCHAR",
                         "length": 255,
                         "nullable": true,
-                        "name": "LEAD_CONTACTDESIGNATION"
+                        "name": "LEAD_DESIGNATION"
                     },
                     {
                         "type": "VARCHAR",
                         "length": 255,
                         "nullable": true,
-                        "name": "LEAD_CONTACTEMAIL"
+                        "name": "LEAD_EMAIL"
                     },
                     {
                         "type": "VARCHAR",
                         "length": 255,
                         "nullable": true,
-                        "name": "LEAD_CONTACTPHONE"
+                        "name": "LEAD_PHONE"
                     },
                     {
                         "type": "INTEGER",
