@@ -179,11 +179,12 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
+                        "calculatedPropertyExpressionCreate": "new Date()",
                         "dataName": "LEAD_DATE",
                         "dataNullable": "true",
                         "dataType": "DATE",
                         "description": "",
-                        "isRequiredProperty": "true",
+                        "isCalculatedProperty": "true",
                         "name": "Date",
                         "tooltip": "",
                         "widgetIsMajor": "true",
@@ -621,11 +622,13 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
+                        "calculatedPropertyExpressionCreate": "new Date()",
+                        "calculatedPropertyExpressionUpdate": "",
                         "dataName": "OPPORTUNITY_DATE",
                         "dataNullable": "true",
                         "dataType": "DATE",
                         "description": "",
-                        "isRequiredProperty": "true",
+                        "isCalculatedProperty": "true",
                         "name": "Date",
                         "tooltip": "",
                         "widgetIsMajor": "true",
@@ -1130,10 +1133,12 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "calculatedPropertyExpressionCreate": "new Date()",
                         "dataName": "QUOTATION_DATE",
                         "dataNullable": "true",
                         "dataType": "DATE",
                         "description": "",
+                        "isCalculatedProperty": "true",
                         "name": "Date",
                         "tooltip": "",
                         "widgetIsMajor": "true",

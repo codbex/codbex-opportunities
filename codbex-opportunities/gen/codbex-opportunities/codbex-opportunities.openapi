@@ -8032,7 +8032,6 @@ components:
         - Email
         - Phone
         - Owner
-        - Date
       properties:
         Id:
           type: integer
@@ -8660,7 +8659,6 @@ components:
         - Amount
         - Currency
         - Owner
-        - Date
       properties:
         Id:
           type: integer

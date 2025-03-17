@@ -31,7 +31,6 @@ export interface OpportunityCreateEntity {
     readonly Priority?: number;
     readonly Probability?: number;
     readonly Status?: number;
-    readonly Date?: Date;
 }
 
 export interface OpportunityUpdateEntity extends OpportunityCreateEntity {
@@ -254,6 +253,8 @@ export class OpportunityRepository {
         EntityUtils.setLocalDate(entity, "Date");
         // @ts-ignore
         (entity as OpportunityEntity).Number = new NumberGeneratorService().generate(2);
+        // @ts-ignore
+        (entity as OpportunityEntity).Date = new Date();
         const id = this.dao.insert(entity);
         this.triggerEvent({
             operation: "create",

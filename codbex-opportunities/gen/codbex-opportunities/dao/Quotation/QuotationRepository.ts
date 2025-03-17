@@ -19,7 +19,6 @@ export interface QuotationEntity {
 }
 
 export interface QuotationCreateEntity {
-    readonly Date?: Date;
     readonly Owner?: number;
     readonly Customer?: number;
     readonly Total?: number;
@@ -212,6 +211,8 @@ export class QuotationRepository {
         EntityUtils.setLocalDate(entity, "Date");
         // @ts-ignore
         (entity as QuotationEntity).Number = new NumberGeneratorService().generate(3);
+        // @ts-ignore
+        (entity as QuotationEntity).Date = new Date();
         const id = this.dao.insert(entity);
         this.triggerEvent({
             operation: "create",

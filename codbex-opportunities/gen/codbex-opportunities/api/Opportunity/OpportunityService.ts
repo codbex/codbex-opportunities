@@ -136,9 +136,6 @@ class OpportunityService {
         if (entity.Owner === null || entity.Owner === undefined) {
             throw new ValidationError(`The 'Owner' property is required, provide a valid value`);
         }
-        if (entity.Date === null || entity.Date === undefined) {
-            throw new ValidationError(`The 'Date' property is required, provide a valid value`);
-        }
         for (const next of validationModules) {
             next.validate(entity);
         }

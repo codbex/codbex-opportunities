@@ -31,7 +31,6 @@ export interface LeadCreateEntity {
     readonly Phone?: string;
     readonly Status?: number;
     readonly Owner?: number;
-    readonly Date?: Date;
 }
 
 export interface LeadUpdateEntity extends LeadCreateEntity {
@@ -254,6 +253,8 @@ export class LeadRepository {
         EntityUtils.setLocalDate(entity, "Date");
         // @ts-ignore
         (entity as LeadEntity).Number = new NumberGeneratorService().generate(1);
+        // @ts-ignore
+        (entity as LeadEntity).Date = new Date();
         const id = this.dao.insert(entity);
         this.triggerEvent({
             operation: "create",
