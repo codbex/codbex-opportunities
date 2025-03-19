@@ -109,7 +109,7 @@
                         "type": "VARCHAR",
                         "length": 20,
                         "nullable": true,
-                        "name": "OPPORTUNITY_NAME"
+                        "name": "OPPORTUNITY_NUMBER"
                     },
                     {
                         "type": "INTEGER",

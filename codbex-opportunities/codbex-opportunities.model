@@ -446,7 +446,7 @@
                     {
                         "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generate(2)",
                         "dataLength": "20",
-                        "dataName": "OPPORTUNITY_NAME",
+                        "dataName": "OPPORTUNITY_NUMBER",
                         "dataNullable": "true",
                         "dataType": "VARCHAR",
                         "description": "",

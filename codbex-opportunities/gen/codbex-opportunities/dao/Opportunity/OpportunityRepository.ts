@@ -174,7 +174,7 @@ export class OpportunityRepository {
             },
             {
                 name: "Number",
-                column: "OPPORTUNITY_NAME",
+                column: "OPPORTUNITY_NUMBER",
                 type: "VARCHAR",
             },
             {
