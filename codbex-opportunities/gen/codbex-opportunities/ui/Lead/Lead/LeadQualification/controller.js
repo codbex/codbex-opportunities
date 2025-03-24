@@ -236,7 +236,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			$scope.optionsLead = response.data.map(e => {
 				return {
 					value: e.Id,
-					text: e.ContactName
+					text: e.Name
 				}
 			});
 		});

@@ -4,7 +4,7 @@ import { QuotationRepository, QuotationEntityOptions } from "../../dao/Quotation
 import { ValidationError } from "../utils/ValidationError";
 import { HttpUtils } from "../utils/HttpUtils";
 // custom imports
-import { NumberGeneratorService } from "/codbex-number-generator/service/generator";
+import { NumberGeneratorService } from "codbex-number-generator/service/generator";
 
 const validationModules = await Extensions.loadExtensionModules("codbex-opportunities-Quotation-Quotation", ["validate"]);
 

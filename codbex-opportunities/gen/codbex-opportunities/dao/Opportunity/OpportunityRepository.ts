@@ -4,36 +4,33 @@ import { extensions } from "sdk/extensions";
 import { dao as daoApi } from "sdk/db";
 import { EntityUtils } from "../utils/EntityUtils";
 // custom imports
-import { NumberGeneratorService } from "/codbex-number-generator/service/generator";
+import { NumberGeneratorService } from "codbex-number-generator/service/generator";
 
 export interface OpportunityEntity {
     readonly Id: number;
     Number?: string;
-    Source?: string;
     Customer?: number;
     Amount?: number;
+    Currency?: number;
     Lead?: number;
     Owner?: number;
     Type?: number;
     Priority?: number;
     Probability?: number;
     Status?: number;
-    Currency?: number;
     Date?: Date;
 }
 
 export interface OpportunityCreateEntity {
-    readonly Source?: string;
     readonly Customer?: number;
     readonly Amount?: number;
+    readonly Currency?: number;
     readonly Lead?: number;
     readonly Owner?: number;
     readonly Type?: number;
     readonly Priority?: number;
     readonly Probability?: number;
     readonly Status?: number;
-    readonly Currency?: number;
-    readonly Date?: Date;
 }
 
 export interface OpportunityUpdateEntity extends OpportunityCreateEntity {
@@ -45,106 +42,99 @@ export interface OpportunityEntityOptions {
         equals?: {
             Id?: number | number[];
             Number?: string | string[];
-            Source?: string | string[];
             Customer?: number | number[];
             Amount?: number | number[];
+            Currency?: number | number[];
             Lead?: number | number[];
             Owner?: number | number[];
             Type?: number | number[];
             Priority?: number | number[];
             Probability?: number | number[];
             Status?: number | number[];
-            Currency?: number | number[];
             Date?: Date | Date[];
         };
         notEquals?: {
             Id?: number | number[];
             Number?: string | string[];
-            Source?: string | string[];
             Customer?: number | number[];
             Amount?: number | number[];
+            Currency?: number | number[];
             Lead?: number | number[];
             Owner?: number | number[];
             Type?: number | number[];
             Priority?: number | number[];
             Probability?: number | number[];
             Status?: number | number[];
-            Currency?: number | number[];
             Date?: Date | Date[];
         };
         contains?: {
             Id?: number;
             Number?: string;
-            Source?: string;
             Customer?: number;
             Amount?: number;
+            Currency?: number;
             Lead?: number;
             Owner?: number;
             Type?: number;
             Priority?: number;
             Probability?: number;
             Status?: number;
-            Currency?: number;
             Date?: Date;
         };
         greaterThan?: {
             Id?: number;
             Number?: string;
-            Source?: string;
             Customer?: number;
             Amount?: number;
+            Currency?: number;
             Lead?: number;
             Owner?: number;
             Type?: number;
             Priority?: number;
             Probability?: number;
             Status?: number;
-            Currency?: number;
             Date?: Date;
         };
         greaterThanOrEqual?: {
             Id?: number;
             Number?: string;
-            Source?: string;
             Customer?: number;
             Amount?: number;
+            Currency?: number;
             Lead?: number;
             Owner?: number;
             Type?: number;
             Priority?: number;
             Probability?: number;
             Status?: number;
-            Currency?: number;
             Date?: Date;
         };
         lessThan?: {
             Id?: number;
             Number?: string;
-            Source?: string;
             Customer?: number;
             Amount?: number;
+            Currency?: number;
             Lead?: number;
             Owner?: number;
             Type?: number;
             Priority?: number;
             Probability?: number;
             Status?: number;
-            Currency?: number;
             Date?: Date;
         };
         lessThanOrEqual?: {
             Id?: number;
             Number?: string;
-            Source?: string;
             Customer?: number;
             Amount?: number;
+            Currency?: number;
             Lead?: number;
             Owner?: number;
             Type?: number;
             Priority?: number;
             Probability?: number;
             Status?: number;
-            Currency?: number;
             Date?: Date;
         };
     },
@@ -184,12 +174,7 @@ export class OpportunityRepository {
             },
             {
                 name: "Number",
-                column: "OPPORTUNITY_NAME",
-                type: "VARCHAR",
-            },
-            {
-                name: "Source",
-                column: "OPPORTUNITY_SOURCE",
+                column: "OPPORTUNITY_NUMBER",
                 type: "VARCHAR",
             },
             {
@@ -201,6 +186,11 @@ export class OpportunityRepository {
                 name: "Amount",
                 column: "OPPORTUNITY_AMOUNT",
                 type: "DECIMAL",
+            },
+            {
+                name: "Currency",
+                column: "OPPORTUNITY_CURRENCY",
+                type: "INTEGER",
             },
             {
                 name: "Lead",
@@ -230,11 +220,6 @@ export class OpportunityRepository {
             {
                 name: "Status",
                 column: "OPPORTUNITY_STATUS",
-                type: "INTEGER",
-            },
-            {
-                name: "Currency",
-                column: "OPPORTUNITY_CURRENCY",
                 type: "INTEGER",
             },
             {
@@ -268,6 +253,8 @@ export class OpportunityRepository {
         EntityUtils.setLocalDate(entity, "Date");
         // @ts-ignore
         (entity as OpportunityEntity).Number = new NumberGeneratorService().generate(2);
+        // @ts-ignore
+        (entity as OpportunityEntity).Date = new Date();
         const id = this.dao.insert(entity);
         this.triggerEvent({
             operation: "create",

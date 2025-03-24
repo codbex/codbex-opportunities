@@ -16,42 +16,47 @@
                         "type": "VARCHAR",
                         "length": 20,
                         "nullable": true,
+                        "name": "LEAD_NUMBER"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 255,
+                        "nullable": true,
                         "name": "LEAD_NAME"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 255,
-                        "nullable": true,
-                        "name": "LEAD_COMPANYNAME"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 255,
-                        "nullable": true,
-                        "name": "LEAD_CONTACTNAME"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 255,
-                        "nullable": true,
-                        "name": "LEAD_CONTACTDESIGNATION"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 255,
-                        "nullable": true,
-                        "name": "LEAD_CONTACTEMAIL"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 255,
-                        "nullable": true,
-                        "name": "LEAD_CONTACTPHONE"
                     },
                     {
                         "type": "INTEGER",
                         "nullable": true,
-                        "name": "LEAD_INDUSTRY"
+                        "name": "LEAD_COUNTRY"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "LEAD_CITY"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 255,
+                        "nullable": true,
+                        "name": "LEAD_COMPANY"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 255,
+                        "nullable": true,
+                        "name": "LEAD_DESIGNATION"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 255,
+                        "nullable": true,
+                        "name": "LEAD_EMAIL"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 255,
+                        "nullable": true,
+                        "name": "LEAD_PHONE"
                     },
                     {
                         "type": "INTEGER",
@@ -104,13 +109,7 @@
                         "type": "VARCHAR",
                         "length": 20,
                         "nullable": true,
-                        "name": "OPPORTUNITY_NAME"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 255,
-                        "nullable": true,
-                        "name": "OPPORTUNITY_SOURCE"
+                        "name": "OPPORTUNITY_NUMBER"
                     },
                     {
                         "type": "INTEGER",
@@ -124,6 +123,11 @@
                         "scale": "2",
                         "nullable": true,
                         "name": "OPPORTUNITY_AMOUNT"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "OPPORTUNITY_CURRENCY"
                     },
                     {
                         "type": "INTEGER",
@@ -154,11 +158,6 @@
                         "type": "INTEGER",
                         "nullable": true,
                         "name": "OPPORTUNITY_STATUS"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "nullable": true,
-                        "name": "OPPORTUNITY_CURRENCY"
                     },
                     {
                         "type": "DATE",
@@ -685,13 +684,22 @@
                 ]
             },
             {
-                "name": "Lead_Industry",
+                "name": "Lead_Country",
                 "type": "foreignKey",
                 "table": "CODBEX_LEAD",
-                "constraintName": "Lead_Industry",
-                "columns": "LEAD_INDUSTRY",
-                "referencedTable": "CODBEX_INDUSTRY",
-                "referencedColumns": "INDUSTRY_ID"
+                "constraintName": "Lead_Country",
+                "columns": "LEAD_COUNTRY",
+                "referencedTable": "CODBEX_COUNTRY",
+                "referencedColumns": "COUNTRY_ID"
+            },
+            {
+                "name": "Lead_City",
+                "type": "foreignKey",
+                "table": "CODBEX_LEAD",
+                "constraintName": "Lead_City",
+                "columns": "LEAD_CITY",
+                "referencedTable": "CODBEX_CITY",
+                "referencedColumns": "CITY_ID"
             },
             {
                 "name": "Lead_LeadStatus",
@@ -719,6 +727,15 @@
                 "columns": "OPPORTUNITY_CUSTOMER",
                 "referencedTable": "CODBEX_CUSTOMER",
                 "referencedColumns": "CUSTOMER_ID"
+            },
+            {
+                "name": "Opportunity_Currency",
+                "type": "foreignKey",
+                "table": "CODBEX_OPPORTUNITY",
+                "constraintName": "Opportunity_Currency",
+                "columns": "OPPORTUNITY_CURRENCY",
+                "referencedTable": "CODBEX_CURRENCY",
+                "referencedColumns": "CURRENCY_ID"
             },
             {
                 "name": "Opportunity_Lead",
@@ -773,15 +790,6 @@
                 "columns": "OPPORTUNITY_STATUS",
                 "referencedTable": "CODBEX_OPPORTUNITYSTATUS",
                 "referencedColumns": "OPPORTUNITYSTATUS_ID"
-            },
-            {
-                "name": "Opportunity_Currency",
-                "type": "foreignKey",
-                "table": "CODBEX_OPPORTUNITY",
-                "constraintName": "Opportunity_Currency",
-                "columns": "OPPORTUNITY_CURRENCY",
-                "referencedTable": "CODBEX_CURRENCY",
-                "referencedColumns": "CURRENCY_ID"
             },
             {
                 "name": "Quotation_Employee",

@@ -4,7 +4,7 @@ import { LeadRepository, LeadEntityOptions } from "../../dao/Lead/LeadRepository
 import { ValidationError } from "../utils/ValidationError";
 import { HttpUtils } from "../utils/HttpUtils";
 // custom imports
-import { NumberGeneratorService } from "/codbex-number-generator/service/generator";
+import { NumberGeneratorService } from "codbex-number-generator/service/generator";
 
 const validationModules = await Extensions.loadExtensionModules("codbex-opportunities-Lead-Lead", ["validate"]);
 
@@ -124,38 +124,35 @@ class LeadService {
         if (entity.Number?.length > 20) {
             throw new ValidationError(`The 'Number' exceeds the maximum length of [20] characters`);
         }
-        if (entity.CompanyName === null || entity.CompanyName === undefined) {
-            throw new ValidationError(`The 'CompanyName' property is required, provide a valid value`);
+        if (entity.Name === null || entity.Name === undefined) {
+            throw new ValidationError(`The 'Name' property is required, provide a valid value`);
         }
-        if (entity.CompanyName?.length > 255) {
-            throw new ValidationError(`The 'CompanyName' exceeds the maximum length of [255] characters`);
+        if (entity.Name?.length > 255) {
+            throw new ValidationError(`The 'Name' exceeds the maximum length of [255] characters`);
         }
-        if (entity.ContactName === null || entity.ContactName === undefined) {
-            throw new ValidationError(`The 'ContactName' property is required, provide a valid value`);
+        if (entity.Company === null || entity.Company === undefined) {
+            throw new ValidationError(`The 'Company' property is required, provide a valid value`);
         }
-        if (entity.ContactName?.length > 255) {
-            throw new ValidationError(`The 'ContactName' exceeds the maximum length of [255] characters`);
+        if (entity.Company?.length > 255) {
+            throw new ValidationError(`The 'Company' exceeds the maximum length of [255] characters`);
         }
-        if (entity.ContactDesignation?.length > 255) {
-            throw new ValidationError(`The 'ContactDesignation' exceeds the maximum length of [255] characters`);
+        if (entity.Designation?.length > 255) {
+            throw new ValidationError(`The 'Designation' exceeds the maximum length of [255] characters`);
         }
-        if (entity.ContactEmail === null || entity.ContactEmail === undefined) {
-            throw new ValidationError(`The 'ContactEmail' property is required, provide a valid value`);
+        if (entity.Email === null || entity.Email === undefined) {
+            throw new ValidationError(`The 'Email' property is required, provide a valid value`);
         }
-        if (entity.ContactEmail?.length > 255) {
-            throw new ValidationError(`The 'ContactEmail' exceeds the maximum length of [255] characters`);
+        if (entity.Email?.length > 255) {
+            throw new ValidationError(`The 'Email' exceeds the maximum length of [255] characters`);
         }
-        if (entity.ContactPhone === null || entity.ContactPhone === undefined) {
-            throw new ValidationError(`The 'ContactPhone' property is required, provide a valid value`);
+        if (entity.Phone === null || entity.Phone === undefined) {
+            throw new ValidationError(`The 'Phone' property is required, provide a valid value`);
         }
-        if (entity.ContactPhone?.length > 255) {
-            throw new ValidationError(`The 'ContactPhone' exceeds the maximum length of [255] characters`);
+        if (entity.Phone?.length > 255) {
+            throw new ValidationError(`The 'Phone' exceeds the maximum length of [255] characters`);
         }
         if (entity.Owner === null || entity.Owner === undefined) {
             throw new ValidationError(`The 'Owner' property is required, provide a valid value`);
-        }
-        if (entity.Date === null || entity.Date === undefined) {
-            throw new ValidationError(`The 'Date' property is required, provide a valid value`);
         }
         for (const next of validationModules) {
             next.validate(entity);

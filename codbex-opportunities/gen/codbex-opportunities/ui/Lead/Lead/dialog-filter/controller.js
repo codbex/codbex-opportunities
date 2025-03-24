@@ -20,7 +20,8 @@ angular.module('page', ["ideUI", "ideView"])
 			$scope.entity = params.entity ?? {};
 			$scope.selectedMainEntityKey = params.selectedMainEntityKey;
 			$scope.selectedMainEntityId = params.selectedMainEntityId;
-			$scope.optionsIndustry = params.optionsIndustry;
+			$scope.optionsCountry = params.optionsCountry;
+			$scope.optionsCity = params.optionsCity;
 			$scope.optionsStatus = params.optionsStatus;
 			$scope.optionsOwner = params.optionsOwner;
 		}
@@ -51,23 +52,26 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.Number) {
 				filter.$filter.contains.Number = entity.Number;
 			}
-			if (entity.CompanyName) {
-				filter.$filter.contains.CompanyName = entity.CompanyName;
+			if (entity.Name) {
+				filter.$filter.contains.Name = entity.Name;
 			}
-			if (entity.ContactName) {
-				filter.$filter.contains.ContactName = entity.ContactName;
+			if (entity.Country !== undefined) {
+				filter.$filter.equals.Country = entity.Country;
 			}
-			if (entity.ContactDesignation) {
-				filter.$filter.contains.ContactDesignation = entity.ContactDesignation;
+			if (entity.City !== undefined) {
+				filter.$filter.equals.City = entity.City;
 			}
-			if (entity.ContactEmail) {
-				filter.$filter.contains.ContactEmail = entity.ContactEmail;
+			if (entity.Company) {
+				filter.$filter.contains.Company = entity.Company;
 			}
-			if (entity.ContactPhone) {
-				filter.$filter.contains.ContactPhone = entity.ContactPhone;
+			if (entity.Designation) {
+				filter.$filter.contains.Designation = entity.Designation;
 			}
-			if (entity.Industry !== undefined) {
-				filter.$filter.equals.Industry = entity.Industry;
+			if (entity.Email) {
+				filter.$filter.contains.Email = entity.Email;
+			}
+			if (entity.Phone) {
+				filter.$filter.contains.Phone = entity.Phone;
 			}
 			if (entity.Status !== undefined) {
 				filter.$filter.equals.Status = entity.Status;

@@ -28,13 +28,13 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			$scope.selectedMainEntityKey = params.selectedMainEntityKey;
 			$scope.selectedMainEntityId = params.selectedMainEntityId;
 			$scope.optionsCustomer = params.optionsCustomer;
+			$scope.optionsCurrency = params.optionsCurrency;
 			$scope.optionsLead = params.optionsLead;
 			$scope.optionsOwner = params.optionsOwner;
 			$scope.optionsType = params.optionsType;
 			$scope.optionsPriority = params.optionsPriority;
 			$scope.optionsProbability = params.optionsProbability;
 			$scope.optionsStatus = params.optionsStatus;
-			$scope.optionsCurrency = params.optionsCurrency;
 		}
 
 		$scope.create = function () {
@@ -75,6 +75,18 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				return {
 					value: e.Id,
 					text: e.Name
+				}
+			});
+		});
+		$scope.serviceCurrency = "/services/ts/codbex-currencies/gen/codbex-currencies/api/Currencies/CurrencyService.ts";
+		
+		$scope.optionsCurrency = [];
+		
+		$http.get("/services/ts/codbex-currencies/gen/codbex-currencies/api/Currencies/CurrencyService.ts").then(function (response) {
+			$scope.optionsCurrency = response.data.map(e => {
+				return {
+					value: e.Id,
+					text: e.Code
 				}
 			});
 		});
@@ -147,18 +159,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				return {
 					value: e.Id,
 					text: e.Name
-				}
-			});
-		});
-		$scope.serviceCurrency = "/services/ts/codbex-currencies/gen/codbex-currencies/api/Currencies/CurrencyService.ts";
-		
-		$scope.optionsCurrency = [];
-		
-		$http.get("/services/ts/codbex-currencies/gen/codbex-currencies/api/Currencies/CurrencyService.ts").then(function (response) {
-			$scope.optionsCurrency = response.data.map(e => {
-				return {
-					value: e.Id,
-					text: e.Code
 				}
 			});
 		});

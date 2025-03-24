@@ -4,7 +4,7 @@ import { extensions } from "sdk/extensions";
 import { dao as daoApi } from "sdk/db";
 import { EntityUtils } from "../utils/EntityUtils";
 // custom imports
-import { NumberGeneratorService } from "/codbex-number-generator/service/generator";
+import { NumberGeneratorService } from "codbex-number-generator/service/generator";
 
 export interface QuotationEntity {
     readonly Id: number;
@@ -19,7 +19,6 @@ export interface QuotationEntity {
 }
 
 export interface QuotationCreateEntity {
-    readonly Date?: Date;
     readonly Owner?: number;
     readonly Customer?: number;
     readonly Total?: number;
@@ -212,6 +211,8 @@ export class QuotationRepository {
         EntityUtils.setLocalDate(entity, "Date");
         // @ts-ignore
         (entity as QuotationEntity).Number = new NumberGeneratorService().generate(3);
+        // @ts-ignore
+        (entity as QuotationEntity).Date = new Date();
         const id = this.dao.insert(entity);
         this.triggerEvent({
             operation: "create",

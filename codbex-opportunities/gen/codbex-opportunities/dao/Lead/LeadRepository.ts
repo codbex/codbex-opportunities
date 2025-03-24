@@ -4,32 +4,33 @@ import { extensions } from "sdk/extensions";
 import { dao as daoApi } from "sdk/db";
 import { EntityUtils } from "../utils/EntityUtils";
 // custom imports
-import { NumberGeneratorService } from "/codbex-number-generator/service/generator";
+import { NumberGeneratorService } from "codbex-number-generator/service/generator";
 
 export interface LeadEntity {
     readonly Id: number;
     Number?: string;
-    CompanyName?: string;
-    ContactName?: string;
-    ContactDesignation?: string;
-    ContactEmail?: string;
-    ContactPhone?: string;
-    Industry?: number;
+    Name?: string;
+    Country?: number;
+    City?: number;
+    Company?: string;
+    Designation?: string;
+    Email?: string;
+    Phone?: string;
     Status?: number;
     Owner?: number;
     Date?: Date;
 }
 
 export interface LeadCreateEntity {
-    readonly CompanyName?: string;
-    readonly ContactName?: string;
-    readonly ContactDesignation?: string;
-    readonly ContactEmail?: string;
-    readonly ContactPhone?: string;
-    readonly Industry?: number;
+    readonly Name?: string;
+    readonly Country?: number;
+    readonly City?: number;
+    readonly Company?: string;
+    readonly Designation?: string;
+    readonly Email?: string;
+    readonly Phone?: string;
     readonly Status?: number;
     readonly Owner?: number;
-    readonly Date?: Date;
 }
 
 export interface LeadUpdateEntity extends LeadCreateEntity {
@@ -41,12 +42,13 @@ export interface LeadEntityOptions {
         equals?: {
             Id?: number | number[];
             Number?: string | string[];
-            CompanyName?: string | string[];
-            ContactName?: string | string[];
-            ContactDesignation?: string | string[];
-            ContactEmail?: string | string[];
-            ContactPhone?: string | string[];
-            Industry?: number | number[];
+            Name?: string | string[];
+            Country?: number | number[];
+            City?: number | number[];
+            Company?: string | string[];
+            Designation?: string | string[];
+            Email?: string | string[];
+            Phone?: string | string[];
             Status?: number | number[];
             Owner?: number | number[];
             Date?: Date | Date[];
@@ -54,12 +56,13 @@ export interface LeadEntityOptions {
         notEquals?: {
             Id?: number | number[];
             Number?: string | string[];
-            CompanyName?: string | string[];
-            ContactName?: string | string[];
-            ContactDesignation?: string | string[];
-            ContactEmail?: string | string[];
-            ContactPhone?: string | string[];
-            Industry?: number | number[];
+            Name?: string | string[];
+            Country?: number | number[];
+            City?: number | number[];
+            Company?: string | string[];
+            Designation?: string | string[];
+            Email?: string | string[];
+            Phone?: string | string[];
             Status?: number | number[];
             Owner?: number | number[];
             Date?: Date | Date[];
@@ -67,12 +70,13 @@ export interface LeadEntityOptions {
         contains?: {
             Id?: number;
             Number?: string;
-            CompanyName?: string;
-            ContactName?: string;
-            ContactDesignation?: string;
-            ContactEmail?: string;
-            ContactPhone?: string;
-            Industry?: number;
+            Name?: string;
+            Country?: number;
+            City?: number;
+            Company?: string;
+            Designation?: string;
+            Email?: string;
+            Phone?: string;
             Status?: number;
             Owner?: number;
             Date?: Date;
@@ -80,12 +84,13 @@ export interface LeadEntityOptions {
         greaterThan?: {
             Id?: number;
             Number?: string;
-            CompanyName?: string;
-            ContactName?: string;
-            ContactDesignation?: string;
-            ContactEmail?: string;
-            ContactPhone?: string;
-            Industry?: number;
+            Name?: string;
+            Country?: number;
+            City?: number;
+            Company?: string;
+            Designation?: string;
+            Email?: string;
+            Phone?: string;
             Status?: number;
             Owner?: number;
             Date?: Date;
@@ -93,12 +98,13 @@ export interface LeadEntityOptions {
         greaterThanOrEqual?: {
             Id?: number;
             Number?: string;
-            CompanyName?: string;
-            ContactName?: string;
-            ContactDesignation?: string;
-            ContactEmail?: string;
-            ContactPhone?: string;
-            Industry?: number;
+            Name?: string;
+            Country?: number;
+            City?: number;
+            Company?: string;
+            Designation?: string;
+            Email?: string;
+            Phone?: string;
             Status?: number;
             Owner?: number;
             Date?: Date;
@@ -106,12 +112,13 @@ export interface LeadEntityOptions {
         lessThan?: {
             Id?: number;
             Number?: string;
-            CompanyName?: string;
-            ContactName?: string;
-            ContactDesignation?: string;
-            ContactEmail?: string;
-            ContactPhone?: string;
-            Industry?: number;
+            Name?: string;
+            Country?: number;
+            City?: number;
+            Company?: string;
+            Designation?: string;
+            Email?: string;
+            Phone?: string;
             Status?: number;
             Owner?: number;
             Date?: Date;
@@ -119,12 +126,13 @@ export interface LeadEntityOptions {
         lessThanOrEqual?: {
             Id?: number;
             Number?: string;
-            CompanyName?: string;
-            ContactName?: string;
-            ContactDesignation?: string;
-            ContactEmail?: string;
-            ContactPhone?: string;
-            Industry?: number;
+            Name?: string;
+            Country?: number;
+            City?: number;
+            Company?: string;
+            Designation?: string;
+            Email?: string;
+            Phone?: string;
             Status?: number;
             Owner?: number;
             Date?: Date;
@@ -166,38 +174,43 @@ export class LeadRepository {
             },
             {
                 name: "Number",
+                column: "LEAD_NUMBER",
+                type: "VARCHAR",
+            },
+            {
+                name: "Name",
                 column: "LEAD_NAME",
                 type: "VARCHAR",
             },
             {
-                name: "CompanyName",
-                column: "LEAD_COMPANYNAME",
-                type: "VARCHAR",
-            },
-            {
-                name: "ContactName",
-                column: "LEAD_CONTACTNAME",
-                type: "VARCHAR",
-            },
-            {
-                name: "ContactDesignation",
-                column: "LEAD_CONTACTDESIGNATION",
-                type: "VARCHAR",
-            },
-            {
-                name: "ContactEmail",
-                column: "LEAD_CONTACTEMAIL",
-                type: "VARCHAR",
-            },
-            {
-                name: "ContactPhone",
-                column: "LEAD_CONTACTPHONE",
-                type: "VARCHAR",
-            },
-            {
-                name: "Industry",
-                column: "LEAD_INDUSTRY",
+                name: "Country",
+                column: "LEAD_COUNTRY",
                 type: "INTEGER",
+            },
+            {
+                name: "City",
+                column: "LEAD_CITY",
+                type: "INTEGER",
+            },
+            {
+                name: "Company",
+                column: "LEAD_COMPANY",
+                type: "VARCHAR",
+            },
+            {
+                name: "Designation",
+                column: "LEAD_DESIGNATION",
+                type: "VARCHAR",
+            },
+            {
+                name: "Email",
+                column: "LEAD_EMAIL",
+                type: "VARCHAR",
+            },
+            {
+                name: "Phone",
+                column: "LEAD_PHONE",
+                type: "VARCHAR",
             },
             {
                 name: "Status",
@@ -240,6 +253,8 @@ export class LeadRepository {
         EntityUtils.setLocalDate(entity, "Date");
         // @ts-ignore
         (entity as LeadEntity).Number = new NumberGeneratorService().generate(1);
+        // @ts-ignore
+        (entity as LeadEntity).Date = new Date();
         const id = this.dao.insert(entity);
         this.triggerEvent({
             operation: "create",

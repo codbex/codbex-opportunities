@@ -48,25 +48,6 @@
                     </fd-form-item>
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idSource" dg-colon="true">Source</fd-form-label>
-                        </div>
-                        <div class="fd-col fd-col-md--8">
-	                        <fd-form-input-message-group dg-inactive="{{ forms.details['Source'].$valid }}">
-	                            <fd-input id="idSource"
-	                                name="Source"
-	                                state="{{ forms.details['Source'].$valid ? '' : 'error' }}"
-	                                ng-model="entity.Source"
-	                                ng-minlength="0.0 || 0"
-	                                ng-maxlength="255.0 || -1"
-	                                type="text"
-	                                placeholder="Enter Source">
-	                            </fd-input>
-	                            <fd-form-message dg-type="error">Incorrect Input</fd-form-message>
-	                        </fd-form-input-message-group>
-	                    </div>
-                    </fd-form-item>
-                    <fd-form-item class="fd-row">
-                    	<div class="fd-col fd-col-md--2">
                         	<fd-form-label for="idCustomer" dg-colon="true">Customer</fd-form-label>
                         </div>
                         <div class="fd-col fd-col-md--8">
@@ -91,6 +72,20 @@
 								placeholder="Enter Amount"
 								>
 							</fd-step-input>
+	                    </div>
+                    </fd-form-item>
+                    <fd-form-item class="fd-row">
+                    	<div class="fd-col fd-col-md--2">
+                        	<fd-form-label for="idCurrency" dg-colon="true">Currency</fd-form-label>
+                        </div>
+                        <div class="fd-col fd-col-md--8">
+	                        <fd-combobox-input id="idCurrency"
+	                            name="Currency"
+	                            state="{{ forms.details['Currency'].$valid ? '' : 'error' }}"
+	                            ng-model="entity.Currency"
+	                            dropdown-items="optionsCurrency"
+	                            dg-placeholder="Search Currency ...">
+	                        </fd-combobox-input>
 	                    </div>
                     </fd-form-item>
                     <fd-form-item class="fd-row">
@@ -174,20 +169,6 @@
 	                            ng-model="entity.Status"
 	                            dropdown-items="optionsStatus"
 	                            dg-placeholder="Search Status ...">
-	                        </fd-combobox-input>
-	                    </div>
-                    </fd-form-item>
-                    <fd-form-item class="fd-row">
-                    	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idCurrency" dg-colon="true">Currency</fd-form-label>
-                        </div>
-                        <div class="fd-col fd-col-md--8">
-	                        <fd-combobox-input id="idCurrency"
-	                            name="Currency"
-	                            state="{{ forms.details['Currency'].$valid ? '' : 'error' }}"
-	                            ng-model="entity.Currency"
-	                            dropdown-items="optionsCurrency"
-	                            dg-placeholder="Search Currency ...">
 	                        </fd-combobox-input>
 	                    </div>
                     </fd-form-item>

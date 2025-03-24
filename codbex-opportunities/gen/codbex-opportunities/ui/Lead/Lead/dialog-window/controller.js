@@ -27,7 +27,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			$scope.entity = params.entity;
 			$scope.selectedMainEntityKey = params.selectedMainEntityKey;
 			$scope.selectedMainEntityId = params.selectedMainEntityId;
-			$scope.optionsIndustry = params.optionsIndustry;
+			$scope.optionsCountry = params.optionsCountry;
+			$scope.optionsCity = params.optionsCity;
 			$scope.optionsStatus = params.optionsStatus;
 			$scope.optionsOwner = params.optionsOwner;
 		}
@@ -61,12 +62,24 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		};
 
-		$scope.serviceIndustry = "/services/ts/codbex-industries/gen/codbex-industries/api/industry/IndustryService.ts";
+		$scope.serviceCountry = "/services/ts/codbex-countries/gen/codbex-countries/api/Countries/CountryService.ts";
 		
-		$scope.optionsIndustry = [];
+		$scope.optionsCountry = [];
 		
-		$http.get("/services/ts/codbex-industries/gen/codbex-industries/api/industry/IndustryService.ts").then(function (response) {
-			$scope.optionsIndustry = response.data.map(e => {
+		$http.get("/services/ts/codbex-countries/gen/codbex-countries/api/Countries/CountryService.ts").then(function (response) {
+			$scope.optionsCountry = response.data.map(e => {
+				return {
+					value: e.Id,
+					text: e.Name
+				}
+			});
+		});
+		$scope.serviceCity = "/services/ts/codbex-cities/gen/codbex-cities/api/Cities/CityService.ts";
+		
+		$scope.optionsCity = [];
+		
+		$http.get("/services/ts/codbex-cities/gen/codbex-cities/api/Cities/CityService.ts").then(function (response) {
+			$scope.optionsCity = response.data.map(e => {
 				return {
 					value: e.Id,
 					text: e.Name
@@ -96,6 +109,35 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 					text: e.FirstName
 				}
 			});
+		});
+
+		$scope.$watch('entity.Country', function (newValue, oldValue) {
+			if (newValue !== undefined && newValue !== null) {
+				entityApi.$http.get($scope.serviceCountry + '/' + newValue).then(function (response) {
+					let valueFrom = response.data.Id;
+					entityApi.$http.post("/services/ts/codbex-cities/gen/codbex-cities/api/Cities/CityService.ts/search", {
+						$filter: {
+							equals: {
+								Country: valueFrom
+							}
+						}
+					}).then(function (response) {
+						$scope.optionsCity = response.data.map(e => {
+							return {
+								value: e.Id,
+								text: e.Name
+							}
+						});
+						if ($scope.action !== 'select' && newValue !== oldValue) {
+							if ($scope.optionsCity.length == 1) {
+								$scope.entity.City = $scope.optionsCity[0].value;
+							} else {
+								$scope.entity.City = undefined;
+							}
+						}
+					});
+				});
+			}
 		});
 
 		$scope.cancel = function () {
