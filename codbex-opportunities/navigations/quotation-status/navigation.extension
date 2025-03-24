@@ -1,5 +1,6 @@
 {
     "extensionPoint": "dashboard-navigations",
     "module": "codbex-opportunities/navigations/quotation-status/service.js",
-    "description": "Quotation Status"
+    "description": "Quotation Status",
+    "role": "codbex-opportunities.Settings.QuotationStatusReadOnly,codbex-opportunities.Settings.QuotationStatusFullAccess"
 }

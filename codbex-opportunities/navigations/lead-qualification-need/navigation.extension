@@ -1,5 +1,6 @@
 {
     "extensionPoint": "dashboard-navigations",
     "module": "codbex-opportunities/navigations/lead-qualification-need/service.js",
-    "description": "Action Status"
+    "description": "Action Status",
+    "role": "codbex-opportunities.Settings.LeadQualificationNeedReadOnly,codbex-opportunities.Settings.LeadQualificationNeedFullAccess"
 }

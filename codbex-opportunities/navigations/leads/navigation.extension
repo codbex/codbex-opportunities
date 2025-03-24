@@ -1,5 +1,6 @@
 {
     "extensionPoint": "dashboard-navigations",
     "module": "codbex-opportunities/navigations/leads/service.js",
-    "description": "Leads Navigation"
+    "description": "Leads Navigation",
+    "role": "codbex-opportunities.Lead.LeadReadOnly,codbex-opportunities.Lead.LeadFullAccess"
 }

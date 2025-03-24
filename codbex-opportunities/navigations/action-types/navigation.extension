@@ -1,5 +1,6 @@
 {
     "extensionPoint": "dashboard-navigations",
     "module": "codbex-opportunities/navigations/action-types/service.js",
-    "description": "Action Type"
+    "description": "Action Type",
+    "role": "codbex-opportunities.Settings.ActionTypeReadOnly,codbex-opportunities.Settings.ActionTypeFullAccess"
 }

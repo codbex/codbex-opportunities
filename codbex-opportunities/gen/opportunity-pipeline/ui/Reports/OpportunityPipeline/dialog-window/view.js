@@ -7,7 +7,7 @@ const viewData = {
     id: "OpportunityPipeline-Report-details",
     label: "OpportunityPipeline Report",
     link: "/services/web/codbex-opportunities/gen/opportunity-pipeline/ui/Reports/OpportunityPipeline/dialog-window/index.html",
-    perspectiveName: "Reports",
+    perspectiveName: "Reports"
 };
 
 if (typeof exports !== 'undefined') {

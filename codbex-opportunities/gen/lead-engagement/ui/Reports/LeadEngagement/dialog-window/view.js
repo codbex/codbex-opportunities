@@ -7,7 +7,7 @@ const viewData = {
     id: "LeadEngagement-Report-details",
     label: "LeadEngagement Report",
     link: "/services/web/codbex-opportunities/gen/lead-engagement/ui/Reports/LeadEngagement/dialog-window/index.html",
-    perspectiveName: "Reports",
+    perspectiveName: "Reports"
 };
 
 if (typeof exports !== 'undefined') {

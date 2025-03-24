@@ -1,5 +1,6 @@
 {
     "extensionPoint": "dashboard-navigations",
     "module": "codbex-opportunities/navigations/opportunity-probability/service.js",
-    "description": "Opportunity Probability"
+    "description": "Opportunity Probability",
+    "role": "codbex-opportunities.Settings.OpportunityProbabilityReadOnly,codbex-opportunities.Settings.OpportunityProbabilityFullAccess"
 }

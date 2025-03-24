@@ -1,5 +1,6 @@
 {
     "module": "codbex-opportunities/gen/codbex-opportunities/ui/Opportunity/Opportunity/OpportunityAction/dialog-filter/view.js",
     "extensionPoint": "dialog-window",
-    "description": "codbex-opportunities - Application Dialog Window"
+    "description": "codbex-opportunities - Application Dialog Window",
+    "role": "codbex-opportunities.Opportunity.OpportunityActionReadOnly,codbex-opportunities.Opportunity.OpportunityActionFullAccess"
 }

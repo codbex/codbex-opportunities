@@ -1,2 +1,162 @@
 [
+    {
+        "name": "codbex-opportunities.Lead.LeadReadOnly",
+        "description": "A role that grants read only permission for Lead."
+    },
+    {
+        "name": "codbex-opportunities.Lead.LeadFullAccess",
+        "description": "A role that grants full access for Lead."
+    },
+    {
+        "name": "codbex-opportunities.Settings.LeadStatusReadOnly",
+        "description": "A role that grants read only permission for LeadStatus."
+    },
+    {
+        "name": "codbex-opportunities.Settings.LeadStatusFullAccess",
+        "description": "A role that grants full access for LeadStatus."
+    },
+    {
+        "name": "codbex-opportunities.Opportunity.OpportunityReadOnly",
+        "description": "A role that grants read only permission for Opportunity."
+    },
+    {
+        "name": "codbex-opportunities.Opportunity.OpportunityFullAccess",
+        "description": "A role that grants full access for Opportunity."
+    },
+    {
+        "name": "codbex-opportunities.Settings.OpportunityTypeReadOnly",
+        "description": "A role that grants read only permission for OpportunityType."
+    },
+    {
+        "name": "codbex-opportunities.Settings.OpportunityTypeFullAccess",
+        "description": "A role that grants full access for OpportunityType."
+    },
+    {
+        "name": "codbex-opportunities.Settings.OpportunityPriorityReadOnly",
+        "description": "A role that grants read only permission for OpportunityPriority."
+    },
+    {
+        "name": "codbex-opportunities.Settings.OpportunityPriorityFullAccess",
+        "description": "A role that grants full access for OpportunityPriority."
+    },
+    {
+        "name": "codbex-opportunities.Settings.OpportunityStatusReadOnly",
+        "description": "A role that grants read only permission for OpportunityStatus."
+    },
+    {
+        "name": "codbex-opportunities.Settings.OpportunityStatusFullAccess",
+        "description": "A role that grants full access for OpportunityStatus."
+    },
+    {
+        "name": "codbex-opportunities.Settings.OpportunityProbabilityReadOnly",
+        "description": "A role that grants read only permission for OpportunityProbability."
+    },
+    {
+        "name": "codbex-opportunities.Settings.OpportunityProbabilityFullAccess",
+        "description": "A role that grants full access for OpportunityProbability."
+    },
+    {
+        "name": "codbex-opportunities.Quotation.QuotationReadOnly",
+        "description": "A role that grants read only permission for Quotation."
+    },
+    {
+        "name": "codbex-opportunities.Quotation.QuotationFullAccess",
+        "description": "A role that grants full access for Quotation."
+    },
+    {
+        "name": "codbex-opportunities.Quotation.QuotationItemReadOnly",
+        "description": "A role that grants read only permission for QuotationItem."
+    },
+    {
+        "name": "codbex-opportunities.Quotation.QuotationItemFullAccess",
+        "description": "A role that grants full access for QuotationItem."
+    },
+    {
+        "name": "codbex-opportunities.Settings.QuotationStatusReadOnly",
+        "description": "A role that grants read only permission for QuotationStatus."
+    },
+    {
+        "name": "codbex-opportunities.Settings.QuotationStatusFullAccess",
+        "description": "A role that grants full access for QuotationStatus."
+    },
+    {
+        "name": "codbex-opportunities.Quotation.QuotationLinkReadOnly",
+        "description": "A role that grants read only permission for QuotationLink."
+    },
+    {
+        "name": "codbex-opportunities.Quotation.QuotationLinkFullAccess",
+        "description": "A role that grants full access for QuotationLink."
+    },
+    {
+        "name": "codbex-opportunities.Lead.LeadQualificationReadOnly",
+        "description": "A role that grants read only permission for LeadQualification."
+    },
+    {
+        "name": "codbex-opportunities.Lead.LeadQualificationFullAccess",
+        "description": "A role that grants full access for LeadQualification."
+    },
+    {
+        "name": "codbex-opportunities.Settings.LeadQualificationAuthorityReadOnly",
+        "description": "A role that grants read only permission for LeadQualificationAuthority."
+    },
+    {
+        "name": "codbex-opportunities.Settings.LeadQualificationAuthorityFullAccess",
+        "description": "A role that grants full access for LeadQualificationAuthority."
+    },
+    {
+        "name": "codbex-opportunities.Settings.LeadQualificationNeedReadOnly",
+        "description": "A role that grants read only permission for LeadQualificationNeed."
+    },
+    {
+        "name": "codbex-opportunities.Settings.LeadQualificationNeedFullAccess",
+        "description": "A role that grants full access for LeadQualificationNeed."
+    },
+    {
+        "name": "codbex-opportunities.Settings.LeadQualificationTimelineReadOnly",
+        "description": "A role that grants read only permission for LeadQualificationTimeline."
+    },
+    {
+        "name": "codbex-opportunities.Settings.LeadQualificationTimelineFullAccess",
+        "description": "A role that grants full access for LeadQualificationTimeline."
+    },
+    {
+        "name": "codbex-opportunities.Opportunity.OpportunityActionReadOnly",
+        "description": "A role that grants read only permission for OpportunityAction."
+    },
+    {
+        "name": "codbex-opportunities.Opportunity.OpportunityActionFullAccess",
+        "description": "A role that grants full access for OpportunityAction."
+    },
+    {
+        "name": "codbex-opportunities.Settings.ActionTypeReadOnly",
+        "description": "A role that grants read only permission for ActionType."
+    },
+    {
+        "name": "codbex-opportunities.Settings.ActionTypeFullAccess",
+        "description": "A role that grants full access for ActionType."
+    },
+    {
+        "name": "codbex-opportunities.Settings.ActionStatusReadOnly",
+        "description": "A role that grants read only permission for ActionStatus."
+    },
+    {
+        "name": "codbex-opportunities.Settings.ActionStatusFullAccess",
+        "description": "A role that grants full access for ActionStatus."
+    },
+    {
+        "name": "codbex-opportunities.Lead.LeadEngagementReadOnly",
+        "description": "A role that grants read only permission for LeadEngagement."
+    },
+    {
+        "name": "codbex-opportunities.Lead.LeadEngagementFullAccess",
+        "description": "A role that grants full access for LeadEngagement."
+    },
+    {
+        "name": "codbex-opportunities.Opportunity.OpportunityNoteReadOnly",
+        "description": "A role that grants read only permission for OpportunityNote."
+    },
+    {
+        "name": "codbex-opportunities.Opportunity.OpportunityNoteFullAccess",
+        "description": "A role that grants full access for OpportunityNote."
+    }
 ]

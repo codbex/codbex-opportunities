@@ -1,5 +1,6 @@
 {
     "extensionPoint": "dashboard-navigations",
     "module": "codbex-opportunities/navigations/opportunity-status/service.js",
-    "description": "Opportunity Status"
+    "description": "Opportunity Status",
+    "role": "codbex-opportunities.Settings.OpportunityStatusReadOnly,codbex-opportunities.Settings.OpportunityStatusFullAccess"
 }

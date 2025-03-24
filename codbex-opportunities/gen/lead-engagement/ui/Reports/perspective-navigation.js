@@ -8,7 +8,7 @@ const navigationData = {
 	label: 'Lead Engagement Report',
 	group: 'reports',
 	link: '/services/web/codbex-opportunities/gen/lead-engagement/ui/Reports/LeadEngagement/index.html',
-	order: 999,
+	order: $navigationOrder
 };
 
 function getNavigation() {

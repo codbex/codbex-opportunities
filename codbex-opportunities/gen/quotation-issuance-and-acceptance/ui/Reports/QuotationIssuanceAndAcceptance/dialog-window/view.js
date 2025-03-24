@@ -7,7 +7,7 @@ const viewData = {
     id: "QuotationIssuanceAndAcceptance-Report-details",
     label: "QuotationIssuanceAndAcceptance Report",
     link: "/services/web/codbex-opportunities/gen/quotation-issuance-and-acceptance/ui/Reports/QuotationIssuanceAndAcceptance/dialog-window/index.html",
-    perspectiveName: "Reports",
+    perspectiveName: "Reports"
 };
 
 if (typeof exports !== 'undefined') {

@@ -1,5 +1,6 @@
 {
     "module": "codbex-opportunities/gen/codbex-opportunities/ui/Settings/LeadStatus/dialog-window/view.js",
     "extensionPoint": "dialog-window",
-    "description": "codbex-opportunities - Application Dialog Window"
+    "description": "codbex-opportunities - Application Dialog Window",
+    "role": "codbex-opportunities.Settings.LeadStatusReadOnly,codbex-opportunities.Settings.LeadStatusFullAccess"
 }

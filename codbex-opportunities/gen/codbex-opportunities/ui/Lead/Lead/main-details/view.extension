@@ -1,5 +1,6 @@
 {
     "module": "codbex-opportunities/gen/codbex-opportunities/ui/Lead/Lead/main-details/view.js",
     "extensionPoint": "codbex-opportunities-view",
-    "description": "codbex-opportunities - Application View - Main Details"
+    "description": "codbex-opportunities - Application View - Main Details",
+    "role": "codbex-opportunities.Lead.LeadReadOnly,codbex-opportunities.Lead.LeadFullAccess"
 }

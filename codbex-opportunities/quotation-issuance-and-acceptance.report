@@ -54,5 +54,9 @@
             "type": "INNER",
             "condition": "Quotation.QUOTATION_CURRENCY = Currency.CURRENCY_ID"
         }
-    ]
+    ],
+    "security": {
+        "generateDefaultRoles": "true",
+        "roleRead": "codbex-opportunities.Report.QuotationIssuanceAndAcceptanceReadOnly"
+    }
 }

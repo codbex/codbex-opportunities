@@ -1,5 +1,6 @@
 {
     "extensionPoint": "codbex-opportunities-custom-action",
     "module": "codbex-opportunities/gen/quotation-issuance-and-acceptance/ui/Reports/QuotationIssuanceAndAcceptance/dialog-print/print.js",
-    "description": "Print QuotationIssuanceAndAcceptance Report"
+    "description": "Print QuotationIssuanceAndAcceptance Report",
+    "role": "codbex-opportunities.Report.QuotationIssuanceAndAcceptanceReadOnly"
 }

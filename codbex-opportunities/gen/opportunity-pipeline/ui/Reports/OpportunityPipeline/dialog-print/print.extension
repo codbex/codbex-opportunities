@@ -1,5 +1,6 @@
 {
     "extensionPoint": "codbex-opportunities-custom-action",
     "module": "codbex-opportunities/gen/opportunity-pipeline/ui/Reports/OpportunityPipeline/dialog-print/print.js",
-    "description": "Print OpportunityPipeline Report"
+    "description": "Print OpportunityPipeline Report",
+    "role": "codbex-opportunities.Report.OpportunityPipelineReadOnly"
 }

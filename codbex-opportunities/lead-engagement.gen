@@ -2,13 +2,19 @@
   "brand": "codbex",
   "brandUrl": "https://www.codbex.com/",
   "title": "Lead Engagement Report",
-  "projectName": "codbex-opportunities",
-  "workspaceName": "workspace",
-  "filePath": "lead-engagement.report",
-  "templateId": "template-application-ui-angular/template/template-report-file.js",
   "fileName": "lead-engagement",
   "genFolderName": "lead-engagement",
   "extensionPoint": "codbex-opportunities",
   "name": "LeadEngagement",
-  "perspectiveName": "LeadEngagement"
+  "perspectiveName": "LeadEngagement",
+  "projectName": "codbex-opportunities",
+  "workspaceName": "workspace",
+  "filePath": "lead-engagement.report",
+  "templateId": "template-application-ui-angular/template/template-report-file.js",
+  "roles": [
+    {
+      "entityName": "LeadEngagement",
+      "roleRead": "codbex-opportunities.Report.LeadEngagementReadOnly"
+    }
+  ]
 }

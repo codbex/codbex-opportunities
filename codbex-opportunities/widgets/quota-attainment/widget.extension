@@ -1,5 +1,6 @@
 {
     "extensionPoint": "dashboard-widgets",
     "module": "codbex-opportunities/widgets/quota-attainment/service.js",
-    "description": "Quota Attainment"
+    "description": "Quota Attainment",
+    "role": "codbex-opportunities.Quotation.QuotationReadOnly,codbex-opportunities.Quotation.QuotationFullAccess"
 }

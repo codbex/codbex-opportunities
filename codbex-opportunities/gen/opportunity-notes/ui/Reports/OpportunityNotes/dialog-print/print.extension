@@ -1,5 +1,6 @@
 {
     "extensionPoint": "codbex-opportunities-custom-action",
     "module": "codbex-opportunities/gen/opportunity-notes/ui/Reports/OpportunityNotes/dialog-print/print.js",
-    "description": "Print OpportunityNotes Report"
+    "description": "Print OpportunityNotes Report",
+    "role": "codbex-opportunities.Report.OpportunityNotesReadOnly"
 }

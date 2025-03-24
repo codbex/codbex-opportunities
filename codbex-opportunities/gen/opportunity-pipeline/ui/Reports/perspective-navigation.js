@@ -8,7 +8,7 @@ const navigationData = {
 	label: 'Opportunity Pipeline Report',
 	group: 'reports',
 	link: '/services/web/codbex-opportunities/gen/opportunity-pipeline/ui/Reports/OpportunityPipeline/index.html',
-	order: 999,
+	order: $navigationOrder
 };
 
 function getNavigation() {

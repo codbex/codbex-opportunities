@@ -1,5 +1,6 @@
 {
     "extensionPoint": "dashboard-widgets",
     "module": "codbex-opportunities/widgets/leads-pipeline/service.js",
-    "description": "Leads Pipeline"
+    "description": "Leads Pipeline",
+    "role": "codbex-opportunities.Lead.LeadReadOnly,codbex-opportunities.Lead.LeadFullAccess"
 }

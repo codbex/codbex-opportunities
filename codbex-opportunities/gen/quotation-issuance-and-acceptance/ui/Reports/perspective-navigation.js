@@ -8,7 +8,7 @@ const navigationData = {
 	label: 'Quotation Issuance and Acceptance Report',
 	group: 'reports',
 	link: '/services/web/codbex-opportunities/gen/quotation-issuance-and-acceptance/ui/Reports/QuotationIssuanceAndAcceptance/index.html',
-	order: 999,
+	order: $navigationOrder
 };
 
 function getNavigation() {

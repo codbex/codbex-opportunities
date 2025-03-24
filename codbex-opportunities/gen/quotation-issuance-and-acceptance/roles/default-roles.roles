@@ -1,0 +1,6 @@
+[
+    {
+        "name": "codbex-opportunities.Report.QuotationIssuanceAndAcceptanceReadOnly",
+        "description": "A role that grants read only permission for QuotationIssuanceAndAcceptance."
+    }
+]

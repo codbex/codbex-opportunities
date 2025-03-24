@@ -1,5 +1,6 @@
 {
     "module": "codbex-opportunities/gen/opportunity-pipeline/ui/Reports/OpportunityPipeline/tile.js",
     "extensionPoint": "codbex-opportunities-tile",
-    "description": "codbex-opportunities - Application Tile"
+    "description": "codbex-opportunities - Application Tile",
+    "role": "codbex-opportunities.Report.OpportunityPipelineReadOnly"
 }

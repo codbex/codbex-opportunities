@@ -1,5 +1,6 @@
 {
     "extensionPoint": "dashboard-widgets",
     "module": "codbex-opportunities/widgets/churn-rate/service.js",
-    "description": "Churn Rate"
+    "description": "Churn Rate",
+    "role": "codbex-opportunities.Opportunity.OpportunityReadOnly,codbex-opportunities.Opportunity.OpportunityFullAccess"
 }

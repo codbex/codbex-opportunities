@@ -8,6 +8,9 @@ const viewData = {
     label: "Lead",
     link: "/services/web/codbex-opportunities/gen/codbex-opportunities/ui/Lead/Lead/dialog-window/index.html",
     perspectiveName: "Lead",
+    roles: [
+        "codbex-opportunities.Lead.LeadReadOnly",
+    ]
 };
 
 if (typeof exports !== 'undefined') {

@@ -1,5 +1,7 @@
 import { Controller, Get, Post } from "sdk/http"
 import { OpportunityPriorityRepository, OpportunityPriorityFilter, OpportunityPriorityPaginatedFilter } from "../../dao/OpportunityPriority/OpportunityPriorityRepository";
+import { user } from "sdk/security"
+import { ForbiddenError } from "../utils/ForbiddenError";
 import { HttpUtils } from "../utils/HttpUtils";
 
 @Controller
@@ -10,12 +12,14 @@ class OpportunityPriorityService {
     @Get("/")
     public filter(_: any, ctx: any) {
         try {
+            this.checkPermissions("read");
+
             const filter: OpportunityPriorityPaginatedFilter = {
                 "$limit": ctx.queryParameters["$limit"] ? parseInt(ctx.queryParameters["$limit"]) : undefined,
                 "$offset": ctx.queryParameters["$offset"] ? parseInt(ctx.queryParameters["$offset"]) : undefined
             };
 
-            return this.repository.findAll(filter);
+            return this.repository.findAll(filter).map(e => this.transformEntity("read", e));
         } catch (error: any) {
             this.handleError(error);
         }
@@ -24,6 +28,8 @@ class OpportunityPriorityService {
     @Get("/count")
     public count(_: any, ctx: any) {
         try {
+            this.checkPermissions("read");
+
             const filter: OpportunityPriorityFilter = {
             };
             return this.repository.count(filter);
@@ -35,6 +41,8 @@ class OpportunityPriorityService {
     @Post("/count")
     public countWithFilter(filter: any) {
         try {
+            this.checkPermissions("read");
+
             return this.repository.count(filter);
         } catch (error: any) {
             this.handleError(error);
@@ -44,7 +52,9 @@ class OpportunityPriorityService {
     @Post("/search")
     public search(filter: any) {
         try {
-            return this.repository.findAll(filter);
+            this.checkPermissions("read");
+
+            return this.repository.findAll(filter).map(e => this.transformEntity("read", e));
         } catch (error: any) {
             this.handleError(error);
         }
@@ -58,6 +68,17 @@ class OpportunityPriorityService {
         } else {
             HttpUtils.sendInternalServerError(error.message);
         }
+    }
+
+    private checkPermissions(operationType: string) {
+        if (operationType === "read" && !(user.isInRole("codbex-opportunities.Report.OpportunityPriorityReadOnly"))) {
+            throw new ForbiddenError();
+        }
+    }
+
+    private transformEntity(operationType: string, originalEntity: any) {
+        const entity = { ...originalEntity };
+        return entity;
     }
 
 }

@@ -1,5 +1,6 @@
 {
     "extensionPoint": "dashboard-widgets",
     "module": "codbex-opportunities/widgets/leads-to-opportunities/service.js",
-    "description": "Leads converted to Opportunities"
+    "description": "Leads converted to Opportunities",
+    "role": "codbex-opportunities.Lead.LeadReadOnly,codbex-opportunities.Lead.LeadFullAccess,codbex-opportunities.Opportunity.OpportunityReadOnly,codbex-opportunities.Opportunity.OpportunityFullAccess"
 }
