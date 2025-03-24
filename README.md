@@ -1,5 +1,5 @@
 # codbex-opportunities
-Opportunitues Management Application
+Opportunitues Management Module
 
 ### Model
 
