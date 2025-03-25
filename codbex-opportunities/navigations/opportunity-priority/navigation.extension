@@ -1,5 +1,6 @@
 {
     "extensionPoint": "dashboard-navigations",
     "module": "codbex-opportunities/navigations/opportunity-priority/service.js",
-    "description": "Opportunity Priority"
+    "description": "Opportunity Priority",
+    "role": "codbex-opportunities.Settings.OpportunityPriorityReadOnly,codbex-opportunities.Settings.OpportunityPriorityFullAccess"
 }

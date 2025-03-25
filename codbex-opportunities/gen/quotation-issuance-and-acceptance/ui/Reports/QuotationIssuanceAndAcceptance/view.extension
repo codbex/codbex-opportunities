@@ -1,5 +1,6 @@
 {
     "module": "codbex-opportunities/gen/quotation-issuance-and-acceptance/ui/Reports/QuotationIssuanceAndAcceptance/view.js",
     "extensionPoint": "codbex-opportunities-view",
-    "description": "codbex-opportunities - Application View"
+    "description": "codbex-opportunities - Application View",
+    "role": "codbex-opportunities.Report.QuotationIssuanceAndAcceptanceReadOnly"
 }

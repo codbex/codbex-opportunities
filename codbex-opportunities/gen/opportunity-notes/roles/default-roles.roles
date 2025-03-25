@@ -1,2 +1,6 @@
 [
+    {
+        "name": "codbex-opportunities.Report.OpportunityNotesReadOnly",
+        "description": "A role that grants read only permission for OpportunityNotes."
+    }
 ]

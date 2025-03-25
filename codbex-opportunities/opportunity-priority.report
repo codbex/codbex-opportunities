@@ -54,5 +54,9 @@
             "type": "INNER",
             "condition": "OpportunityPriority.OPPORTUNITYPRIORITY_ID = Opportunity.OPPORTUNITY_PRIORITY"
         }
-    ]
+    ],
+    "security": {
+        "generateDefaultRoles": "true",
+        "roleRead": "codbex-opportunities.Report.OpportunityPriorityReadOnly"
+    }
 }

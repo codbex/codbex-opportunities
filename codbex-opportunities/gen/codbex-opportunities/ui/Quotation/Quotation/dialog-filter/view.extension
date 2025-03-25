@@ -1,5 +1,6 @@
 {
     "module": "codbex-opportunities/gen/codbex-opportunities/ui/Quotation/Quotation/dialog-filter/view.js",
     "extensionPoint": "dialog-window",
-    "description": "codbex-opportunities - Application Dialog Window"
+    "description": "codbex-opportunities - Application Dialog Window",
+    "role": "codbex-opportunities.Quotation.QuotationReadOnly,codbex-opportunities.Quotation.QuotationFullAccess"
 }

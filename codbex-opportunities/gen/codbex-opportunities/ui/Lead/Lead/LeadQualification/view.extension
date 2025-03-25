@@ -1,5 +1,6 @@
 {
     "module": "codbex-opportunities/gen/codbex-opportunities/ui/Lead/Lead/LeadQualification/view.js",
     "extensionPoint": "codbex-opportunities-view",
-    "description": "codbex-opportunities - Application View - Details"
+    "description": "codbex-opportunities - Application View - Details",
+    "role": "codbex-opportunities.Lead.LeadQualificationReadOnly,codbex-opportunities.Lead.LeadQualificationFullAccess"
 }

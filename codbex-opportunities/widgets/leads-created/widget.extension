@@ -1,5 +1,6 @@
 {
     "extensionPoint": "dashboard-widgets",
     "module": "codbex-opportunities/widgets/leads-created/service.js",
-    "description": "Leads Created"
+    "description": "Leads Created",
+    "role": "codbex-opportunities.Lead.LeadReadOnly,codbex-opportunities.Lead.LeadFullAccess"
 }

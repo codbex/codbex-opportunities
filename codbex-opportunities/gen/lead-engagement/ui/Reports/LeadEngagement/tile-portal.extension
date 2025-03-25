@@ -1,5 +1,6 @@
 {
     "module": "codbex-opportunities/gen/lead-engagement/ui/Reports/LeadEngagement/tile.js",
     "extensionPoint": "portal-tile",
-    "description": "codbex-opportunities - Application Tile"
+    "description": "codbex-opportunities - Application Tile",
+    "role": "codbex-opportunities.Report.LeadEngagementReadOnly"
 }

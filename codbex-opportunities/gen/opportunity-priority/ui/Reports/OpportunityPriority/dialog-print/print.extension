@@ -1,5 +1,6 @@
 {
     "extensionPoint": "codbex-opportunities-custom-action",
     "module": "codbex-opportunities/gen/opportunity-priority/ui/Reports/OpportunityPriority/dialog-print/print.js",
-    "description": "Print OpportunityPriority Report"
+    "description": "Print OpportunityPriority Report",
+    "role": "codbex-opportunities.Report.OpportunityPriorityReadOnly"
 }

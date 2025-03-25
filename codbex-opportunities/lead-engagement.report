@@ -75,5 +75,9 @@
             "column": "LEADENGAGEMENT_DATE",
             "direction": "DESC"
         }
-    ]
+    ],
+    "security": {
+        "generateDefaultRoles": "true",
+        "roleRead": "codbex-opportunities.Report.LeadEngagementReadOnly"
+    }
 }

@@ -1,5 +1,6 @@
 {
     "module": "codbex-opportunities/gen/codbex-opportunities/ui/Settings/OpportunityProbability/view.js",
     "extensionPoint": "codbex-opportunities-view",
-    "description": "codbex-opportunities - Application View"
+    "description": "codbex-opportunities - Application View",
+    "role": "codbex-opportunities.Settings.OpportunityProbabilityReadOnly,codbex-opportunities.Settings.OpportunityProbabilityFullAccess"
 }

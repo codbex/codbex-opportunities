@@ -1,5 +1,6 @@
 {
     "extensionPoint": "dashboard-navigations",
     "module": "codbex-opportunities/navigations/lead-qualification-timeline/service.js",
-    "description": "Lead Qualification Timeline Navigation"
+    "description": "Lead Qualification Timeline Navigation",
+    "role": "codbex-opportunities.Settings.LeadQualificationTimelineReadOnly,codbex-opportunities.Settings.LeadQualificationTimelineFullAccess"
 }

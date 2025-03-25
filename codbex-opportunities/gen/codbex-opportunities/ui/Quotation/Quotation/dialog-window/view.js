@@ -8,6 +8,9 @@ const viewData = {
     label: "Quotation",
     link: "/services/web/codbex-opportunities/gen/codbex-opportunities/ui/Quotation/Quotation/dialog-window/index.html",
     perspectiveName: "Quotation",
+    roles: [
+        "codbex-opportunities.Quotation.QuotationReadOnly",
+    ]
 };
 
 if (typeof exports !== 'undefined') {

@@ -1,5 +1,6 @@
 {
     "extensionPoint": "dashboard-widgets",
     "module": "codbex-opportunities/widgets/close-rate/service.js",
-    "description": "Close Rate"
+    "description": "Close Rate",
+    "role": "codbex-opportunities.Lead.LeadReadOnly,codbex-opportunities.Lead.LeadFullAccess"
 }
