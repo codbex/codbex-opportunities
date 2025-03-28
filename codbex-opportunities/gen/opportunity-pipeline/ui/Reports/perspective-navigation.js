@@ -5,10 +5,10 @@
  */
 const navigationData = {
 	id: 'codbex-opportunities-opportunity-pipeline',
-	label: 'Opportunity Pipeline Report',
+	label: 'Opportunity Pipeline',
 	group: 'reports',
 	link: '/services/web/codbex-opportunities/gen/opportunity-pipeline/ui/Reports/OpportunityPipeline/index.html',
-	order: $navigationOrder
+	order: 1800
 };
 
 function getNavigation() {

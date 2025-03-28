@@ -1,16 +1,17 @@
 {
   "brand": "codbex",
-  "brandUrl": "https://www.codbex.com/",
-  "title": "Opportunity Priority Report",
+  "brandUrl": "https://www.codbex.com",
+  "title": "Opportuniyt Priority",
+  "navigationOrder": "1700",
+  "projectName": "codbex-opportunities",
+  "workspaceName": "workspace",
+  "filePath": "opportunity-priority.report",
+  "templateId": "template-application-ui-angular/template/template-report-file.js",
   "fileName": "opportunity-priority",
   "genFolderName": "opportunity-priority",
   "extensionPoint": "codbex-opportunities",
   "name": "OpportunityPriority",
   "perspectiveName": "OpportunityPriority",
-  "projectName": "codbex-opportunities",
-  "workspaceName": "workspace",
-  "filePath": "opportunity-priority.report",
-  "templateId": "template-application-ui-angular/template/template-report-file.js",
   "roles": [
     {
       "entityName": "OpportunityPriority",

@@ -5,10 +5,10 @@
  */
 const navigationData = {
 	id: 'codbex-opportunities-opportunity-priority',
-	label: 'Opportunity Priority Report',
+	label: 'Opportuniyt Priority',
 	group: 'reports',
 	link: '/services/web/codbex-opportunities/gen/opportunity-priority/ui/Reports/OpportunityPriority/index.html',
-	order: $navigationOrder
+	order: 1700
 };
 
 function getNavigation() {

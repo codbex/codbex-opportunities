@@ -1,16 +1,17 @@
 {
   "brand": "codbex",
-  "brandUrl": "https://www.codbex.com/",
-  "title": "Opportunity Pipeline Report",
+  "brandUrl": "https://www.codbex.com",
+  "title": "Opportunity Pipeline",
+  "navigationOrder": "1800",
+  "projectName": "codbex-opportunities",
+  "workspaceName": "workspace",
+  "filePath": "opportunity-pipeline.report",
+  "templateId": "template-application-ui-angular/template/template-report-file.js",
   "fileName": "opportunity-pipeline",
   "genFolderName": "opportunity-pipeline",
   "extensionPoint": "codbex-opportunities",
   "name": "OpportunityPipeline",
   "perspectiveName": "OpportunityPipeline",
-  "projectName": "codbex-opportunities",
-  "workspaceName": "workspace",
-  "filePath": "opportunity-pipeline.report",
-  "templateId": "template-application-ui-angular/template/template-report-file.js",
   "roles": [
     {
       "entityName": "OpportunityPipeline",

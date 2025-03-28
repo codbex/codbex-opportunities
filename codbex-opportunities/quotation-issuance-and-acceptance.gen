@@ -1,16 +1,17 @@
 {
   "brand": "codbex",
-  "brandUrl": "https://www.codbex.com/",
-  "title": "Quotation Issuance and Acceptance Report",
+  "brandUrl": "https://www.codbex.com",
+  "title": "Quotation Issuance and Acceptance",
+  "navigationOrder": "1600",
+  "projectName": "codbex-opportunities",
+  "workspaceName": "workspace",
+  "filePath": "quotation-issuance-and-acceptance.report",
+  "templateId": "template-application-ui-angular/template/template-report-file.js",
   "fileName": "quotation-issuance-and-acceptance",
   "genFolderName": "quotation-issuance-and-acceptance",
   "extensionPoint": "codbex-opportunities",
   "name": "QuotationIssuanceAndAcceptance",
   "perspectiveName": "QuotationIssuanceAndAcceptance",
-  "projectName": "codbex-opportunities",
-  "workspaceName": "workspace",
-  "filePath": "quotation-issuance-and-acceptance.report",
-  "templateId": "template-application-ui-angular/template/template-report-file.js",
   "roles": [
     {
       "entityName": "QuotationIssuanceAndAcceptance",
