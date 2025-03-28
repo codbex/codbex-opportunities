@@ -5,10 +5,10 @@
  */
 const navigationData = {
 	id: 'codbex-opportunities-lead-engagement',
-	label: 'Lead Engagement Report',
+	label: 'Lead Engagement',
 	group: 'reports',
 	link: '/services/web/codbex-opportunities/gen/lead-engagement/ui/Reports/LeadEngagement/index.html',
-	order: $navigationOrder
+	order: 2000
 };
 
 function getNavigation() {

@@ -1,6 +1,6 @@
 {
     "module": "codbex-opportunities/gen/opportunity-priority/ui/Reports/perspective-navigation.js",
     "extensionPoint": "dashboard-navigations",
-    "description": "Opportunity Priority Report - Navigation",
+    "description": "Opportuniyt Priority - Navigation",
     "role": "codbex-opportunities.Report.OpportunityPriorityReadOnly"
 }

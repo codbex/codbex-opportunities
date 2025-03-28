@@ -1,16 +1,17 @@
 {
   "brand": "codbex",
-  "brandUrl": "https://www.codbex.com/",
-  "title": "Opportunity Notes Report",
+  "brandUrl": "https://www.codbex.com",
+  "title": "Opportunity Notes",
+  "navigationOrder": "1900",
+  "projectName": "codbex-opportunities",
+  "workspaceName": "workspace",
+  "filePath": "opportunity-notes.report",
+  "templateId": "template-application-ui-angular/template/template-report-file.js",
   "fileName": "opportunity-notes",
   "genFolderName": "opportunity-notes",
   "extensionPoint": "codbex-opportunities",
   "name": "OpportunityNotes",
   "perspectiveName": "OpportunityNotes",
-  "projectName": "codbex-opportunities",
-  "workspaceName": "workspace",
-  "filePath": "opportunity-notes.report",
-  "templateId": "template-application-ui-angular/template/template-report-file.js",
   "roles": [
     {
       "entityName": "OpportunityNotes",

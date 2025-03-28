@@ -2,7 +2,7 @@ const navigationData = {
     id: 'lead-qualification-need-navigation',
     label: "Lead Qualification Need",
     group: "reference data",
-    order: 2700,
+    order: 2800,
     link: "/services/web/codbex-opportunities/gen/codbex-opportunities/ui/Settings/LeadQualificationNeed/index.html?embedded"
 };
 

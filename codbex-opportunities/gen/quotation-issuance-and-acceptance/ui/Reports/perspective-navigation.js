@@ -5,10 +5,10 @@
  */
 const navigationData = {
 	id: 'codbex-opportunities-quotation-issuance-and-acceptance',
-	label: 'Quotation Issuance and Acceptance Report',
+	label: 'Quotation Issuance and Acceptance',
 	group: 'reports',
 	link: '/services/web/codbex-opportunities/gen/quotation-issuance-and-acceptance/ui/Reports/QuotationIssuanceAndAcceptance/index.html',
-	order: $navigationOrder
+	order: 1600
 };
 
 function getNavigation() {

@@ -2,7 +2,7 @@ const navigationData = {
     id: 'lead-qualification-timeline-navigation',
     label: "Lead Qualification Timeline",
     group: "reference data",
-    order: 2900,
+    order: 3000,
     link: "/services/web/codbex-opportunities/gen/codbex-opportunities/ui/Settings/LeadQualificationTimeline/index.html?embedded"
 };
 

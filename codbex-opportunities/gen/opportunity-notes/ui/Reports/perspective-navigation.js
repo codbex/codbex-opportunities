@@ -5,10 +5,10 @@
  */
 const navigationData = {
 	id: 'codbex-opportunities-opportunity-notes',
-	label: 'Opportunity Notes Report',
+	label: 'Opportunity Notes',
 	group: 'reports',
 	link: '/services/web/codbex-opportunities/gen/opportunity-notes/ui/Reports/OpportunityNotes/index.html',
-	order: $navigationOrder
+	order: 1900
 };
 
 function getNavigation() {
