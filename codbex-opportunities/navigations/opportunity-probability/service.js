@@ -2,7 +2,7 @@ const navigationData = {
     id: 'opportunity-probability',
     label: "Opportunity Probability",
     group: "reference data",
-    order: 3100,
+    order: 3200,
     link: "/services/web/codbex-opportunities/gen/codbex-opportunities/ui/Settings/OpportunityProbability/index.html?embedded"
 };
 

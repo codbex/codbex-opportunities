@@ -2,7 +2,7 @@ const navigationData = {
     id: 'action-types-navigation',
     label: "Action Types",
     group: "reference data",
-    order: 3600,
+    order: 3800,
     link: "/services/web/codbex-opportunities/gen/codbex-opportunities/ui/Settings/ActionTypes/index.html?embedded"
 };
 
