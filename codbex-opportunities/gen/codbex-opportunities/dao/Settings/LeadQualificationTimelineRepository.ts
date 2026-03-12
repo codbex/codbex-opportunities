@@ -1,7 +1,7 @@
-import { query } from "sdk/db";
-import { producer } from "sdk/messaging";
-import { extensions } from "sdk/extensions";
-import { dao as daoApi } from "sdk/db";
+import { sql, query } from "@aerokit/sdk/db";
+import { producer } from "@aerokit/sdk/messaging";
+import { extensions } from "@aerokit/sdk/extensions";
+import { dao as daoApi } from "@aerokit/sdk/db";
 
 export interface LeadQualificationTimelineEntity {
     readonly Id: number;
@@ -49,12 +49,13 @@ export interface LeadQualificationTimelineEntityOptions {
     },
     $select?: (keyof LeadQualificationTimelineEntity)[],
     $sort?: string | (keyof LeadQualificationTimelineEntity)[],
-    $order?: 'asc' | 'desc',
+    $order?: 'ASC' | 'DESC',
     $offset?: number,
     $limit?: number,
+    $language?: string
 }
 
-interface LeadQualificationTimelineEntityEvent {
+export interface LeadQualificationTimelineEntityEvent {
     readonly operation: 'create' | 'update' | 'delete';
     readonly table: string;
     readonly entity: Partial<LeadQualificationTimelineEntity>;
@@ -65,7 +66,7 @@ interface LeadQualificationTimelineEntityEvent {
     }
 }
 
-interface LeadQualificationTimelineUpdateEntityEvent extends LeadQualificationTimelineEntityEvent {
+export interface LeadQualificationTimelineUpdateEntityEvent extends LeadQualificationTimelineEntityEvent {
     readonly previousEntity: LeadQualificationTimelineEntity;
 }
 
@@ -92,14 +93,15 @@ export class LeadQualificationTimelineRepository {
     private readonly dao;
 
     constructor(dataSource = "DefaultDB") {
-        this.dao = daoApi.create(LeadQualificationTimelineRepository.DEFINITION, null, dataSource);
+        this.dao = daoApi.create(LeadQualificationTimelineRepository.DEFINITION, undefined, dataSource);
     }
 
-    public findAll(options?: LeadQualificationTimelineEntityOptions): LeadQualificationTimelineEntity[] {
-        return this.dao.list(options);
+    public findAll(options: LeadQualificationTimelineEntityOptions = {}): LeadQualificationTimelineEntity[] {
+        let list = this.dao.list(options);
+        return list;
     }
 
-    public findById(id: number): LeadQualificationTimelineEntity | undefined {
+    public findById(id: number, options: LeadQualificationTimelineEntityOptions = {}): LeadQualificationTimelineEntity | undefined {
         const entity = this.dao.find(id);
         return entity ?? undefined;
     }

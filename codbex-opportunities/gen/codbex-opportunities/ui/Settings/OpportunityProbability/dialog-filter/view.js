@@ -4,14 +4,17 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "OpportunityProbability-filter",
-    label: "OpportunityProbability Filter",
-    link: "/services/web/codbex-opportunities/gen/codbex-opportunities/ui/Settings/OpportunityProbability/dialog-filter/index.html",
-    perspectiveName: "Settings"
+    id: 'OpportunityProbability-filter',
+    label: 'OpportunityProbability Filter',
+    translation: {
+        key: 'codbex-opportunities:codbex-opportunities-model.extName',
+        options: {
+            content: '$t(codbex-opportunities:codbex-opportunities-model.t.OPPORTUNITYPROBABILITY) $t(codbex-opportunities:codbex-opportunities-model.defaults.filter)',
+        }
+    },
+    path: '/services/web/codbex-opportunities/gen/codbex-opportunities/ui/Settings/OpportunityProbability/dialog-filter/index.html',
+    perspectiveName: 'Settings'
 };
-
 if (typeof exports !== 'undefined') {
-    exports.getDialogWindow = function () {
-        return viewData;
-    }
+    exports.getView = () => viewData;
 }

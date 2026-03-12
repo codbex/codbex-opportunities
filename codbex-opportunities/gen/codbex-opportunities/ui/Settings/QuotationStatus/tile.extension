@@ -1,6 +1,0 @@
-{
-    "module": "codbex-opportunities/gen/codbex-opportunities/ui/Settings/QuotationStatus/tile.js",
-    "extensionPoint": "codbex-opportunities-tile",
-    "description": "codbex-opportunities - Application Tile",
-    "role": "codbex-opportunities.Settings.QuotationStatusReadOnly,codbex-opportunities.Settings.QuotationStatusFullAccess"
-}

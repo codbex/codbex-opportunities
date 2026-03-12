@@ -118,7 +118,7 @@
                     },
                     {
                         "type": "DECIMAL",
-                        "length": 18,
+                        "length": 16,
                         "precision": "16",
                         "scale": "2",
                         "nullable": true,
@@ -282,7 +282,7 @@
                     },
                     {
                         "type": "DECIMAL",
-                        "length": 18,
+                        "length": 16,
                         "precision": "16",
                         "scale": "2",
                         "nullable": true,
@@ -338,7 +338,7 @@
                     },
                     {
                         "type": "DECIMAL",
-                        "length": 18,
+                        "length": 16,
                         "precision": "16",
                         "scale": "2",
                         "nullable": true,
@@ -346,7 +346,7 @@
                     },
                     {
                         "type": "DECIMAL",
-                        "length": 18,
+                        "length": 16,
                         "precision": "16",
                         "scale": "2",
                         "nullable": true,
@@ -420,7 +420,7 @@
                     },
                     {
                         "type": "DECIMAL",
-                        "length": 18,
+                        "length": 16,
                         "precision": "16",
                         "scale": "2",
                         "nullable": true,

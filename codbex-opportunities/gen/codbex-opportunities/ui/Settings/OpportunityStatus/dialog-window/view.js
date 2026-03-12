@@ -4,14 +4,14 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "OpportunityStatus-details",
-    label: "OpportunityStatus",
-    link: "/services/web/codbex-opportunities/gen/codbex-opportunities/ui/Settings/OpportunityStatus/dialog-window/index.html",
-    perspectiveName: "Settings"
+    id: 'OpportunityStatus-details',
+    label: 'OpportunityStatus',
+    translation: {
+        key: 'codbex-opportunities:codbex-opportunities-model.t.OPPORTUNITYSTATUS',
+    },
+    path: '/services/web/codbex-opportunities/gen/codbex-opportunities/ui/Settings/OpportunityStatus/dialog-window/index.html',
+    perspectiveName: 'Settings'
 };
-
 if (typeof exports !== 'undefined') {
-    exports.getDialogWindow = function () {
-        return viewData;
-    }
+    exports.getView = () => viewData;
 }

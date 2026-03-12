@@ -4,14 +4,14 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "QuotationStatus-details",
-    label: "QuotationStatus",
-    link: "/services/web/codbex-opportunities/gen/codbex-opportunities/ui/Settings/QuotationStatus/dialog-window/index.html",
-    perspectiveName: "Settings"
+    id: 'QuotationStatus-details',
+    label: 'QuotationStatus',
+    translation: {
+        key: 'codbex-opportunities:codbex-opportunities-model.t.QUOTATIONSTATUS',
+    },
+    path: '/services/web/codbex-opportunities/gen/codbex-opportunities/ui/Settings/QuotationStatus/dialog-window/index.html',
+    perspectiveName: 'Settings'
 };
-
 if (typeof exports !== 'undefined') {
-    exports.getDialogWindow = function () {
-        return viewData;
-    }
+    exports.getView = () => viewData;
 }

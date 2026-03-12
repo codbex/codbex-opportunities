@@ -1,7 +1,7 @@
-import { query } from "sdk/db";
-import { producer } from "sdk/messaging";
-import { extensions } from "sdk/extensions";
-import { dao as daoApi } from "sdk/db";
+import { sql, query } from "@aerokit/sdk/db";
+import { producer } from "@aerokit/sdk/messaging";
+import { extensions } from "@aerokit/sdk/extensions";
+import { dao as daoApi } from "@aerokit/sdk/db";
 import { EntityUtils } from "../utils/EntityUtils";
 // custom imports
 import { NumberGeneratorService } from "codbex-number-generator/service/generator";
@@ -113,12 +113,13 @@ export interface QuotationEntityOptions {
     },
     $select?: (keyof QuotationEntity)[],
     $sort?: string | (keyof QuotationEntity)[],
-    $order?: 'asc' | 'desc',
+    $order?: 'ASC' | 'DESC',
     $offset?: number,
     $limit?: number,
+    $language?: string
 }
 
-interface QuotationEntityEvent {
+export interface QuotationEntityEvent {
     readonly operation: 'create' | 'update' | 'delete';
     readonly table: string;
     readonly entity: Partial<QuotationEntity>;
@@ -129,7 +130,7 @@ interface QuotationEntityEvent {
     }
 }
 
-interface QuotationUpdateEntityEvent extends QuotationEntityEvent {
+export interface QuotationUpdateEntityEvent extends QuotationEntityEvent {
     readonly previousEntity: QuotationEntity;
 }
 
@@ -191,17 +192,18 @@ export class QuotationRepository {
     private readonly dao;
 
     constructor(dataSource = "DefaultDB") {
-        this.dao = daoApi.create(QuotationRepository.DEFINITION, null, dataSource);
+        this.dao = daoApi.create(QuotationRepository.DEFINITION, undefined, dataSource);
     }
 
-    public findAll(options?: QuotationEntityOptions): QuotationEntity[] {
-        return this.dao.list(options).map((e: QuotationEntity) => {
+    public findAll(options: QuotationEntityOptions = {}): QuotationEntity[] {
+        let list = this.dao.list(options).map((e: QuotationEntity) => {
             EntityUtils.setDate(e, "Date");
             return e;
         });
+        return list;
     }
 
-    public findById(id: number): QuotationEntity | undefined {
+    public findById(id: number, options: QuotationEntityOptions = {}): QuotationEntity | undefined {
         const entity = this.dao.find(id);
         EntityUtils.setDate(entity, "Date");
         return entity ?? undefined;

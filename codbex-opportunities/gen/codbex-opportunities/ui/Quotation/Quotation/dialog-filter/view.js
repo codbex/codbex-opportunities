@@ -4,14 +4,17 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "Quotation-filter",
-    label: "Quotation Filter",
-    link: "/services/web/codbex-opportunities/gen/codbex-opportunities/ui/Quotation/Quotation/dialog-filter/index.html",
-    perspectiveName: "Quotation"
+    id: 'Quotation-filter',
+    label: 'Quotation Filter',
+    translation: {
+        key: 'codbex-opportunities:codbex-opportunities-model.extName',
+        options: {
+            content: '$t(codbex-opportunities:codbex-opportunities-model.t.QUOTATION) $t(codbex-opportunities:codbex-opportunities-model.defaults.filter)',
+        }
+    },
+    path: '/services/web/codbex-opportunities/gen/codbex-opportunities/ui/Quotation/Quotation/dialog-filter/index.html',
+    perspectiveName: 'Quotation'
 };
-
 if (typeof exports !== 'undefined') {
-    exports.getDialogWindow = function () {
-        return viewData;
-    }
+    exports.getView = () => viewData;
 }

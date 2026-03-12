@@ -4,14 +4,14 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "LeadQualificationNeed-details",
-    label: "LeadQualificationNeed",
-    link: "/services/web/codbex-opportunities/gen/codbex-opportunities/ui/Settings/LeadQualificationNeed/dialog-window/index.html",
-    perspectiveName: "Settings"
+    id: 'LeadQualificationNeed-details',
+    label: 'LeadQualificationNeed',
+    translation: {
+        key: 'codbex-opportunities:codbex-opportunities-model.t.LEADQUALIFICATIONNEED',
+    },
+    path: '/services/web/codbex-opportunities/gen/codbex-opportunities/ui/Settings/LeadQualificationNeed/dialog-window/index.html',
+    perspectiveName: 'Settings'
 };
-
 if (typeof exports !== 'undefined') {
-    exports.getDialogWindow = function () {
-        return viewData;
-    }
+    exports.getView = () => viewData;
 }

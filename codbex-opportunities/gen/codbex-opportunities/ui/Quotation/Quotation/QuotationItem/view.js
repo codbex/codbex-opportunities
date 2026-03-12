@@ -4,16 +4,17 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "QuotationItem",
-    label: "QuotationItem",
-    factory: "frame",
-    region: "bottom",
-    link: "/services/web/codbex-opportunities/gen/codbex-opportunities/ui/Quotation/Quotation/QuotationItem/index.html",
-    perspectiveName: "Quotation"
+    id: 'QuotationItem',
+    label: 'QuotationItem',
+    translation: {
+        key: 'codbex-opportunities:codbex-opportunities-model.t.QUOTATIONITEM',
+    },
+    region: 'bottom',
+    lazyLoad: false,
+	autoFocusTab: true,
+    path: '/services/web/codbex-opportunities/gen/codbex-opportunities/ui/Quotation/Quotation/QuotationItem/index.html',
+    perspectiveName: 'Quotation'
 };
-
 if (typeof exports !== 'undefined') {
-    exports.getView = function () {
-        return viewData;
-    }
+	exports.getView = () => viewData;
 }

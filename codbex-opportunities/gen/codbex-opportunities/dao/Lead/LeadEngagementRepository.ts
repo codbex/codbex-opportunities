@@ -1,7 +1,7 @@
-import { query } from "sdk/db";
-import { producer } from "sdk/messaging";
-import { extensions } from "sdk/extensions";
-import { dao as daoApi } from "sdk/db";
+import { sql, query } from "@aerokit/sdk/db";
+import { producer } from "@aerokit/sdk/messaging";
+import { extensions } from "@aerokit/sdk/extensions";
+import { dao as daoApi } from "@aerokit/sdk/db";
 import { EntityUtils } from "../utils/EntityUtils";
 
 export interface LeadEngagementEntity {
@@ -104,12 +104,13 @@ export interface LeadEngagementEntityOptions {
     },
     $select?: (keyof LeadEngagementEntity)[],
     $sort?: string | (keyof LeadEngagementEntity)[],
-    $order?: 'asc' | 'desc',
+    $order?: 'ASC' | 'DESC',
     $offset?: number,
     $limit?: number,
+    $language?: string
 }
 
-interface LeadEngagementEntityEvent {
+export interface LeadEngagementEntityEvent {
     readonly operation: 'create' | 'update' | 'delete';
     readonly table: string;
     readonly entity: Partial<LeadEngagementEntity>;
@@ -120,7 +121,7 @@ interface LeadEngagementEntityEvent {
     }
 }
 
-interface LeadEngagementUpdateEntityEvent extends LeadEngagementEntityEvent {
+export interface LeadEngagementUpdateEntityEvent extends LeadEngagementEntityEvent {
     readonly previousEntity: LeadEngagementEntity;
 }
 
@@ -177,17 +178,18 @@ export class LeadEngagementRepository {
     private readonly dao;
 
     constructor(dataSource = "DefaultDB") {
-        this.dao = daoApi.create(LeadEngagementRepository.DEFINITION, null, dataSource);
+        this.dao = daoApi.create(LeadEngagementRepository.DEFINITION, undefined, dataSource);
     }
 
-    public findAll(options?: LeadEngagementEntityOptions): LeadEngagementEntity[] {
-        return this.dao.list(options).map((e: LeadEngagementEntity) => {
+    public findAll(options: LeadEngagementEntityOptions = {}): LeadEngagementEntity[] {
+        let list = this.dao.list(options).map((e: LeadEngagementEntity) => {
             EntityUtils.setDate(e, "Date");
             return e;
         });
+        return list;
     }
 
-    public findById(id: number): LeadEngagementEntity | undefined {
+    public findById(id: number, options: LeadEngagementEntityOptions = {}): LeadEngagementEntity | undefined {
         const entity = this.dao.find(id);
         EntityUtils.setDate(entity, "Date");
         return entity ?? undefined;

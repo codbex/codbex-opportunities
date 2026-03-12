@@ -1,7 +1,7 @@
-import { query } from "sdk/db";
-import { producer } from "sdk/messaging";
-import { extensions } from "sdk/extensions";
-import { dao as daoApi } from "sdk/db";
+import { sql, query } from "@aerokit/sdk/db";
+import { producer } from "@aerokit/sdk/messaging";
+import { extensions } from "@aerokit/sdk/extensions";
+import { dao as daoApi } from "@aerokit/sdk/db";
 import { EntityUtils } from "../utils/EntityUtils";
 // custom imports
 import { NumberGeneratorService } from "codbex-number-generator/service/generator";
@@ -140,12 +140,13 @@ export interface LeadEntityOptions {
     },
     $select?: (keyof LeadEntity)[],
     $sort?: string | (keyof LeadEntity)[],
-    $order?: 'asc' | 'desc',
+    $order?: 'ASC' | 'DESC',
     $offset?: number,
     $limit?: number,
+    $language?: string
 }
 
-interface LeadEntityEvent {
+export interface LeadEntityEvent {
     readonly operation: 'create' | 'update' | 'delete';
     readonly table: string;
     readonly entity: Partial<LeadEntity>;
@@ -156,7 +157,7 @@ interface LeadEntityEvent {
     }
 }
 
-interface LeadUpdateEntityEvent extends LeadEntityEvent {
+export interface LeadUpdateEntityEvent extends LeadEntityEvent {
     readonly previousEntity: LeadEntity;
 }
 
@@ -233,17 +234,18 @@ export class LeadRepository {
     private readonly dao;
 
     constructor(dataSource = "DefaultDB") {
-        this.dao = daoApi.create(LeadRepository.DEFINITION, null, dataSource);
+        this.dao = daoApi.create(LeadRepository.DEFINITION, undefined, dataSource);
     }
 
-    public findAll(options?: LeadEntityOptions): LeadEntity[] {
-        return this.dao.list(options).map((e: LeadEntity) => {
+    public findAll(options: LeadEntityOptions = {}): LeadEntity[] {
+        let list = this.dao.list(options).map((e: LeadEntity) => {
             EntityUtils.setDate(e, "Date");
             return e;
         });
+        return list;
     }
 
-    public findById(id: number): LeadEntity | undefined {
+    public findById(id: number, options: LeadEntityOptions = {}): LeadEntity | undefined {
         const entity = this.dao.find(id);
         EntityUtils.setDate(entity, "Date");
         return entity ?? undefined;
@@ -252,7 +254,7 @@ export class LeadRepository {
     public create(entity: LeadCreateEntity): number {
         EntityUtils.setLocalDate(entity, "Date");
         // @ts-ignore
-        (entity as LeadEntity).Number = new NumberGeneratorService().generate(1);
+        (entity as LeadEntity).Number = new NumberGeneratorService().generateByType('Lead');
         // @ts-ignore
         (entity as LeadEntity).Date = new Date();
         const id = this.dao.insert(entity);

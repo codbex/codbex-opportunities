@@ -4,16 +4,17 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "Lead",
-    label: "Lead",
-    factory: "frame",
-    region: "left",
-    link: "/services/web/codbex-opportunities/gen/codbex-opportunities/ui/Lead/Lead/index.html",
-    perspectiveName: "Lead"
+    id: 'Lead',
+    label: 'Lead',
+    translation: {
+        key: 'codbex-opportunities:codbex-opportunities-model.t.LEAD',
+    },
+    region: 'left',
+    lazyLoad: false,
+	autoFocusTab: false,
+    path: '/services/web/codbex-opportunities/gen/codbex-opportunities/ui/Lead/Lead/index.html',
+    perspectiveName: 'Lead'
 };
-
 if (typeof exports !== 'undefined') {
-    exports.getView = function () {
-        return viewData;
-    }
+	exports.getView = () => viewData;
 }
