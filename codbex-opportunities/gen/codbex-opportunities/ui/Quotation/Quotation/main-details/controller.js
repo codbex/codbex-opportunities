@@ -1,44 +1,54 @@
-angular.module('page', ["ideUI", "ideView", "entityApi"])
-	.config(["messageHubProvider", function (messageHubProvider) {
-		messageHubProvider.eventIdPrefix = 'codbex-opportunities.Quotation.Quotation';
+angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntityService'])
+	.config(["EntityServiceProvider", (EntityServiceProvider) => {
+		EntityServiceProvider.baseUrl = '/services/ts/codbex-opportunities/gen/codbex-opportunities/api/Quotation/QuotationService.ts';
 	}])
-	.config(["entityApiProvider", function (entityApiProvider) {
-		entityApiProvider.baseUrl = "/services/ts/codbex-opportunities/gen/codbex-opportunities/api/Quotation/QuotationService.ts";
-	}])
-	.controller('PageController', ['$scope',  '$http', 'Extensions', 'messageHub', 'entityApi', function ($scope,  $http, Extensions, messageHub, entityApi) {
-
+	.controller('PageController', ($scope, $http, Extensions, LocaleService, EntityService) => {
+		const Dialogs = new DialogHub();
+		const Notifications = new NotificationHub();
+		let description = 'Description';
+		let propertySuccessfullyCreated = 'Quotation successfully created';
+		let propertySuccessfullyUpdated = 'Quotation successfully updated';
 		$scope.entity = {};
 		$scope.forms = {
 			details: {},
 		};
 		$scope.formHeaders = {
-			select: "Quotation Details",
-			create: "Create Quotation",
-			update: "Update Quotation"
+			select: 'Quotation Details',
+			create: 'Create Quotation',
+			update: 'Update Quotation'
 		};
 		$scope.action = 'select';
 
-		//-----------------Custom Actions-------------------//
-		Extensions.get('dialogWindow', 'codbex-opportunities-custom-action').then(function (response) {
-			$scope.entityActions = response.filter(e => e.perspective === "Quotation" && e.view === "Quotation" && e.type === "entity");
+		LocaleService.onInit(() => {
+			description = LocaleService.t('codbex-opportunities:codbex-opportunities-model.defaults.description');
+			$scope.formHeaders.select = LocaleService.t('codbex-opportunities:codbex-opportunities-model.defaults.formHeadSelect', { name: '$t(codbex-opportunities:codbex-opportunities-model.t.QUOTATION)' });
+			$scope.formHeaders.create = LocaleService.t('codbex-opportunities:codbex-opportunities-model.defaults.formHeadCreate', { name: '$t(codbex-opportunities:codbex-opportunities-model.t.QUOTATION)' });
+			$scope.formHeaders.update = LocaleService.t('codbex-opportunities:codbex-opportunities-model.defaults.formHeadUpdate', { name: '$t(codbex-opportunities:codbex-opportunities-model.t.QUOTATION)' });
+			propertySuccessfullyCreated = LocaleService.t('codbex-opportunities:codbex-opportunities-model.messages.propertySuccessfullyCreated', { name: '$t(codbex-opportunities:codbex-opportunities-model.t.QUOTATION)' });
+			propertySuccessfullyUpdated = LocaleService.t('codbex-opportunities:codbex-opportunities-model.messages.propertySuccessfullyUpdated', { name: '$t(codbex-opportunities:codbex-opportunities-model.t.QUOTATION)' });
 		});
 
-		$scope.triggerEntityAction = function (action) {
-			messageHub.showDialogWindow(
-				action.id,
-				{
+		//-----------------Custom Actions-------------------//
+		Extensions.getWindows(['codbex-opportunities-custom-action']).then((response) => {
+			$scope.entityActions = response.data.filter(e => e.perspective === 'Quotation' && e.view === 'Quotation' && e.type === 'entity');
+		});
+
+		$scope.triggerEntityAction = (action) => {
+			Dialogs.showWindow({
+				hasHeader: true,
+        		title: LocaleService.t(action.translation.key, action.translation.options, action.label),
+				path: action.path,
+				params: {
 					id: $scope.entity.Id
 				},
-				null,
-				true,
-				action
-			);
+				closeButton: true
+			});
 		};
 		//-----------------Custom Actions-------------------//
 
 		//-----------------Events-------------------//
-		messageHub.onDidReceiveMessage("clearDetails", function (msg) {
-			$scope.$apply(function () {
+		Dialogs.addMessageListener({ topic: 'codbex-opportunities.Quotation.Quotation.clearDetails', handler: () => {
+			$scope.$evalAsync(() => {
 				$scope.entity = {};
 				$scope.optionsOwner = [];
 				$scope.optionsCustomer = [];
@@ -47,117 +57,158 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				$scope.optionsStatus = [];
 				$scope.action = 'select';
 			});
-		});
-
-		messageHub.onDidReceiveMessage("entitySelected", function (msg) {
-			$scope.$apply(function () {
-				if (msg.data.entity.Date) {
-					msg.data.entity.Date = new Date(msg.data.entity.Date);
+		}});
+		Dialogs.addMessageListener({ topic: 'codbex-opportunities.Quotation.Quotation.entitySelected', handler: (data) => {
+			$scope.$evalAsync(() => {
+				if (data.entity.Date) {
+					data.entity.Date = new Date(data.entity.Date);
 				}
-				$scope.entity = msg.data.entity;
-				$scope.optionsOwner = msg.data.optionsOwner;
-				$scope.optionsCustomer = msg.data.optionsCustomer;
-				$scope.optionsCurrency = msg.data.optionsCurrency;
-				$scope.optionsOpportunity = msg.data.optionsOpportunity;
-				$scope.optionsStatus = msg.data.optionsStatus;
+				$scope.entity = data.entity;
+				$scope.optionsOwner = data.optionsOwner;
+				$scope.optionsCustomer = data.optionsCustomer;
+				$scope.optionsCurrency = data.optionsCurrency;
+				$scope.optionsOpportunity = data.optionsOpportunity;
+				$scope.optionsStatus = data.optionsStatus;
 				$scope.action = 'select';
 			});
-		});
-
-		messageHub.onDidReceiveMessage("createEntity", function (msg) {
-			$scope.$apply(function () {
+		}});
+		Dialogs.addMessageListener({ topic: 'codbex-opportunities.Quotation.Quotation.createEntity', handler: (data) => {
+			$scope.$evalAsync(() => {
 				$scope.entity = {};
-				$scope.optionsOwner = msg.data.optionsOwner;
-				$scope.optionsCustomer = msg.data.optionsCustomer;
-				$scope.optionsCurrency = msg.data.optionsCurrency;
-				$scope.optionsOpportunity = msg.data.optionsOpportunity;
-				$scope.optionsStatus = msg.data.optionsStatus;
+				$scope.optionsOwner = data.optionsOwner;
+				$scope.optionsCustomer = data.optionsCustomer;
+				$scope.optionsCurrency = data.optionsCurrency;
+				$scope.optionsOpportunity = data.optionsOpportunity;
+				$scope.optionsStatus = data.optionsStatus;
 				$scope.action = 'create';
 			});
-		});
-
-		messageHub.onDidReceiveMessage("updateEntity", function (msg) {
-			$scope.$apply(function () {
-				if (msg.data.entity.Date) {
-					msg.data.entity.Date = new Date(msg.data.entity.Date);
+		}});
+		Dialogs.addMessageListener({ topic: 'codbex-opportunities.Quotation.Quotation.updateEntity', handler: (data) => {
+			$scope.$evalAsync(() => {
+				if (data.entity.Date) {
+					data.entity.Date = new Date(data.entity.Date);
 				}
-				$scope.entity = msg.data.entity;
-				$scope.optionsOwner = msg.data.optionsOwner;
-				$scope.optionsCustomer = msg.data.optionsCustomer;
-				$scope.optionsCurrency = msg.data.optionsCurrency;
-				$scope.optionsOpportunity = msg.data.optionsOpportunity;
-				$scope.optionsStatus = msg.data.optionsStatus;
+				$scope.entity = data.entity;
+				$scope.optionsOwner = data.optionsOwner;
+				$scope.optionsCustomer = data.optionsCustomer;
+				$scope.optionsCurrency = data.optionsCurrency;
+				$scope.optionsOpportunity = data.optionsOpportunity;
+				$scope.optionsStatus = data.optionsStatus;
 				$scope.action = 'update';
 			});
-		});
+		}});
 
-		$scope.serviceOwner = "/services/ts/codbex-employees/gen/codbex-employees/api/Employees/EmployeeService.ts";
-		$scope.serviceCustomer = "/services/ts/codbex-partners/gen/codbex-partners/api/Customers/CustomerService.ts";
-		$scope.serviceCurrency = "/services/ts/codbex-currencies/gen/codbex-currencies/api/Currencies/CurrencyService.ts";
-		$scope.serviceOpportunity = "/services/ts/codbex-opportunities/gen/codbex-opportunities/api/Opportunity/OpportunityService.ts";
-		$scope.serviceStatus = "/services/ts/codbex-opportunities/gen/codbex-opportunities/api/Settings/QuotationStatusService.ts";
+		$scope.serviceOwner = '/services/ts/codbex-employees/gen/codbex-employees/api/Employees/EmployeeService.ts';
+		$scope.serviceCustomer = '/services/ts/codbex-partners/gen/codbex-partners/api/Customers/CustomerService.ts';
+		$scope.serviceCurrency = '/services/ts/codbex-currencies/gen/codbex-currencies/api/Currencies/CurrencyService.ts';
+		$scope.serviceOpportunity = '/services/ts/codbex-opportunities/gen/codbex-opportunities/api/Opportunity/OpportunityService.ts';
+		$scope.serviceStatus = '/services/ts/codbex-opportunities/gen/codbex-opportunities/api/Settings/QuotationStatusService.ts';
 
 		//-----------------Events-------------------//
 
-		$scope.create = function () {
-			entityApi.create($scope.entity).then(function (response) {
-				if (response.status != 201) {
-					messageHub.showAlertError("Quotation", `Unable to create Quotation: '${response.message}'`);
-					return;
-				}
-				messageHub.postMessage("entityCreated", response.data);
-				messageHub.postMessage("clearDetails", response.data);
-				messageHub.showAlertSuccess("Quotation", "Quotation successfully created");
+		$scope.create = () => {
+			EntityService.create($scope.entity).then((response) => {
+				Dialogs.postMessage({ topic: 'codbex-opportunities.Quotation.Quotation.entityCreated', data: response.data });
+				Dialogs.postMessage({ topic: 'codbex-opportunities.Quotation.Quotation.clearDetails' , data: response.data });
+				Notifications.show({
+					title: LocaleService.t('codbex-opportunities:codbex-opportunities-model.t.QUOTATION'),
+					description: propertySuccessfullyCreated,
+					type: 'positive'
+				});
+			}, (error) => {
+				const message = error.data ? error.data.message : '';
+				Dialogs.showAlert({
+					title: LocaleService.t('codbex-opportunities:codbex-opportunities-model.t.QUOTATION'),
+					message: LocaleService.t('codbex-opportunities:codbex-opportunities-model.messages.error.unableToCreate', { name: '$t(codbex-opportunities:codbex-opportunities-model.t.QUOTATION)', message: message }),
+					type: AlertTypes.Error
+				});
+				console.error('EntityService:', error);
 			});
 		};
 
-		$scope.update = function () {
-			entityApi.update($scope.entity.Id, $scope.entity).then(function (response) {
-				if (response.status != 200) {
-					messageHub.showAlertError("Quotation", `Unable to update Quotation: '${response.message}'`);
-					return;
-				}
-				messageHub.postMessage("entityUpdated", response.data);
-				messageHub.postMessage("clearDetails", response.data);
-				messageHub.showAlertSuccess("Quotation", "Quotation successfully updated");
+		$scope.update = () => {
+			EntityService.update($scope.entity.Id, $scope.entity).then((response) => {
+				Dialogs.postMessage({ topic: 'codbex-opportunities.Quotation.Quotation.entityUpdated', data: response.data });
+				Dialogs.postMessage({ topic: 'codbex-opportunities.Quotation.Quotation.clearDetails', data: response.data });
+				Notifications.show({
+					title: LocaleService.t('codbex-opportunities:codbex-opportunities-model.t.QUOTATION'),
+					description: propertySuccessfullyUpdated,
+					type: 'positive'
+				});
+			}, (error) => {
+				const message = error.data ? error.data.message : '';
+				Dialogs.showAlert({
+					title: LocaleService.t('codbex-opportunities:codbex-opportunities-model.t.QUOTATION'),
+					message: LocaleService.t('codbex-opportunities:codbex-opportunities-model.messages.error.unableToCreate', { name: '$t(codbex-opportunities:codbex-opportunities-model.t.QUOTATION)', message: message }),
+					type: AlertTypes.Error
+				});
+				console.error('EntityService:', error);
 			});
 		};
 
-		$scope.cancel = function () {
-			messageHub.postMessage("clearDetails");
+		$scope.cancel = () => {
+			Dialogs.triggerEvent('codbex-opportunities.Quotation.Quotation.clearDetails');
 		};
 		
 		//-----------------Dialogs-------------------//
+		$scope.alert = (message) => {
+			if (message) Dialogs.showAlert({
+				title: description,
+				message: message,
+				type: AlertTypes.Information,
+				preformatted: true,
+			});
+		};
 		
-		$scope.createOwner = function () {
-			messageHub.showDialogWindow("Employee-details", {
-				action: "create",
-				entity: {},
-			}, null, false);
+		$scope.createOwner = () => {
+			Dialogs.showWindow({
+				id: 'Employee-details',
+				params: {
+					action: 'create',
+					entity: {},
+				},
+				closeButton: false
+			});
 		};
-		$scope.createCustomer = function () {
-			messageHub.showDialogWindow("Customer-details", {
-				action: "create",
-				entity: {},
-			}, null, false);
+		$scope.createCustomer = () => {
+			Dialogs.showWindow({
+				id: 'Customer-details',
+				params: {
+					action: 'create',
+					entity: {},
+				},
+				closeButton: false
+			});
 		};
-		$scope.createCurrency = function () {
-			messageHub.showDialogWindow("Currency-details", {
-				action: "create",
-				entity: {},
-			}, null, false);
+		$scope.createCurrency = () => {
+			Dialogs.showWindow({
+				id: 'Currency-details',
+				params: {
+					action: 'create',
+					entity: {},
+				},
+				closeButton: false
+			});
 		};
-		$scope.createOpportunity = function () {
-			messageHub.showDialogWindow("Opportunity-details", {
-				action: "create",
-				entity: {},
-			}, null, false);
+		$scope.createOpportunity = () => {
+			Dialogs.showWindow({
+				id: 'Opportunity-details',
+				params: {
+					action: 'create',
+					entity: {},
+				},
+				closeButton: false
+			});
 		};
-		$scope.createStatus = function () {
-			messageHub.showDialogWindow("QuotationStatus-details", {
-				action: "create",
-				entity: {},
-			}, null, false);
+		$scope.createStatus = () => {
+			Dialogs.showWindow({
+				id: 'QuotationStatus-details',
+				params: {
+					action: 'create',
+					entity: {},
+				},
+				closeButton: false
+			});
 		};
 
 		//-----------------Dialogs-------------------//
@@ -166,63 +217,91 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 
 		//----------------Dropdowns-----------------//
 
-		$scope.refreshOwner = function () {
+		$scope.refreshOwner = () => {
 			$scope.optionsOwner = [];
-			$http.get("/services/ts/codbex-employees/gen/codbex-employees/api/Employees/EmployeeService.ts").then(function (response) {
-				$scope.optionsOwner = response.data.map(e => {
-					return {
-						value: e.Id,
-						text: e.FirstName
-					}
+			$http.get('/services/ts/codbex-employees/gen/codbex-employees/api/Employees/EmployeeService.ts').then((response) => {
+				$scope.optionsOwner = response.data.map(e => ({
+					value: e.Id,
+					text: e.FirstName
+				}));
+			}, (error) => {
+				console.error(error);
+				const message = error.data ? error.data.message : '';
+				Dialogs.showAlert({
+					title: 'Owner',
+					message: LocaleService.t('codbex-opportunities:codbex-opportunities-model.messages.error.unableToLoad', { message: message }),
+					type: AlertTypes.Error
 				});
 			});
 		};
-		$scope.refreshCustomer = function () {
+		$scope.refreshCustomer = () => {
 			$scope.optionsCustomer = [];
-			$http.get("/services/ts/codbex-partners/gen/codbex-partners/api/Customers/CustomerService.ts").then(function (response) {
-				$scope.optionsCustomer = response.data.map(e => {
-					return {
-						value: e.Id,
-						text: e.Name
-					}
+			$http.get('/services/ts/codbex-partners/gen/codbex-partners/api/Customers/CustomerService.ts').then((response) => {
+				$scope.optionsCustomer = response.data.map(e => ({
+					value: e.Id,
+					text: e.Name
+				}));
+			}, (error) => {
+				console.error(error);
+				const message = error.data ? error.data.message : '';
+				Dialogs.showAlert({
+					title: 'Customer',
+					message: LocaleService.t('codbex-opportunities:codbex-opportunities-model.messages.error.unableToLoad', { message: message }),
+					type: AlertTypes.Error
 				});
 			});
 		};
-		$scope.refreshCurrency = function () {
+		$scope.refreshCurrency = () => {
 			$scope.optionsCurrency = [];
-			$http.get("/services/ts/codbex-currencies/gen/codbex-currencies/api/Currencies/CurrencyService.ts").then(function (response) {
-				$scope.optionsCurrency = response.data.map(e => {
-					return {
-						value: e.Id,
-						text: e.Code
-					}
+			$http.get('/services/ts/codbex-currencies/gen/codbex-currencies/api/Currencies/CurrencyService.ts').then((response) => {
+				$scope.optionsCurrency = response.data.map(e => ({
+					value: e.Id,
+					text: e.Code
+				}));
+			}, (error) => {
+				console.error(error);
+				const message = error.data ? error.data.message : '';
+				Dialogs.showAlert({
+					title: 'Currency',
+					message: LocaleService.t('codbex-opportunities:codbex-opportunities-model.messages.error.unableToLoad', { message: message }),
+					type: AlertTypes.Error
 				});
 			});
 		};
-		$scope.refreshOpportunity = function () {
+		$scope.refreshOpportunity = () => {
 			$scope.optionsOpportunity = [];
-			$http.get("/services/ts/codbex-opportunities/gen/codbex-opportunities/api/Opportunity/OpportunityService.ts").then(function (response) {
-				$scope.optionsOpportunity = response.data.map(e => {
-					return {
-						value: e.Id,
-						text: e.Number
-					}
+			$http.get('/services/ts/codbex-opportunities/gen/codbex-opportunities/api/Opportunity/OpportunityService.ts').then((response) => {
+				$scope.optionsOpportunity = response.data.map(e => ({
+					value: e.Id,
+					text: e.Number
+				}));
+			}, (error) => {
+				console.error(error);
+				const message = error.data ? error.data.message : '';
+				Dialogs.showAlert({
+					title: 'Opportunity',
+					message: LocaleService.t('codbex-opportunities:codbex-opportunities-model.messages.error.unableToLoad', { message: message }),
+					type: AlertTypes.Error
 				});
 			});
 		};
-		$scope.refreshStatus = function () {
+		$scope.refreshStatus = () => {
 			$scope.optionsStatus = [];
-			$http.get("/services/ts/codbex-opportunities/gen/codbex-opportunities/api/Settings/QuotationStatusService.ts").then(function (response) {
-				$scope.optionsStatus = response.data.map(e => {
-					return {
-						value: e.Id,
-						text: e.Name
-					}
+			$http.get('/services/ts/codbex-opportunities/gen/codbex-opportunities/api/Settings/QuotationStatusService.ts').then((response) => {
+				$scope.optionsStatus = response.data.map(e => ({
+					value: e.Id,
+					text: e.Name
+				}));
+			}, (error) => {
+				console.error(error);
+				const message = error.data ? error.data.message : '';
+				Dialogs.showAlert({
+					title: 'Status',
+					message: LocaleService.t('codbex-opportunities:codbex-opportunities-model.messages.error.unableToLoad', { message: message }),
+					type: AlertTypes.Error
 				});
 			});
 		};
 
 		//----------------Dropdowns-----------------//	
-		
-
-	}]);
+	});

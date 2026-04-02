@@ -4,16 +4,17 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "ActionType",
-    label: "ActionType",
-    factory: "frame",
-    region: "center",
-    link: "/services/web/codbex-opportunities/gen/codbex-opportunities/ui/Settings/ActionType/index.html",
-    perspectiveName: "Settings"
+    id: 'ActionType',
+    label: 'ActionType',
+    translation: {
+        key: 'codbex-opportunities:codbex-opportunities-model.t.ACTIONTYPE',
+    },
+    region: 'center',
+    lazyLoad: true,
+	autoFocusTab: false,
+    path: '/services/web/codbex-opportunities/gen/codbex-opportunities/ui/Settings/ActionType/index.html',
+    perspectiveName: 'Settings'
 };
-
 if (typeof exports !== 'undefined') {
-    exports.getView = function () {
-        return viewData;
-    }
+	exports.getView = () => viewData;
 }

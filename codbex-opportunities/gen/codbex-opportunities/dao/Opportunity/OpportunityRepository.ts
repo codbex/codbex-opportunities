@@ -1,7 +1,7 @@
-import { query } from "sdk/db";
-import { producer } from "sdk/messaging";
-import { extensions } from "sdk/extensions";
-import { dao as daoApi } from "sdk/db";
+import { sql, query } from "@aerokit/sdk/db";
+import { producer } from "@aerokit/sdk/messaging";
+import { extensions } from "@aerokit/sdk/extensions";
+import { dao as daoApi } from "@aerokit/sdk/db";
 import { EntityUtils } from "../utils/EntityUtils";
 // custom imports
 import { NumberGeneratorService } from "codbex-number-generator/service/generator";
@@ -140,12 +140,13 @@ export interface OpportunityEntityOptions {
     },
     $select?: (keyof OpportunityEntity)[],
     $sort?: string | (keyof OpportunityEntity)[],
-    $order?: 'asc' | 'desc',
+    $order?: 'ASC' | 'DESC',
     $offset?: number,
     $limit?: number,
+    $language?: string
 }
 
-interface OpportunityEntityEvent {
+export interface OpportunityEntityEvent {
     readonly operation: 'create' | 'update' | 'delete';
     readonly table: string;
     readonly entity: Partial<OpportunityEntity>;
@@ -156,7 +157,7 @@ interface OpportunityEntityEvent {
     }
 }
 
-interface OpportunityUpdateEntityEvent extends OpportunityEntityEvent {
+export interface OpportunityUpdateEntityEvent extends OpportunityEntityEvent {
     readonly previousEntity: OpportunityEntity;
 }
 
@@ -233,17 +234,18 @@ export class OpportunityRepository {
     private readonly dao;
 
     constructor(dataSource = "DefaultDB") {
-        this.dao = daoApi.create(OpportunityRepository.DEFINITION, null, dataSource);
+        this.dao = daoApi.create(OpportunityRepository.DEFINITION, undefined, dataSource);
     }
 
-    public findAll(options?: OpportunityEntityOptions): OpportunityEntity[] {
-        return this.dao.list(options).map((e: OpportunityEntity) => {
+    public findAll(options: OpportunityEntityOptions = {}): OpportunityEntity[] {
+        let list = this.dao.list(options).map((e: OpportunityEntity) => {
             EntityUtils.setDate(e, "Date");
             return e;
         });
+        return list;
     }
 
-    public findById(id: number): OpportunityEntity | undefined {
+    public findById(id: number, options: OpportunityEntityOptions = {}): OpportunityEntity | undefined {
         const entity = this.dao.find(id);
         EntityUtils.setDate(entity, "Date");
         return entity ?? undefined;
@@ -252,7 +254,7 @@ export class OpportunityRepository {
     public create(entity: OpportunityCreateEntity): number {
         EntityUtils.setLocalDate(entity, "Date");
         // @ts-ignore
-        (entity as OpportunityEntity).Number = new NumberGeneratorService().generate(2);
+        (entity as OpportunityEntity).Number = new NumberGeneratorService().generateByType('Opportunity');
         // @ts-ignore
         (entity as OpportunityEntity).Date = new Date();
         const id = this.dao.insert(entity);

@@ -1,6 +1,0 @@
-{
-    "module": "codbex-opportunities/gen/codbex-opportunities/ui/Settings/OpportunityStatus/tile.js",
-    "extensionPoint": "portal-tile",
-    "description": "codbex-opportunities - Application Tile",
-    "role": "codbex-opportunities.Settings.OpportunityStatusReadOnly,codbex-opportunities.Settings.OpportunityStatusFullAccess"
-}

@@ -6,15 +6,15 @@
 const viewData = {
     id: "Quotation-details",
     label: "Quotation",
-    link: "/services/web/codbex-opportunities/gen/codbex-opportunities/ui/Quotation/Quotation/dialog-window/index.html",
+    translation: {
+        key: 'codbex-opportunities:codbex-opportunities-model.t.QUOTATION',
+    },
+    path: "/services/web/codbex-opportunities/gen/codbex-opportunities/ui/Quotation/Quotation/dialog-window/index.html",
     perspectiveName: "Quotation",
     roles: [
         "codbex-opportunities.Quotation.QuotationReadOnly",
     ]
 };
-
 if (typeof exports !== 'undefined') {
-    exports.getDialogWindow = function () {
-        return viewData;
-    }
+    exports.getView = () => viewData;
 }

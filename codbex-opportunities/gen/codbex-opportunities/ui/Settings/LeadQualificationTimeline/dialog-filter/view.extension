@@ -1,6 +1,6 @@
 {
     "module": "codbex-opportunities/gen/codbex-opportunities/ui/Settings/LeadQualificationTimeline/dialog-filter/view.js",
-    "extensionPoint": "dialog-window",
+    "extensionPoint": "application-windows",
     "description": "codbex-opportunities - Application Dialog Window",
     "role": "codbex-opportunities.Settings.LeadQualificationTimelineReadOnly,codbex-opportunities.Settings.LeadQualificationTimelineFullAccess"
 }

@@ -5,14 +5,14 @@
  */
 const perspectiveData = {
 	id: 'Quotation',
-	name: 'Quotation',
-	link: '/services/web/codbex-opportunities/gen/codbex-opportunities/ui/Quotation/index.html',
-	order: '300',
+	label: 'Quotation',
+	translation: {
+        key: 'codbex-opportunities:codbex-opportunities-model.t.QUOTATION',
+    },
+	path: '/services/web/codbex-opportunities/gen/codbex-opportunities/ui/Quotation/index.html',
+	order: 300,
 	icon: '/services/web/resources/unicons/bill.svg'
 };
-
 if (typeof exports !== 'undefined') {
-	exports.getPerspective = function () {
-		return perspectiveData;
-	}
+	exports.getPerspective = () => perspectiveData;
 }

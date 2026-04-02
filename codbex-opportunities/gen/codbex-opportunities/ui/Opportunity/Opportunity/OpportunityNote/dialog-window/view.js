@@ -4,14 +4,14 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "OpportunityNote-details",
-    label: "OpportunityNote",
-    link: "/services/web/codbex-opportunities/gen/codbex-opportunities/ui/Opportunity/Opportunity/OpportunityNote/dialog-window/index.html",
-    perspectiveName: "Opportunity"
+    id: 'OpportunityNote-details',
+    label: 'OpportunityNote',
+    translation: {
+        key: 'codbex-opportunities:codbex-opportunities-model.t.OPPORTUNITYNOTE',
+    },
+    path: '/services/web/codbex-opportunities/gen/codbex-opportunities/ui/Opportunity/Opportunity/OpportunityNote/dialog-window/index.html',
+    perspectiveName: 'Opportunity'
 };
-
 if (typeof exports !== 'undefined') {
-    exports.getDialogWindow = function () {
-        return viewData;
-    }
+    exports.getView = () => viewData;
 }

@@ -6,15 +6,15 @@
 const viewData = {
     id: "Opportunity-details",
     label: "Opportunity",
-    link: "/services/web/codbex-opportunities/gen/codbex-opportunities/ui/Opportunity/Opportunity/dialog-window/index.html",
+    translation: {
+        key: 'codbex-opportunities:codbex-opportunities-model.t.OPPORTUNITY',
+    },
+    path: "/services/web/codbex-opportunities/gen/codbex-opportunities/ui/Opportunity/Opportunity/dialog-window/index.html",
     perspectiveName: "Opportunity",
     roles: [
         "codbex-opportunities.Opportunity.OpportunityReadOnly",
     ]
 };
-
 if (typeof exports !== 'undefined') {
-    exports.getDialogWindow = function () {
-        return viewData;
-    }
+    exports.getView = () => viewData;
 }

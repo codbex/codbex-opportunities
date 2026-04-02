@@ -4,14 +4,17 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "ActionType-filter",
-    label: "ActionType Filter",
-    link: "/services/web/codbex-opportunities/gen/codbex-opportunities/ui/Settings/ActionType/dialog-filter/index.html",
-    perspectiveName: "Settings"
+    id: 'ActionType-filter',
+    label: 'ActionType Filter',
+    translation: {
+        key: 'codbex-opportunities:codbex-opportunities-model.extName',
+        options: {
+            content: '$t(codbex-opportunities:codbex-opportunities-model.t.ACTIONTYPE) $t(codbex-opportunities:codbex-opportunities-model.defaults.filter)',
+        }
+    },
+    path: '/services/web/codbex-opportunities/gen/codbex-opportunities/ui/Settings/ActionType/dialog-filter/index.html',
+    perspectiveName: 'Settings'
 };
-
 if (typeof exports !== 'undefined') {
-    exports.getDialogWindow = function () {
-        return viewData;
-    }
+    exports.getView = () => viewData;
 }

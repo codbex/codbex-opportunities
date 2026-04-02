@@ -1,7 +1,7 @@
-import { query } from "sdk/db";
-import { producer } from "sdk/messaging";
-import { extensions } from "sdk/extensions";
-import { dao as daoApi } from "sdk/db";
+import { sql, query } from "@aerokit/sdk/db";
+import { producer } from "@aerokit/sdk/messaging";
+import { extensions } from "@aerokit/sdk/extensions";
+import { dao as daoApi } from "@aerokit/sdk/db";
 
 export interface QuotationLinkEntity {
     readonly Id: number;
@@ -58,12 +58,13 @@ export interface QuotationLinkEntityOptions {
     },
     $select?: (keyof QuotationLinkEntity)[],
     $sort?: string | (keyof QuotationLinkEntity)[],
-    $order?: 'asc' | 'desc',
+    $order?: 'ASC' | 'DESC',
     $offset?: number,
     $limit?: number,
+    $language?: string
 }
 
-interface QuotationLinkEntityEvent {
+export interface QuotationLinkEntityEvent {
     readonly operation: 'create' | 'update' | 'delete';
     readonly table: string;
     readonly entity: Partial<QuotationLinkEntity>;
@@ -74,7 +75,7 @@ interface QuotationLinkEntityEvent {
     }
 }
 
-interface QuotationLinkUpdateEntityEvent extends QuotationLinkEntityEvent {
+export interface QuotationLinkUpdateEntityEvent extends QuotationLinkEntityEvent {
     readonly previousEntity: QuotationLinkEntity;
 }
 
@@ -106,14 +107,15 @@ export class QuotationLinkRepository {
     private readonly dao;
 
     constructor(dataSource = "DefaultDB") {
-        this.dao = daoApi.create(QuotationLinkRepository.DEFINITION, null, dataSource);
+        this.dao = daoApi.create(QuotationLinkRepository.DEFINITION, undefined, dataSource);
     }
 
-    public findAll(options?: QuotationLinkEntityOptions): QuotationLinkEntity[] {
-        return this.dao.list(options);
+    public findAll(options: QuotationLinkEntityOptions = {}): QuotationLinkEntity[] {
+        let list = this.dao.list(options);
+        return list;
     }
 
-    public findById(id: number): QuotationLinkEntity | undefined {
+    public findById(id: number, options: QuotationLinkEntityOptions = {}): QuotationLinkEntity | undefined {
         const entity = this.dao.find(id);
         return entity ?? undefined;
     }

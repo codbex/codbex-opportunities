@@ -9,13 +9,14 @@
         "registry": "https://npm.pkg.github.com"
     },
     "dependencies": {
-        "@codbex/codbex-products": "0.6.0",
-        "@codbex/codbex-partners": "0.5.0",
-        "@codbex/codbex-employees": "0.5.0",
-        "@codbex/codbex-currencies": "0.4.0",
-        "@codbex/codbex-uoms": "0.5.0",
-        "@codbex/codbex-orders": "0.6.0",
-        "@codbex/codbex-industries": "0.3.0",
-        "@codbex/codbex-number-generator": "0.3.0"
+        "@codbex/codbex-products": "^0.14.8",
+        "@codbex/codbex-partners": "^1.0.0",
+        "@codbex/codbex-employees": "^1.0.0",
+        "@codbex/codbex-currencies": "^1.2.0",
+        "@codbex/codbex-uoms": "^1.4.0",
+        "@codbex/codbex-orders": "^0.9.2",
+        "@codbex/codbex-industries": "^0.3.0",
+        "@codbex/codbex-number-generator": "^1.1.0",
+        "@codbex/codbex-number-generator-data": "^1.0.0"
     }
 }

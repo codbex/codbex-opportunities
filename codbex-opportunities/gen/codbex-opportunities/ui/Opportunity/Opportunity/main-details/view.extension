@@ -1,6 +1,6 @@
 {
     "module": "codbex-opportunities/gen/codbex-opportunities/ui/Opportunity/Opportunity/main-details/view.js",
-    "extensionPoint": "codbex-opportunities-view",
+    "extensionPoint": "application-views",
     "description": "codbex-opportunities - Application View - Main Details",
     "role": "codbex-opportunities.Opportunity.OpportunityReadOnly,codbex-opportunities.Opportunity.OpportunityFullAccess"
 }

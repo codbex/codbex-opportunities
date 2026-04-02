@@ -4,6 +4,7 @@
             {
                 "properties": [
                     {
+                        "auditType": "NONE",
                         "dataAutoIncrement": "true",
                         "dataName": "LEAD_ID",
                         "dataNullable": "true",
@@ -18,7 +19,8 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
-                        "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generate(1)",
+                        "auditType": "NONE",
+                        "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generateByType('Lead')",
                         "dataLength": "20",
                         "dataName": "LEAD_NUMBER",
                         "dataNullable": "true",
@@ -33,6 +35,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "255",
                         "dataName": "LEAD_NAME",
                         "dataNullable": "true",
@@ -47,6 +50,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "LEAD_COUNTRY",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
@@ -65,6 +69,7 @@
                         "relationshipEntityPerspectiveLabel": "Countries"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "LEAD_CITY",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
@@ -87,6 +92,7 @@
                         "relationshipEntityPerspectiveLabel": "Cities"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "255",
                         "dataName": "LEAD_COMPANY",
                         "dataNullable": "true",
@@ -101,6 +107,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "255",
                         "dataName": "LEAD_DESIGNATION",
                         "dataNullable": "true",
@@ -114,6 +121,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "255",
                         "dataName": "LEAD_EMAIL",
                         "dataNullable": "true",
@@ -128,6 +136,7 @@
                         "widgetType": "EMAIL"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "255",
                         "dataName": "LEAD_PHONE",
                         "dataNullable": "true",
@@ -142,6 +151,7 @@
                         "widgetType": "TEL"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "LEAD_STATUS",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
@@ -160,6 +170,7 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "LEAD_OWNER",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
@@ -179,6 +190,7 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "new Date()",
                         "dataName": "LEAD_DATE",
                         "dataNullable": "true",
@@ -208,11 +220,13 @@
                 "menuIndex": "100",
                 "menuKey": "lead",
                 "menuLabel": "Lead",
+                "multilingual": "false",
                 "name": "Lead",
-                "navigationPath": "/Home",
+                "perspectiveHeader": "",
                 "perspectiveIcon": "/services/web/resources/unicons/head-side.svg",
                 "perspectiveLabel": "Lead",
                 "perspectiveName": "Lead",
+                "perspectiveNavId": "",
                 "perspectiveOrder": "100",
                 "perspectiveRole": "",
                 "roleRead": "codbex-opportunities.Lead.LeadReadOnly",
@@ -224,6 +238,7 @@
             {
                 "properties": [
                     {
+                        "auditType": "NONE",
                         "dataAutoIncrement": "true",
                         "dataName": "LEADSTATUS_ID",
                         "dataNullable": "true",
@@ -238,6 +253,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "20",
                         "dataName": "LEADSTATUS_NAME",
                         "dataNullable": "true",
@@ -265,11 +281,13 @@
                 "menuIndex": "100",
                 "menuKey": "leadstatus",
                 "menuLabel": "LeadStatus",
+                "multilingual": "false",
                 "name": "LeadStatus",
-                "navigationPath": "/Home",
+                "perspectiveHeader": "",
                 "perspectiveIcon": "/services/web/resources/unicons/wrench.svg",
                 "perspectiveLabel": "Settings",
                 "perspectiveName": "Settings",
+                "perspectiveNavId": "",
                 "perspectiveOrder": "999",
                 "perspectiveRole": "",
                 "roleRead": "codbex-opportunities.Settings.LeadStatusReadOnly",
@@ -281,6 +299,7 @@
             {
                 "properties": [
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataAutoIncrement": "true",
@@ -297,6 +316,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataLength": "50",
@@ -315,6 +335,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataLength": "50",
@@ -332,6 +353,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataLength": "50",
@@ -350,6 +372,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataLength": "100",
@@ -368,6 +391,7 @@
                         "widgetType": "EMAIL"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataLength": "20",
@@ -386,6 +410,7 @@
                         "widgetType": "TEL"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataName": "EMPLOYEE_ORGANISATION",
@@ -418,11 +443,13 @@
                 "menuIndex": "100",
                 "menuKey": "employee",
                 "menuLabel": "Employee",
+                "multilingual": "false",
                 "name": "Employee",
-                "navigationPath": "/Home",
+                "perspectiveHeader": "",
                 "perspectiveIcon": "/services/web/resources/unicons/users-alt.svg",
                 "perspectiveLabel": "Entities",
                 "perspectiveName": "Employees",
+                "perspectiveNavId": "",
                 "perspectiveOrder": "101",
                 "perspectiveRole": "",
                 "projectionReferencedEntity": "Employee",
@@ -434,6 +461,7 @@
             {
                 "properties": [
                     {
+                        "auditType": "NONE",
                         "dataAutoIncrement": "true",
                         "dataName": "OPPORTUNITY_ID",
                         "dataNullable": "true",
@@ -448,7 +476,8 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
-                        "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generate(2)",
+                        "auditType": "NONE",
+                        "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generateByType('Opportunity')",
                         "dataLength": "20",
                         "dataName": "OPPORTUNITY_NUMBER",
                         "dataNullable": "true",
@@ -463,6 +492,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "OPPORTUNITY_CUSTOMER",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
@@ -482,7 +512,8 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
-                        "dataLength": "18",
+                        "auditType": "NONE",
+                        "dataLength": "16",
                         "dataName": "OPPORTUNITY_AMOUNT",
                         "dataNullable": "true",
                         "dataPrecision": "16",
@@ -498,6 +529,7 @@
                         "widgetType": "NUMBER"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "OPPORTUNITY_CURRENCY",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
@@ -517,6 +549,7 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "OPPORTUNITY_LEAD",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
@@ -535,6 +568,7 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "OPPORTUNITY_OWNER",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
@@ -554,6 +588,7 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "OPPORTUNITY_TYPE",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
@@ -572,6 +607,7 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "OPPORTUNITY_PRIORITY",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
@@ -590,6 +626,7 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "OPPORTUNITY_PROBABILITY",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
@@ -608,6 +645,7 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "OPPORTUNITY_STATUS",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
@@ -626,6 +664,7 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "new Date()",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataName": "OPPORTUNITY_DATE",
@@ -656,11 +695,13 @@
                 "menuIndex": "100",
                 "menuKey": "opportunity",
                 "menuLabel": "Opportunity",
+                "multilingual": "false",
                 "name": "Opportunity",
-                "navigationPath": "/Home",
+                "perspectiveHeader": "",
                 "perspectiveIcon": "/services/web/resources/unicons/lightbulb.svg",
                 "perspectiveLabel": "Opportunity",
                 "perspectiveName": "Opportunity",
+                "perspectiveNavId": "",
                 "perspectiveOrder": "200",
                 "perspectiveRole": "",
                 "roleRead": "codbex-opportunities.Opportunity.OpportunityReadOnly",
@@ -672,6 +713,7 @@
             {
                 "properties": [
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataAutoIncrement": "true",
@@ -688,6 +730,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataLength": "100",
@@ -704,6 +747,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataLength": "200",
@@ -720,6 +764,7 @@
                         "widgetType": "TEXTAREA"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataLength": "20",
@@ -735,6 +780,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataLength": "100",
@@ -751,6 +797,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataLength": "20",
@@ -766,6 +813,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataLength": "20",
@@ -781,6 +829,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataName": "CUSTOMER_CITY",
@@ -800,6 +849,7 @@
                         "widgetType": "DROPDOWN"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataName": "CUSTOMER_COUNTRY",
@@ -819,6 +869,7 @@
                         "widgetType": "DROPDOWN"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataLength": "20",
@@ -834,6 +885,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataLength": "36",
@@ -861,11 +913,13 @@
                 "menuIndex": "100",
                 "menuKey": "customer",
                 "menuLabel": "Customer",
+                "multilingual": "false",
                 "name": "Customer",
-                "navigationPath": "/Home",
+                "perspectiveHeader": "",
                 "perspectiveIcon": "/services/web/resources/unicons/user-plus.svg",
                 "perspectiveLabel": "Entities",
                 "perspectiveName": "Customers",
+                "perspectiveNavId": "",
                 "perspectiveOrder": "100",
                 "perspectiveRole": "",
                 "projectionReferencedEntity": "Customer",
@@ -877,6 +931,7 @@
             {
                 "properties": [
                     {
+                        "auditType": "NONE",
                         "dataAutoIncrement": "true",
                         "dataName": "OPPORTUNITYTYPE_ID",
                         "dataNullable": "true",
@@ -891,6 +946,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "20",
                         "dataName": "OPPORTUNITYTYPE_NAME",
                         "dataNullable": "true",
@@ -918,11 +974,13 @@
                 "menuIndex": "100",
                 "menuKey": "opportunitytype",
                 "menuLabel": "OpportunityType",
+                "multilingual": "false",
                 "name": "OpportunityType",
-                "navigationPath": "/Home",
+                "perspectiveHeader": "",
                 "perspectiveIcon": "/services/web/resources/unicons/wrench.svg",
                 "perspectiveLabel": "Settings",
                 "perspectiveName": "Settings",
+                "perspectiveNavId": "",
                 "perspectiveOrder": "999",
                 "perspectiveRole": "",
                 "roleRead": "codbex-opportunities.Settings.OpportunityTypeReadOnly",
@@ -934,6 +992,7 @@
             {
                 "properties": [
                     {
+                        "auditType": "NONE",
                         "dataAutoIncrement": "true",
                         "dataName": "OPPORTUNITYPRIORITY_ID",
                         "dataNullable": "true",
@@ -948,6 +1007,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "20",
                         "dataName": "OPPORTUNITYPRIORITY_NAME",
                         "dataNullable": "true",
@@ -975,11 +1035,13 @@
                 "menuIndex": "100",
                 "menuKey": "opportunitypriority",
                 "menuLabel": "OpportunityPriority",
+                "multilingual": "false",
                 "name": "OpportunityPriority",
-                "navigationPath": "/Home",
+                "perspectiveHeader": "",
                 "perspectiveIcon": "/services/web/resources/unicons/wrench.svg",
                 "perspectiveLabel": "Settings",
                 "perspectiveName": "Settings",
+                "perspectiveNavId": "",
                 "perspectiveOrder": "999",
                 "perspectiveRole": "",
                 "roleRead": "codbex-opportunities.Settings.OpportunityPriorityReadOnly",
@@ -991,6 +1053,7 @@
             {
                 "properties": [
                     {
+                        "auditType": "NONE",
                         "dataAutoIncrement": "true",
                         "dataName": "OPPORTUNITYSTATUS_ID",
                         "dataNullable": "true",
@@ -1005,6 +1068,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "20",
                         "dataName": "OPPORTUNITYSTATUS_NAME",
                         "dataNullable": "true",
@@ -1018,6 +1082,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "100",
                         "dataName": "OPPORTUNITYSTATUS_DESCRIPTION",
                         "dataNullable": "true",
@@ -1045,11 +1110,13 @@
                 "menuIndex": "100",
                 "menuKey": "opportunitystatus",
                 "menuLabel": "OpportunityStatus",
+                "multilingual": "false",
                 "name": "OpportunityStatus",
-                "navigationPath": "/Home",
+                "perspectiveHeader": "",
                 "perspectiveIcon": "/services/web/resources/unicons/wrench.svg",
                 "perspectiveLabel": "Settings",
                 "perspectiveName": "Settings",
+                "perspectiveNavId": "",
                 "perspectiveOrder": "999",
                 "perspectiveRole": "",
                 "roleRead": "codbex-opportunities.Settings.OpportunityStatusReadOnly",
@@ -1061,6 +1128,7 @@
             {
                 "properties": [
                     {
+                        "auditType": "NONE",
                         "dataAutoIncrement": "true",
                         "dataName": "OPPORTUNITYPROBABILITY_ID",
                         "dataNullable": "true",
@@ -1075,6 +1143,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "20",
                         "dataName": "OPPORTUNITYPROBABILITY_NAME",
                         "dataNullable": "true",
@@ -1102,11 +1171,13 @@
                 "menuIndex": "100",
                 "menuKey": "opportunityprobability",
                 "menuLabel": "OpportunityProbability",
+                "multilingual": "false",
                 "name": "OpportunityProbability",
-                "navigationPath": "/Home",
+                "perspectiveHeader": "",
                 "perspectiveIcon": "/services/web/resources/unicons/wrench.svg",
                 "perspectiveLabel": "Settings",
                 "perspectiveName": "Settings",
+                "perspectiveNavId": "",
                 "perspectiveOrder": "999",
                 "perspectiveRole": "",
                 "roleRead": "codbex-opportunities.Settings.OpportunityProbabilityReadOnly",
@@ -1118,6 +1189,7 @@
             {
                 "properties": [
                     {
+                        "auditType": "NONE",
                         "dataAutoIncrement": "true",
                         "dataName": "QUOTATION_ID",
                         "dataNullable": "true",
@@ -1132,6 +1204,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generate(3)",
                         "dataLength": "20",
                         "dataName": "QUOTATION_NAME",
@@ -1147,6 +1220,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "new Date()",
                         "dataName": "QUOTATION_DATE",
                         "dataNullable": "true",
@@ -1161,6 +1235,7 @@
                         "widgetType": "DATE"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "QUOTATION_OWNER",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
@@ -1180,6 +1255,7 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "QUOTATION_CUSTOMER",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
@@ -1199,7 +1275,8 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
-                        "dataLength": "18",
+                        "auditType": "NONE",
+                        "dataLength": "16",
                         "dataName": "QUOTATION_TOTAL",
                         "dataNullable": "true",
                         "dataPrecision": "16",
@@ -1215,6 +1292,7 @@
                         "widgetType": "NUMBER"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "QUOTATION_CURRENCY",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
@@ -1234,6 +1312,7 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "QUOTATION_OPPORTUNITY",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
@@ -1252,6 +1331,7 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "QUOTATION_STATUS",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
@@ -1285,11 +1365,13 @@
                 "menuIndex": "100",
                 "menuKey": "quotation",
                 "menuLabel": "Quotation",
+                "multilingual": "false",
                 "name": "Quotation",
-                "navigationPath": "/Home",
+                "perspectiveHeader": "",
                 "perspectiveIcon": "/services/web/resources/unicons/bill.svg",
                 "perspectiveLabel": "Quotation",
                 "perspectiveName": "Quotation",
+                "perspectiveNavId": "",
                 "perspectiveOrder": "300",
                 "perspectiveRole": "",
                 "roleRead": "codbex-opportunities.Quotation.QuotationReadOnly",
@@ -1301,6 +1383,7 @@
             {
                 "properties": [
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataAutoIncrement": "true",
@@ -1317,6 +1400,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataLength": "3",
@@ -1332,6 +1416,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataLength": "127",
@@ -1347,6 +1432,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataLength": "3",
@@ -1362,6 +1448,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataName": "CURRENCY_ROUNDING",
@@ -1376,6 +1463,7 @@
                         "widgetType": "NUMBER"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataName": "CURRENCY_BASE",
@@ -1390,6 +1478,7 @@
                         "widgetType": "CHECKBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataName": "CURRENCY_RATE",
@@ -1416,11 +1505,13 @@
                 "menuIndex": "100",
                 "menuKey": "currency",
                 "menuLabel": "Currency",
+                "multilingual": "false",
                 "name": "Currency",
-                "navigationPath": "/Home",
+                "perspectiveHeader": "",
                 "perspectiveIcon": "/services/web/resources/unicons/dollar-alt.svg",
                 "perspectiveLabel": "Entities",
                 "perspectiveName": "Currencies",
+                "perspectiveNavId": "",
                 "perspectiveOrder": "990",
                 "perspectiveRole": "",
                 "projectionReferencedEntity": "Currency",
@@ -1432,6 +1523,7 @@
             {
                 "properties": [
                     {
+                        "auditType": "NONE",
                         "dataAutoIncrement": "true",
                         "dataName": "QUOTATIONITEM_ID",
                         "dataNullable": "true",
@@ -1446,6 +1538,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "QUOTATIONITEM_QUOTATION",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
@@ -1467,6 +1560,7 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "QUOTATIONITEM_PRODUCT",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
@@ -1486,6 +1580,7 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "QUOTATIONITEM_QUANTITY",
                         "dataNullable": "true",
                         "dataType": "DOUBLE",
@@ -1498,6 +1593,7 @@
                         "widgetType": "NUMBER"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "QUOTATIONITEM_UOM",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
@@ -1517,7 +1613,8 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
-                        "dataLength": "18",
+                        "auditType": "NONE",
+                        "dataLength": "16",
                         "dataName": "QUOTATIONITEM_PRICE",
                         "dataNullable": "true",
                         "dataPrecision": "16",
@@ -1533,7 +1630,8 @@
                         "widgetType": "NUMBER"
                     },
                     {
-                        "dataLength": "18",
+                        "auditType": "NONE",
+                        "dataLength": "16",
                         "dataName": "QUOTATIONITEM_TOTAL",
                         "dataNullable": "true",
                         "dataPrecision": "16",
@@ -1549,6 +1647,7 @@
                         "widgetType": "NUMBER"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "QUOTATIONITEM_CURRENCY",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
@@ -1582,11 +1681,13 @@
                 "menuIndex": "100",
                 "menuKey": "QuotationItem",
                 "menuLabel": "QuotationItem",
+                "multilingual": "false",
                 "name": "QuotationItem",
-                "navigationPath": "/Home",
+                "perspectiveHeader": "",
                 "perspectiveIcon": "/services/web/resources/unicons/bill.svg",
                 "perspectiveLabel": "Quotation",
                 "perspectiveName": "Quotation",
+                "perspectiveNavId": "",
                 "perspectiveOrder": "300",
                 "perspectiveRole": "",
                 "roleRead": "codbex-opportunities.Quotation.QuotationItemReadOnly",
@@ -1598,6 +1699,7 @@
             {
                 "properties": [
                     {
+                        "auditType": "NONE",
                         "dataAutoIncrement": "true",
                         "dataName": "QUOTATIONSTATUS_ID",
                         "dataNullable": "true",
@@ -1612,6 +1714,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "20",
                         "dataName": "QUOTATIONSTATUS_NAME",
                         "dataNullable": "true",
@@ -1625,6 +1728,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "100",
                         "dataName": "QUOTATIONSTATUS_DESCRIPTION",
                         "dataNullable": "true",
@@ -1652,11 +1756,13 @@
                 "menuIndex": "100",
                 "menuKey": "quotationstatus",
                 "menuLabel": "QuotationStatus",
+                "multilingual": "false",
                 "name": "QuotationStatus",
-                "navigationPath": "/Home",
+                "perspectiveHeader": "",
                 "perspectiveIcon": "/services/web/resources/unicons/wrench.svg",
                 "perspectiveLabel": "Settings",
                 "perspectiveName": "Settings",
+                "perspectiveNavId": "",
                 "perspectiveOrder": "999",
                 "perspectiveRole": "",
                 "roleRead": "codbex-opportunities.Settings.QuotationStatusReadOnly",
@@ -1668,6 +1774,7 @@
             {
                 "properties": [
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataAutoIncrement": "true",
@@ -1684,6 +1791,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataLength": "100",
@@ -1699,6 +1807,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataLength": "20",
@@ -1714,6 +1823,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataLength": "20",
@@ -1729,6 +1839,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataLength": "50",
@@ -1746,6 +1857,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataName": "UOM_NUMERATOR",
@@ -1760,6 +1872,7 @@
                         "widgetType": "NUMBER"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataName": "UOM_DENOMINATOR",
@@ -1774,6 +1887,7 @@
                         "widgetType": "NUMBER"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataName": "UOM_ROUNDING",
@@ -1788,6 +1902,7 @@
                         "widgetType": "NUMBER"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataName": "UOM_BASE",
@@ -1814,11 +1929,13 @@
                 "menuIndex": "100",
                 "menuKey": "uom",
                 "menuLabel": "UoM",
+                "multilingual": "false",
                 "name": "UoM",
-                "navigationPath": "/Home",
+                "perspectiveHeader": "",
                 "perspectiveIcon": "/services/web/resources/unicons/arrows-resize-v.svg",
                 "perspectiveLabel": "Entities",
                 "perspectiveName": "UnitsOfMeasures",
+                "perspectiveNavId": "",
                 "perspectiveOrder": "980",
                 "perspectiveRole": "",
                 "projectionReferencedEntity": "UoM",
@@ -1830,6 +1947,7 @@
             {
                 "properties": [
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataAutoIncrement": "true",
@@ -1846,6 +1964,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "(entity[\"Title\"] + \"/\" + entity[\"Model\"] + \"/\" + entity[\"Batch\"] + \"-\" + (entity[\"Enabled\"] ? 'enabled' : 'disabled'));",
                         "calculatedPropertyExpressionUpdate": "(entity[\"Title\"] + \"/\" + entity[\"Model\"] + \"/\" + entity[\"Batch\"] + \"-\" + (entity[\"Enabled\"] ? 'enabled' : 'disabled'));",
                         "dataLength": "500",
@@ -1862,6 +1981,7 @@
                         "widgetType": "TEXTAREA"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataLength": "200",
@@ -1878,6 +1998,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataLength": "200",
@@ -1894,6 +2015,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataLength": "50",
@@ -1910,6 +2032,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataName": "PRODUCT_TYPE",
@@ -1928,6 +2051,7 @@
                         "widgetType": "DROPDOWN"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataName": "PRODUCT_CATEGORY",
@@ -1946,6 +2070,7 @@
                         "widgetType": "DROPDOWN"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataLength": "20",
@@ -1965,6 +2090,7 @@
                         "widgetType": "DROPDOWN"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataName": "PRODUCT_COMPANY",
@@ -1983,6 +2109,7 @@
                         "widgetType": "DROPDOWN"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataLength": "64",
@@ -1998,6 +2125,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataLength": "20",
@@ -2013,6 +2141,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataLength": "20",
@@ -2028,6 +2157,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataLength": "20",
@@ -2043,6 +2173,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataLength": "20",
@@ -2058,6 +2189,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataLength": "40",
@@ -2073,6 +2205,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataName": "PRODUCT_MANUFACTURER",
@@ -2091,6 +2224,7 @@
                         "widgetType": "DROPDOWN"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataName": "PRODUCT_WEIGHT",
@@ -2105,6 +2239,7 @@
                         "widgetType": "NUMBER"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataName": "PRODUCT_HEIGHT",
@@ -2119,6 +2254,7 @@
                         "widgetType": "NUMBER"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataName": "PRODUCT_LENGTH",
@@ -2133,9 +2269,10 @@
                         "widgetType": "NUMBER"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
-                        "dataLength": "18",
+                        "dataLength": "16",
                         "dataName": "PRODUCT_VAT",
                         "dataNullable": "true",
                         "dataPrecision": "16",
@@ -2150,6 +2287,7 @@
                         "widgetType": "NUMBER"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataName": "PRODUCT_ENABLED",
@@ -2176,11 +2314,13 @@
                 "menuIndex": "100",
                 "menuKey": "product",
                 "menuLabel": "Product",
+                "multilingual": "false",
                 "name": "Product",
-                "navigationPath": "/Home",
+                "perspectiveHeader": "",
                 "perspectiveIcon": "/services/web/resources/unicons/cube.svg",
                 "perspectiveLabel": "Entities",
                 "perspectiveName": "Products",
+                "perspectiveNavId": "",
                 "perspectiveOrder": "100",
                 "perspectiveRole": "",
                 "projectionReferencedEntity": "Product",
@@ -2192,6 +2332,7 @@
             {
                 "properties": [
                     {
+                        "auditType": "NONE",
                         "dataAutoIncrement": "true",
                         "dataName": "QUOTATIONLINK_ID",
                         "dataNullable": "true",
@@ -2206,6 +2347,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "QUOTATIONLINK_QUOTATION",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
@@ -2227,6 +2369,7 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "QUOTATIONLINK_SALESORDER",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
@@ -2260,11 +2403,13 @@
                 "menuIndex": "100",
                 "menuKey": "quotationlink",
                 "menuLabel": "QuotationLink",
+                "multilingual": "false",
                 "name": "QuotationLink",
-                "navigationPath": "/Home",
+                "perspectiveHeader": "",
                 "perspectiveIcon": "/services/web/resources/unicons/bill.svg",
                 "perspectiveLabel": "Quotation",
                 "perspectiveName": "Quotation",
+                "perspectiveNavId": "",
                 "perspectiveOrder": "300",
                 "perspectiveRole": "",
                 "roleRead": "codbex-opportunities.Quotation.QuotationLinkReadOnly",
@@ -2276,6 +2421,7 @@
             {
                 "properties": [
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataAutoIncrement": "true",
@@ -2292,6 +2438,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "new NumberGeneratorService().generate(4)",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataLength": "20",
@@ -2308,6 +2455,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataName": "SALESORDER_DATE",
@@ -2323,6 +2471,7 @@
                         "widgetType": "DATE"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataName": "SALESORDER_DUE",
@@ -2338,6 +2487,7 @@
                         "widgetType": "DATE"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataName": "SALESORDER_CUSTOMER",
@@ -2358,9 +2508,10 @@
                         "widgetType": "DROPDOWN"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
-                        "dataLength": "18",
+                        "dataLength": "16",
                         "dataName": "SALESORDER_NET",
                         "dataNullable": "true",
                         "dataPrecision": "16",
@@ -2375,6 +2526,7 @@
                         "widgetType": "NUMBER"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataName": "SALESORDER_CURRENCY",
@@ -2395,9 +2547,10 @@
                         "widgetType": "DROPDOWN"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
-                        "dataLength": "18",
+                        "dataLength": "16",
                         "dataName": "SALESORDER_GROSS",
                         "dataNullable": "true",
                         "dataPrecision": "16",
@@ -2412,10 +2565,11 @@
                         "widgetType": "NUMBER"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataDefaultValue": "0",
-                        "dataLength": "20",
+                        "dataLength": "18",
                         "dataName": "SALESORDER_DISCOUNT",
                         "dataNullable": "true",
                         "dataPrecision": "18",
@@ -2430,10 +2584,11 @@
                         "widgetType": "NUMBER"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataDefaultValue": "0",
-                        "dataLength": "18",
+                        "dataLength": "16",
                         "dataName": "SALESORDER_TAXES",
                         "dataNullable": "true",
                         "dataPrecision": "16",
@@ -2448,9 +2603,10 @@
                         "widgetType": "NUMBER"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
-                        "dataLength": "18",
+                        "dataLength": "16",
                         "dataName": "SALESORDER_VAT",
                         "dataNullable": "true",
                         "dataPrecision": "16",
@@ -2465,9 +2621,10 @@
                         "widgetType": "NUMBER"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
-                        "dataLength": "18",
+                        "dataLength": "16",
                         "dataName": "SALESORDER_TOTAL",
                         "dataNullable": "true",
                         "dataPrecision": "16",
@@ -2482,10 +2639,11 @@
                         "widgetType": "NUMBER"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataDefaultValue": "0",
-                        "dataLength": "18",
+                        "dataLength": "16",
                         "dataName": "SALESORDER_PAID",
                         "dataNullable": "true",
                         "dataPrecision": "16",
@@ -2500,6 +2658,7 @@
                         "widgetType": "NUMBER"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataLength": "200",
@@ -2515,6 +2674,7 @@
                         "widgetType": "TEXTAREA"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataName": "SALESORDER_PAYMENTMETHOD",
@@ -2535,6 +2695,7 @@
                         "widgetType": "DROPDOWN"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataName": "SALESORDER_SENTMETHOD",
@@ -2555,6 +2716,7 @@
                         "widgetType": "DROPDOWN"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataName": "SALESORDER_SALESORDERSTATUS",
@@ -2575,6 +2737,7 @@
                         "widgetType": "DROPDOWN"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataName": "SALESORDER_OPERATOR",
@@ -2595,6 +2758,7 @@
                         "widgetType": "DROPDOWN"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataLength": "200",
@@ -2610,6 +2774,7 @@
                         "widgetType": "TEXTAREA"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataName": "SALESORDER_COMPANY",
@@ -2629,6 +2794,7 @@
                         "widgetType": "DROPDOWN"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "entity[\"Number\"] + \"/\" + new Date(entity[\"Date\"]).toISOString().slice(0, 10) + \"/\" + entity[\"Total\"]",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataLength": "200",
@@ -2645,6 +2811,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "require(\"sdk/utils/uuid\").random()",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataLength": "36",
@@ -2662,6 +2829,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "",
                         "calculatedPropertyExpressionUpdate": "",
                         "dataLength": "36",
@@ -2689,11 +2857,13 @@
                 "menuIndex": "100",
                 "menuKey": "salesorder",
                 "menuLabel": "SalesOrder",
+                "multilingual": "false",
                 "name": "SalesOrder",
-                "navigationPath": "/Home",
+                "perspectiveHeader": "",
                 "perspectiveIcon": "/services/web/resources/unicons/receipt.svg",
                 "perspectiveLabel": "Sales Order",
                 "perspectiveName": "SalesOrder",
+                "perspectiveNavId": "",
                 "perspectiveOrder": "510",
                 "perspectiveRole": "",
                 "projectionReferencedEntity": "SalesOrder",
@@ -2705,6 +2875,7 @@
             {
                 "properties": [
                     {
+                        "auditType": "NONE",
                         "dataAutoIncrement": "true",
                         "dataName": "LEADQUALIFICATION_ID",
                         "dataNullable": "true",
@@ -2719,7 +2890,8 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
-                        "dataLength": "18",
+                        "auditType": "NONE",
+                        "dataLength": "16",
                         "dataName": "LEADQUALIFICATION_BUDGET",
                         "dataNullable": "true",
                         "dataPrecision": "16",
@@ -2735,6 +2907,7 @@
                         "widgetType": "NUMBER"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "LEADQUALIFICATION_AUTHORITY",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
@@ -2753,6 +2926,7 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "LEADQUALIFICATION_NEED",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
@@ -2771,6 +2945,7 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "LEADQUALIFICATION_TIMELINE",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
@@ -2789,6 +2964,7 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "LEADQUALIFICATION_LEAD",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
@@ -2824,11 +3000,13 @@
                 "menuIndex": "100",
                 "menuKey": "leadqualification",
                 "menuLabel": "LeadQualification",
+                "multilingual": "false",
                 "name": "LeadQualification",
-                "navigationPath": "/Home",
+                "perspectiveHeader": "",
                 "perspectiveIcon": "/services/web/resources/unicons/head-side.svg",
                 "perspectiveLabel": "Lead",
                 "perspectiveName": "Lead",
+                "perspectiveNavId": "",
                 "perspectiveOrder": "100",
                 "perspectiveRole": "",
                 "roleRead": "codbex-opportunities.Lead.LeadQualificationReadOnly",
@@ -2840,6 +3018,7 @@
             {
                 "properties": [
                     {
+                        "auditType": "NONE",
                         "dataAutoIncrement": "true",
                         "dataName": "LEADQUALIFICATIONAUTHORITY_ID",
                         "dataNullable": "true",
@@ -2854,6 +3033,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "20",
                         "dataName": "LEADQUALIFICATIONAUTHORITY_NAME",
                         "dataNullable": "true",
@@ -2881,11 +3061,13 @@
                 "menuIndex": "100",
                 "menuKey": "leadqualificationauthority",
                 "menuLabel": "LeadQualificationAuthority",
+                "multilingual": "false",
                 "name": "LeadQualificationAuthority",
-                "navigationPath": "/Home",
+                "perspectiveHeader": "",
                 "perspectiveIcon": "/services/web/resources/unicons/wrench.svg",
                 "perspectiveLabel": "Settings",
                 "perspectiveName": "Settings",
+                "perspectiveNavId": "",
                 "perspectiveOrder": "999",
                 "perspectiveRole": "",
                 "roleRead": "codbex-opportunities.Settings.LeadQualificationAuthorityReadOnly",
@@ -2897,6 +3079,7 @@
             {
                 "properties": [
                     {
+                        "auditType": "NONE",
                         "dataAutoIncrement": "true",
                         "dataName": "LEADQUALIFICATIONNEED_ID",
                         "dataNullable": "true",
@@ -2911,6 +3094,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "20",
                         "dataName": "LEADQUALIFICATIONNEED_NAME",
                         "dataNullable": "true",
@@ -2938,11 +3122,13 @@
                 "menuIndex": "100",
                 "menuKey": "leadqualificationneed",
                 "menuLabel": "LeadQualificationNeed",
+                "multilingual": "false",
                 "name": "LeadQualificationNeed",
-                "navigationPath": "/Home",
+                "perspectiveHeader": "",
                 "perspectiveIcon": "/services/web/resources/unicons/wrench.svg",
                 "perspectiveLabel": "Settings",
                 "perspectiveName": "Settings",
+                "perspectiveNavId": "",
                 "perspectiveOrder": "999",
                 "perspectiveRole": "",
                 "roleRead": "codbex-opportunities.Settings.LeadQualificationNeedReadOnly",
@@ -2954,6 +3140,7 @@
             {
                 "properties": [
                     {
+                        "auditType": "NONE",
                         "dataAutoIncrement": "true",
                         "dataName": "LEADQUALIFICATIONTIMELINE_ID",
                         "dataNullable": "true",
@@ -2968,6 +3155,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "50",
                         "dataName": "LEADQUALIFICATIONTIMELINE_NAME",
                         "dataNullable": "true",
@@ -2995,11 +3183,13 @@
                 "menuIndex": "100",
                 "menuKey": "leadqualificationtimeline",
                 "menuLabel": "LeadQualificationTimeline",
+                "multilingual": "false",
                 "name": "LeadQualificationTimeline",
-                "navigationPath": "/Home",
+                "perspectiveHeader": "",
                 "perspectiveIcon": "/services/web/resources/unicons/wrench.svg",
                 "perspectiveLabel": "Settings",
                 "perspectiveName": "Settings",
+                "perspectiveNavId": "",
                 "perspectiveOrder": "999",
                 "perspectiveRole": "",
                 "roleRead": "codbex-opportunities.Settings.LeadQualificationTimelineReadOnly",
@@ -3011,6 +3201,7 @@
             {
                 "properties": [
                     {
+                        "auditType": "NONE",
                         "dataAutoIncrement": "true",
                         "dataName": "OPPORTUNITYACTION_ID",
                         "dataNullable": "true",
@@ -3025,6 +3216,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "new Date()",
                         "dataName": "OPPORTUNITYACTION_DATE",
                         "dataNullable": "true",
@@ -3039,6 +3231,7 @@
                         "widgetType": "DATE"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "OPPORTUNITYACTION_DUE",
                         "dataNullable": "true",
                         "dataType": "DATE",
@@ -3052,6 +3245,7 @@
                         "widgetType": "DATE"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "100",
                         "dataName": "OPPORTUNITYACTION_SUBJECT",
                         "dataNullable": "true",
@@ -3066,6 +3260,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "OPPORTUNITYACTION_OPPORTUNITY",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
@@ -3086,6 +3281,7 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "1000",
                         "dataName": "OPPORTUNITYACTION_DESCRIPTION",
                         "dataNullable": "true",
@@ -3099,6 +3295,7 @@
                         "widgetType": "TEXTAREA"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "OPPORTUNITYACTION_INITIATOR",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
@@ -3118,6 +3315,7 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "OPPORTUNITYACTION_TYPE",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
@@ -3136,6 +3334,7 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "OPPORTUNITYACTION_STATUS",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
@@ -3168,11 +3367,13 @@
                 "menuIndex": "100",
                 "menuKey": "opportunityaction",
                 "menuLabel": "OpportunityAction",
+                "multilingual": "false",
                 "name": "OpportunityAction",
-                "navigationPath": "/Home",
+                "perspectiveHeader": "",
                 "perspectiveIcon": "/services/web/resources/unicons/lightbulb.svg",
                 "perspectiveLabel": "Opportunity",
                 "perspectiveName": "Opportunity",
+                "perspectiveNavId": "",
                 "perspectiveOrder": "200",
                 "perspectiveRole": "",
                 "roleRead": "codbex-opportunities.Opportunity.OpportunityActionReadOnly",
@@ -3184,6 +3385,7 @@
             {
                 "properties": [
                     {
+                        "auditType": "NONE",
                         "dataAutoIncrement": "true",
                         "dataName": "ACTIONTYPE_ID",
                         "dataNullable": "true",
@@ -3198,6 +3400,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "20",
                         "dataName": "ACTIONTYPE_NAME",
                         "dataNullable": "true",
@@ -3225,11 +3428,13 @@
                 "menuIndex": "100",
                 "menuKey": "actiontype",
                 "menuLabel": "ActionType",
+                "multilingual": "false",
                 "name": "ActionType",
-                "navigationPath": "/Home",
+                "perspectiveHeader": "",
                 "perspectiveIcon": "/services/web/resources/unicons/wrench.svg",
                 "perspectiveLabel": "Settings",
                 "perspectiveName": "Settings",
+                "perspectiveNavId": "",
                 "perspectiveOrder": "999",
                 "perspectiveRole": "",
                 "roleRead": "codbex-opportunities.Settings.ActionTypeReadOnly",
@@ -3241,6 +3446,7 @@
             {
                 "properties": [
                     {
+                        "auditType": "NONE",
                         "dataAutoIncrement": "true",
                         "dataName": "ACTIONSTATUS_ID",
                         "dataNullable": "true",
@@ -3255,6 +3461,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "20",
                         "dataName": "ACTIONSTATUS_NAME",
                         "dataNullable": "true",
@@ -3282,11 +3489,13 @@
                 "menuIndex": "100",
                 "menuKey": "actionstatus",
                 "menuLabel": "ActionStatus",
+                "multilingual": "false",
                 "name": "ActionStatus",
-                "navigationPath": "/Home",
+                "perspectiveHeader": "",
                 "perspectiveIcon": "/services/web/resources/unicons/wrench.svg",
                 "perspectiveLabel": "Settings",
                 "perspectiveName": "Settings",
+                "perspectiveNavId": "",
                 "perspectiveOrder": "999",
                 "perspectiveRole": "",
                 "roleRead": "codbex-opportunities.Settings.ActionStatusReadOnly",
@@ -3298,6 +3507,7 @@
             {
                 "properties": [
                     {
+                        "auditType": "NONE",
                         "dataAutoIncrement": "true",
                         "dataName": "LEADENGAGEMENT_ID",
                         "dataNullable": "true",
@@ -3312,6 +3522,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "LEADENGAGEMENT_DATE",
                         "dataNullable": "true",
                         "dataType": "DATE",
@@ -3324,6 +3535,7 @@
                         "widgetType": "DATE"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "100",
                         "dataName": "LEADENGAGEMENT_SUBJECT",
                         "dataNullable": "true",
@@ -3338,6 +3550,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "LEADENGAGEMENT_LEAD",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
@@ -3359,6 +3572,7 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "LEADENGAGEMENT_TYPE",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
@@ -3377,6 +3591,7 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "LEADENGAGEMENT_STATUS",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
@@ -3395,6 +3610,7 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "1000",
                         "dataName": "LEADENGAGEMENT_DESCRIPTION",
                         "dataNullable": "true",
@@ -3409,6 +3625,7 @@
                         "widgetType": "TEXTAREA"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "LEADENGAGEMENT_TIMESTAMP",
                         "dataNullable": "true",
                         "dataType": "TIMESTAMP",
@@ -3436,11 +3653,13 @@
                 "menuIndex": "100",
                 "menuKey": "leadengagement",
                 "menuLabel": "LeadEngagement",
+                "multilingual": "false",
                 "name": "LeadEngagement",
-                "navigationPath": "/Home",
+                "perspectiveHeader": "",
                 "perspectiveIcon": "/services/web/resources/unicons/head-side.svg",
                 "perspectiveLabel": "Lead",
                 "perspectiveName": "Lead",
+                "perspectiveNavId": "",
                 "perspectiveOrder": "100",
                 "perspectiveRole": "",
                 "roleRead": "codbex-opportunities.Lead.LeadEngagementReadOnly",
@@ -3452,6 +3671,7 @@
             {
                 "properties": [
                     {
+                        "auditType": "NONE",
                         "dataAutoIncrement": "true",
                         "dataName": "OPPORTUNITYNOTE_ID",
                         "dataNullable": "true",
@@ -3466,6 +3686,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "255",
                         "dataName": "OPPORTUNITYNOTE_SUBJECT",
                         "dataNullable": "true",
@@ -3480,6 +3701,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "1000",
                         "dataName": "OPPORTUNITYNOTE_DESCRIPTION",
                         "dataNullable": "true",
@@ -3493,6 +3715,7 @@
                         "widgetType": "TEXTAREA"
                     },
                     {
+                        "auditType": "NONE",
                         "calculatedPropertyExpressionCreate": "new Date()",
                         "dataName": "OPPORTUNITYNOTE_TIMESTAMP",
                         "dataNullable": "true",
@@ -3507,6 +3730,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "OPPORTUNITYNOTE_OPPORTUNITY",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
@@ -3539,11 +3763,13 @@
                 "menuIndex": "100",
                 "menuKey": "opportunitynote",
                 "menuLabel": "OpportunityNote",
+                "multilingual": "false",
                 "name": "OpportunityNote",
-                "navigationPath": "/Home",
+                "perspectiveHeader": "",
                 "perspectiveIcon": "/services/web/resources/unicons/lightbulb.svg",
                 "perspectiveLabel": "Opportunity",
                 "perspectiveName": "Opportunity",
+                "perspectiveNavId": "",
                 "perspectiveOrder": "200",
                 "perspectiveRole": "",
                 "roleRead": "codbex-opportunities.Opportunity.OpportunityNoteReadOnly",
@@ -3555,6 +3781,7 @@
             {
                 "properties": [
                     {
+                        "auditType": "NONE",
                         "dataAutoIncrement": "true",
                         "dataName": "CITY_ID",
                         "dataNullable": "true",
@@ -3569,6 +3796,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "100",
                         "dataName": "CITY_NAME",
                         "dataNullable": "true",
@@ -3583,6 +3811,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataName": "CITY_COUNTRY",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
@@ -3613,11 +3842,13 @@
                 "menuIndex": "100",
                 "menuKey": "city",
                 "menuLabel": "City",
+                "multilingual": "false",
                 "name": "City",
-                "navigationPath": "/Home",
+                "perspectiveHeader": "",
                 "perspectiveIcon": "/services/web/resources/unicons/building.svg",
                 "perspectiveLabel": "Cities",
                 "perspectiveName": "Cities",
+                "perspectiveNavId": "",
                 "perspectiveOrder": "100",
                 "perspectiveRole": "",
                 "projectionReferencedEntity": "City",
@@ -3629,6 +3860,7 @@
             {
                 "properties": [
                     {
+                        "auditType": "NONE",
                         "dataAutoIncrement": "true",
                         "dataName": "COUNTRY_ID",
                         "dataNullable": "true",
@@ -3643,6 +3875,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "255",
                         "dataName": "COUNTRY_NAME",
                         "dataNullable": "true",
@@ -3657,6 +3890,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "2",
                         "dataName": "COUNTRY_CODE2",
                         "dataNullable": "true",
@@ -3671,6 +3905,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "3",
                         "dataName": "COUNTRY_CODE3",
                         "dataNullable": "true",
@@ -3685,6 +3920,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "auditType": "NONE",
                         "dataLength": "3",
                         "dataName": "COUNTRY_NUMERIC",
                         "dataNullable": "true",
@@ -3711,11 +3947,13 @@
                 "menuIndex": "100",
                 "menuKey": "country",
                 "menuLabel": "Country",
+                "multilingual": "false",
                 "name": "Country",
-                "navigationPath": "/Home",
+                "perspectiveHeader": "",
                 "perspectiveIcon": "/services/web/resources/unicons/globe.svg",
                 "perspectiveLabel": "Countries",
                 "perspectiveName": "Countries",
+                "perspectiveNavId": "",
                 "perspectiveOrder": "100",
                 "perspectiveRole": "",
                 "projectionReferencedEntity": "Country",
@@ -3730,29 +3968,25 @@
                 "name": "Lead",
                 "label": "Lead",
                 "icon": "/services/web/resources/unicons/head-side.svg",
-                "order": "100",
-                "role": {}
+                "order": "100"
             },
             {
                 "name": "Opportunity",
                 "label": "Opportunity",
                 "icon": "/services/web/resources/unicons/lightbulb.svg",
-                "order": "200",
-                "role": {}
+                "order": "200"
             },
             {
                 "name": "Quotation",
                 "label": "Quotation",
                 "icon": "/services/web/resources/unicons/bill.svg",
-                "order": "300",
-                "role": {}
+                "order": "300"
             },
             {
                 "name": "Settings",
                 "label": "Settings",
                 "icon": "/services/web/resources/unicons/wrench.svg",
-                "order": "999",
-                "role": {}
+                "order": "999"
             }
         ],
         "navigations": []

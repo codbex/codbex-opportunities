@@ -1,37 +1,55 @@
-angular.module('page', ["ideUI", "ideView", "entityApi"])
-	.config(["messageHubProvider", function (messageHubProvider) {
-		messageHubProvider.eventIdPrefix = 'codbex-opportunities.Quotation.QuotationItem';
+angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntityService'])
+	.config(['EntityServiceProvider', (EntityServiceProvider) => {
+		EntityServiceProvider.baseUrl = '/services/ts/codbex-opportunities/gen/codbex-opportunities/api/Quotation/QuotationItemService.ts';
 	}])
-	.config(["entityApiProvider", function (entityApiProvider) {
-		entityApiProvider.baseUrl = "/services/ts/codbex-opportunities/gen/codbex-opportunities/api/Quotation/QuotationItemService.ts";
-	}])
-	.controller('PageController', ['$scope', '$http', 'messageHub', 'entityApi', 'Extensions', function ($scope, $http, messageHub, entityApi, Extensions) {
-		//-----------------Custom Actions-------------------//
-		Extensions.get('dialogWindow', 'codbex-opportunities-custom-action').then(function (response) {
-			$scope.pageActions = response.filter(e => e.perspective === "Quotation" && e.view === "QuotationItem" && (e.type === "page" || e.type === undefined));
-			$scope.entityActions = response.filter(e => e.perspective === "Quotation" && e.view === "QuotationItem" && e.type === "entity");
-		});
-
-		$scope.triggerPageAction = function (action) {
-			messageHub.showDialogWindow(
-				action.id,
-				{},
-				null,
-				true,
-				action
-			);
+	.controller('PageController', ($scope, $http, EntityService, Extensions, LocaleService, ButtonStates) => {
+		const Dialogs = new DialogHub();
+		let translated = {
+			yes: 'Yes',
+			no: 'No',
+			deleteConfirm: 'Are you sure you want to delete QuotationItem? This action cannot be undone.',
+			deleteTitle: 'Delete QuotationItem?'
 		};
 
-		$scope.triggerEntityAction = function (action) {
-			messageHub.showDialogWindow(
-				action.id,
-				{
-					id: $scope.entity.Id
+		LocaleService.onInit(() => {
+			translated.yes = LocaleService.t('codbex-opportunities:codbex-opportunities-model.defaults.yes');
+			translated.no = LocaleService.t('codbex-opportunities:codbex-opportunities-model.defaults.no');
+			translated.deleteTitle = LocaleService.t('codbex-opportunities:codbex-opportunities-model.defaults.deleteTitle', { name: '$t(codbex-opportunities:codbex-opportunities-model.t.QUOTATIONITEM)' });
+			translated.deleteConfirm = LocaleService.t('codbex-opportunities:codbex-opportunities-model.messages.deleteConfirm', { name: '$t(codbex-opportunities:codbex-opportunities-model.t.QUOTATIONITEM)' });
+		});
+		//-----------------Custom Actions-------------------//
+		Extensions.getWindows(['codbex-opportunities-custom-action']).then((response) => {
+			$scope.pageActions = response.data.filter(e => e.perspective === 'Quotation' && e.view === 'QuotationItem' && (e.type === 'page' || e.type === undefined));
+			$scope.entityActions = response.data.filter(e => e.perspective === 'Quotation' && e.view === 'QuotationItem' && e.type === 'entity');
+		});
+
+		$scope.triggerPageAction = (action) => {
+			Dialogs.showWindow({
+				hasHeader: true,
+        		title: LocaleService.t(action.translation.key, action.translation.options, action.label),
+				path: action.path,
+				params: {
+					selectedMainEntityKey: 'Quotation',
+					selectedMainEntityId: $scope.selectedMainEntityId,
 				},
-				null,
-				true,
-				action
-			);
+				maxWidth: action.maxWidth,
+				maxHeight: action.maxHeight,
+				closeButton: true
+			});
+		};
+
+		$scope.triggerEntityAction = (action) => {
+			Dialogs.showWindow({
+				hasHeader: true,
+        		title: LocaleService.t(action.translation.key, action.translation.options, action.label),
+				path: action.path,
+				params: {
+					id: $scope.entity.Id,
+					selectedMainEntityKey: 'Quotation',
+					selectedMainEntityId: $scope.selectedMainEntityId,
+				},
+				closeButton: true
+			});
 		};
 		//-----------------Custom Actions-------------------//
 
@@ -43,44 +61,39 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		resetPagination();
 
 		//-----------------Events-------------------//
-		messageHub.onDidReceiveMessage("codbex-opportunities.Quotation.Quotation.entitySelected", function (msg) {
+		Dialogs.addMessageListener({ topic: 'codbex-opportunities.Quotation.Quotation.entitySelected', handler: (data) => {
 			resetPagination();
-			$scope.selectedMainEntityId = msg.data.selectedMainEntityId;
+			$scope.selectedMainEntityId = data.selectedMainEntityId;
 			$scope.loadPage($scope.dataPage);
-		}, true);
-
-		messageHub.onDidReceiveMessage("codbex-opportunities.Quotation.Quotation.clearDetails", function (msg) {
-			$scope.$apply(function () {
+		}});
+		Dialogs.addMessageListener({ topic: 'codbex-opportunities.Quotation.Quotation.clearDetails', handler: () => {
+			$scope.$evalAsync(() => {
 				resetPagination();
 				$scope.selectedMainEntityId = null;
 				$scope.data = null;
 			});
-		}, true);
-
-		messageHub.onDidReceiveMessage("clearDetails", function (msg) {
-			$scope.$apply(function () {
+		}});
+		Dialogs.addMessageListener({ topic: 'codbex-opportunities.Quotation.QuotationItem.clearDetails', handler: () => {
+			$scope.$evalAsync(() => {
 				$scope.entity = {};
 				$scope.action = 'select';
 			});
-		});
-
-		messageHub.onDidReceiveMessage("entityCreated", function (msg) {
+		}});
+		Dialogs.addMessageListener({ topic: 'codbex-opportunities.Quotation.QuotationItem.entityCreated', handler: () => {
 			$scope.loadPage($scope.dataPage, $scope.filter);
-		});
-
-		messageHub.onDidReceiveMessage("entityUpdated", function (msg) {
+		}});
+		Dialogs.addMessageListener({ topic: 'codbex-opportunities.Quotation.QuotationItem.entityUpdated', handler: () => {
 			$scope.loadPage($scope.dataPage, $scope.filter);
-		});
-
-		messageHub.onDidReceiveMessage("entitySearch", function (msg) {
+		}});
+		Dialogs.addMessageListener({ topic: 'codbex-opportunities.Quotation.QuotationItem.entitySearch', handler: (data) => {
 			resetPagination();
-			$scope.filter = msg.data.filter;
-			$scope.filterEntity = msg.data.entity;
+			$scope.filter = data.filter;
+			$scope.filterEntity = data.entity;
 			$scope.loadPage($scope.dataPage, $scope.filter);
-		});
+		}});
 		//-----------------Events-------------------//
 
-		$scope.loadPage = function (pageNumber, filter) {
+		$scope.loadPage = (pageNumber, filter) => {
 			let Quotation = $scope.selectedMainEntityId;
 			$scope.dataPage = pageNumber;
 			if (!filter && $scope.filter) {
@@ -96,103 +109,130 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				filter.$filter.equals = {};
 			}
 			filter.$filter.equals.Quotation = Quotation;
-			entityApi.count(filter).then(function (response) {
-				if (response.status != 200) {
-					messageHub.showAlertError("QuotationItem", `Unable to count QuotationItem: '${response.message}'`);
-					return;
-				}
-				if (response.data) {
-					$scope.dataCount = response.data;
+			EntityService.count(filter).then((resp) => {
+				if (resp.data) {
+					$scope.dataCount = resp.data.count;
 				}
 				filter.$offset = (pageNumber - 1) * $scope.dataLimit;
 				filter.$limit = $scope.dataLimit;
-				entityApi.search(filter).then(function (response) {
-					if (response.status != 200) {
-						messageHub.showAlertError("QuotationItem", `Unable to list/filter QuotationItem: '${response.message}'`);
-						return;
-					}
+				EntityService.search(filter).then((response) => {
 					$scope.data = response.data;
+				}, (error) => {
+					const message = error.data ? error.data.message : '';
+					Dialogs.showAlert({
+						title: LocaleService.t('codbex-opportunities:codbex-opportunities-model.t.QUOTATIONITEM'),
+						message: LocaleService.t('codbex-opportunities:codbex-opportunities-model.messages.error.unableToLF', { name: '$t(codbex-opportunities:codbex-opportunities-model.t.QUOTATIONITEM)', message: message }),
+						type: AlertTypes.Error
+					});
+					console.error('EntityService:', error);
 				});
+			}, (error) => {
+				const message = error.data ? error.data.message : '';
+				Dialogs.showAlert({
+					title: LocaleService.t('codbex-opportunities:codbex-opportunities-model.t.QUOTATIONITEM'),
+					message: LocaleService.t('codbex-opportunities:codbex-opportunities-model.messages.error.unableToCount', { name: '$t(codbex-opportunities:codbex-opportunities-model.t.QUOTATIONITEM)', message: message }),
+					type: AlertTypes.Error
+				});
+				console.error('EntityService:', error);
 			});
 		};
 
-		$scope.selectEntity = function (entity) {
+		$scope.selectEntity = (entity) => {
 			$scope.selectedEntity = entity;
 		};
 
-		$scope.openDetails = function (entity) {
+		$scope.openDetails = (entity) => {
 			$scope.selectedEntity = entity;
-			messageHub.showDialogWindow("QuotationItem-details", {
-				action: "select",
-				entity: entity,
-				optionsQuotation: $scope.optionsQuotation,
-				optionsProduct: $scope.optionsProduct,
-				optionsUoM: $scope.optionsUoM,
-				optionsCurrency: $scope.optionsCurrency,
-			});
-		};
-
-		$scope.openFilter = function (entity) {
-			messageHub.showDialogWindow("QuotationItem-filter", {
-				entity: $scope.filterEntity,
-				optionsQuotation: $scope.optionsQuotation,
-				optionsProduct: $scope.optionsProduct,
-				optionsUoM: $scope.optionsUoM,
-				optionsCurrency: $scope.optionsCurrency,
-			});
-		};
-
-		$scope.createEntity = function () {
-			$scope.selectedEntity = null;
-			messageHub.showDialogWindow("QuotationItem-details", {
-				action: "create",
-				entity: {},
-				selectedMainEntityKey: "Quotation",
-				selectedMainEntityId: $scope.selectedMainEntityId,
-				optionsQuotation: $scope.optionsQuotation,
-				optionsProduct: $scope.optionsProduct,
-				optionsUoM: $scope.optionsUoM,
-				optionsCurrency: $scope.optionsCurrency,
-			}, null, false);
-		};
-
-		$scope.updateEntity = function (entity) {
-			messageHub.showDialogWindow("QuotationItem-details", {
-				action: "update",
-				entity: entity,
-				selectedMainEntityKey: "Quotation",
-				selectedMainEntityId: $scope.selectedMainEntityId,
-				optionsQuotation: $scope.optionsQuotation,
-				optionsProduct: $scope.optionsProduct,
-				optionsUoM: $scope.optionsUoM,
-				optionsCurrency: $scope.optionsCurrency,
-			}, null, false);
-		};
-
-		$scope.deleteEntity = function (entity) {
-			let id = entity.Id;
-			messageHub.showDialogAsync(
-				'Delete QuotationItem?',
-				`Are you sure you want to delete QuotationItem? This action cannot be undone.`,
-				[{
-					id: "delete-btn-yes",
-					type: "emphasized",
-					label: "Yes",
+			Dialogs.showWindow({
+				id: 'QuotationItem-details',
+				params: {
+					action: 'select',
+					entity: entity,
+					optionsQuotation: $scope.optionsQuotation,
+					optionsProduct: $scope.optionsProduct,
+					optionsUoM: $scope.optionsUoM,
+					optionsCurrency: $scope.optionsCurrency,
 				},
-				{
-					id: "delete-btn-no",
-					type: "normal",
-					label: "No",
+			});
+		};
+
+		$scope.openFilter = () => {
+			Dialogs.showWindow({
+				id: 'QuotationItem-filter',
+				params: {
+					entity: $scope.filterEntity,
+					optionsQuotation: $scope.optionsQuotation,
+					optionsProduct: $scope.optionsProduct,
+					optionsUoM: $scope.optionsUoM,
+					optionsCurrency: $scope.optionsCurrency,
+				},
+			});
+		};
+
+		$scope.createEntity = () => {
+			$scope.selectedEntity = null;
+			Dialogs.showWindow({
+				id: 'QuotationItem-details',
+				params: {
+					action: 'create',
+					entity: {
+						'Quotation': $scope.selectedMainEntityId
+					},
+					selectedMainEntityKey: 'Quotation',
+					selectedMainEntityId: $scope.selectedMainEntityId,
+					optionsQuotation: $scope.optionsQuotation,
+					optionsProduct: $scope.optionsProduct,
+					optionsUoM: $scope.optionsUoM,
+					optionsCurrency: $scope.optionsCurrency,
+				},
+				closeButton: false
+			});
+		};
+
+		$scope.updateEntity = (entity) => {
+			Dialogs.showWindow({
+				id: 'QuotationItem-details',
+				params: {
+					action: 'update',
+					entity: entity,
+					selectedMainEntityKey: 'Quotation',
+					selectedMainEntityId: $scope.selectedMainEntityId,
+					optionsQuotation: $scope.optionsQuotation,
+					optionsProduct: $scope.optionsProduct,
+					optionsUoM: $scope.optionsUoM,
+					optionsCurrency: $scope.optionsCurrency,
+			},
+				closeButton: false
+			});
+		};
+
+		$scope.deleteEntity = (entity) => {
+			let id = entity.Id;
+			Dialogs.showDialog({
+				title: translated.deleteTitle,
+				message: translated.deleteConfirm,
+				buttons: [{
+					id: 'delete-btn-yes',
+					state: ButtonStates.Emphasized,
+					label: translated.yes,
+				}, {
+					id: 'delete-btn-no',
+					label: translated.no,
 				}],
-			).then(function (msg) {
-				if (msg.data === "delete-btn-yes") {
-					entityApi.delete(id).then(function (response) {
-						if (response.status != 204) {
-							messageHub.showAlertError("QuotationItem", `Unable to delete QuotationItem: '${response.message}'`);
-							return;
-						}
+				closeButton: false
+			}).then((buttonId) => {
+				if (buttonId === 'delete-btn-yes') {
+					EntityService.delete(id).then(() => {
 						$scope.loadPage($scope.dataPage, $scope.filter);
-						messageHub.postMessage("clearDetails");
+						Dialogs.triggerEvent('codbex-opportunities.Quotation.QuotationItem.clearDetails');
+					}, (error) => {
+						const message = error.data ? error.data.message : '';
+						Dialogs.showAlert({
+							title: LocaleService.t('codbex-opportunities:codbex-opportunities-model.t.QUOTATIONITEM'),
+							message: LocaleService.t('codbex-opportunities:codbex-opportunities-model.messages.error.unableToDelete', { name: '$t(codbex-opportunities:codbex-opportunities-model.t.QUOTATIONITEM)', message: message }),
+							type: AlertTypes.Error,
+						});
+						console.error('EntityService:', error);
 					});
 				}
 			});
@@ -205,39 +245,63 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		$scope.optionsCurrency = [];
 
 
-		$http.get("/services/ts/codbex-opportunities/gen/codbex-opportunities/api/Quotation/QuotationService.ts").then(function (response) {
-			$scope.optionsQuotation = response.data.map(e => {
-				return {
-					value: e.Id,
-					text: e.Number
-				}
+		$http.get('/services/ts/codbex-opportunities/gen/codbex-opportunities/api/Quotation/QuotationService.ts').then((response) => {
+			$scope.optionsQuotation = response.data.map(e => ({
+				value: e.Id,
+				text: e.Number
+			}));
+		}, (error) => {
+			console.error(error);
+			const message = error.data ? error.data.message : '';
+			Dialogs.showAlert({
+				title: 'Quotation',
+				message: LocaleService.t('codbex-opportunities:codbex-opportunities-model.messages.error.unableToLoad', { message: message }),
+				type: AlertTypes.Error
 			});
 		});
 
-		$http.get("/services/ts/codbex-products/gen/codbex-products/api/Products/ProductService.ts").then(function (response) {
-			$scope.optionsProduct = response.data.map(e => {
-				return {
-					value: e.Id,
-					text: e.Name
-				}
+		$http.get('/services/ts/codbex-products/gen/codbex-products/api/Products/ProductService.ts').then((response) => {
+			$scope.optionsProduct = response.data.map(e => ({
+				value: e.Id,
+				text: e.Name
+			}));
+		}, (error) => {
+			console.error(error);
+			const message = error.data ? error.data.message : '';
+			Dialogs.showAlert({
+				title: 'Product',
+				message: LocaleService.t('codbex-opportunities:codbex-opportunities-model.messages.error.unableToLoad', { message: message }),
+				type: AlertTypes.Error
 			});
 		});
 
-		$http.get("/services/ts/codbex-uoms/gen/codbex-uoms/api/UnitsOfMeasures/UoMService.ts").then(function (response) {
-			$scope.optionsUoM = response.data.map(e => {
-				return {
-					value: e.Id,
-					text: e.Name
-				}
+		$http.get('/services/ts/codbex-uoms/gen/codbex-uoms/api/UnitsOfMeasures/UoMService.ts').then((response) => {
+			$scope.optionsUoM = response.data.map(e => ({
+				value: e.Id,
+				text: e.Name
+			}));
+		}, (error) => {
+			console.error(error);
+			const message = error.data ? error.data.message : '';
+			Dialogs.showAlert({
+				title: 'UoM',
+				message: LocaleService.t('codbex-opportunities:codbex-opportunities-model.messages.error.unableToLoad', { message: message }),
+				type: AlertTypes.Error
 			});
 		});
 
-		$http.get("/services/ts/codbex-currencies/gen/codbex-currencies/api/Currencies/CurrencyService.ts").then(function (response) {
-			$scope.optionsCurrency = response.data.map(e => {
-				return {
-					value: e.Id,
-					text: e.Code
-				}
+		$http.get('/services/ts/codbex-currencies/gen/codbex-currencies/api/Currencies/CurrencyService.ts').then((response) => {
+			$scope.optionsCurrency = response.data.map(e => ({
+				value: e.Id,
+				text: e.Code
+			}));
+		}, (error) => {
+			console.error(error);
+			const message = error.data ? error.data.message : '';
+			Dialogs.showAlert({
+				title: 'Currency',
+				message: LocaleService.t('codbex-opportunities:codbex-opportunities-model.messages.error.unableToLoad', { message: message }),
+				type: AlertTypes.Error
 			});
 		});
 
@@ -274,5 +338,4 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			return null;
 		};
 		//----------------Dropdowns-----------------//
-
-	}]);
+	});

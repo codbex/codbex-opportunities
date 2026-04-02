@@ -4,14 +4,14 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "ActionType-details",
-    label: "ActionType",
-    link: "/services/web/codbex-opportunities/gen/codbex-opportunities/ui/Settings/ActionType/dialog-window/index.html",
-    perspectiveName: "Settings"
+    id: 'ActionType-details',
+    label: 'ActionType',
+    translation: {
+        key: 'codbex-opportunities:codbex-opportunities-model.t.ACTIONTYPE',
+    },
+    path: '/services/web/codbex-opportunities/gen/codbex-opportunities/ui/Settings/ActionType/dialog-window/index.html',
+    perspectiveName: 'Settings'
 };
-
 if (typeof exports !== 'undefined') {
-    exports.getDialogWindow = function () {
-        return viewData;
-    }
+    exports.getView = () => viewData;
 }

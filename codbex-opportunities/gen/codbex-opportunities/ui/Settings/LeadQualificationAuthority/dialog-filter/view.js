@@ -4,14 +4,17 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "LeadQualificationAuthority-filter",
-    label: "LeadQualificationAuthority Filter",
-    link: "/services/web/codbex-opportunities/gen/codbex-opportunities/ui/Settings/LeadQualificationAuthority/dialog-filter/index.html",
-    perspectiveName: "Settings"
+    id: 'LeadQualificationAuthority-filter',
+    label: 'LeadQualificationAuthority Filter',
+    translation: {
+        key: 'codbex-opportunities:codbex-opportunities-model.extName',
+        options: {
+            content: '$t(codbex-opportunities:codbex-opportunities-model.t.LEADQUALIFICATIONAUTHORITY) $t(codbex-opportunities:codbex-opportunities-model.defaults.filter)',
+        }
+    },
+    path: '/services/web/codbex-opportunities/gen/codbex-opportunities/ui/Settings/LeadQualificationAuthority/dialog-filter/index.html',
+    perspectiveName: 'Settings'
 };
-
 if (typeof exports !== 'undefined') {
-    exports.getDialogWindow = function () {
-        return viewData;
-    }
+    exports.getView = () => viewData;
 }

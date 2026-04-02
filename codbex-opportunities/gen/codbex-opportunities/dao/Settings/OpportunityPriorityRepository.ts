@@ -1,7 +1,7 @@
-import { query } from "sdk/db";
-import { producer } from "sdk/messaging";
-import { extensions } from "sdk/extensions";
-import { dao as daoApi } from "sdk/db";
+import { sql, query } from "@aerokit/sdk/db";
+import { producer } from "@aerokit/sdk/messaging";
+import { extensions } from "@aerokit/sdk/extensions";
+import { dao as daoApi } from "@aerokit/sdk/db";
 
 export interface OpportunityPriorityEntity {
     readonly Id: number;
@@ -49,12 +49,13 @@ export interface OpportunityPriorityEntityOptions {
     },
     $select?: (keyof OpportunityPriorityEntity)[],
     $sort?: string | (keyof OpportunityPriorityEntity)[],
-    $order?: 'asc' | 'desc',
+    $order?: 'ASC' | 'DESC',
     $offset?: number,
     $limit?: number,
+    $language?: string
 }
 
-interface OpportunityPriorityEntityEvent {
+export interface OpportunityPriorityEntityEvent {
     readonly operation: 'create' | 'update' | 'delete';
     readonly table: string;
     readonly entity: Partial<OpportunityPriorityEntity>;
@@ -65,7 +66,7 @@ interface OpportunityPriorityEntityEvent {
     }
 }
 
-interface OpportunityPriorityUpdateEntityEvent extends OpportunityPriorityEntityEvent {
+export interface OpportunityPriorityUpdateEntityEvent extends OpportunityPriorityEntityEvent {
     readonly previousEntity: OpportunityPriorityEntity;
 }
 
@@ -92,14 +93,15 @@ export class OpportunityPriorityRepository {
     private readonly dao;
 
     constructor(dataSource = "DefaultDB") {
-        this.dao = daoApi.create(OpportunityPriorityRepository.DEFINITION, null, dataSource);
+        this.dao = daoApi.create(OpportunityPriorityRepository.DEFINITION, undefined, dataSource);
     }
 
-    public findAll(options?: OpportunityPriorityEntityOptions): OpportunityPriorityEntity[] {
-        return this.dao.list(options);
+    public findAll(options: OpportunityPriorityEntityOptions = {}): OpportunityPriorityEntity[] {
+        let list = this.dao.list(options);
+        return list;
     }
 
-    public findById(id: number): OpportunityPriorityEntity | undefined {
+    public findById(id: number, options: OpportunityPriorityEntityOptions = {}): OpportunityPriorityEntity | undefined {
         const entity = this.dao.find(id);
         return entity ?? undefined;
     }

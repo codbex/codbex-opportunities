@@ -1,7 +1,7 @@
-import { query } from "sdk/db";
-import { producer } from "sdk/messaging";
-import { extensions } from "sdk/extensions";
-import { dao as daoApi } from "sdk/db";
+import { sql, query } from "@aerokit/sdk/db";
+import { producer } from "@aerokit/sdk/messaging";
+import { extensions } from "@aerokit/sdk/extensions";
+import { dao as daoApi } from "@aerokit/sdk/db";
 
 export interface OpportunityStatusEntity {
     readonly Id: number;
@@ -58,12 +58,13 @@ export interface OpportunityStatusEntityOptions {
     },
     $select?: (keyof OpportunityStatusEntity)[],
     $sort?: string | (keyof OpportunityStatusEntity)[],
-    $order?: 'asc' | 'desc',
+    $order?: 'ASC' | 'DESC',
     $offset?: number,
     $limit?: number,
+    $language?: string
 }
 
-interface OpportunityStatusEntityEvent {
+export interface OpportunityStatusEntityEvent {
     readonly operation: 'create' | 'update' | 'delete';
     readonly table: string;
     readonly entity: Partial<OpportunityStatusEntity>;
@@ -74,7 +75,7 @@ interface OpportunityStatusEntityEvent {
     }
 }
 
-interface OpportunityStatusUpdateEntityEvent extends OpportunityStatusEntityEvent {
+export interface OpportunityStatusUpdateEntityEvent extends OpportunityStatusEntityEvent {
     readonly previousEntity: OpportunityStatusEntity;
 }
 
@@ -106,14 +107,15 @@ export class OpportunityStatusRepository {
     private readonly dao;
 
     constructor(dataSource = "DefaultDB") {
-        this.dao = daoApi.create(OpportunityStatusRepository.DEFINITION, null, dataSource);
+        this.dao = daoApi.create(OpportunityStatusRepository.DEFINITION, undefined, dataSource);
     }
 
-    public findAll(options?: OpportunityStatusEntityOptions): OpportunityStatusEntity[] {
-        return this.dao.list(options);
+    public findAll(options: OpportunityStatusEntityOptions = {}): OpportunityStatusEntity[] {
+        let list = this.dao.list(options);
+        return list;
     }
 
-    public findById(id: number): OpportunityStatusEntity | undefined {
+    public findById(id: number, options: OpportunityStatusEntityOptions = {}): OpportunityStatusEntity | undefined {
         const entity = this.dao.find(id);
         return entity ?? undefined;
     }
